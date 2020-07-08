@@ -1,11 +1,12 @@
-﻿using piggy_bank_uwp.Models;
+﻿using System;
+using System.Linq;
+using piggy_bank_uwp.Models;
 using piggy_bank_uwp.Utilities;
+using piggy_bank_uwp.ViewModel;
 using piggy_bank_uwp.ViewModel.Tag;
 using piggy_bank_uwp.ViewModels.Interface;
-using System;
-using System.Linq;
 
-namespace piggy_bank_uwp.ViewModel.Cost
+namespace piggy_bank_uwp.ViewModels.Operations
 {
     public class CostViewModel : BaseViewModel, IUpdateable
     {

@@ -11,7 +11,7 @@
     <AssemblyName>PiggyBank</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -131,7 +131,7 @@
     <Compile Include="ViewModels\Balance\AccountsViewModel.cs" />
     <Compile Include="ViewModels\Balance\BalanceViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\Cost\CostViewModel.cs" />
+    <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Diagram\DataDiagramViewModel.cs" />
     <Compile Include="ViewModels\Diagram\DiagramViewModel.cs" />
     <Compile Include="ViewModels\Donate\DonateItemViewModel.cs" />
@@ -154,11 +154,11 @@
     <Compile Include="Views\Categories\EditCategoryPage.xaml.cs">
       <DependentUpon>EditCategoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Costs\CostsPage.xaml.cs">
-      <DependentUpon>CostsPage.xaml</DependentUpon>
+    <Compile Include="Views\Operations\OperatoinsPage.xaml.cs">
+      <DependentUpon>OperatoinsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Costs\EditCostPage.xaml.cs">
-      <DependentUpon>EditCostPage.xaml</DependentUpon>
+    <Compile Include="Views\Operations\EditOperationPage.xaml.cs">
+      <DependentUpon>EditOperationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Default\DefaultPage.xaml.cs">
       <DependentUpon>DefaultPage.xaml</DependentUpon>
@@ -290,11 +290,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Costs\CostsPage.xaml">
+    <Page Include="Views\Operations\OperatoinsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Costs\EditCostPage.xaml">
+    <Page Include="Views\Operations\EditOperationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

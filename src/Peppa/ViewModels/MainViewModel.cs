@@ -2,7 +2,6 @@
 using piggy_bank_uwp.Fabrics;
 using piggy_bank_uwp.Models;
 using piggy_bank_uwp.Services;
-using piggy_bank_uwp.ViewModel.Cost;
 using piggy_bank_uwp.ViewModel.Tag;
 using piggy_bank_uwp.ViewModels.Balance;
 using piggy_bank_uwp.ViewModels.Diagram;
@@ -16,6 +15,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Notifications;
+using piggy_bank_uwp.ViewModels.Operations;
 
 namespace piggy_bank_uwp.ViewModel
 {

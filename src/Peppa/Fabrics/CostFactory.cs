@@ -1,6 +1,6 @@
 ﻿using piggy_bank_uwp.Models;
-using piggy_bank_uwp.ViewModel.Cost;
 using System.Collections.Generic;
+using piggy_bank_uwp.ViewModels.Operations;
 
 namespace piggy_bank_uwp.Fabrics
 {

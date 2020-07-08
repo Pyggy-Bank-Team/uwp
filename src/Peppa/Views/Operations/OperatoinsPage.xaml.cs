@@ -1,12 +1,12 @@
 ﻿using piggy_bank_uwp.View.Balance;
 using piggy_bank_uwp.View.Costs;
 using piggy_bank_uwp.ViewModel;
-using piggy_bank_uwp.ViewModel.Cost;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System;
 using piggy_bank_uwp.Services;
+using piggy_bank_uwp.ViewModels.Operations;
 
 namespace piggy_bank_uwp.Views.Costs
 {

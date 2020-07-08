@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "piggy-bank-uwp", "piggy-bank-uwp\piggy-bank-uwp.csproj", "{7E85FAB4-69BF-4A97-8FA6-7B6265693A04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peppa", "Peppa\Peppa.csproj", "{7E85FAB4-69BF-4A97-8FA6-7B6265693A04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

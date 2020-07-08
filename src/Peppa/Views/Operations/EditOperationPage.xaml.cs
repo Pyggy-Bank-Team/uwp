@@ -1,12 +1,12 @@
 ﻿using piggy_bank_uwp.Services;
 using piggy_bank_uwp.ViewModel;
-using piggy_bank_uwp.ViewModel.Cost;
 using piggy_bank_uwp.ViewModel.Tag;
 using piggy_bank_uwp.ViewModels.Balance;
 using System;
 using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using piggy_bank_uwp.ViewModels.Operations;
 
 
 namespace piggy_bank_uwp.View.Costs
