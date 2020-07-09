@@ -113,17 +113,22 @@
     <Compile Include="Convertes\ConvertDateTimeOffsetToDateTime.cs" />
     <Compile Include="Convertes\ValueToCollapsedConverter.cs" />
     <Compile Include="Convertes\ValueToVisibilityConverter.cs" />
+    <Compile Include="Entities\Account.cs" />
     <Compile Include="ExtensionMethods\SolidColorBrushExtension.cs" />
     <Compile Include="Fabrics\CostFactory.cs" />
     <Compile Include="Fabrics\CategoryFactory.cs" />
     <Compile Include="Fabrics\DonateFactory.cs" />
+    <Compile Include="Interface\IAccountService.cs" />
     <Compile Include="Interface\IDetailPage.cs" />
     <Compile Include="Localize.cs" />
     <Compile Include="Models\BalanceModel.cs" />
     <Compile Include="Models\CostModel.cs" />
     <Compile Include="Models\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\Requests\UserRequest.cs" />
+    <Compile Include="Models\Responses\AccessTokenResponse.cs" />
     <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Services\PiggyService.cs" />
     <Compile Include="Services\TileService.cs" />
     <Compile Include="Services\ToastService.cs" />
     <Compile Include="Utilities\DateUtility.cs" />
@@ -142,11 +147,11 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Services\OneDriveViewModel.cs" />
-    <Compile Include="Views\Balance\BalancesPage.xaml.cs">
-      <DependentUpon>BalancesPage.xaml</DependentUpon>
+    <Compile Include="Views\Accounts\AccountsPage.xaml.cs">
+      <DependentUpon>AccountsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Balance\EditBalancePage.xaml.cs">
-      <DependentUpon>EditBalancePage.xaml</DependentUpon>
+    <Compile Include="Views\Accounts\EditAccountPage.xaml.cs">
+      <DependentUpon>EditAccountPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Categories\CategoriesPage.xaml.cs">
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
@@ -192,8 +197,6 @@
     </AppxManifest>
     <None Include="piggy-bank-uwp_StoreKey.pfx" />
     <None Include="piggy-bank-uwp_TemporaryKey.pfx" />
-    <PRIResource Include="Strings\uk-UA\Resources.resw" />
-    <PRIResource Include="Strings\be-BY\Resources.resw" />
     <PRIResource Include="Strings\ru-RU\Resources.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
@@ -274,11 +277,11 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="Views\Balance\BalancesPage.xaml">
+    <Page Include="Views\Accounts\AccountsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Balance\EditBalancePage.xaml">
+    <Page Include="Views\Accounts\EditAccountPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -355,7 +358,6 @@
       <Version>1.0.0.9</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <SDKReference Include="Microsoft.Services.Store.Engagement, Version=10.0">
       <Name>Microsoft Engagement Framework</Name>

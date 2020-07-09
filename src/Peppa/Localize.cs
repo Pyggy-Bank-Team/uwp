@@ -28,14 +28,9 @@ namespace piggy_bank_uwp
                 if (string.IsNullOrEmpty(key))
                     return string.Empty;
 
-                string translate = ResourceLoader.GetForViewIndependentUse().GetString(key);
+                var translate = ResourceLoader.GetForViewIndependentUse().GetString(key);
 
-                if (string.IsNullOrEmpty(translate))
-                {
-                    return key;
-                }
-
-                return translate;
+                return string.IsNullOrEmpty(translate) ? key : translate;
             }
             catch
             {
