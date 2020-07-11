@@ -1,5 +1,4 @@
-﻿using piggy_bank_uwp.ExtensionMethods;
-using piggy_bank_uwp.Services;
+﻿using piggy_bank_uwp.Services;
 using piggy_bank_uwp.ViewModel;
 using piggy_bank_uwp.ViewModel.Tag;
 using System.Linq;
@@ -9,6 +8,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 using System;
+using piggy_bank_uwp.Extensions;
 
 namespace piggy_bank_uwp.Views.Categories
 {

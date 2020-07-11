@@ -4,7 +4,6 @@ using piggy_bank_uwp.ViewModel;
 using piggy_bank_uwp.Views.Categories;
 using piggy_bank_uwp.Views.Costs;
 using piggy_bank_uwp.Views.SettingsPage;
-using piggy_bank_uwp.Views.Sync;
 using System.Linq;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -12,6 +11,7 @@ using Windows.UI.Xaml.Controls;
 using System;
 using Windows.UI.Xaml.Navigation;
 using piggy_bank_uwp.Views.Balance;
+using piggy_bank_uwp.Views.Users;
 
 namespace piggy_bank_uwp.View
 {

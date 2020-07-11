@@ -1,12 +1,12 @@
-﻿using Microsoft.OneDrive.Sdk;
-using Microsoft.OneDrive.Sdk.Authentication;
-using piggy_bank_uwp.Workers;
-using System;
+﻿using System;
 using System.IO;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Microsoft.OneDrive.Sdk;
+using Microsoft.OneDrive.Sdk.Authentication;
+using piggy_bank_uwp.Workers;
 
-namespace piggy_bank_uwp.ViewModels.Services
+namespace piggy_bank_uwp.ViewModels.Users
 {
     public class OneDriveViewModel
     {
@@ -128,13 +128,13 @@ namespace piggy_bank_uwp.ViewModels.Services
         {
             string folderId = SettingsWorker.Current.GetFolderId();
 
-            if (String.IsNullOrEmpty(folderId))
+            if (string.IsNullOrEmpty(folderId))
                 return;
 
             try
             {
                 await _oneDriveClient.Drive.Items[folderId].Request().DeleteAsync();
-                SettingsWorker.Current.SaveFolderId(String.Empty);
+                SettingsWorker.Current.SaveFolderId(string.Empty);
             }
             catch { }
         }
@@ -169,7 +169,7 @@ namespace piggy_bank_uwp.ViewModels.Services
                 haveData = true;
             }
             ///TODO:
-            catch{ }
+            catch { }
 
             return haveData;
         }

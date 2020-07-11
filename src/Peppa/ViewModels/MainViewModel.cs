@@ -7,7 +7,6 @@ using piggy_bank_uwp.ViewModels.Balance;
 using piggy_bank_uwp.ViewModels.Diagram;
 using piggy_bank_uwp.ViewModels.Donate;
 using piggy_bank_uwp.ViewModels.Interface;
-using piggy_bank_uwp.ViewModels.Services;
 using piggy_bank_uwp.Workers;
 using System;
 using System.Collections.Generic;
@@ -16,6 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Notifications;
 using piggy_bank_uwp.ViewModels.Operations;
+using piggy_bank_uwp.ViewModels.Users;
 
 namespace piggy_bank_uwp.ViewModel
 {

@@ -13,6 +13,8 @@ using Windows.UI.ViewManagement;
 using piggy_bank_uwp.Workers;
 using Windows.Storage;
 using Microsoft.HockeyApp;
+using Microsoft.Extensions.DependencyInjection;
+using piggy_bank_uwp.Extensions;
 
 namespace piggy_bank_uwp
 {
@@ -31,6 +33,9 @@ namespace piggy_bank_uwp
             this.Suspending += OnSuspending;
 
             App.Current.RequestedTheme = SettingsWorker.Current.GetRequestedTheme();
+            ServiceCollection = new ServiceCollection();
+
+            ServiceCollection.DependencyInjection();
         }
 
         /// <summary>
@@ -180,5 +185,7 @@ namespace piggy_bank_uwp
             }
             catch { }
         }
+
+        public static IServiceCollection ServiceCollection { get; private set; }
     }
 }

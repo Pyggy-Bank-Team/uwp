@@ -1,10 +1,10 @@
-﻿using piggy_bank_uwp.ViewModel;
-using piggy_bank_uwp.ViewModels.Services;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using piggy_bank_uwp.ViewModel;
+using piggy_bank_uwp.ViewModels.Users;
 
-namespace piggy_bank_uwp.Views.Sync
+namespace piggy_bank_uwp.Views.Users
 {
     public sealed partial class SyncPage : Page
     {
@@ -43,24 +43,24 @@ namespace piggy_bank_uwp.Views.Sync
 
         private void ShowLoginButton()
         {
-            LoginButton.Visibility = Visibility.Visible;
-            LogoutButton.Visibility = Visibility.Collapsed;
+            //LoginButton.Visibility = Visibility.Visible;
+            //LogoutButton.Visibility = Visibility.Collapsed;
         }
 
         private void ShowLogoutButton()
         {
-            LoginButton.Visibility = Visibility.Collapsed;
-            LogoutButton.Visibility = Visibility.Visible;
+            //LoginButton.Visibility = Visibility.Collapsed;
+            //LogoutButton.Visibility = Visibility.Visible;
         }
 
         private void EditEnableNotificationBlock()
         {
-            NotificationSwitch.IsOn = _oneDrive.IsNotificationOn;
+            //NotificationSwitch.IsOn = _oneDrive.IsNotificationOn;
         }
 
         private void DisableNotifactionBlock()
         {
-            NotificationSwitch.IsOn = false;
+            //NotificationSwitch.IsOn = false;
         }
 
         private async void OnLoginClick(object sender, RoutedEventArgs e)
@@ -103,47 +103,47 @@ namespace piggy_bank_uwp.Views.Sync
             if (!_isLoaded)
                 return;
 
-            _oneDrive.SaveNotificationSetting(NotificationSwitch.IsOn);
+            //_oneDrive.SaveNotificationSetting(NotificationSwitch.IsOn);
 
-            if (NotificationSwitch.IsOn)
-            {
-                _oneDrive.SaveLastTimeShow();
-            }
-            else
-            {
-                _oneDrive.ClearLastTimeShow();
-            }
+            //if (NotificationSwitch.IsOn)
+            //{
+            //    _oneDrive.SaveLastTimeShow();
+            //}
+            //else
+            //{
+            //    _oneDrive.ClearLastTimeShow();
+            //}
         }
 
         private async void OnUploadClick(object sender, RoutedEventArgs e)
         {
-            UpdateProgressBar.Visibility = Visibility.Visible;
-            bool haveDate = await _oneDrive.UpdateData();
+            //UpdateProgressBar.Visibility = Visibility.Visible;
+            //bool haveDate = await _oneDrive.UpdateData();
 
-            if (!haveDate)
-            {
-                await _oneDrive.CreateData();
-                await _oneDrive.UpdateData();
-            }
+            //if (!haveDate)
+            //{
+            //    await _oneDrive.CreateData();
+            //    await _oneDrive.UpdateData();
+            //}
 
-            UpdateProgressBar.Visibility = Visibility.Collapsed;
+            //UpdateProgressBar.Visibility = Visibility.Collapsed;
         }
 
         private async void OnDownloadClick(object sender, RoutedEventArgs e)
         {
-            UpdateProgressBar.Visibility = Visibility.Visible;
-            bool haveData = await _oneDrive.DonwloadData();
+            //UpdateProgressBar.Visibility = Visibility.Visible;
+            //bool haveData = await _oneDrive.DonwloadData();
 
-            if (haveData)
-            {
-                MainViewModel.Current.UpdateData();
-            }
-            else
-            {
-                await _oneDrive.CreateData();
-            }
+            //if (haveData)
+            //{
+            //    MainViewModel.Current.UpdateData();
+            //}
+            //else
+            //{
+            //    await _oneDrive.CreateData();
+            //}
 
-            UpdateProgressBar.Visibility = Visibility.Collapsed;
+            //UpdateProgressBar.Visibility = Visibility.Collapsed;
         }
     }
 }

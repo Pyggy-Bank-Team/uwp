@@ -114,12 +114,14 @@
     <Compile Include="Convertes\ValueToCollapsedConverter.cs" />
     <Compile Include="Convertes\ValueToVisibilityConverter.cs" />
     <Compile Include="Entities\Account.cs" />
-    <Compile Include="ExtensionMethods\SolidColorBrushExtension.cs" />
+    <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
+    <Compile Include="Extensions\SolidColorBrushExtension.cs" />
     <Compile Include="Fabrics\CostFactory.cs" />
     <Compile Include="Fabrics\CategoryFactory.cs" />
     <Compile Include="Fabrics\DonateFactory.cs" />
     <Compile Include="Interface\IAccountService.cs" />
     <Compile Include="Interface\IDetailPage.cs" />
+    <Compile Include="Interface\IUserService.cs" />
     <Compile Include="Localize.cs" />
     <Compile Include="Models\BalanceModel.cs" />
     <Compile Include="Models\CostModel.cs" />
@@ -128,7 +130,8 @@
     <Compile Include="Models\Requests\UserRequest.cs" />
     <Compile Include="Models\Responses\AccessTokenResponse.cs" />
     <Compile Include="Services\DialogService.cs" />
-    <Compile Include="Services\PiggyService.cs" />
+    <Compile Include="Services\PiggyService\PiggyService.cs" />
+    <Compile Include="Services\PiggyService\PiggyService.Users.cs" />
     <Compile Include="Services\TileService.cs" />
     <Compile Include="Services\ToastService.cs" />
     <Compile Include="Utilities\DateUtility.cs" />
@@ -136,6 +139,7 @@
     <Compile Include="ViewModels\Balance\AccountsViewModel.cs" />
     <Compile Include="ViewModels\Balance\BalanceViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Diagram\DataDiagramViewModel.cs" />
     <Compile Include="ViewModels\Diagram\DiagramViewModel.cs" />
@@ -146,7 +150,7 @@
     <Compile Include="ViewModels\Interface\IUpdateable.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\Services\OneDriveViewModel.cs" />
+    <Compile Include="ViewModels\Users\OneDriveViewModel.cs" />
     <Compile Include="Views\Accounts\AccountsPage.xaml.cs">
       <DependentUpon>AccountsPage.xaml</DependentUpon>
     </Compile>
@@ -185,7 +189,7 @@
     <Compile Include="Views\SettingsPage\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sync\SyncPage.xaml.cs">
+    <Compile Include="Views\Users\SyncPage.xaml.cs">
       <DependentUpon>SyncPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Workers\DbWorker.cs" />
@@ -197,6 +201,7 @@
     </AppxManifest>
     <None Include="piggy-bank-uwp_StoreKey.pfx" />
     <None Include="piggy-bank-uwp_TemporaryKey.pfx" />
+    <Compile Include="Services\PiggyService\PiggyService.Accounts.cs" />
     <PRIResource Include="Strings\ru-RU\Resources.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
@@ -321,7 +326,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Sync\SyncPage.xaml">
+    <Page Include="Views\Users\SyncPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -335,6 +340,12 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
       <Version>2.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>3.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Http">
+      <Version>3.1.5</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.8</Version>
