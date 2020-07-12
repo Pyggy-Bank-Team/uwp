@@ -33,9 +33,10 @@ namespace piggy_bank_uwp
             this.Suspending += OnSuspending;
 
             App.Current.RequestedTheme = SettingsWorker.Current.GetRequestedTheme();
-            ServiceCollection = new ServiceCollection();
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.DependencyInjection();
 
-            ServiceCollection.DependencyInjection();
+            ServiceProvider = serviceCollection.BuildServiceProvider();
         }
 
         /// <summary>
@@ -186,6 +187,6 @@ namespace piggy_bank_uwp
             catch { }
         }
 
-        public static IServiceCollection ServiceCollection { get; private set; }
+        public static ServiceProvider  ServiceProvider { get; private set; }
     }
 }

@@ -5,8 +5,6 @@ namespace piggy_bank_uwp.Extensions
     public static class SolidColorBrushExtension
     {
         public static string ToColor(this SolidColorBrush brush)
-        {
-            return brush.Color.ToString();
-        }
+            => brush.Color.ToString();
     }
 }
