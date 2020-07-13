@@ -13,14 +13,19 @@ namespace piggy_bank_uwp.Services.PiggyService
         private const string ClientSecret = "secret";
         private const string Scope = "api1";
 
-        public Task<bool> RegistrationUser(UserRequest request)
+        public async Task<bool> RegistrationUser(UserRequest request)
         {
-            throw new System.NotImplementedException();
+            var client = _httpClientFactory.CreateClient("Registratin user");
+            var content = new StringContent(JsonConvert.SerializeObject(request));
+            using (var response = await client.PostAsync($"{IdentityServer}/users", content))
+            {
+                return response.IsSuccessStatusCode;
+            }
         }
 
         public async Task<AccessTokenResponse> GetAccessToken(UserRequest userRequest)
         {
-            var client = _httpClientFactory.CreateClient("Users");
+            var client = _httpClientFactory.CreateClient("Token");
 
             var body = new List<KeyValuePair<string, string>>
             {

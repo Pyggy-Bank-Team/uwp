@@ -21,5 +21,17 @@ namespace piggy_bank_uwp.ViewModels.Users
 
             var accessToken = await _userService.GetAccessToken(request);
         }
+
+        public async Task OnRegistration(string userName, string password)
+        {
+            //TODO: Add main currency
+            var request = new UserRequest
+            {
+                UserName = userName,
+                Password = password
+            };
+
+            var result = await _userService.RegistrationUser(request);
+        }
     }
 }
