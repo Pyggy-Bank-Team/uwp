@@ -19,7 +19,7 @@ namespace piggy_bank_uwp.ViewModels.Users
                 Password = password
             };
 
-            var accessToken = _userService.GetAccessToken(request);
+            var accessToken = await _userService.GetAccessToken(request);
         }
     }
 }
