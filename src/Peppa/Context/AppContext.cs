@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using piggy_bank_uwp.Entities;
 using piggy_bank_uwp.Models;
 
 namespace piggy_bank_uwp.Context
@@ -14,6 +15,8 @@ namespace piggy_bank_uwp.Context
         {
             optionsBuilder.UseSqlite("Filename=Costs.db");
         }
+
+        public DbSet<Account> Accounts { get; set; }
 
         public DbSet<CostModel> Costs { get; set; }
 

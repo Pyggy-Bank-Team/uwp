@@ -123,12 +123,14 @@
     <Compile Include="Interface\IDetailPage.cs" />
     <Compile Include="Interface\IUserService.cs" />
     <Compile Include="Localize.cs" />
+    <Compile Include="Models\AccountsModel.cs" />
     <Compile Include="Models\BalanceModel.cs" />
     <Compile Include="Models\CostModel.cs" />
     <Compile Include="Models\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\Requests\UserRequest.cs" />
     <Compile Include="Models\Responses\AccessTokenResponse.cs" />
+    <Compile Include="Repositories\PiggyRepository.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\PiggyService\PiggyService.cs" />
     <Compile Include="Services\PiggyService\PiggyService.Users.cs" />
@@ -377,6 +379,7 @@
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
