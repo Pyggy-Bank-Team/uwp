@@ -28,7 +28,7 @@ namespace piggy_bank_uwp.ViewModel
             Costs = new ObservableCollection<CostViewModel>();
             Categories = new ObservableCollection<CategoryViewModel>();
             DbWorker = DbWorker.Current;
-            Accounts = new AccountsViewModel();
+            //Accounts = new AccountsViewModel();
             Diagram = new DiagramViewModel();
             OneDrive = new OneDriveViewModel();
             Donate = new DonateViewModel();
@@ -62,8 +62,6 @@ namespace piggy_bank_uwp.ViewModel
             {
                 Costs.Add(new CostViewModel(cost));
             }
-
-            Accounts.Initialization();
 
             IsInit = true;
         }

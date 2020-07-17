@@ -11,7 +11,7 @@ namespace piggy_bank_uwp.Services.PiggyService
     public partial class PiggyService : IUserService
     {
         private const string ClientSecret = "secret";
-        private const string Scope = "api1";
+        private const string Scopes = "api1 offline_access";
 
         public async Task<bool> RegistrationUser(UserRequest request)
         {
@@ -31,7 +31,7 @@ namespace piggy_bank_uwp.Services.PiggyService
             {
                 new KeyValuePair<string, string>("client_id", "client"),
                 new KeyValuePair<string, string>("client_secret", ClientSecret),
-                new KeyValuePair<string, string>("scope", Scope),
+                new KeyValuePair<string, string>("scope", Scopes),
                 new KeyValuePair<string, string>("grant_type", "password"),
                 new KeyValuePair<string, string>("username", userRequest.UserName),
                 new KeyValuePair<string, string>("password", userRequest.Password)

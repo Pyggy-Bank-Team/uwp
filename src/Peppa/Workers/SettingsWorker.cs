@@ -96,7 +96,7 @@ namespace piggy_bank_uwp.Workers
             return (bool)result;
         }
 
-        private void SaveValue(string key, object value)
+        public void SaveValue(string key, object value)
         {
             lock (_localSettings)
             {
@@ -116,7 +116,7 @@ namespace piggy_bank_uwp.Workers
             }
         }
 
-        private object GetValue(string key)
+        public object GetValue(string key)
         {
             object value = null;
 

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using piggy_bank_uwp.Interface;
 using piggy_bank_uwp.Models.Requests;
+using piggy_bank_uwp.Workers;
 
 namespace piggy_bank_uwp.ViewModels.Users
 {
@@ -20,6 +21,12 @@ namespace piggy_bank_uwp.ViewModels.Users
             };
 
             var accessToken = await _userService.GetAccessToken(request);
+
+            if (accessToken != null)
+            {
+                SettingsWorker.Current.SaveValue(Constants.AccessToken, accessToken.AccessToken);
+                SettingsWorker.Current.SaveValue(Constants.RefreshToken, accessToken.RefreshToken);
+            }
         }
 
         public async Task OnRegistration(string userName, string password)
