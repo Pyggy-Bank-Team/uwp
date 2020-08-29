@@ -72,6 +72,9 @@ namespace piggy_bank_uwp.Views.Users
             _dataContext.RemovedSaveData();
             LoginGrid.Visibility = Visibility.Visible;
             UserGrid.Visibility = Visibility.Collapsed;
+
+            LoginText.Text = string.Empty;
+            PasswordText.Password = string.Empty;
         }
     }
 }

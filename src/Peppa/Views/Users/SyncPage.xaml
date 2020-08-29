@@ -17,8 +17,8 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <StackPanel x:Name="ProgressBardPanel" Grid.Row="0" Margin="20 0 0 0" HorizontalAlignment="Left">
-                <ProgressBar x:Name="UpdateProgressBar" IsIndeterminate="True" Visibility="Collapsed" Width="{Binding ElementName=ProgressBardPanel, Path=ActualWidth}"/>
+            <StackPanel x:Name="ProgressBardPanel" Grid.Row="0">
+                <ProgressBar x:Name="UpdateProgressBar" IsIndeterminate="True" Visibility="Collapsed" Width="{Binding ElementName=LoginGrid, Path=ActualWidth}"/>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal">
