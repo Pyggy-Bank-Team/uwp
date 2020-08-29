@@ -29,13 +29,14 @@ namespace piggy_bank_uwp.ViewModels.Users
             }
         }
 
-        public async Task OnRegistration(string userName, string password)
+        public async Task OnRegistration(string userName, string password, string currency)
         {
             //TODO: Add main currency
             var request = new UserRequest
             {
                 UserName = userName,
-                Password = password
+                Password = password,
+                CurrencyBase = currency
             };
 
             var result = await _userService.RegistrationUser(request);
