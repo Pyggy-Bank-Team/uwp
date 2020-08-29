@@ -6,7 +6,8 @@
             => new UserRequest
             {
                 UserName = "denis",
-                Password = "qwerty123"
+                Password = "qwerty123",
+                CurrencyBase = "RUB"
             };
         
         public string UserName { get; set; }

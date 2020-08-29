@@ -7,30 +7,41 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="20 0 0 0" HorizontalAlignment="Left">
-            <ProgressBar x:Name="UpdateProgressBar" IsIndeterminate="True" Visibility="Collapsed"/>
-        </StackPanel>
+        <Grid x:Name="LoginGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <StackPanel>
-                <TextBox x:Name="LoginText" Header="Login" Margin="20 5 0 0" Width="150"/>
-                <PasswordBox x:Name="PasswordText" Header="Password" Margin="20 5 0 0" Width="150"/>
-                <Button x:Name="LoginButton" x:Uid="LoginButton" Margin="20 10 0 0" Click="OnLoginClick" Width="100"/>
+            <StackPanel x:Name="ProgressBardPanel" Grid.Row="0" Margin="20 0 0 0" HorizontalAlignment="Left">
+                <ProgressBar x:Name="UpdateProgressBar" IsIndeterminate="True" Visibility="Collapsed" Width="{Binding ElementName=ProgressBardPanel, Path=ActualWidth}"/>
             </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <StackPanel>
+                    <TextBox x:Name="LoginText" Header="Login" Margin="20 5 0 0" Width="150"/>
+                    <PasswordBox x:Name="PasswordText" Header="Password" Margin="20 5 0 0" Width="150"/>
+                    <Button x:Name="LoginButton" x:Uid="LoginButton" Margin="20 10 0 0" Click="OnLoginClick" Width="100"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Orientation="Horizontal">
+                <TextBlock Margin="20 5 0 0" Text="Do you need an account?"/>
+                <HyperlinkButton Margin="5 -1 0 0" Content="Registration" Click="OnOpenDialogForRegistration"/>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel x:Name="UserGrid" Visibility="Collapsed">
+            <PersonPicture x:Name="Avatar" DisplayName="denis" HorizontalAlignment="Left" Margin="20 0 0 0"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="UserName" Text="Denis" Margin="20 5 0 0"/>
+                <HyperlinkButton Margin="5 -1 0 0" Content="Logout" Click="OnAccountSettings"/>
+            </StackPanel>            
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Orientation="Horizontal">
-            <TextBlock Margin="20 5 0 0" Text="Do you need an account?"/>
-            <HyperlinkButton Margin="5 -1 0 0" Content="Registration" Click="OnOpenDialogForRegistration"/>
-        </StackPanel>
-        
     </Grid>
 </Page>

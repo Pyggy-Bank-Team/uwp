@@ -117,6 +117,7 @@
       <DependentUpon>RegistrationDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entities\Account.cs" />
+    <Compile Include="Enums\IdentityResultEnum.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
     <Compile Include="Fabrics\CostFactory.cs" />
@@ -129,10 +130,13 @@
     <Compile Include="Models\AccountsModel.cs" />
     <Compile Include="Models\BalanceModel.cs" />
     <Compile Include="Models\CostModel.cs" />
-    <Compile Include="Models\IBaseModel.cs" />
+    <Compile Include="Interface\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\RegitrationResult.cs" />
     <Compile Include="Models\Requests\UserRequest.cs" />
     <Compile Include="Models\Responses\AccessTokenResponse.cs" />
+    <Compile Include="Models\Responses\AvailableCurrency.cs" />
+    <Compile Include="Models\Responses\IdentityErrorResponse.cs" />
     <Compile Include="Repositories\PiggyRepository.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\PiggyService\PiggyService.cs" />

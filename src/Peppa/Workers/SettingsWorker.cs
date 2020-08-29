@@ -129,6 +129,15 @@ namespace piggy_bank_uwp.Workers
             return value;
         }
 
+        public void RemoveValue(string key)
+        {
+            lock (_localSettings)
+            {
+                if (_localSettings.Values.ContainsKey(key))
+                     _localSettings.Values.Remove(key);
+            }
+        }
+
         public static SettingsWorker Current = new SettingsWorker();
     }
 }

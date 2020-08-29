@@ -12,6 +12,7 @@
 
         public const string AccessToken = "AccessToken";
         public const string RefreshToken = "RefreshToken";
+        public const string UserName = "UserName";
 
         public static readonly string[] Locales = new string[] { "be","uk", "en", "ru" };
         public const string defaultLocale = "en"; 
