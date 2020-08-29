@@ -1,4 +1,5 @@
-﻿using piggy_bank_uwp.Entities;
+﻿using System;
+using piggy_bank_uwp.Entities;
 using piggy_bank_uwp.Interface;
 using piggy_bank_uwp.Workers;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace piggy_bank_uwp.Models
 
         public Task<Account[]> GetAccounts()
         {
-
+            throw new NotImplementedException();
         }
     }
 }

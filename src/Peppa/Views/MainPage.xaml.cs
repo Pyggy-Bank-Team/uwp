@@ -63,16 +63,16 @@ namespace piggy_bank_uwp.View
                     NavView.Header = Localize.GetTranslateByKey(Localize.Accounts);
                     break;
                 case Constants.costs:
-                    ContentFrame.Navigate(typeof(CostsPage));
-                    NavView.Header = Localize.GetTranslateByKey(Localize.Costs);
+                    //ContentFrame.Navigate(typeof(CostsPage));
+                    //NavView.Header = Localize.GetTranslateByKey(Localize.Costs);
                     break;
                 case Constants.categories:
-                    ContentFrame.Navigate(typeof(CategoriesPage));
-                    NavView.Header = Localize.GetTranslateByKey(Localize.Categories);
+                    //ContentFrame.Navigate(typeof(CategoriesPage));
+                    //NavView.Header = Localize.GetTranslateByKey(Localize.Categories);
                     break;
                 case Constants.diagrams:
-                    ContentFrame.Navigate(typeof(DiagramPage), _mainViewModel.Diagram);
-                    NavView.Header = Localize.GetTranslateByKey(Localize.Diagrama);
+                    //ContentFrame.Navigate(typeof(DiagramPage), _mainViewModel.Diagram);
+                    //NavView.Header = Localize.GetTranslateByKey(Localize.Diagrama);
                     break;
                 case Constants.synchronization:
                     ContentFrame.Navigate(typeof(SyncPage));
