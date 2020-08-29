@@ -113,6 +113,9 @@
     <Compile Include="Convertes\ConvertDateTimeOffsetToDateTime.cs" />
     <Compile Include="Convertes\ValueToCollapsedConverter.cs" />
     <Compile Include="Convertes\ValueToVisibilityConverter.cs" />
+    <Compile Include="Dialogs\RegistrationDialog.xaml.cs">
+      <DependentUpon>RegistrationDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
@@ -267,6 +270,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Controls\DiagramControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\RegistrationDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

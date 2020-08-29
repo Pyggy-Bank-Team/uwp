@@ -87,8 +87,8 @@ namespace piggy_bank_uwp.View
 
         private void OnNavViewLoaded(object sender, RoutedEventArgs e)
         {
-            var item = NavView.MenuItems.OfType<NavigationViewItem>().First();
-            NavViewNavigate(item as NavigationViewItem);
+            var item = NavView.MenuItems.OfType<NavigationViewItem>().First(n => (string)n.Tag == Constants.synchronization);
+            NavViewNavigate(item);
         }
 
         private async void OnFeedbackTapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)

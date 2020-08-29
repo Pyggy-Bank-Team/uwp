@@ -8,15 +8,14 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" MaxWidth="700" Margin="20 0 0 0" HorizontalAlignment="Left">
+        <StackPanel Grid.Row="0" Margin="20 0 0 0" HorizontalAlignment="Left">
             <ProgressBar x:Name="UpdateProgressBar" IsIndeterminate="True" Visibility="Collapsed"/>
         </StackPanel>
 
@@ -29,12 +28,9 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" Orientation="Horizontal">
-            <StackPanel>
-                <TextBox x:Name="RegistrationText" Header="Registration" Margin="20 5 0 0" Width="150"/>
-                <PasswordBox x:Name="RegistrationPasswordText" Header="Password" Margin="20 5 0 0" Width="150"/>
-                <Button x:Name="SingInButton" x:Uid="LoginButton" Margin="20 10 0 0" Click="OnLoginClick" Width="100"/>
-            </StackPanel>
+            <TextBlock Margin="20 5 0 0" Text="Do you need an account?"/>
+            <HyperlinkButton Margin="5 -1 0 0" Content="Registration" Click="OnOpenDialogForRegistration"/>
         </StackPanel>
-
+        
     </Grid>
 </Page>
