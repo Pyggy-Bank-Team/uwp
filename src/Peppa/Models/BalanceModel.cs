@@ -1,4 +1,6 @@
-﻿namespace piggy_bank_uwp.Models
+﻿using piggy_bank_uwp.Interface;
+
+namespace piggy_bank_uwp.Models
 {
     public class BalanceModel : IBaseModel
     {

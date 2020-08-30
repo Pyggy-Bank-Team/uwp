@@ -1,8 +1,8 @@
-﻿using piggy_bank_uwp.View.Default;
-using System;
+﻿using System;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using piggy_bank_uwp.Views.Default;
 
 namespace piggy_bank_uwp.Controls.MasterDetailView
 {

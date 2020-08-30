@@ -1,10 +1,9 @@
-﻿using piggy_bank_uwp.View.Balance;
-using piggy_bank_uwp.ViewModels.Balance;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using piggy_bank_uwp.ViewModels.Accounts;
 
-namespace piggy_bank_uwp.Views.Balance
+namespace piggy_bank_uwp.Views.Accounts
 {
     public sealed partial class BalancesPage : Page
     {
@@ -30,7 +29,7 @@ namespace piggy_bank_uwp.Views.Balance
 
         private void OnAddedBalanceClick(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(EditBalancePage), new BalanceViewModel());
+            Frame.Navigate(typeof(EditBalancePage), new AccountViewModel());
         }
     }
 }

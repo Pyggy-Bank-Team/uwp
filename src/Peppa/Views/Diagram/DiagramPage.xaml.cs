@@ -1,11 +1,11 @@
-﻿using piggy_bank_uwp.Utilities;
-using piggy_bank_uwp.ViewModels.Diagram;
-using Telerik.UI.Xaml.Controls.Chart;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using piggy_bank_uwp.Utilities;
+using piggy_bank_uwp.ViewModels.Diagram;
+using Telerik.UI.Xaml.Controls.Chart;
 
-namespace piggy_bank_uwp.View.Diagram
+namespace piggy_bank_uwp.Views.Diagram
 {
     public sealed partial class DiagramPage : Page
     {

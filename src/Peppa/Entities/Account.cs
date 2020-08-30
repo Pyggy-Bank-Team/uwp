@@ -17,9 +17,12 @@ namespace piggy_bank_uwp.Entities
         public string Currency { get; set; }
 
         [JsonProperty("balance")]
-        public long Balance { get; set; }
+        public decimal Balance { get; set; }
 
         [JsonProperty("isArchived")]
         public bool IsArchived { get; set; }
+
+        [JsonProperty("isDeleted")]
+        public bool IsDeleted { get; set; }
     }
 }

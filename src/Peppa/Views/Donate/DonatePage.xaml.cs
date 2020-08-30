@@ -1,10 +1,10 @@
-﻿using piggy_bank_uwp.Services;
-using piggy_bank_uwp.ViewModels.Donate;
+﻿using System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using System;
+using piggy_bank_uwp.Services;
+using piggy_bank_uwp.ViewModels.Donate;
 
-namespace piggy_bank_uwp.View.Donate
+namespace piggy_bank_uwp.Views.Donate
 {
     public sealed partial class DonatePage : Page
     {

@@ -1,15 +1,15 @@
-﻿using piggy_bank_uwp.ViewModel;
-using piggy_bank_uwp.ViewModels.Balance;
-using System;
+﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using piggy_bank_uwp.ViewModels;
+using piggy_bank_uwp.ViewModels.Accounts;
 
-namespace piggy_bank_uwp.View.Balance
+namespace piggy_bank_uwp.Views.Accounts
 {
     public sealed partial class EditBalancePage : Page
     {
-        private BalanceViewModel _balance;
+        private AccountViewModel _account;
 
         public EditBalancePage()
         {
@@ -18,7 +18,7 @@ namespace piggy_bank_uwp.View.Balance
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _balance = e.Parameter as BalanceViewModel;
+            _account = e.Parameter as AccountViewModel;
         }
 
         private void OnSaveClick(object sender, RoutedEventArgs e)
@@ -30,18 +30,18 @@ namespace piggy_bank_uwp.View.Balance
 
                 if (canChange)
                 {
-                    _balance.ChanngeBalance(value);
+                    //_account.ChangeBalance(value);
                 }
             }
 
-            if (_balance.IsNew)
+            if (_account.IsNew)
             {
-                _balance.IsNew = false;
-                MainViewModel.Current.AddBalance(_balance);
+                _account.IsNew = false;
+                MainViewModel.Current.AddBalance(_account);
             }
             else
             {
-                MainViewModel.Current.UpdateBalance(_balance);
+                MainViewModel.Current.UpdateBalance(_account);
             }
 
             if (Frame.CanGoBack)
@@ -52,8 +52,8 @@ namespace piggy_bank_uwp.View.Balance
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
         {
-            if (!_balance.IsNew)
-                MainViewModel.Current.DeleteBalance(_balance);
+            if (!_account.IsNew)
+                MainViewModel.Current.DeleteBalance(_account);
 
             if (Frame.CanGoBack)
             {

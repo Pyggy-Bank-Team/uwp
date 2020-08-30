@@ -1,4 +1,4 @@
-﻿namespace piggy_bank_uwp.Models
+﻿namespace piggy_bank_uwp.Interface
 {
     public interface IBaseModel
     {

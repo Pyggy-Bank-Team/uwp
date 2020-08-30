@@ -5,7 +5,6 @@ using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using piggy_bank_uwp.View;
 using Windows.ApplicationModel.Core;
 using System.Threading.Tasks;
 using Windows.UI;
@@ -15,6 +14,7 @@ using Windows.Storage;
 using Microsoft.HockeyApp;
 using Microsoft.Extensions.DependencyInjection;
 using piggy_bank_uwp.Extensions;
+using piggy_bank_uwp.Views;
 
 namespace piggy_bank_uwp
 {

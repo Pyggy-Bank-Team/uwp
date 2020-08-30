@@ -2,7 +2,6 @@
 using piggy_bank_uwp.Models;
 using piggy_bank_uwp.Services;
 using piggy_bank_uwp.Utilities;
-using piggy_bank_uwp.ViewModel;
 using piggy_bank_uwp.ViewModels.Interface;
 using piggy_bank_uwp.Workers;
 using System;

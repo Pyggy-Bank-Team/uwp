@@ -1,23 +1,22 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
-using piggy_bank_uwp.Fabrics;
-using piggy_bank_uwp.Models;
-using piggy_bank_uwp.Services;
-using piggy_bank_uwp.ViewModel.Tag;
-using piggy_bank_uwp.ViewModels.Balance;
-using piggy_bank_uwp.ViewModels.Diagram;
-using piggy_bank_uwp.ViewModels.Donate;
-using piggy_bank_uwp.ViewModels.Interface;
-using piggy_bank_uwp.Workers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Notifications;
+using Microsoft.Toolkit.Uwp.Notifications;
+using piggy_bank_uwp.Fabrics;
+using piggy_bank_uwp.Models;
+using piggy_bank_uwp.Services;
+using piggy_bank_uwp.ViewModels.Accounts;
+using piggy_bank_uwp.ViewModels.Category;
+using piggy_bank_uwp.ViewModels.Diagram;
+using piggy_bank_uwp.ViewModels.Donate;
+using piggy_bank_uwp.ViewModels.Interface;
 using piggy_bank_uwp.ViewModels.Operations;
-using piggy_bank_uwp.ViewModels.Users;
+using piggy_bank_uwp.Workers;
 
-namespace piggy_bank_uwp.ViewModel
+namespace piggy_bank_uwp.ViewModels
 {
     public class MainViewModel : BaseViewModel, IToastViewModel
     {
@@ -30,7 +29,6 @@ namespace piggy_bank_uwp.ViewModel
             DbWorker = DbWorker.Current;
             //Accounts = new AccountsViewModel();
             Diagram = new DiagramViewModel();
-            OneDrive = new OneDriveViewModel();
             Donate = new DonateViewModel();
         }
 
@@ -83,9 +81,6 @@ namespace piggy_bank_uwp.ViewModel
 
         public void UpdateData()
         {
-            if (!OneDrive.IsAuthenticated)
-                return;
-
             List<CategoryModel> categories = DbWorker.GetCategories();
 
             Categories.Clear();
@@ -127,13 +122,13 @@ namespace piggy_bank_uwp.ViewModel
                     Costs.Insert(0, newCost);
                 });
 
-                BalanceViewModel currentBalance = Accounts.Balances.FirstOrDefault(b => b.Id == newCost.BalanceId);
-
-                if (currentBalance != null)
-                {
-                    currentBalance.AddCost(newCost.Cost);
-                    DbWorker.UpdateBalance(currentBalance.Model);
-                }
+                // AccountViewModel currentAccount = Accounts.List.FirstOrDefault(b => b.Id == newCost.BalanceId);
+                //
+                // if (currentAccount != null)
+                // {
+                //     currentAccount.AddCost(newCost.Cost);
+                //     DbWorker.UpdateBalance(currentAccount.Model);
+                // }
 
                 DbWorker.AddCost(newCost.Model);
 
@@ -150,14 +145,14 @@ namespace piggy_bank_uwp.ViewModel
                 if (updateCost.HavePrevCost)
                 {
                     //TODO: o(n) - bad
-                    BalanceViewModel currentBalance = Accounts.Balances.FirstOrDefault(b=> b.Id == updateCost.BalanceId);
-
-                    if(currentBalance != null)
-                    {
-                        currentBalance.ChanngeBalance(DbWorker.GetCost(updateCost.Id).Cost);
-                        currentBalance.AddCost(updateCost.Cost);
-                        DbWorker.UpdateBalance(currentBalance.Model);
-                    }
+                    // AccountViewModel currentAccount = Accounts.List.FirstOrDefault(b=> b.Id == updateCost.BalanceId);
+                    //
+                    // if(currentAccount != null)
+                    // {
+                    //     currentAccount.ChangeBalance(DbWorker.GetCost(updateCost.Id).Cost);
+                    //     currentAccount.AddCost(updateCost.Cost);
+                    //     DbWorker.UpdateBalance(currentAccount.Model);
+                    // }
                     updateCost.HavePrevCost = false;
                 }
 
@@ -220,40 +215,40 @@ namespace piggy_bank_uwp.ViewModel
 
         #region Balances
 
-        internal Task AddBalance(BalanceViewModel newBalance)
+        internal Task AddBalance(AccountViewModel newAccount)
         {
             return Task.Factory.StartNew(() =>
             {
                 App.RunUIAsync(() =>
                 {
-                    Accounts.Balances.Add(newBalance);
+                    Accounts.List.Add(newAccount);
                 });
 
-                DbWorker.AddBalance(newBalance.Model);
-                Accounts.RaiseBalance();
+                // DbWorker.AddBalance(newAccount.Model);
+                // Accounts.RaiseBalance();
             });
         }
 
-        internal Task UpdateBalance(BalanceViewModel updateBalance)
+        internal Task UpdateBalance(AccountViewModel updateAccount)
         {
             return Task.Factory.StartNew(() =>
             {
-                updateBalance.Update();
-                DbWorker.UpdateBalance(updateBalance.Model);
+                // updateAccount.Update();
+                // DbWorker.UpdateBalance(updateAccount.Model);
             });
         }
 
-        internal Task DeleteBalance(BalanceViewModel balance)
+        internal Task DeleteBalance(AccountViewModel account)
         {
             return Task.Factory.StartNew(() =>
             {
                 App.RunUIAsync(() =>
                 {
-                    Accounts.Balances.Remove(balance);
+                    Accounts.List.Remove(account);
                 });
 
-                DbWorker.RemoveBalance(balance.Model);
-                Accounts.RaiseBalance();
+                // DbWorker.RemoveBalance(account.Model);
+                // Accounts.RaiseBalance();
             });
         }
 
@@ -266,8 +261,6 @@ namespace piggy_bank_uwp.ViewModel
         public ObservableCollection<CategoryViewModel> Categories { get; }
 
         public AccountsViewModel Accounts { get; }
-
-        public OneDriveViewModel OneDrive { get; }
 
         public DiagramViewModel Diagram { get; }
 

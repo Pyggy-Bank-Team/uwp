@@ -1,14 +1,12 @@
-﻿using piggy_bank_uwp.View.Balance;
-using piggy_bank_uwp.View.Costs;
-using piggy_bank_uwp.ViewModel;
+﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using System;
 using piggy_bank_uwp.Services;
+using piggy_bank_uwp.ViewModels;
 using piggy_bank_uwp.ViewModels.Operations;
 
-namespace piggy_bank_uwp.Views.Costs
+namespace piggy_bank_uwp.Views.Operations
 {
     public sealed partial class CostsPage : Page
     {

@@ -110,6 +110,7 @@
     <Compile Include="Controls\MasterDetailView\MasterDetailState.cs" />
     <Compile Include="Controls\MasterDetailView\MasterDetailView.cs" />
     <Compile Include="Controls\PatternTextBox.cs" />
+    <Compile Include="Convertes\AccountTypeToFronIconValueConverter.cs" />
     <Compile Include="Convertes\ConvertDateTimeOffsetToDateTime.cs" />
     <Compile Include="Convertes\ValueToCollapsedConverter.cs" />
     <Compile Include="Convertes\ValueToVisibilityConverter.cs" />
@@ -117,6 +118,7 @@
       <DependentUpon>RegistrationDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entities\Account.cs" />
+    <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Enums\IdentityResultEnum.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
@@ -145,8 +147,8 @@
     <Compile Include="Services\ToastService.cs" />
     <Compile Include="Utilities\DateUtility.cs" />
     <Compile Include="Utilities\DonateUtility.cs" />
-    <Compile Include="ViewModels\Balance\AccountsViewModel.cs" />
-    <Compile Include="ViewModels\Balance\BalanceViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\AccountsViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
@@ -159,7 +161,6 @@
     <Compile Include="ViewModels\Interface\IUpdateable.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\Users\OneDriveViewModel.cs" />
     <Compile Include="Views\Accounts\AccountsPage.xaml.cs">
       <DependentUpon>AccountsPage.xaml</DependentUpon>
     </Compile>
@@ -363,12 +364,6 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.8</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.OneDriveSDK">
-      <Version>2.0.7</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.OneDriveSDK.Authentication">
-      <Version>1.0.10</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.Services.Store.Engagement">
       <Version>10.1711.28001</Version>
     </PackageReference>
@@ -377,6 +372,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.4.2</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
     </PackageReference>
     <PackageReference Include="Telerik.UI.for.UniversalWindowsPlatform">
       <Version>1.0.0.9</Version>

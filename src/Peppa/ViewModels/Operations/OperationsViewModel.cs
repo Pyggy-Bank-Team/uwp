@@ -2,8 +2,7 @@
 using System.Linq;
 using piggy_bank_uwp.Models;
 using piggy_bank_uwp.Utilities;
-using piggy_bank_uwp.ViewModel;
-using piggy_bank_uwp.ViewModel.Tag;
+using piggy_bank_uwp.ViewModels.Category;
 using piggy_bank_uwp.ViewModels.Interface;
 
 namespace piggy_bank_uwp.ViewModels.Operations
@@ -111,7 +110,8 @@ namespace piggy_bank_uwp.ViewModels.Operations
         {
             get
             {
-                return Model.Cost + MainViewModel.Current.Accounts.Balances.FirstOrDefault(b => b.Id == BalanceId)?.Currency;
+                return string.Empty;
+                //return Model.Cost + MainViewModel.Current.Accounts.List.FirstOrDefault(b => b.Id == BalanceId)?.Currency;
             }
         }
 

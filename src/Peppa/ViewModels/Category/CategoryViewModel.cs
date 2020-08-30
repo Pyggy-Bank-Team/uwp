@@ -2,7 +2,7 @@
 using piggy_bank_uwp.Utilities;
 using piggy_bank_uwp.ViewModels.Interface;
 
-namespace piggy_bank_uwp.ViewModel.Tag
+namespace piggy_bank_uwp.ViewModels.Category
 {
     public class CategoryViewModel : BaseViewModel, IUpdateable
     {

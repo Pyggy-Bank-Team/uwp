@@ -1,4 +1,5 @@
-﻿using piggy_bank_uwp.Models;
+﻿using piggy_bank_uwp.Interface;
+using piggy_bank_uwp.Models;
 
 namespace piggy_bank_uwp.Models
 {

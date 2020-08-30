@@ -1,8 +1,8 @@
-﻿using piggy_bank_uwp.ViewModel;
-using piggy_bank_uwp.ViewModel.Tag;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using piggy_bank_uwp.ViewModels;
+using piggy_bank_uwp.ViewModels.Category;
 
 namespace piggy_bank_uwp.Views.Categories
 {

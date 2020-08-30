@@ -1,15 +1,14 @@
-﻿using piggy_bank_uwp.Services;
-using piggy_bank_uwp.ViewModel;
-using piggy_bank_uwp.ViewModel.Tag;
-using piggy_bank_uwp.ViewModels.Balance;
-using System;
+﻿using System;
 using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using piggy_bank_uwp.Services;
+using piggy_bank_uwp.ViewModels;
+using piggy_bank_uwp.ViewModels.Accounts;
+using piggy_bank_uwp.ViewModels.Category;
 using piggy_bank_uwp.ViewModels.Operations;
 
-
-namespace piggy_bank_uwp.View.Costs
+namespace piggy_bank_uwp.Views.Operations
 {
     public sealed partial class EditCostPage : Page
     {
@@ -26,12 +25,12 @@ namespace piggy_bank_uwp.View.Costs
             _cost = e.Parameter as CostViewModel;
             DatePicker.Date = _cost.DateOffset;
             CategoriesComboBox.ItemsSource = MainViewModel.Current.Categories;
-            BalancesComboBox.ItemsSource = MainViewModel.Current.Accounts.Balances;
+            BalancesComboBox.ItemsSource = MainViewModel.Current.Accounts.List;
 
             if (!_cost.IsNew)
             {
                 CategoriesComboBox.SelectedItem = MainViewModel.Current.Categories.FirstOrDefault(t => t.Id == _cost.CategoryId);
-                BalancesComboBox.SelectedItem = MainViewModel.Current.Accounts.Balances.FirstOrDefault(b=>b.Id == _cost.BalanceId);
+               // BalancesComboBox.SelectedItem = MainViewModel.Current.Accounts.List.FirstOrDefault(b=>b.Id == _cost.BalanceId);
                 CostTextBox.Text = _cost.Cost.ToString();
             }
 
@@ -141,9 +140,9 @@ namespace piggy_bank_uwp.View.Costs
             if (!_isInit)
                 return;
 
-            var selectedBalance = e.AddedItems[0] as BalanceViewModel;
+            var selectedBalance = e.AddedItems[0] as AccountViewModel;
 
-            _cost.ChangedBalance(selectedBalance?.Id);
+            //_cost.ChangedBalance(selectedBalance?.Id);
         }
     }
 }
