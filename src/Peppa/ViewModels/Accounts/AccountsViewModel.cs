@@ -1,33 +1,30 @@
-﻿using piggy_bank_uwp.Interface;
-using piggy_bank_uwp.ViewModels.Interface;
-using piggy_bank_uwp.Workers;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using piggy_bank_uwp.Interface;
+using piggy_bank_uwp.ViewModels.Interface;
+using piggy_bank_uwp.Workers;
 
-namespace piggy_bank_uwp.ViewModels.Balance
+namespace piggy_bank_uwp.ViewModels.Accounts
 {
     public class AccountsViewModel : BaseViewModel, IBaseViewModel
     {
-        private DbWorker _dbWorker;
-        private string _currency;
         private readonly IAccountService _service;
 
         public AccountsViewModel(IAccountService service)
         {
             _service = service;
-            _dbWorker = DbWorker.Current;
-            Balances = new ObservableCollection<BalanceViewModel>();
-            _currency = NumberFormatInfo.CurrentInfo.CurrencySymbol;
+            List = new ObservableCollection<AccountViewModel>();
         }
 
         public async void Initialization()
         {
             var accounts = await _service.GetAccounts();
-            foreach (var balance in _dbWorker.GetBalances())
+            if (accounts != null)
             {
-                Balances.Add(new BalanceViewModel(balance));
+                List = new ObservableCollection<AccountViewModel>(accounts.Select(a => new AccountViewModel(a)));
+                RaisePropertiesChanged();
             }
         }
 
@@ -38,16 +35,11 @@ namespace piggy_bank_uwp.ViewModels.Balance
 
         internal void UpdateData()
         {
-            Balances.Clear();
-            foreach (var balance in _dbWorker.GetBalances())
-            {
-                Balances.Add(new BalanceViewModel(balance));
-            }
         }
 
         public void RaiseBalance()
         {
-            RaisePropertyChanged(nameof(Balances));
+            RaisePropertyChanged(nameof(List));
             RaisePropertyChanged(nameof(TotalBalance));
         }
 
@@ -55,12 +47,16 @@ namespace piggy_bank_uwp.ViewModels.Balance
         {
             get
             {
-                int totalBalance = Balances.Sum(b => b.Balance);
+                if (List.Count > 0)
+                {
+                    var sum = List.Where(l => !l.IsArchived).Sum(l => l.Balance);
+                    return $"{sum} {List.FirstOrDefault()?.Currency}";
+                }
 
-                return $"{totalBalance} {_currency}";
+                return string.Empty;
             }
         }
 
-        public ObservableCollection<BalanceViewModel> Balances { get; }
+        public ObservableCollection<AccountViewModel> List { get; private set; }
     }
 }
