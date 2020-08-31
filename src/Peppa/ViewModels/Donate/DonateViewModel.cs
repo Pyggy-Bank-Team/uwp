@@ -17,7 +17,7 @@ namespace piggy_bank_uwp.ViewModels.Donate
             _storeContext = StoreContext.GetDefault();
         }
 
-        public async Task InitializationAsyn()
+        public async Task Initialization()
         {
             if (_isLoaded)
                 return;
@@ -37,10 +37,6 @@ namespace piggy_bank_uwp.ViewModels.Donate
             }
 
             _isLoaded = true;
-        }
-
-        public void Initialization()
-        {
         }
 
         public void Finalization()

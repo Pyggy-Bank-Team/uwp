@@ -1,8 +1,10 @@
-﻿namespace piggy_bank_uwp.ViewModels.Interface
+﻿using System.Threading.Tasks;
+
+namespace piggy_bank_uwp.ViewModels.Interface
 {
     public interface IBaseViewModel
     {
-        void Initialization();
+        Task Initialization();
 
         void Finalization();
     }

@@ -19,7 +19,7 @@ namespace piggy_bank_uwp.ViewModels.Diagram
             Datas = new List<DataDiagramViewModel>();
         }
 
-        public void Initialization()
+        public async Task Initialization()
         {
             List<CostModel> costs = DbWorker.Current.GetCosts();
             AllCosts = costs.Sum(c => c.Cost);

@@ -19,7 +19,7 @@ namespace piggy_bank_uwp.Views.Donate
         {
             _donate = e.Parameter as DonateViewModel;
             InitProgressBar.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            await _donate.InitializationAsyn();
+            await _donate.Initialization();
             InitProgressBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             ListViewDonate.ItemsSource = _donate.Items;
         }

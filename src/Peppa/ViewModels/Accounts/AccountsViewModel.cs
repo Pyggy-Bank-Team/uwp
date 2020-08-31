@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using piggy_bank_uwp.Interface;
 using piggy_bank_uwp.ViewModels.Interface;
 using piggy_bank_uwp.Workers;
@@ -18,7 +19,7 @@ namespace piggy_bank_uwp.ViewModels.Accounts
             List = new ObservableCollection<AccountViewModel>();
         }
 
-        public async void Initialization()
+        public async Task Initialization()
         {
             var accounts = await _service.GetAccounts();
             if (accounts != null)

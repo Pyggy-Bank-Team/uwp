@@ -27,8 +27,7 @@
 
             </Grid>
 
-            <ProgressBar x:Name="UpdateProgressRing" IsIndeterminate="True"
-                          Height="18" Visibility="Collapsed"/>
+            <ProgressBar x:Name="UpdateProgressRing" IsIndeterminate="True" Height="18" Visibility="Collapsed"/>
 
             <Border Margin="0 15 0 0" HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"/>
         </StackPanel>

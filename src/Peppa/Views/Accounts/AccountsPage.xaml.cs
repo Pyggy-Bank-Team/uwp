@@ -16,10 +16,14 @@ namespace piggy_bank_uwp.Views.Accounts
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            UpdateProgressRing.Visibility = Visibility.Visible;
             _dataContext = (AccountsViewModel)App.ServiceProvider.GetService(typeof(AccountsViewModel));
             DataContext = _dataContext;
 
-            _dataContext.Initialization();
+            await _dataContext.Initialization();
+
+            UpdateProgressRing.Visibility = Visibility.Collapsed;
         }
 
         private void OnBalanceItemClick(object sender, ItemClickEventArgs e)

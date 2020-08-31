@@ -13,21 +13,22 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer x:Name="Scroll" Grid.Row="0" VerticalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical">
-                <!--Current balance-->
-                <StackPanel Orientation="Vertical" Margin="15">
-                    <TextBlock x:Uid="CurrentBalanceTextBlock" Style="{StaticResource HeaderTextBlock}"/>
-                    <TextBlock Text="{x:Bind _account.CurrentBalance, Mode=OneWay}" FontSize="18"/>
-                </StackPanel>
-
                 <!--Name-->
-                <TextBox x:Uid="TitleTextBox" Text="{x:Bind _account.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox x:Name="TitleTextBox" x:Uid="TitleTextBox" Text="{x:Bind _account.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="18" MaxHeight="200" Margin="15"/>
 
-                <!--Change balance-->
-                <Controls:PatternTextBox x:Name="ChangeBalanceTextBox" x:Uid="ChangeBalanceTextBox" Pattern="-0123456789"
-                                         FontSize="18" Margin="15"/>
+                <ComboBox x:Name="Types" Header="Type" SelectedItem="{x:Bind _account.Type}" FontSize="18" MaxHeight="200" Margin="15"
+                          Width="{Binding ElementName=TitleTextBox, Path=ActualWidth}"/>
+
+                <ComboBox x:Name="Currencies" Header="Currency" SelectedItem="{x:Bind _account.Currency}" FontSize="18" MaxHeight="200" Margin="15"
+                          Width="{Binding ElementName=TitleTextBox, Path=ActualWidth}" IsEnabled="False"/>
+
+                <TextBox Header="Currency balance" Text="{x:Bind _account.Balance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="18" MaxHeight="200" Margin="15"/>
+
+                <ToggleSwitch Header="Archived account" Margin="15" FontSize="18" IsOn="{x:Bind _account.IsArchived}"/>
 
             </StackPanel>
         </ScrollViewer>

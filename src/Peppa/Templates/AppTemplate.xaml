@@ -90,7 +90,7 @@
 
     <DataTemplate x:Name="ListViewItemBalance">
         
-        <Grid Margin="5 5 5 10">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="10"/>
