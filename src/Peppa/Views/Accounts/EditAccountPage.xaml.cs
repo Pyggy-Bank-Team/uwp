@@ -2,6 +2,8 @@
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using piggy_bank_uwp.ViewModels.Accounts;
+using System;
+using piggy_bank_uwp.Enums;
 
 namespace piggy_bank_uwp.Views.Accounts
 {
@@ -17,7 +19,8 @@ namespace piggy_bank_uwp.Views.Accounts
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             _account = e.Parameter as AccountViewModel;
-
+            Types.ItemsSource = Enum.GetValues(typeof(AccountType));
+            Currencies.ItemsSource = new[] { _account.Currency };
         }
 
         private void OnSaveClick(object sender, RoutedEventArgs e)
