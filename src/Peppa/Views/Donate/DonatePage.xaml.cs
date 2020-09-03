@@ -1,10 +1,10 @@
 ﻿using System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using piggy_bank_uwp.Services;
-using piggy_bank_uwp.ViewModels.Donate;
+using Peppa.Services;
+using Peppa.ViewModels.Donate;
 
-namespace piggy_bank_uwp.Views.Donate
+namespace Peppa.Views.Donate
 {
     public sealed partial class DonatePage : Page
     {

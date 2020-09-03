@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using piggy_bank_uwp.Contracts.Requests;
-using piggy_bank_uwp.Entities;
+using Peppa.Contracts.Requests;
+using Peppa.Entities;
 
-namespace piggy_bank_uwp.Interface
+namespace Peppa.Interface
 {
     public interface IAccountService
     {

@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 
-namespace piggy_bank_uwp.Services.PiggyService
+namespace Peppa.Services.PiggyService
 {
     public partial class PiggyService
     {

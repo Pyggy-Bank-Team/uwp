@@ -1,11 +1,11 @@
-﻿using piggy_bank_uwp.Utilities;
-using piggy_bank_uwp.Workers;
-using System;
+﻿using System;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Peppa.Utilities;
+using Peppa.Workers;
 
-namespace piggy_bank_uwp.Views.SettingsPage
+namespace Peppa.Views.SettingsPage
 {
     public sealed partial class SettingsPage : Page
     {

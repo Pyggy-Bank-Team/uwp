@@ -1,4 +1,4 @@
-﻿namespace piggy_bank_uwp.Controls.MasterDetailView
+﻿namespace Peppa.Controls.MasterDetailView
 {
 	public enum MasterDetailState : byte
 	{

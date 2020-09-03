@@ -1,4 +1,4 @@
-﻿namespace piggy_bank_uwp.ViewModels.Donate
+﻿namespace Peppa.ViewModels.Donate
 {
     public class DonateItemViewModel
     {

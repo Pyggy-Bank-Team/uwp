@@ -1,4 +1,4 @@
-﻿namespace piggy_bank_uwp.Contracts.Responses
+﻿namespace Peppa.Contracts.Responses
 {
     public class IdentityErrorResponse
     {

@@ -1,16 +1,16 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
-using piggy_bank_uwp.Models;
-using piggy_bank_uwp.Services;
-using piggy_bank_uwp.Utilities;
-using piggy_bank_uwp.ViewModels.Interface;
-using piggy_bank_uwp.Workers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Notifications;
+using Peppa.Models;
+using Peppa.Services;
+using Peppa.Utilities;
+using Peppa.ViewModels.Interface;
+using Peppa.Workers;
 
-namespace piggy_bank_uwp.ViewModels.Diagram
+namespace Peppa.ViewModels.Diagram
 {
     public class DiagramViewModel : BaseViewModel, IBaseViewModel
     {

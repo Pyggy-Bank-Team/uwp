@@ -1,11 +1,11 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using piggy_bank_uwp.ViewModels.Accounts;
 using System;
-using piggy_bank_uwp.Enums;
+using Peppa.Enums;
+using Peppa.ViewModels.Accounts;
 
-namespace piggy_bank_uwp.Views.Accounts
+namespace Peppa.Views.Accounts
 {
     public sealed partial class EditBalancePage : Page
     {

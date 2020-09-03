@@ -1,6 +1,6 @@
-﻿using piggy_bank_uwp.Interface;
+﻿using Peppa.Interface;
 
-namespace piggy_bank_uwp.Models
+namespace Peppa.Models
 {
     public sealed class CategoryModel : IBaseModel
     {

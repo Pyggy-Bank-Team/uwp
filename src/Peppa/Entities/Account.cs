@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace piggy_bank_uwp.Entities
+namespace Peppa.Entities
 {
     public class Account
     {

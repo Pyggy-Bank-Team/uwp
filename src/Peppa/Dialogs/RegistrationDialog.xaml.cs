@@ -1,12 +1,12 @@
-﻿using piggy_bank_uwp.Interface;
-using System.Globalization;
+﻿using System.Globalization;
 using Windows.UI.Xaml.Controls;
-using piggy_bank_uwp.Contracts.Requests;
-using piggy_bank_uwp.Contracts.Responses;
+using Peppa.Contracts.Requests;
+using Peppa.Contracts.Responses;
+using Peppa.Interface;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace piggy_bank_uwp.Dialogs
+namespace Peppa.Dialogs
 {
     public sealed partial class RegistrationDialog : ContentDialog
     {

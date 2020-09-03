@@ -1,8 +1,8 @@
-﻿using piggy_bank_uwp.Enums;
-using System;
+﻿using System;
 using Windows.UI.Xaml.Data;
+using Peppa.Enums;
 
-namespace piggy_bank_uwp.Convertes
+namespace Peppa.Convertes
 {
     public class AccountTypeToFronIconValueConverter : IValueConverter
     {

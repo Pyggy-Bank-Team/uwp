@@ -1,10 +1,10 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using piggy_bank_uwp.ViewModels;
-using piggy_bank_uwp.ViewModels.Category;
+using Peppa.ViewModels;
+using Peppa.ViewModels.Category;
 
-namespace piggy_bank_uwp.Views.Categories
+namespace Peppa.Views.Categories
 {
     public sealed partial class CategoriesPage : Page
     {

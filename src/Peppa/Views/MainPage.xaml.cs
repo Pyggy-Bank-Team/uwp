@@ -3,12 +3,12 @@ using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using piggy_bank_uwp.ViewModels;
-using piggy_bank_uwp.Views.Accounts;
-using piggy_bank_uwp.Views.Donate;
-using piggy_bank_uwp.Views.Users;
+using Peppa.ViewModels;
+using Peppa.Views.Accounts;
+using Peppa.Views.Donate;
+using Peppa.Views.Users;
 
-namespace piggy_bank_uwp.Views
+namespace Peppa.Views
 {
     public sealed partial class MainPage : Page
     {

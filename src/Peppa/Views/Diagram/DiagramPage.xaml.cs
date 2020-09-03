@@ -1,11 +1,11 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using piggy_bank_uwp.Utilities;
-using piggy_bank_uwp.ViewModels.Diagram;
+using Peppa.Utilities;
+using Peppa.ViewModels.Diagram;
 using Telerik.UI.Xaml.Controls.Chart;
 
-namespace piggy_bank_uwp.Views.Diagram
+namespace Peppa.Views.Diagram
 {
     public sealed partial class DiagramPage : Page
     {

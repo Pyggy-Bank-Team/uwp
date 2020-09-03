@@ -1,4 +1,4 @@
-﻿namespace piggy_bank_uwp.Enums
+﻿namespace Peppa.Enums
 {
     public enum IdentityResultEnum
     {

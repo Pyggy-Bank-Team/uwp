@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace piggy_bank_uwp.Utilities
+namespace Peppa.Utilities
 {
     public static class SystemUtility
     {

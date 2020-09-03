@@ -1,6 +1,6 @@
 ﻿using Windows.UI.Xaml.Media;
 
-namespace piggy_bank_uwp.Extensions
+namespace Peppa.Extensions
 {
     public static class SolidColorBrushExtension
     {

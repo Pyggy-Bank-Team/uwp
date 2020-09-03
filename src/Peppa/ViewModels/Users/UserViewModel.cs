@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using piggy_bank_uwp.Contracts.Requests;
-using piggy_bank_uwp.Contracts.Responses;
-using piggy_bank_uwp.Interface;
-using piggy_bank_uwp.Workers;
+using Peppa.Contracts.Requests;
+using Peppa.Contracts.Responses;
+using Peppa.Interface;
+using Peppa.Workers;
 
-namespace piggy_bank_uwp.ViewModels.Users
+namespace Peppa.ViewModels.Users
 {
     public class UserViewModel
     {

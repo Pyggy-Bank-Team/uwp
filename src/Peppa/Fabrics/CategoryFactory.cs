@@ -1,8 +1,8 @@
-﻿using piggy_bank_uwp.Models;
-using piggy_bank_uwp.Utilities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Peppa.Models;
+using Peppa.Utilities;
 
-namespace piggy_bank_uwp.Fabrics
+namespace Peppa.Fabrics
 {
     public static class CategoryFactory
     {

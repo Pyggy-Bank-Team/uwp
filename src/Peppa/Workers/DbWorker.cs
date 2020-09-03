@@ -1,11 +1,11 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using piggy_bank_uwp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Peppa.Models;
 
-namespace piggy_bank_uwp.Workers
+namespace Peppa.Workers
 {
     public sealed class DbWorker
     {

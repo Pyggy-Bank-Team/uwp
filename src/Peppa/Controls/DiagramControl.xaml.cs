@@ -1,12 +1,12 @@
-﻿using piggy_bank_uwp.Utilities;
-using piggy_bank_uwp.ViewModels.Diagram;
-using Telerik.UI.Xaml.Controls.Chart;
+﻿using Telerik.UI.Xaml.Controls.Chart;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Peppa.Utilities;
+using Peppa.ViewModels.Diagram;
 
 
-namespace piggy_bank_uwp.Controls
+namespace Peppa.Controls
 {
     public sealed partial class DiagramControl : UserControl
     {

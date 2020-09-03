@@ -1,8 +1,8 @@
-﻿using piggy_bank_uwp.Models;
-using piggy_bank_uwp.Utilities;
-using piggy_bank_uwp.ViewModels.Interface;
+﻿using Peppa.Models;
+using Peppa.Utilities;
+using Peppa.ViewModels.Interface;
 
-namespace piggy_bank_uwp.ViewModels.Category
+namespace Peppa.ViewModels.Category
 {
     public class CategoryViewModel : BaseViewModel, IUpdateable
     {

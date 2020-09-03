@@ -5,18 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Notifications;
 using Microsoft.Toolkit.Uwp.Notifications;
-using piggy_bank_uwp.Fabrics;
-using piggy_bank_uwp.Models;
-using piggy_bank_uwp.Services;
-using piggy_bank_uwp.ViewModels.Accounts;
-using piggy_bank_uwp.ViewModels.Category;
-using piggy_bank_uwp.ViewModels.Diagram;
-using piggy_bank_uwp.ViewModels.Donate;
-using piggy_bank_uwp.ViewModels.Interface;
-using piggy_bank_uwp.ViewModels.Operations;
-using piggy_bank_uwp.Workers;
+using Peppa.Fabrics;
+using Peppa.Models;
+using Peppa.Services;
+using Peppa.ViewModels.Accounts;
+using Peppa.ViewModels.Category;
+using Peppa.ViewModels.Diagram;
+using Peppa.ViewModels.Donate;
+using Peppa.ViewModels.Interface;
+using Peppa.ViewModels.Operations;
+using Peppa.Workers;
 
-namespace piggy_bank_uwp.ViewModels
+namespace Peppa.ViewModels
 {
     public class MainViewModel : BaseViewModel, IToastViewModel
     {

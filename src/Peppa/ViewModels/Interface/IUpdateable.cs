@@ -1,4 +1,4 @@
-﻿namespace piggy_bank_uwp.ViewModels.Interface
+﻿namespace Peppa.ViewModels.Interface
 {
     public interface IUpdateable
     {

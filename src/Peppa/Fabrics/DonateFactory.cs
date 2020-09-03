@@ -1,7 +1,7 @@
-﻿using piggy_bank_uwp.ViewModels.Donate;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Peppa.ViewModels.Donate;
 
-namespace piggy_bank_uwp.Fabrics
+namespace Peppa.Fabrics
 {
     public static class DonateFactory
     {

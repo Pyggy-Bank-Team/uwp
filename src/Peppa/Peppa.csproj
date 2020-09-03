@@ -129,6 +129,7 @@
     <Compile Include="Interface\IAccountService.cs" />
     <Compile Include="Interface\IDetailPage.cs" />
     <Compile Include="Interface\IUserService.cs" />
+    <Compile Include="Interface\Models\IAccountsModel.cs" />
     <Compile Include="Localize.cs" />
     <Compile Include="Models\AccountsModel.cs" />
     <Compile Include="Models\BalanceModel.cs" />
@@ -389,7 +390,6 @@
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace piggy_bank_uwp.Utilities
+namespace Peppa.Utilities
 {
     public static class DateUtility
     {

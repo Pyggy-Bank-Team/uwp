@@ -1,7 +1,7 @@
-﻿using piggy_bank_uwp.Interface;
-using piggy_bank_uwp.Models;
+﻿using Peppa.Interface;
+using Peppa.Models;
 
-namespace piggy_bank_uwp.Models
+namespace Peppa.Models
 {
     public sealed class CostModel : IBaseModel
     {

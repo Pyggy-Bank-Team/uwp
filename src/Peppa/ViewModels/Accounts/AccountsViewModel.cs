@@ -2,11 +2,11 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using piggy_bank_uwp.Contracts.Requests;
-using piggy_bank_uwp.Interface;
-using piggy_bank_uwp.ViewModels.Interface;
+using Peppa.Contracts.Requests;
+using Peppa.Interface;
+using Peppa.ViewModels.Interface;
 
-namespace piggy_bank_uwp.ViewModels.Accounts
+namespace Peppa.ViewModels.Accounts
 {
     public class AccountsViewModel : BaseViewModel, IBaseViewModel
     {
@@ -35,7 +35,6 @@ namespace piggy_bank_uwp.ViewModels.Accounts
 
         internal async Task UpdateData()
         {
-
             var request = new AccountRequest
             {
                 Balance = SelectedItem.Balance,

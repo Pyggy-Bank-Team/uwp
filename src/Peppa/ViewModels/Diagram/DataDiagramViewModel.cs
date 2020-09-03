@@ -1,4 +1,4 @@
-﻿namespace piggy_bank_uwp.ViewModels.Diagram
+﻿namespace Peppa.ViewModels.Diagram
 {
     public class DataDiagramViewModel
     {

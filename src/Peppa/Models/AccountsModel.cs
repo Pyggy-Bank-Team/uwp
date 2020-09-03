@@ -1,10 +1,10 @@
 ﻿using System;
-using piggy_bank_uwp.Entities;
-using piggy_bank_uwp.Interface;
-using piggy_bank_uwp.Workers;
 using System.Threading.Tasks;
+using Peppa.Entities;
+using Peppa.Interface;
+using Peppa.Workers;
 
-namespace piggy_bank_uwp.Models
+namespace Peppa.Models
 {
     public class AccountsModel
     {

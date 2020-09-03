@@ -3,7 +3,7 @@ using System.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace piggy_bank_uwp.Convertes
+namespace Peppa.Convertes
 {
     public class ValueToVisibilityConverter : IValueConverter
     {

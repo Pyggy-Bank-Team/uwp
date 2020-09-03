@@ -5,13 +5,13 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using piggy_bank_uwp.Contracts.Requests;
-using piggy_bank_uwp.Contracts.Responses;
-using piggy_bank_uwp.Enums;
-using piggy_bank_uwp.Interface;
-using piggy_bank_uwp.Models;
+using Peppa.Contracts.Requests;
+using Peppa.Contracts.Responses;
+using Peppa.Enums;
+using Peppa.Interface;
+using Peppa.Models;
 
-namespace piggy_bank_uwp.Services.PiggyService
+namespace Peppa.Services.PiggyService
 {
     public partial class PiggyService : IUserService
     {

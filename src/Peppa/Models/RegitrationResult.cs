@@ -1,7 +1,7 @@
-﻿using piggy_bank_uwp.Contracts.Responses;
-using piggy_bank_uwp.Enums;
+﻿using Peppa.Contracts.Responses;
+using Peppa.Enums;
 
-namespace piggy_bank_uwp.Models
+namespace Peppa.Models
 {
     public class RegitrationResult
     {

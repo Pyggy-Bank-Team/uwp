@@ -1,9 +1,9 @@
-﻿using piggy_bank_uwp.Utilities;
-using System;
+﻿using System;
 using Windows.Storage;
 using Windows.UI.Xaml;
+using Peppa.Utilities;
 
-namespace piggy_bank_uwp.Workers
+namespace Peppa.Workers
 {
     public sealed class SettingsWorker
     {

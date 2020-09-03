@@ -9,14 +9,14 @@ using Windows.ApplicationModel.Core;
 using System.Threading.Tasks;
 using Windows.UI;
 using Windows.UI.ViewManagement;
-using piggy_bank_uwp.Workers;
 using Windows.Storage;
 using Microsoft.HockeyApp;
 using Microsoft.Extensions.DependencyInjection;
-using piggy_bank_uwp.Extensions;
-using piggy_bank_uwp.Views;
+using Peppa.Views;
+using Peppa.Workers;
+using Peppa.Extensions;
 
-namespace piggy_bank_uwp
+namespace Peppa
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

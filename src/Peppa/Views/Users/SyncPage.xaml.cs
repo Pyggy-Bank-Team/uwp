@@ -1,12 +1,12 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using piggy_bank_uwp.ViewModels.Users;
-using piggy_bank_uwp.Dialogs;
 using System;
-using piggy_bank_uwp.Interface;
+using Peppa.Dialogs;
+using Peppa.Interface;
+using Peppa.ViewModels.Users;
 
-namespace piggy_bank_uwp.Views.Users
+namespace Peppa.Views.Users
 {
     public sealed partial class SyncPage : Page
     {

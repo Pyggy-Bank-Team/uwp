@@ -2,9 +2,9 @@
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using piggy_bank_uwp.Views.Default;
+using Peppa.Views.Default;
 
-namespace piggy_bank_uwp.Controls.MasterDetailView
+namespace Peppa.Controls.MasterDetailView
 {
     public class MasterDetailView : ContentControl
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using piggy_bank_uwp.Entities;
-using piggy_bank_uwp.Models;
+using Peppa.Entities;
+using Peppa.Models;
 
-namespace piggy_bank_uwp.Context
+namespace Peppa.Context
 {
     public sealed class AppContext : DbContext
     {

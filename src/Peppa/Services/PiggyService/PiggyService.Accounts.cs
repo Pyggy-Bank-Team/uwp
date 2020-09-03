@@ -1,14 +1,14 @@
 ﻿using Newtonsoft.Json;
-using piggy_bank_uwp.Entities;
-using piggy_bank_uwp.Interface;
-using piggy_bank_uwp.Workers;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using piggy_bank_uwp.Contracts.Requests;
 using System.Net.Http;
 using System.Text;
+using Peppa.Contracts.Requests;
+using Peppa.Entities;
+using Peppa.Interface;
+using Peppa.Workers;
 
-namespace piggy_bank_uwp.Services.PiggyService
+namespace Peppa.Services.PiggyService
 {
     public partial class PiggyService : IAccountService
     {

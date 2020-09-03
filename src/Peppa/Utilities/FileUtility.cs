@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace piggy_bank_uwp.Utilities
+namespace Peppa.Utilities
 {
     public static class FileUtility
     {

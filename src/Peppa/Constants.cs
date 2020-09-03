@@ -1,4 +1,4 @@
-﻿namespace piggy_bank_uwp
+﻿namespace Peppa
 {
     public static class Constants
     {

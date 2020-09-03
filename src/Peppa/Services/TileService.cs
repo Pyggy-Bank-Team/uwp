@@ -1,9 +1,9 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
-using piggy_bank_uwp.ViewModels.Diagram;
 using System;
 using System.Collections.Generic;
+using Peppa.ViewModels.Diagram;
 
-namespace piggy_bank_uwp.Services
+namespace Peppa.Services
 {
     public static class TileService
     {

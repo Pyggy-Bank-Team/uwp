@@ -1,16 +1,16 @@
-﻿using piggy_bank_uwp.Services;
-using System.Linq;
+﻿using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 using System;
-using piggy_bank_uwp.Extensions;
-using piggy_bank_uwp.ViewModels;
-using piggy_bank_uwp.ViewModels.Category;
+using Peppa.Services;
+using Peppa.ViewModels;
+using Peppa.ViewModels.Category;
+using Peppa.Extensions;
 
-namespace piggy_bank_uwp.Views.Categories
+namespace Peppa.Views.Categories
 {
 
     public sealed partial class EditCategoryPage : Page

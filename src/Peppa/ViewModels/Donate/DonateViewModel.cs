@@ -1,11 +1,11 @@
-﻿using piggy_bank_uwp.ViewModels.Interface;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Services.Store;
 using System;
-using piggy_bank_uwp.Utilities;
+using Peppa.Utilities;
+using Peppa.ViewModels.Interface;
 
-namespace piggy_bank_uwp.ViewModels.Donate
+namespace Peppa.ViewModels.Donate
 {
     public class DonateViewModel : IBaseViewModel
     {

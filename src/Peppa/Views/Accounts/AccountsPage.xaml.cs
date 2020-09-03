@@ -1,9 +1,9 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using piggy_bank_uwp.ViewModels.Accounts;
+using Peppa.ViewModels.Accounts;
 
-namespace piggy_bank_uwp.Views.Accounts
+namespace Peppa.Views.Accounts
 {
     public sealed partial class BalancesPage : Page
     {

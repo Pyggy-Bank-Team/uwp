@@ -1,8 +1,8 @@
-﻿using piggy_bank_uwp.Models;
-using System.Collections.Generic;
-using piggy_bank_uwp.ViewModels.Operations;
+﻿using System.Collections.Generic;
+using Peppa.Models;
+using Peppa.ViewModels.Operations;
 
-namespace piggy_bank_uwp.Fabrics
+namespace Peppa.Fabrics
 {
     public static class CostFactory
     {

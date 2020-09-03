@@ -1,4 +1,4 @@
-﻿namespace piggy_bank_uwp.Interface
+﻿namespace Peppa.Interface
 {
     public interface IBaseModel
     {

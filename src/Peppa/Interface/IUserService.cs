@@ -1,9 +1,9 @@
-﻿using piggy_bank_uwp.Models;
-using System.Threading.Tasks;
-using piggy_bank_uwp.Contracts.Requests;
-using piggy_bank_uwp.Contracts.Responses;
+﻿using System.Threading.Tasks;
+using Peppa.Contracts.Requests;
+using Peppa.Contracts.Responses;
+using Peppa.Models;
 
-namespace piggy_bank_uwp.Interface
+namespace Peppa.Interface
 {
     public interface IUserService
     {

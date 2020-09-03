@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using piggy_bank_uwp.Interface;
-using piggy_bank_uwp.Services.PiggyService;
-using piggy_bank_uwp.ViewModels.Accounts;
-using piggy_bank_uwp.ViewModels.Users;
+using Peppa.Interface;
+using Peppa.Services.PiggyService;
+using Peppa.ViewModels.Accounts;
+using Peppa.ViewModels.Users;
 
-namespace piggy_bank_uwp.Extensions
+namespace Peppa.Extensions
 {
     public static class ServiceCollectionExtensions
     {

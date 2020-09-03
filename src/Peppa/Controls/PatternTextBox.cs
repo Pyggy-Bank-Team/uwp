@@ -2,7 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace piggy_bank_uwp.Controls
+namespace Peppa.Controls
 {
     public sealed class PatternTextBox : TextBox
     {

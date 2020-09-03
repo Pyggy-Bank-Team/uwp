@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace piggy_bank_uwp.Contracts.Requests
+namespace Peppa.Contracts.Requests
 {
     public class AccountRequest
     {

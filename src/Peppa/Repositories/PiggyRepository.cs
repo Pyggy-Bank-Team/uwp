@@ -1,4 +1,4 @@
-﻿namespace piggy_bank_uwp.Repositories
+﻿namespace Peppa.Repositories
 {
     public class PiggyRepository
     {

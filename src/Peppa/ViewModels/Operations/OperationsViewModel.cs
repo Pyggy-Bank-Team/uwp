@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using piggy_bank_uwp.Models;
-using piggy_bank_uwp.Utilities;
-using piggy_bank_uwp.ViewModels.Category;
-using piggy_bank_uwp.ViewModels.Interface;
+using Peppa.Models;
+using Peppa.Utilities;
+using Peppa.ViewModels.Category;
+using Peppa.ViewModels.Interface;
 
-namespace piggy_bank_uwp.ViewModels.Operations
+namespace Peppa.ViewModels.Operations
 {
     public class CostViewModel : BaseViewModel, IUpdateable
     {

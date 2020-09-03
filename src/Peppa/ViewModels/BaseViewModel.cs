@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Reflection;
 
-namespace piggy_bank_uwp.ViewModels
+namespace Peppa.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {

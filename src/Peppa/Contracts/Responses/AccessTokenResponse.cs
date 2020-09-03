@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace piggy_bank_uwp.Contracts.Responses
+namespace Peppa.Contracts.Responses
 {
     public class AccessTokenResponse
     {

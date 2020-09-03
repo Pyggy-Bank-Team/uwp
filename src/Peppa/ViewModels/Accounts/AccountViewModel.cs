@@ -1,7 +1,7 @@
-﻿using piggy_bank_uwp.Entities;
-using piggy_bank_uwp.Enums;
+﻿using Peppa.Entities;
+using Peppa.Enums;
 
-namespace piggy_bank_uwp.ViewModels.Accounts
+namespace Peppa.ViewModels.Accounts
 {
     public class AccountViewModel : BaseViewModel
     {
