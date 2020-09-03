@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
+using piggy_bank_uwp.Contracts.Requests;
+using piggy_bank_uwp.Contracts.Responses;
 using piggy_bank_uwp.Interface;
-using piggy_bank_uwp.Models.Requests;
-using piggy_bank_uwp.Models.Responses;
 using piggy_bank_uwp.Workers;
 
 namespace piggy_bank_uwp.ViewModels.Users

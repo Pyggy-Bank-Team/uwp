@@ -1,5 +1,5 @@
-﻿using piggy_bank_uwp.Enums;
-using piggy_bank_uwp.Models.Responses;
+﻿using piggy_bank_uwp.Contracts.Responses;
+using piggy_bank_uwp.Enums;
 
 namespace piggy_bank_uwp.Models
 {

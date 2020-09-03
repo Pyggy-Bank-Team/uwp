@@ -12,9 +12,7 @@ namespace piggy_bank_uwp.Views.Accounts
         private AccountViewModel _account;
 
         public EditBalancePage()
-        {
-            this.InitializeComponent();
-        }
+            => InitializeComponent();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -25,34 +23,21 @@ namespace piggy_bank_uwp.Views.Accounts
 
         private void OnSaveClick(object sender, RoutedEventArgs e)
         {
-            //if (!String.IsNullOrEmpty(ChangeBalanceTextBox.Text))
-            //{
-            //    int value;
-            //    bool canChange = Int32.TryParse(ChangeBalanceTextBox.Text, out value);
-
-            //    if (canChange)
-            //    {
-            //        //_account.ChangeBalance(value);
-            //    }
-            //}
-
-            if (Frame.CanGoBack)
-            {
-                Frame.GoBack();
-            }
+            GoBack();
         }
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
         {
-
+            GoBack();
         }
 
         private void OnCloseClick(object sender, RoutedEventArgs e)
+            => GoBack();
+
+        private void GoBack()
         {
             if (Frame.CanGoBack)
-            {
                 Frame.GoBack();
-            }
         }
     }
 }

@@ -24,7 +24,6 @@
 
                 <TextBlock x:Name="TotalBalanceTextBlock" Grid.Column="1" Text="{Binding Path=TotalBalance}" Foreground="Gray"
                        FontFamily="18" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Visible"/>
-
             </Grid>
 
             <ProgressBar x:Name="UpdateProgressRing" IsIndeterminate="True" Height="18" Visibility="Collapsed"/>

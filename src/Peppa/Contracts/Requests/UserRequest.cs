@@ -1,4 +1,4 @@
-﻿namespace piggy_bank_uwp.Models.Requests
+﻿namespace piggy_bank_uwp.Contracts.Requests
 {
     public class UserRequest
     {

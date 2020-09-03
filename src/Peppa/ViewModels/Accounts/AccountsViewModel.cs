@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using piggy_bank_uwp.Contracts.Requests;
 using piggy_bank_uwp.Interface;
 using piggy_bank_uwp.ViewModels.Interface;
-using piggy_bank_uwp.Workers;
 
 namespace piggy_bank_uwp.ViewModels.Accounts
 {
@@ -34,8 +33,19 @@ namespace piggy_bank_uwp.ViewModels.Accounts
             throw new NotImplementedException();
         }
 
-        internal void UpdateData()
+        internal async Task UpdateData()
         {
+
+            var request = new AccountRequest
+            {
+                Balance = SelectedItem.Balance,
+                Currency = SelectedItem.Currency,
+                IsArchived = SelectedItem.IsArchived,
+                Title = SelectedItem.Title,
+                Type = (long)SelectedItem.Type
+            };
+
+            await _service.CreateAccount(request);
         }
 
         public void RaiseBalance()
@@ -59,5 +69,7 @@ namespace piggy_bank_uwp.ViewModels.Accounts
         }
 
         public ObservableCollection<AccountViewModel> List { get; private set; }
+
+        public AccountViewModel SelectedItem { get; set; }
     }
 }

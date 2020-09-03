@@ -5,11 +5,11 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using piggy_bank_uwp.Contracts.Requests;
+using piggy_bank_uwp.Contracts.Responses;
 using piggy_bank_uwp.Enums;
 using piggy_bank_uwp.Interface;
 using piggy_bank_uwp.Models;
-using piggy_bank_uwp.Models.Requests;
-using piggy_bank_uwp.Models.Responses;
 
 namespace piggy_bank_uwp.Services.PiggyService
 {

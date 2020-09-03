@@ -1,7 +1,7 @@
 ﻿using piggy_bank_uwp.Models;
-using piggy_bank_uwp.Models.Requests;
-using piggy_bank_uwp.Models.Responses;
 using System.Threading.Tasks;
+using piggy_bank_uwp.Contracts.Requests;
+using piggy_bank_uwp.Contracts.Responses;
 
 namespace piggy_bank_uwp.Interface
 {

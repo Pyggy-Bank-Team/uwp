@@ -104,6 +104,7 @@
     </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="Context\AppContext.cs" />
+    <Compile Include="Contracts\Requests\AccountRequest.cs" />
     <Compile Include="Controls\DiagramControl.xaml.cs">
       <DependentUpon>DiagramControl.xaml</DependentUpon>
     </Compile>
@@ -135,10 +136,10 @@
     <Compile Include="Interface\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\RegitrationResult.cs" />
-    <Compile Include="Models\Requests\UserRequest.cs" />
-    <Compile Include="Models\Responses\AccessTokenResponse.cs" />
-    <Compile Include="Models\Responses\AvailableCurrency.cs" />
-    <Compile Include="Models\Responses\IdentityErrorResponse.cs" />
+    <Compile Include="Contracts\Requests\UserRequest.cs" />
+    <Compile Include="Contracts\Responses\AccessTokenResponse.cs" />
+    <Compile Include="Contracts\Responses\AvailableCurrency.cs" />
+    <Compile Include="Contracts\Responses\IdentityErrorResponse.cs" />
     <Compile Include="Repositories\PiggyRepository.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\PiggyService\PiggyService.cs" />

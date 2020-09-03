@@ -1,8 +1,8 @@
 ﻿using piggy_bank_uwp.Interface;
-using piggy_bank_uwp.Models.Requests;
-using piggy_bank_uwp.Models.Responses;
 using System.Globalization;
 using Windows.UI.Xaml.Controls;
+using piggy_bank_uwp.Contracts.Requests;
+using piggy_bank_uwp.Contracts.Responses;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 

@@ -1,15 +1,12 @@
 ﻿using piggy_bank_uwp.Entities;
 using piggy_bank_uwp.Enums;
-using piggy_bank_uwp.ViewModels.Interface;
 
 namespace piggy_bank_uwp.ViewModels.Accounts
 {
-    public class AccountViewModel : BaseViewModel, IUpdateable
+    public class AccountViewModel : BaseViewModel
     {
         public AccountViewModel()
-        {
-            IsNew = true;
-        }
+            => IsNew = true;
 
         internal AccountViewModel(Account model)
         {
@@ -21,12 +18,7 @@ namespace piggy_bank_uwp.ViewModels.Accounts
             Type = (AccountType)model.Type;
             Id = model.Id;
         }
-
-        public void Update()
-        {
-            RaisePropertiesChanged();
-        }
-
+        
         public string Title { get; set; }
 
         public decimal Balance { get; set; }
