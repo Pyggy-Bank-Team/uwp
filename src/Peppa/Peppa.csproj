@@ -121,7 +121,7 @@
       <DependentUpon>RegistrationDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\AccountType.cs" />
-    <Compile Include="Enums\ButtonType.cs" />
+    <Compile Include="Enums\ActionType.cs" />
     <Compile Include="Enums\IdentityResultEnum.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />

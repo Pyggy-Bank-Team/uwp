@@ -34,9 +34,24 @@ namespace Peppa.Services.PiggyService
 
         }
 
-        public async Task UpdateAccount(AccountContract contract)
+        public async Task<bool> UpdateAccount(AccountContract contract)
         {
-            throw new System.NotImplementedException();
+            var client = _httpClientFactory.CreateClient("UpdateAccount");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)SettingsWorker.Current.GetValue(Constants.AccessToken));
+            using (var response = await client.PutAsync($"{BaseUrl}/Accounts/{contract.Id}", new StringContent(JsonConvert.SerializeObject(contract), Encoding.UTF8, "application/json")))
+            {
+                return response.IsSuccessStatusCode;
+            }
+        }
+
+        public async Task<bool> DeleteAccount(int id)
+        {
+            var client = _httpClientFactory.CreateClient("DeleteAccount");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)SettingsWorker.Current.GetValue(Constants.AccessToken));
+            using (var response = await client.DeleteAsync($"{BaseUrl}/Accounts/{id}"))
+            {
+                return response.IsSuccessStatusCode;
+            }
         }
     }
 }

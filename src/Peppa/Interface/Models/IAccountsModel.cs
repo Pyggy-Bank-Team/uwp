@@ -9,7 +9,7 @@ namespace Peppa.Interface.Models
     {
         Task<Account[]> GetAccounts(CancellationToken token);
         Task CreatedAccount(Account account, CancellationToken token);
-        Task DeleteAccount();
-        Task UpdateAccount();
+        Task DeleteAccount(int id, CancellationToken token);
+        Task UpdateAccount(Account account, CancellationToken token);
     }
 }

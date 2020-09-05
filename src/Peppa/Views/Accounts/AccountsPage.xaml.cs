@@ -22,7 +22,7 @@ namespace Peppa.Views.Accounts
             DataContext = _dataContext;
 
             var selectedItem = _dataContext.SelectedItem;
-            if (selectedItem != null && (selectedItem.IsNew || selectedItem.NeedUpdate))
+            if (selectedItem != null)
                 await _dataContext.UpdateData();
 
             await _dataContext.Initialization();

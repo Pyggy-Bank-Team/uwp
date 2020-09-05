@@ -37,11 +37,18 @@ namespace Peppa.ViewModels.Accounts
         //TODO Split on two separated methods
         internal async Task UpdateData()
         {
-            if (SelectedItem?.IsNew == true && SelectedItem?.ButtonWasClicked == ButtonType.Save)
-                await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetToken());
-
-            // if (SelectedItem?.NeedUpdate == true)
-            //     await _model.UpdateAccount(SelectedItem.MakeAccountEntity(), GetToken());
+            switch (SelectedItem?.Action)
+            {
+                case ActionType.Save when SelectedItem?.IsNew == true:
+                    await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetToken());
+                    break;
+                case ActionType.Save when SelectedItem?.IsNew == false:
+                    await _model.UpdateAccount(SelectedItem.MakeAccountEntity(), GetToken());
+                    break;
+                case ActionType.Delete:
+                    await _model.DeleteAccount(SelectedItem.Id, GetToken());
+                    break;
+            }
         }
 
         public void RaiseBalance()

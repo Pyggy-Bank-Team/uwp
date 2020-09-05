@@ -1,7 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Peppa.Contracts.Requests;
 using Peppa.Contracts;
-using Peppa.Context.Entities;
 
 namespace Peppa.Interface.Services
 {
@@ -11,6 +9,8 @@ namespace Peppa.Interface.Services
 
         Task<bool> CreateAccount(AccountContract contract);
 
-        Task UpdateAccount(AccountContract contract);
+        Task<bool> UpdateAccount(AccountContract contract);
+
+        Task<bool> DeleteAccount(int id);
     }
 }

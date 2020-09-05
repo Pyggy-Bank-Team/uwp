@@ -1,6 +1,6 @@
 ﻿namespace piggy_bank_uwp.Enums
 {
-    public enum ButtonType
+    public enum ActionType
     {
         Cancel,
         Save,
