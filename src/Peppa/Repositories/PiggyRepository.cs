@@ -63,7 +63,7 @@ namespace Peppa.Repositories
         }
 
         public Task<Account[]> GetAccounts()
-            => _context.Accounts.Where(a => a.IsDeleted).ToArrayAsync();
+            => _context.Accounts.Where(a => !a.IsDeleted).ToArrayAsync();
 
         public void Dispose()
             => _context?.Dispose();

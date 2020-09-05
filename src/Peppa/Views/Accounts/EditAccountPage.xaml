@@ -4,9 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Controls="using:Peppa.Controls"
-    mc:Ignorable="d"
-    NavigationCacheMode="Required">
+    xmlns:converters="using:piggy_bank_uwp.Convertes"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <converters:DecimalConverter x:Key="DecimalConverter"/>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -20,16 +22,18 @@
                 <TextBox x:Name="TitleTextBox" x:Uid="TitleTextBox" Text="{x:Bind _account.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="18" MaxHeight="200" Margin="15"/>
 
-                <ComboBox x:Name="Types" Header="Type" SelectedItem="{x:Bind _account.Type}" FontSize="18" MaxHeight="200" Margin="15"
+                <ComboBox x:Name="Types" Header="Type" SelectedItem="{x:Bind _account.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" MaxHeight="200" Margin="15"
                           Width="{Binding ElementName=TitleTextBox, Path=ActualWidth}"/>
 
-                <ComboBox x:Name="Currencies" Header="Currency" SelectedItem="{x:Bind _account.Currency}" FontSize="18" MaxHeight="200" Margin="15"
+                <ComboBox x:Name="Currencies" Header="Currency *(by default we get currency from account settings)"
+                          SelectedItem="{x:Bind _account.Currency}" FontSize="18" MaxHeight="200" Margin="15"
                           Width="{Binding ElementName=TitleTextBox, Path=ActualWidth}" IsEnabled="False"/>
 
-                <TextBox Header="Currency balance" Text="{x:Bind _account.Balance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox Header="Currency balance" 
+                         Text="{x:Bind _account.Balance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ResourceKey=DecimalConverter}}"
                          FontSize="18" MaxHeight="200" Margin="15"/>
 
-                <ToggleSwitch Header="Archived account" Margin="15" FontSize="18" IsOn="{x:Bind _account.IsArchived}"/>
+                <ToggleSwitch Header="Archived account" Margin="15" FontSize="18" IsOn="{x:Bind _account.IsArchived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             </StackPanel>
         </ScrollViewer>

@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.Storage;
-using Microsoft.HockeyApp;
 using Microsoft.Extensions.DependencyInjection;
 using Peppa.Views;
 using Peppa.Workers;
@@ -171,7 +170,7 @@ namespace Peppa
 
         private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            
+
         }
 
         public static ServiceProvider  ServiceProvider { get; private set; }

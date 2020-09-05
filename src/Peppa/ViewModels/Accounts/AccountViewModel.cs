@@ -1,6 +1,7 @@
 ﻿using Windows.ApplicationModel;
 using Peppa.Enums;
 using Peppa.Context.Entities;
+using piggy_bank_uwp.Enums;
 
 namespace Peppa.ViewModels.Accounts
 {
@@ -48,6 +49,8 @@ namespace Peppa.ViewModels.Accounts
         public bool IsNew { get; set; }
         
         public bool NeedUpdate { get; set; }
+
+        public ButtonType ButtonWasClicked { get; set; }
 
         public string CurrentBalance => $"{Balance} {Currency}";
 

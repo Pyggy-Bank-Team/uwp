@@ -1,9 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Peppa.Interface;
 using Peppa.Services.PiggyService;
 using Peppa.ViewModels.Accounts;
 using Peppa.ViewModels.Users;
 using Peppa.Interface.Services;
+using Peppa.Interface.Models;
+using Peppa.Models;
+using Peppa.Interface;
+using Peppa.Repositories;
 
 namespace Peppa.Extensions
 {
@@ -13,6 +16,8 @@ namespace Peppa.Extensions
         {
             services.AddScoped<IAccountService, PiggyService>();
             services.AddScoped<IUserService, PiggyService>();
+            services.AddScoped<IAccountsModel, AccountsModel>();
+            services.AddScoped<IPiggyRepository, PiggyRepository>();
             services.AddSingleton<AccountsViewModel>();
             services.AddSingleton<UserViewModel>();
             services.AddHttpClient();

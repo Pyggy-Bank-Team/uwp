@@ -3,12 +3,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Peppa.Contracts.Requests;
-using Peppa.Interface;
 using Peppa.ViewModels.Interface;
-using Peppa.Interface.Services;
-using Peppa.Contracts;
 using Peppa.Interface.Models;
+using piggy_bank_uwp.Enums;
 
 namespace Peppa.ViewModels.Accounts
 {
@@ -40,7 +37,7 @@ namespace Peppa.ViewModels.Accounts
         //TODO Split on two separated methods
         internal async Task UpdateData()
         {
-            if (SelectedItem?.IsNew == true)
+            if (SelectedItem?.IsNew == true && SelectedItem?.ButtonWasClicked == ButtonType.Save)
                 await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetToken());
 
             // if (SelectedItem?.NeedUpdate == true)

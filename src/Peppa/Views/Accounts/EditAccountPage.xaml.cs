@@ -4,6 +4,7 @@ using Windows.UI.Xaml.Navigation;
 using System;
 using Peppa.Enums;
 using Peppa.ViewModels.Accounts;
+using piggy_bank_uwp.Enums;
 
 namespace Peppa.Views.Accounts
 {
@@ -23,16 +24,21 @@ namespace Peppa.Views.Accounts
 
         private void OnSaveClick(object sender, RoutedEventArgs e)
         {
+            _account.ButtonWasClicked = ButtonType.Save;
             GoBack();
         }
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
         {
+            _account.ButtonWasClicked = ButtonType.Delete;
             GoBack();
         }
 
         private void OnCloseClick(object sender, RoutedEventArgs e)
-            => GoBack();
+        {
+            _account.ButtonWasClicked = ButtonType.Cancel;
+            GoBack();
+        }
 
         private void GoBack()
         {

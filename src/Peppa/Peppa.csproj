@@ -114,12 +114,14 @@
     <Compile Include="Controls\PatternTextBox.cs" />
     <Compile Include="Convertes\AccountTypeToFronIconValueConverter.cs" />
     <Compile Include="Convertes\ConvertDateTimeOffsetToDateTime.cs" />
+    <Compile Include="Convertes\DecimalConverter.cs" />
     <Compile Include="Convertes\ValueToCollapsedConverter.cs" />
     <Compile Include="Convertes\ValueToVisibilityConverter.cs" />
     <Compile Include="Dialogs\RegistrationDialog.xaml.cs">
       <DependentUpon>RegistrationDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\AccountType.cs" />
+    <Compile Include="Enums\ButtonType.cs" />
     <Compile Include="Enums\IdentityResultEnum.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
