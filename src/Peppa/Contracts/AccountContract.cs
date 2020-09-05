@@ -1,17 +1,18 @@
 ﻿using Newtonsoft.Json;
+using Peppa.Enums;
 
 namespace Peppa.Contracts
 {
     public class AccountContract
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
 
         [JsonProperty("type")]
-        public long Type { get; set; }
+        public AccountType Type { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }

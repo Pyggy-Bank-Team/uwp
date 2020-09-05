@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Peppa.Views;
 using Peppa.Workers;
 using Peppa.Extensions;
+using UnhandledExceptionEventArgs = Windows.UI.Xaml.UnhandledExceptionEventArgs;
 
 namespace Peppa
 {
@@ -29,14 +30,23 @@ namespace Peppa
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            InitializeComponent();
+            Suspending += OnSuspending;
+            UnhandledException += OnUnhandledException;
 
-            App.Current.RequestedTheme = SettingsWorker.Current.GetRequestedTheme();
+            Current.RequestedTheme = SettingsWorker.Current.GetRequestedTheme();
             var serviceCollection = new ServiceCollection();
             serviceCollection.DependencyInjection();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
+        }
+        
+        public static Task RunUIAsync(Action agileCallback)
+        {
+            return CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Low, () =>
+            {
+                agileCallback();
+            }).AsTask();
         }
 
         /// <summary>
@@ -87,20 +97,8 @@ namespace Peppa
 
                 ExtendAcrylicIntoTitleBar();
             }
-
-#if RELEASE
-            InitHockeyApp();
-#endif
         }
-
-        public static Task RunUIAsync(Action agileCallback)
-        {
-            return CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Low, () =>
-            {
-                agileCallback();
-            }).AsTask();
-        }
-
+        
         protected override void OnActivated(IActivatedEventArgs args)
         {
             if(args.Kind == ActivationKind.ToastNotification)
@@ -171,20 +169,9 @@ namespace Peppa
             deferral.Complete();
         }
 
-        private void InitHockeyApp()
+        private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            try
-            {
-                HockeyClient.Current.Configure("e4d002033ba2405683fe9b3e4b202604",
-                new TelemetryConfiguration
-                {
-                    EnableDiagnostics = true,
-                    Collectors = WindowsCollectors.Metadata |
-                                 WindowsCollectors.Session |
-                                 WindowsCollectors.UnhandledException
-                });
-            }
-            catch { }
+            
         }
 
         public static ServiceProvider  ServiceProvider { get; private set; }

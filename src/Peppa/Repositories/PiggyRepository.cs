@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Peppa.Context;
@@ -55,8 +56,14 @@ namespace Peppa.Repositories
             await _context.SaveChangesAsync(token);
         }
 
+        public async Task<bool> HaveAccount(int id, CancellationToken token)
+        {
+            var existAccount = await _context.Accounts.FirstOrDefaultAsync(a => a.Id == id, token);
+            return existAccount != null;
+        }
+
         public Task<Account[]> GetAccounts()
-            => _context.Accounts.ToArrayAsync();
+            => _context.Accounts.Where(a => a.IsDeleted).ToArrayAsync();
 
         public void Dispose()
             => _context?.Dispose();

@@ -7,7 +7,7 @@ namespace Peppa.Interface.Services
 {
     public interface IAccountService : IAuthorization
     {
-        Task<Account[]> GetAccounts();
+        Task<AccountContract[]> GetAccounts();
 
         Task<bool> CreateAccount(AccountContract contract);
 

@@ -7,22 +7,23 @@ using Peppa.Interface;
 using Peppa.ViewModels.Interface;
 using Peppa.Interface.Services;
 using Peppa.Contracts;
+using Peppa.Interface.Models;
 
 namespace Peppa.ViewModels.Accounts
 {
     public class AccountsViewModel : BaseViewModel, IBaseViewModel
     {
-        private readonly IAccountService _service;
+        private readonly IAccountsModel _model;
 
-        public AccountsViewModel(IAccountService service)
+        public AccountsViewModel(IAccountsModel model)
         {
-            _service = service;
+            _model = model;
             List = new ObservableCollection<AccountViewModel>();
         }
 
         public async Task Initialization()
         {
-            var accounts = await _service.GetAccounts();
+            var accounts = await _model.GetAccounts();
             if (accounts != null)
             {
                 List = new ObservableCollection<AccountViewModel>(accounts.Select(a => new AccountViewModel(a)));
@@ -46,7 +47,7 @@ namespace Peppa.ViewModels.Accounts
                 Type = (long)SelectedItem.Type
             };
 
-            await _service.CreateAccount(request);
+            await _model.CreateAccount(request);
         }
 
         public void RaiseBalance()

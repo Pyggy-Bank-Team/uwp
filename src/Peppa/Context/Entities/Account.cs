@@ -4,7 +4,7 @@ namespace Peppa.Context.Entities
 {
     public class Account
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         
         public AccountType Type { get; set; }
 
