@@ -89,7 +89,7 @@
     </DataTemplate>
 
     <DataTemplate x:Name="ListViewItemBalance">
-        
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -102,7 +102,9 @@
                 <converter:AccountTypeToFronIconValueConverter x:Key="AccountTypeConvert"/>
             </Grid.Resources>
 
-            <FontIcon Grid.Column="0" Glyph="{Binding Path=Type, Converter={StaticResource ResourceKey=AccountTypeConvert}}"/>
+            <!--<FontIcon Grid.Column="0" Glyph="{Binding Path=Type, Converter={StaticResource ResourceKey=AccountTypeConvert}}" >-->
+            <Image Grid.Column="0" Source="{Binding Path=Type, Converter={StaticResource ResourceKey=AccountTypeConvert}}"
+                   Height="20"/>
 
             <TextBlock Grid.Column="2" Text="{Binding Path=Title}" FontFamily="18" TextTrimming="CharacterEllipsis"
                        VerticalAlignment="Center" HorizontalAlignment="Left"/>

@@ -12,9 +12,11 @@ namespace Peppa.Convertes
             switch (type)
             {
                 case AccountType.Card:
-                    return (char)System.Convert.ToInt32("E8C7", 16);
+                    return "/Assets/Icons/payment.svg";
+                case AccountType.Cash:
+                    return "/Assets/Icons/money.svg";
                 default:
-                    return (char)System.Convert.ToInt32("EC59", 16);
+                    return string.Empty;
             }
         }
 
