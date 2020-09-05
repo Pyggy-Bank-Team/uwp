@@ -5,29 +5,31 @@ using Peppa.ViewModels.Accounts;
 
 namespace Peppa.Views.Accounts
 {
-    public sealed partial class BalancesPage : Page
+    public sealed partial class BalancesPage
     {
         private AccountsViewModel _dataContext;
+
         public BalancesPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             UpdateProgressRing.Visibility = Visibility.Visible;
-            _dataContext = (AccountsViewModel)App.ServiceProvider.GetService(typeof(AccountsViewModel));
+            _dataContext = (AccountsViewModel) App.ServiceProvider.GetService(typeof(AccountsViewModel));
             DataContext = _dataContext;
 
-            if (_dataContext.SelectedItem != null)
+            var selectedItem = _dataContext.SelectedItem;
+            if (selectedItem != null && (selectedItem.IsNew || selectedItem.NeedUpdate))
                 await _dataContext.UpdateData();
 
             await _dataContext.Initialization();
             _dataContext.SelectedItem = null;
 
             UpdateProgressRing.Visibility = Visibility.Collapsed;
-        }       
+        }
 
         private void OnBalanceItemClick(object sender, ItemClickEventArgs e)
         {

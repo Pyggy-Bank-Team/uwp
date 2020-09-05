@@ -1,4 +1,5 @@
-﻿using Peppa.Enums;
+﻿using Windows.ApplicationModel;
+using Peppa.Enums;
 using Peppa.Context.Entities;
 
 namespace Peppa.ViewModels.Accounts
@@ -15,9 +16,22 @@ namespace Peppa.ViewModels.Accounts
             Balance = model.Balance;
             Currency = model.Currency;
             IsArchived = model.IsArchived;
-            Type = (AccountType)model.Type;
+            IsDeleted = model.IsDeleted;
+            Type = model.Type;
             Id = model.Id;
         }
+
+        public Account MakeAccountEntity()
+            => new Account
+            {
+                Id = Id,
+                Title = Title,
+                Balance = Balance,
+                Currency = Currency,
+                Type = Type,
+                IsArchived = IsArchived,
+                IsDeleted = IsDeleted
+            };
         
         public string Title { get; set; }
 
@@ -27,12 +41,16 @@ namespace Peppa.ViewModels.Accounts
 
         public bool IsArchived { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public AccountType Type { get; set; }
 
         public bool IsNew { get; set; }
+        
+        public bool NeedUpdate { get; set; }
 
         public string CurrentBalance => $"{Balance} {Currency}";
 
-        public long Id { get; }
+        public int Id { get; }
     }
 }

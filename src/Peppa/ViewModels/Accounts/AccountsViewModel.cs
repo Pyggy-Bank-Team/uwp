@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Contracts.Requests;
 using Peppa.Interface;
@@ -23,7 +24,7 @@ namespace Peppa.ViewModels.Accounts
 
         public async Task Initialization()
         {
-            var accounts = await _model.GetAccounts();
+            var accounts = await _model.GetAccounts(GetToken());
             if (accounts != null)
             {
                 List = new ObservableCollection<AccountViewModel>(accounts.Select(a => new AccountViewModel(a)));
@@ -36,18 +37,14 @@ namespace Peppa.ViewModels.Accounts
             throw new NotImplementedException();
         }
 
+        //TODO Split on two separated methods
         internal async Task UpdateData()
         {
-            var request = new AccountContract
-            {
-                Balance = SelectedItem.Balance,
-                Currency = SelectedItem.Currency,
-                IsArchived = SelectedItem.IsArchived,
-                Title = SelectedItem.Title,
-                Type = (long)SelectedItem.Type
-            };
+            if (SelectedItem?.IsNew == true)
+                await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetToken());
 
-            await _model.CreateAccount(request);
+            // if (SelectedItem?.NeedUpdate == true)
+            //     await _model.UpdateAccount(SelectedItem.MakeAccountEntity(), GetToken());
         }
 
         public void RaiseBalance()
@@ -55,6 +52,9 @@ namespace Peppa.ViewModels.Accounts
             RaisePropertyChanged(nameof(List));
             RaisePropertyChanged(nameof(TotalBalance));
         }
+
+        private CancellationToken GetToken()
+            => new CancellationTokenSource(TimeSpan.FromMinutes(1)).Token;
 
         public string TotalBalance
         {
