@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Peppa.Entities;
 using Peppa.Models;
+using Peppa.Context.Entities;
 
 namespace Peppa.Context
 {
-    public sealed class AppContext : DbContext
+    public sealed class PiggyContext : DbContext
     {
-        public AppContext()
+        public PiggyContext()
         {
             Database.EnsureCreated();
         }

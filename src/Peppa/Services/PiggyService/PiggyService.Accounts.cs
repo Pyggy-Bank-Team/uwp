@@ -4,9 +4,11 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text;
 using Peppa.Contracts.Requests;
-using Peppa.Entities;
 using Peppa.Interface;
 using Peppa.Workers;
+using Peppa.Interface.Services;
+using Peppa.Contracts;
+using Peppa.Context.Entities;
 
 namespace Peppa.Services.PiggyService
 {
@@ -24,18 +26,18 @@ namespace Peppa.Services.PiggyService
             }
         }
 
-        public async Task<bool> CreateAccount(AccountRequest request)
+        public async Task<bool> CreateAccount(AccountContract contract)
         {
             var client = _httpClientFactory.CreateClient("CreateAccount");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)SettingsWorker.Current.GetValue(Constants.AccessToken));
-            using (var response = await client.PostAsync($"{BaseUrl}/Accounts", new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json")))
+            using (var response = await client.PostAsync($"{BaseUrl}/Accounts", new StringContent(JsonConvert.SerializeObject(contract), Encoding.UTF8, "application/json")))
             {
                 return response.IsSuccessStatusCode;
             }
 
         }
 
-        public async Task UpdateAccount(AccountRequest request)
+        public async Task UpdateAccount(AccountContract contract)
         {
             throw new System.NotImplementedException();
         }

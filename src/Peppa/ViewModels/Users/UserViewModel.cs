@@ -3,6 +3,7 @@ using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
 using Peppa.Interface;
 using Peppa.Workers;
+using Peppa.Interface.Services;
 
 namespace Peppa.ViewModels.Users
 {

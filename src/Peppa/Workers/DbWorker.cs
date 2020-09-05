@@ -15,7 +15,7 @@ namespace Peppa.Workers
 
         public void AddCost(CostModel cost)
         {
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 dbContext.Costs.Add(cost);
                 dbContext.SaveChanges();
@@ -24,7 +24,7 @@ namespace Peppa.Workers
 
         public void AddCategory(CategoryModel category)
         {
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 dbContext.Categories.Add(category);
                 dbContext.SaveChanges();
@@ -33,7 +33,7 @@ namespace Peppa.Workers
 
         public void AddBalance(BalanceModel balance)
         {
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 dbContext.Balance.Add(balance);
                 dbContext.SaveChanges();
@@ -42,7 +42,7 @@ namespace Peppa.Workers
 
         public void RemoveCost(CostModel cost)
         {
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 dbContext.Costs.Remove(cost);
                 dbContext.SaveChanges();
@@ -51,7 +51,7 @@ namespace Peppa.Workers
 
         public void RemoveCategory(CategoryModel category)
         {
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 dbContext.Categories.Remove(category);
                 dbContext.SaveChanges();
@@ -60,7 +60,7 @@ namespace Peppa.Workers
 
         public void RemoveBalance(BalanceModel balance)
         {
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 dbContext.Balance.Remove(balance);
                 dbContext.SaveChanges();
@@ -69,7 +69,7 @@ namespace Peppa.Workers
 
         public void Clear()
         {
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 //TODO
             }
@@ -78,7 +78,7 @@ namespace Peppa.Workers
         public List<CostModel> GetCosts()
         {
             List<CostModel> costs = null;
-            Context.AppContext dbContext = new Context.AppContext();
+            Context.PiggyContext dbContext = new Context.PiggyContext();
             try
             {
                 costs = dbContext.Costs.ToList();
@@ -114,7 +114,7 @@ namespace Peppa.Workers
         {
             List<CostModel> costs = null;
 
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 var allCost = new List<CostModel>(dbContext.Costs);
                 allCost.Reverse();
@@ -128,7 +128,7 @@ namespace Peppa.Workers
         {
             CostModel result = null;
 
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 result = dbContext.Costs.FirstOrDefault(c => c.Id == id);
             }
@@ -140,7 +140,7 @@ namespace Peppa.Workers
         {
             List<CategoryModel> categories = null;
 
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 categories = new List<CategoryModel>(dbContext.Categories);
             }
@@ -151,7 +151,7 @@ namespace Peppa.Workers
         public BalanceModel GetFirstBalance()
         {
             BalanceModel balance = null;
-            Context.AppContext dbContext = new Context.AppContext();
+            Context.PiggyContext dbContext = new Context.PiggyContext();
             try
             {
                 balance = dbContext.Balance.FirstOrDefault();
@@ -173,7 +173,7 @@ namespace Peppa.Workers
         public List<BalanceModel> GetBalances()
         {
             List<BalanceModel> balances = null;
-            Context.AppContext dbContext = new Context.AppContext();
+            Context.PiggyContext dbContext = new Context.PiggyContext();
             try
             {
                 balances = dbContext.Balance.ToList();
@@ -194,7 +194,7 @@ namespace Peppa.Workers
 
         internal void UpdateCost(CostModel updateCost)
         {
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 CostModel currentCost = dbContext.Costs.FirstOrDefault(c => c.Id == updateCost.Id);
                 dbContext.Entry(currentCost).CurrentValues.SetValues(updateCost);
@@ -204,7 +204,7 @@ namespace Peppa.Workers
 
         internal void UpdateCategory(CategoryModel updateCategory)
         {
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 CategoryModel currentCategory = dbContext.Categories.FirstOrDefault(c => c.Id == updateCategory.Id);
                 dbContext.Entry(currentCategory).CurrentValues.SetValues(updateCategory);
@@ -214,7 +214,7 @@ namespace Peppa.Workers
 
         internal void UpdateBalance(BalanceModel updateBalance)
         {
-            using (Context.AppContext dbContext = new Context.AppContext())
+            using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
                 BalanceModel currentBalance = dbContext.Balance.FirstOrDefault(b => b.Id == updateBalance.Id);
                 dbContext.Entry(currentBalance).CurrentValues.SetValues(updateBalance);

@@ -103,8 +103,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
-    <Compile Include="Context\AppContext.cs" />
-    <Compile Include="Contracts\Requests\AccountRequest.cs" />
+    <Compile Include="Context\Entities\Account.cs" />
+    <Compile Include="Context\PiggyContext.cs" />
+    <Compile Include="Contracts\AccountContract.cs" />
     <Compile Include="Controls\DiagramControl.xaml.cs">
       <DependentUpon>DiagramControl.xaml</DependentUpon>
     </Compile>
@@ -118,7 +119,6 @@
     <Compile Include="Dialogs\RegistrationDialog.xaml.cs">
       <DependentUpon>RegistrationDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Account.cs" />
     <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Enums\IdentityResultEnum.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
@@ -126,10 +126,12 @@
     <Compile Include="Fabrics\CostFactory.cs" />
     <Compile Include="Fabrics\CategoryFactory.cs" />
     <Compile Include="Fabrics\DonateFactory.cs" />
-    <Compile Include="Interface\IAccountService.cs" />
+    <Compile Include="Interface\IAuthorization.cs" />
     <Compile Include="Interface\IDetailPage.cs" />
-    <Compile Include="Interface\IUserService.cs" />
+    <Compile Include="Interface\IPiggyRepository.cs" />
     <Compile Include="Interface\Models\IAccountsModel.cs" />
+    <Compile Include="Interface\Services\IAccountService.cs" />
+    <Compile Include="Interface\Services\IUserService.cs" />
     <Compile Include="Localize.cs" />
     <Compile Include="Models\AccountsModel.cs" />
     <Compile Include="Models\BalanceModel.cs" />

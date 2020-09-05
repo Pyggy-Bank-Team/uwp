@@ -5,6 +5,7 @@ using System;
 using Peppa.Dialogs;
 using Peppa.Interface;
 using Peppa.ViewModels.Users;
+using Peppa.Interface.Services;
 
 namespace Peppa.Views.Users
 {

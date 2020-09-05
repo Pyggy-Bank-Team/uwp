@@ -10,6 +10,7 @@ using Peppa.Contracts.Responses;
 using Peppa.Enums;
 using Peppa.Interface;
 using Peppa.Models;
+using Peppa.Interface.Services;
 
 namespace Peppa.Services.PiggyService
 {

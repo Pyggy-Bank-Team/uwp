@@ -1,10 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using Peppa.Context.Entities;
 
 namespace Peppa.Interface.Models
 {
-    public interface IAccountsModel
+    public interface IAccountsModel : IDisposable
     {
-        Task GetAccounts();
+        Task<Account[]> GetAccounts();
         Task CreatedAccount();
         Task DeleteAccount();
         Task UpdateAccount();

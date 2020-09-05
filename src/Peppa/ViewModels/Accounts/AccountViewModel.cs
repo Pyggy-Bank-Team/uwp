@@ -1,5 +1,5 @@
-﻿using Peppa.Entities;
-using Peppa.Enums;
+﻿using Peppa.Enums;
+using Peppa.Context.Entities;
 
 namespace Peppa.ViewModels.Accounts
 {

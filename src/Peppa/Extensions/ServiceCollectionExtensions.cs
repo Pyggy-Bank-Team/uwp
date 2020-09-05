@@ -3,6 +3,7 @@ using Peppa.Interface;
 using Peppa.Services.PiggyService;
 using Peppa.ViewModels.Accounts;
 using Peppa.ViewModels.Users;
+using Peppa.Interface.Services;
 
 namespace Peppa.Extensions
 {

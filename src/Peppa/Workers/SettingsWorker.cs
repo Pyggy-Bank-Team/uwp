@@ -138,6 +138,14 @@ namespace Peppa.Workers
             }
         }
 
+        public bool HaveValue(string key)
+        {
+            lock (_localSettings)
+            {
+                return _localSettings.Values.ContainsKey(key);
+            }
+        }
+
         public static SettingsWorker Current = new SettingsWorker();
     }
 }

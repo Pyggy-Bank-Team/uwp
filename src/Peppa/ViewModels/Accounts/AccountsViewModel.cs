@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Peppa.Contracts.Requests;
 using Peppa.Interface;
 using Peppa.ViewModels.Interface;
+using Peppa.Interface.Services;
+using Peppa.Contracts;
 
 namespace Peppa.ViewModels.Accounts
 {
@@ -35,7 +37,7 @@ namespace Peppa.ViewModels.Accounts
 
         internal async Task UpdateData()
         {
-            var request = new AccountRequest
+            var request = new AccountContract
             {
                 Balance = SelectedItem.Balance,
                 Currency = SelectedItem.Currency,

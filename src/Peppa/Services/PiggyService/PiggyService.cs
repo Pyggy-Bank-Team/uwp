@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using Peppa.Workers;
 
 namespace Peppa.Services.PiggyService
 {
@@ -11,5 +12,7 @@ namespace Peppa.Services.PiggyService
 
         public PiggyService(IHttpClientFactory httpClientFactory)
             => _httpClientFactory = httpClientFactory;
+
+        public bool IsAuthorized => SettingsWorker.Current.HaveValue(Constants.AccessToken);
     }
 }

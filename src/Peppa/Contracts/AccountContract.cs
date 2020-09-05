@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Peppa.Contracts.Requests
+namespace Peppa.Contracts
 {
-    public class AccountRequest
+    public class AccountContract
     {
         [JsonProperty("id")]
         public long Id { get; set; }

@@ -1,34 +1,53 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Peppa.Entities;
 using Peppa.Interface;
+using Peppa.Interface.Models;
+using Peppa.Interface.Services;
 using Peppa.Workers;
+using Peppa.Context.Entities;
 
 namespace Peppa.Models
 {
-    public class AccountsModel
+    public class AccountsModel : IAccountsModel
     {
         private readonly IAccountService _service;
-        private readonly DbWorker _dbWorker;
+        private readonly IPiggyRepository _repository;
 
-        public void AddAccount()
-        {
+        public AccountsModel(IAccountService service, IPiggyRepository repository)
+            => (_service, _repository) = (service, repository);
 
-        }
 
-        public void DeleteAccount()
-        {
-
-        }
-
-        public void UpdateAccount()
-        {
-
-        }
-
-        public Task<Account[]> GetAccounts()
+        public async Task CreatedAccount()
         {
             throw new NotImplementedException();
         }
+
+        public async Task DeleteAccount()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task UpdateAccount()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Account[]> GetAccounts()
+        {
+            //If user is logged in then sync accounts
+            if (SettingsWorker.Current.HaveValue(Constants.AccessToken))
+            {
+                var accounts = await _service.GetAccounts();
+                if (accounts != null)
+                {
+                    
+                }
+            }
+
+            return await _repository.GetAccounts();
+        }
+
+        public void Dispose()
+            => _repository?.Dispose();
     }
 }

@@ -3,9 +3,9 @@ using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
 using Peppa.Models;
 
-namespace Peppa.Interface
+namespace Peppa.Interface.Services
 {
-    public interface IUserService
+    public interface IUserService : IAuthorization
     {
         Task<RegitrationResult> RegistrationUser(UserRequest request);
 
