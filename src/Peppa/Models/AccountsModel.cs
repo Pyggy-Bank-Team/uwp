@@ -30,16 +30,22 @@ namespace Peppa.Models
                     IsArchived = account.IsArchived
                 };
 
-                var isSuccessful = await _service.CreateAccount(request);
+                var createdAccount = await _service.CreateAccount(request);
                 //TODO Add a log about service result
-                if (isSuccessful)
+                if (createdAccount != null)
                 {
-                    //TODO Added in database
-                    return;
+                    account.Id = createdAccount.Id;
+                    account.Balance = createdAccount.Balance;
+                    account.Currency = createdAccount.Currency;
+                    account.Title = createdAccount.Title;
+                    account.Type = createdAccount.Type;
+                    account.IsArchived = createdAccount.IsArchived;
+                    account.IsDeleted = createdAccount.IsDeleted;
+                    account.IsSynchronized = true;
                 }
             }
             
-            //TODO Add case for non-login user
+            await _repository.CreateAccount(account, token);
         }
 
         public async Task DeleteAccount(int id, CancellationToken token)

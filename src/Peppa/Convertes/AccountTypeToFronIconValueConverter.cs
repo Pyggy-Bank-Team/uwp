@@ -12,7 +12,7 @@ namespace Peppa.Convertes
             switch (type)
             {
                 case AccountType.Card:
-                    return "/Assets/Icons/payment.svg";
+                    return "/Assets/Icons/pay.svg";
                 case AccountType.Cash:
                     return "/Assets/Icons/money.svg";
                 default:

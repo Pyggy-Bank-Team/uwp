@@ -15,7 +15,7 @@ namespace Peppa.Services.PiggyService
         {
             var client = _httpClientFactory.CreateClient("GetAccounts");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)SettingsWorker.Current.GetValue(Constants.AccessToken));
-            using (var response = await client.GetAsync($"{BaseUrl}/Accounts"))
+            using (var response = await client.GetAsync($"{BaseUrl}/Accounts?all=true"))
             {
                 return response.IsSuccessStatusCode
                      ? JsonConvert.DeserializeObject<AccountContract[]>(await response.Content.ReadAsStringAsync())
@@ -23,13 +23,15 @@ namespace Peppa.Services.PiggyService
             }
         }
 
-        public async Task<bool> CreateAccount(AccountContract contract)
+        public async Task<AccountContract> CreateAccount(AccountContract contract)
         {
             var client = _httpClientFactory.CreateClient("CreateAccount");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)SettingsWorker.Current.GetValue(Constants.AccessToken));
             using (var response = await client.PostAsync($"{BaseUrl}/Accounts", new StringContent(JsonConvert.SerializeObject(contract), Encoding.UTF8, "application/json")))
             {
-                return response.IsSuccessStatusCode;
+                return response.IsSuccessStatusCode
+                    ? JsonConvert.DeserializeObject<AccountContract>(await response.Content.ReadAsStringAsync())
+                    : null;
             }
 
         }
@@ -38,7 +40,14 @@ namespace Peppa.Services.PiggyService
         {
             var client = _httpClientFactory.CreateClient("UpdateAccount");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)SettingsWorker.Current.GetValue(Constants.AccessToken));
-            using (var response = await client.PutAsync($"{BaseUrl}/Accounts/{contract.Id}", new StringContent(JsonConvert.SerializeObject(contract), Encoding.UTF8, "application/json")))
+
+            var method = new HttpMethod("PATCH");
+            var request = new HttpRequestMessage(method, $"{BaseUrl}/Accounts/{contract.Id}")
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(contract), Encoding.UTF8, "application/json")
+            };
+
+            using (var response = await client.SendAsync(request))
             {
                 return response.IsSuccessStatusCode;
             }

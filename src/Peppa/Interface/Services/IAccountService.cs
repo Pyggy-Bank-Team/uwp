@@ -7,7 +7,7 @@ namespace Peppa.Interface.Services
     {
         Task<AccountContract[]> GetAccounts();
 
-        Task<bool> CreateAccount(AccountContract contract);
+        Task<AccountContract> CreateAccount(AccountContract contract);
 
         Task<bool> UpdateAccount(AccountContract contract);
 
