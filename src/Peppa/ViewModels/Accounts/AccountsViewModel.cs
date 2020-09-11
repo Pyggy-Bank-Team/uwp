@@ -24,7 +24,7 @@ namespace Peppa.ViewModels.Accounts
             var accounts = await _model.GetAccounts(GetToken());
             if (accounts != null)
             {
-                List = new ObservableCollection<AccountViewModel>(accounts.Select(a => new AccountViewModel(a)));
+                List = new ObservableCollection<AccountViewModel>(accounts.Select(a => new AccountViewModel(a)).OrderBy(a => a.IsArchived));
                 RaisePropertiesChanged();
             }
         }

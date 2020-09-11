@@ -112,6 +112,7 @@
     <Compile Include="Controls\MasterDetailView\MasterDetailState.cs" />
     <Compile Include="Controls\MasterDetailView\MasterDetailView.cs" />
     <Compile Include="Controls\PatternTextBox.cs" />
+    <Compile Include="Convertes\AccountTypeToFontValueConvertor.cs" />
     <Compile Include="Convertes\AccountTypeToFronIconValueConverter.cs" />
     <Compile Include="Convertes\ConvertDateTimeOffsetToDateTime.cs" />
     <Compile Include="Convertes\DecimalConverter.cs" />
@@ -215,6 +216,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\Icons\cash.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="piggy-bank-uwp_StoreKey.pfx" />
     <None Include="piggy-bank-uwp_TemporaryKey.pfx" />
     <Compile Include="Services\PiggyService\PiggyService.Accounts.cs" />
@@ -228,8 +232,12 @@
     <Content Include="Assets\BadgeLogo.scale-200.png" />
     <Content Include="Assets\BadgeLogo.scale-400.png" />
     <Content Include="Assets\Icons\bin.svg" />
-    <Content Include="Assets\Icons\money.svg" />
-    <Content Include="Assets\Icons\pay.svg" />
+    <EmbeddedResource Include="Assets\Icons\money.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Icons\pay.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />
