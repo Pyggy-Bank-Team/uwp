@@ -37,6 +37,7 @@ namespace Peppa.Views.Users
         {
             UpdateProgressBar.Visibility = Visibility.Visible;
 
+            //TODO Save base currency
             _dataContext.SaveUserName(LoginText.Text);
             await _dataContext.OnLogin(LoginText.Text, PasswordText.Password);
 

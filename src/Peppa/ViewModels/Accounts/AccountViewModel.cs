@@ -1,13 +1,19 @@
 ﻿using Peppa.Enums;
 using Peppa.Context.Entities;
 using piggy_bank_uwp.Enums;
+using Peppa.Workers;
+using System.Globalization;
 
 namespace Peppa.ViewModels.Accounts
 {
     public class AccountViewModel : BaseViewModel
     {
         public AccountViewModel()
-            => IsNew = true;
+        {
+            IsNew = true;
+            var baseCurrency = SettingsWorker.Current.GetValue(Constants.BaseCurrency);
+            Currency = baseCurrency == null ? RegionInfo.CurrentRegion.ISOCurrencySymbol : (string)baseCurrency;
+        }
 
         internal AccountViewModel(Account model)
         {
