@@ -34,6 +34,9 @@ namespace Peppa.Models
                 //TODO Add a log about service result
                 if (createdAccount != null)
                 {
+                    if (await _repository.HaveAccount(account.Id, token))
+                        await _repository.DeleteAccount(account.Id, token);
+
                     account.Id = createdAccount.Id;
                     account.Balance = createdAccount.Balance;
                     account.Currency = createdAccount.Currency;
@@ -44,7 +47,7 @@ namespace Peppa.Models
                     account.IsSynchronized = true;
                 }
             }
-            
+
             await _repository.CreateAccount(account, token);
         }
 
@@ -60,7 +63,7 @@ namespace Peppa.Models
                     return;
                 }
             }
-            
+
             //TODO Add case for non-login user
         }
 
@@ -85,7 +88,7 @@ namespace Peppa.Models
                     //TODO Added in database
                 }
             }
-            
+
             //TODO Add case for non-login user
         }
 
@@ -110,7 +113,7 @@ namespace Peppa.Models
                             IsDeleted = account.IsDeleted,
                             IsSynchronized = true
                         };
-                        
+
                         if (await _repository.HaveAccount(account.Id, token))
                             await _repository.UpdateAccount(accountEntity, token);
                         else

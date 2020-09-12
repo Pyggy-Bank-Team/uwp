@@ -51,8 +51,7 @@ namespace Peppa.Repositories
             if (existAccount == null)
                 return;
 
-            existAccount.IsDeleted = true;
-            _context.Accounts.Update(existAccount);
+            _context.Accounts.Remove(existAccount);
             await _context.SaveChangesAsync(token);
         }
 

@@ -19,6 +19,7 @@ namespace Peppa.ViewModels.Accounts
             IsDeleted = model.IsDeleted;
             Type = model.Type;
             Id = model.Id;
+            IsSynchronized = model.IsSynchronized;
         }
 
         public Account MakeAccountEntity()
@@ -30,7 +31,8 @@ namespace Peppa.ViewModels.Accounts
                 Currency = Currency,
                 Type = Type,
                 IsArchived = IsArchived,
-                IsDeleted = IsDeleted
+                IsDeleted = IsDeleted,
+                IsSynchronized = IsSynchronized
             };
         
         public string Title { get; set; }
@@ -42,6 +44,8 @@ namespace Peppa.ViewModels.Accounts
         public bool IsArchived { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public bool IsSynchronized { get; set; }
 
         public AccountType Type { get; set; }
 

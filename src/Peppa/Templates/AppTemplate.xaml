@@ -26,7 +26,7 @@
                     <ColumnDefinition Width="0.1*"/>
                     <ColumnDefinition Width="0.3*"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <!--Category-->
                 <Grid Grid.Column="0">
                     <Grid.ColumnDefinitions>
@@ -65,7 +65,7 @@
 
             <Ellipse Grid.Column="0" Fill="{Binding Path=Color, Mode=OneWay}" Height="54" Width="54"
                      HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            
+
             <TextBlock Grid.Column="2" Text="{Binding Path=Title}" FontSize="18" 
                        TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
 
@@ -91,7 +91,7 @@
     </DataTemplate>
 
     <DataTemplate x:Name="ListViewItemBalance">
-        
+
         <Grid>
             <Grid.Resources>
                 <converter:AccountTypeToFronIconValueConverter x:Key="IconConverter"/>
@@ -106,30 +106,42 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>               
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
                 <FontIcon Grid.Column="0" FontFamily="{Binding Path=Type, Converter={StaticResource ResourceKey=FontConverter}}" 
                       Glyph="{Binding Path=Type, Converter={StaticResource ResourceKey=IconConverter}}"/>
 
                 <TextBlock Grid.Column="2" Text="{Binding Path=Title}" FontFamily="18" TextTrimming="CharacterEllipsis"
                        VerticalAlignment="Center" HorizontalAlignment="Left"/>
-
+                
                 <TextBlock Grid.Column="3" Text="{Binding Path=CurrentBalance}" FontFamily="18"
                        VerticalAlignment="Center" HorizontalAlignment="Right"/>
+
+                <FontIcon Grid.Column="5" Glyph="&#xE117;" Foreground="Green" 
+                          Visibility="{Binding Path=IsSynchronized, Converter={StaticResource ResourceKey=CollapsedConverter}}"
+                          ToolTipService.ToolTip="For synchrony you need log in"/>
             </Grid>
 
             <Grid Visibility="{Binding Path=IsArchived, Converter={StaticResource ResourceKey=VisibilityConverter}}">
                 <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <FontIcon Grid.Column="0" Glyph="&#xE74D;" Foreground="Gray"/>
 
                 <TextBlock Grid.Column="2" Text="{Binding Path=Title}" FontFamily="18" TextTrimming="CharacterEllipsis"
                        VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray"/>
+
+                <FontIcon Grid.Column="3" Glyph="&#xE117;" Foreground="Green" 
+                          Visibility="{Binding Path=IsSynchronized, Converter={StaticResource ResourceKey=CollapsedConverter}}"
+                          ToolTipService.ToolTip="For synchrony you need log in"/>
 
                 <TextBlock Grid.Column="3" Text="{Binding Path=CurrentBalance}" FontFamily="18"
                        VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="Gray"/>

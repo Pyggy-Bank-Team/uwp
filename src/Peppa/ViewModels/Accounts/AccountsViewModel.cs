@@ -39,7 +39,7 @@ namespace Peppa.ViewModels.Accounts
         {
             switch (SelectedItem?.Action)
             {
-                case ActionType.Save when SelectedItem?.IsNew == true:
+                case ActionType.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
                     await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetToken());
                     break;
                 case ActionType.Save when SelectedItem?.IsNew == false:
