@@ -107,7 +107,8 @@ namespace Peppa.Models
                             Title = account.Title,
                             Type = account.Type,
                             IsArchived = account.IsArchived,
-                            IsDeleted = account.IsDeleted
+                            IsDeleted = account.IsDeleted,
+                            IsSynchronized = true
                         };
                         
                         if (await _repository.HaveAccount(account.Id, token))

@@ -20,27 +20,45 @@
             <StackPanel Orientation="Vertical">
                 <!--Name-->
                 <TextBox x:Name="TitleTextBox" x:Uid="TitleTextBox" Text="{x:Bind _account.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         FontSize="18" MaxHeight="200" Margin="15"/>
+                         FontSize="18" MaxHeight="200" Margin="15" SizeChanged="OnTitleSizeChanged"/>
 
                 <ComboBox x:Name="Types" Header="Type" SelectedItem="{x:Bind _account.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" MaxHeight="200" Margin="15"
                           Width="{Binding ElementName=TitleTextBox, Path=ActualWidth}"/>
 
-                <ComboBox x:Name="Currencies" Header="Currency *(by default we get currency from account settings)"
+                <Grid>
+                    <ComboBox x:Name="Currencies" Header="Currency"
                           SelectedItem="{x:Bind _account.Currency}" FontSize="18" MaxHeight="200" Margin="15"
                           Width="{Binding ElementName=TitleTextBox, Path=ActualWidth}" IsEnabled="False"/>
+                    <FontIcon Glyph="&#x002A;" FontFamily="Segoe UI" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90 10 0 0" FontSize="20" Foreground="Gray"
+                              ToolTipService.ToolTip="By default we're getting currecny from user settings"/>
+                </Grid>
+                
 
                 <TextBox Header="Currency balance" 
                          Text="{x:Bind _account.Balance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ResourceKey=DecimalConverter}}"
                          FontSize="18" MaxHeight="200" Margin="15"/>
 
-                <ToggleSwitch Header="Archived account" Margin="15" FontSize="18" IsOn="{x:Bind _account.IsArchived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Grid>
+                    <TextBlock Text="Archived account" Margin="15" FontSize="18"/>
+                    <ToggleSwitch OnContent="" OffContent="" FontSize="18" IsOn="{x:Bind _account.IsArchived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Width="60"/>
+                </Grid>
+
 
             </StackPanel>
         </ScrollViewer>
 
         <CommandBar Grid.Row="1">
             <AppBarButton x:Uid="SaveAppBarButton" Icon="Save" Click="OnSaveClick"/>
-            <AppBarButton x:Uid="DeleteAppBarButton" Icon="Delete" Click="OnDeleteClick"/>
+            <AppBarButton x:Uid="DeleteAppBarButton" Icon="Delete">
+                <AppBarButton.Flyout>
+                    <Flyout Placement="TopEdgeAlignedRight">
+                        <StackPanel>
+                            <TextBlock Text="All related operations with this account will be deleted"/>
+                            <Button Content="Yes, I'm want to delete" Margin="0 5 0 0" Click="OnDeleteClick"/>
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>                
+            </AppBarButton>
             <AppBarButton x:Uid="CancelAppBarButton" Icon="Cancel" Click="OnCloseClick"/>
         </CommandBar>
     </Grid>

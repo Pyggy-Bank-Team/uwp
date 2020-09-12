@@ -28,12 +28,6 @@ namespace Peppa.Views.Accounts
             GoBack();
         }
 
-        private void OnDeleteClick(object sender, RoutedEventArgs e)
-        {
-            _account.Action = ActionType.Delete;
-            GoBack();
-        }
-
         private void OnCloseClick(object sender, RoutedEventArgs e)
         {
             _account.Action = ActionType.Cancel;
@@ -44,6 +38,18 @@ namespace Peppa.Views.Accounts
         {
             if (Frame.CanGoBack)
                 Frame.GoBack();
+        }
+
+        private void OnTitleSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Types.Width = e.NewSize.Width;
+            Currencies.Width = e.NewSize.Width;
+        }
+
+        private void OnDeleteClick(object sender, RoutedEventArgs e)
+        {
+            _account.Action = ActionType.Delete;
+            GoBack();
         }
     }
 }
