@@ -26,7 +26,7 @@ namespace Peppa.Workers
         {
             using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
-                dbContext.Categories.Add(category);
+                //dbContext.Categories.Add(category);
                 dbContext.SaveChanges();
             }
         }
@@ -53,7 +53,7 @@ namespace Peppa.Workers
         {
             using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
-                dbContext.Categories.Remove(category);
+                //dbContext.Categories.Remove(category);
                 dbContext.SaveChanges();
             }
         }
@@ -142,7 +142,7 @@ namespace Peppa.Workers
 
             using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
-                categories = new List<CategoryModel>(dbContext.Categories);
+                //categories = new List<CategoryModel>(dbContext.Categories);
             }
 
             return categories;
@@ -206,9 +206,9 @@ namespace Peppa.Workers
         {
             using (Context.PiggyContext dbContext = new Context.PiggyContext())
             {
-                CategoryModel currentCategory = dbContext.Categories.FirstOrDefault(c => c.Id == updateCategory.Id);
-                dbContext.Entry(currentCategory).CurrentValues.SetValues(updateCategory);
-                dbContext.SaveChanges();
+                // CategoryModel currentCategory = dbContext.Categories.FirstOrDefault(c => c.Id == updateCategory.Id);
+                // dbContext.Entry(currentCategory).CurrentValues.SetValues(updateCategory);
+                // dbContext.SaveChanges();
             }
         }
 

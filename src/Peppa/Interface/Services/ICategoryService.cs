@@ -3,7 +3,7 @@ using Peppa.Contracts;
 
 namespace Peppa.Interface.Services
 {
-    public interface ICategoryService
+    public interface ICategoryService : IAuthorization
     {
         Task<CategoryContract[]> GetCategories();
 

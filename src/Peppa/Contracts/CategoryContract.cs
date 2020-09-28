@@ -1,12 +1,13 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Peppa.Enums;
 
 namespace Peppa.Contracts
 {
     public class CategoryContract
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -15,7 +16,7 @@ namespace Peppa.Contracts
         public string HexColor { get; set; }
 
         [JsonProperty("type")]
-        public long Type { get; set; }
+        public CategoryType Type { get; set; }
 
         [JsonProperty("isDeleted")]
         public bool IsDeleted { get; set; }

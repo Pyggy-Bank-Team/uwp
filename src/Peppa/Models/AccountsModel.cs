@@ -122,7 +122,7 @@ namespace Peppa.Models
                 }
             }
 
-            return await _repository.GetAccounts();
+            return await _repository.GetAccounts(token);
         }
 
         public void Dispose()

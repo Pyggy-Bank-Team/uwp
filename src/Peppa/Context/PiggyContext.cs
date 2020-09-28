@@ -20,7 +20,7 @@ namespace Peppa.Context
 
         public DbSet<CostModel> Costs { get; set; }
 
-        public DbSet<CategoryModel> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public DbSet<BalanceModel> Balance { get; set; }
     }

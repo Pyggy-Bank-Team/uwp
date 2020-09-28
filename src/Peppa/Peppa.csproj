@@ -109,6 +109,7 @@
     </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="Context\Entities\Account.cs" />
+    <Compile Include="Context\Entities\Category.cs" />
     <Compile Include="Context\PiggyContext.cs" />
     <Compile Include="Contracts\AccountContract.cs" />
     <Compile Include="Contracts\CategoryContract.cs" />
@@ -129,6 +130,7 @@
     </Compile>
     <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Enums\ActionType.cs" />
+    <Compile Include="Enums\CategoryType.cs" />
     <Compile Include="Enums\IdentityResultEnum.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
@@ -139,12 +141,14 @@
     <Compile Include="Interface\IDetailPage.cs" />
     <Compile Include="Interface\IPiggyRepository.cs" />
     <Compile Include="Interface\Models\IAccountsModel.cs" />
+    <Compile Include="Interface\Models\ICategoriesModel.cs" />
     <Compile Include="Interface\Services\IAccountService.cs" />
     <Compile Include="Interface\Services\ICategoryService.cs" />
     <Compile Include="Interface\Services\IUserService.cs" />
     <Compile Include="Localize.cs" />
     <Compile Include="Models\AccountsModel.cs" />
     <Compile Include="Models\BalanceModel.cs" />
+    <Compile Include="Models\CategoriesModel.cs" />
     <Compile Include="Models\CostModel.cs" />
     <Compile Include="Interface\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
