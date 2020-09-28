@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Peppa.ViewModels.Interface;
 using Peppa.Interface.Models;
@@ -56,9 +55,6 @@ namespace Peppa.ViewModels.Accounts
             RaisePropertyChanged(nameof(List));
             RaisePropertyChanged(nameof(TotalBalance));
         }
-
-        private CancellationToken GetToken()
-            => new CancellationTokenSource(TimeSpan.FromMinutes(1)).Token;
 
         public string TotalBalance
         {

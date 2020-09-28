@@ -7,9 +7,9 @@ namespace Peppa.Interface.Models
 {
     public interface ICategoriesModel : IDisposable
     {
-        Task<Category[]> GetAccounts(CancellationToken token);
-        Task CreatedAccount(Account account, CancellationToken token);
-        Task DeleteAccount(int id, CancellationToken token);
-        Task UpdateAccount(Account account, CancellationToken token);
+        Task<Category[]> GetCategories(CancellationToken token);
+        Task CreateCategory(Category category, CancellationToken token);
+        Task DeleteCategory(int id, CancellationToken token);
+        Task UpdateCategory(Category category, CancellationToken token);
     }
 }

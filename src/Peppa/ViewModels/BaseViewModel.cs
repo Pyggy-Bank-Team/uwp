@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Reflection;
+using System.Threading;
 
 namespace Peppa.ViewModels
 {
@@ -26,6 +27,9 @@ namespace Peppa.ViewModels
                 RaisePropertyChanged(property.Name);
             }
         }
+        
+        internal CancellationToken GetToken(int minutes = 1)
+            => new CancellationTokenSource(TimeSpan.FromMinutes(minutes)).Token;
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

@@ -168,6 +168,7 @@
     <Compile Include="ViewModels\Accounts\AccountsViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Categories\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Diagram\DataDiagramViewModel.cs" />
@@ -178,7 +179,7 @@
     <Compile Include="ViewModels\Interface\IToastViewModel.cs" />
     <Compile Include="ViewModels\Interface\IUpdateable.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
     <Compile Include="Views\Accounts\AccountsPage.xaml.cs">
       <DependentUpon>AccountsPage.xaml</DependentUpon>
     </Compile>
