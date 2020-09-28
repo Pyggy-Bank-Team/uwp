@@ -22,9 +22,14 @@
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
+    <AppInstallerUpdateFrequency>0</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
-    <PackageCertificateThumbprint>6720EB79DF8E9626984FDD70B9EDC1E7FEB2D37B</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>
+    </PackageCertificateThumbprint>
+    <AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -106,6 +111,7 @@
     <Compile Include="Context\Entities\Account.cs" />
     <Compile Include="Context\PiggyContext.cs" />
     <Compile Include="Contracts\AccountContract.cs" />
+    <Compile Include="Contracts\CategoryContract.cs" />
     <Compile Include="Controls\DiagramControl.xaml.cs">
       <DependentUpon>DiagramControl.xaml</DependentUpon>
     </Compile>
@@ -134,6 +140,7 @@
     <Compile Include="Interface\IPiggyRepository.cs" />
     <Compile Include="Interface\Models\IAccountsModel.cs" />
     <Compile Include="Interface\Services\IAccountService.cs" />
+    <Compile Include="Interface\Services\ICategoryService.cs" />
     <Compile Include="Interface\Services\IUserService.cs" />
     <Compile Include="Localize.cs" />
     <Compile Include="Models\AccountsModel.cs" />
@@ -219,6 +226,7 @@
     <None Include="piggy-bank-uwp_StoreKey.pfx" />
     <None Include="piggy-bank-uwp_TemporaryKey.pfx" />
     <Compile Include="Services\PiggyService\PiggyService.Accounts.cs" />
+    <Compile Include="Services\PiggyService\PiggyBank.Categories.cs" />
     <PRIResource Include="Strings\ru-RU\Resources.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>

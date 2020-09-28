@@ -33,7 +33,6 @@ namespace Peppa.Services.PiggyService
                     ? JsonConvert.DeserializeObject<AccountContract>(await response.Content.ReadAsStringAsync())
                     : null;
             }
-
         }
 
         public async Task<bool> UpdateAccount(AccountContract contract)
