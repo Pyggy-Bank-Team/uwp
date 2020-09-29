@@ -9,7 +9,6 @@ using Peppa.Fabrics;
 using Peppa.Models;
 using Peppa.Services;
 using Peppa.ViewModels.Accounts;
-using Peppa.ViewModels.Category;
 using Peppa.ViewModels.Diagram;
 using Peppa.ViewModels.Donate;
 using Peppa.ViewModels.Interface;
@@ -25,7 +24,7 @@ namespace Peppa.ViewModels
         private MainViewModel()
         {
             Costs = new ObservableCollection<CostViewModel>();
-            Categories = new ObservableCollection<CategoryViewModel>();
+            //Categories = new ObservableCollection<CategoryViewModel>();
             DbWorker = DbWorker.Current;
             //Accounts = new AccountsViewModel();
             Diagram = new DiagramViewModel();
@@ -38,28 +37,28 @@ namespace Peppa.ViewModels
 
             List<CategoryModel> categories = null;
 
-            if (DbWorker.GetCategories().Count == 0)
-            {
-                categories = CategoryFactory.GetCategories().ToList();
-                foreach (var category in categories)
-                {
-                    DbWorker.AddCategory(category);
-                }
-            }
-            else
-            {
-                categories = DbWorker.GetCategories();
-            }
+            //if (DbWorker.GetCategories().Count == 0)
+            //{
+            //    categories = CategoryFactory.GetCategories().ToList();
+            //    foreach (var category in categories)
+            //    {
+            //        DbWorker.AddCategory(category);
+            //    }
+            //}
+            //else
+            //{
+            //    categories = DbWorker.GetCategories();
+            //}
 
-            foreach (var category in categories)
-            {
-                Categories.Add(new CategoryViewModel(category));
-            }
+            //foreach (var category in categories)
+            //{
+            //    //Categories.Add(new CategoryViewModel(category));
+            //}
 
-            foreach (var cost in DbWorker.GetCosts().Take(TOTAL_COUNT_COSTS))
-            {
-                Costs.Add(new CostViewModel(cost));
-            }
+            //foreach (var cost in DbWorker.GetCosts().Take(TOTAL_COUNT_COSTS))
+            //{
+            //    Costs.Add(new CostViewModel(cost));
+            //}
 
             IsInit = true;
         }
@@ -81,21 +80,21 @@ namespace Peppa.ViewModels
 
         public void UpdateData()
         {
-            List<CategoryModel> categories = DbWorker.GetCategories();
+            //List<CategoryModel> categories = DbWorker.GetCategories();
 
-            Categories.Clear();
-            foreach (var category in categories)
-            {
-                Categories.Add(new CategoryViewModel(category));
-            }
+            //Categories.Clear();
+            //foreach (var category in categories)
+            //{
+            //    Categories.Add(new CategoryViewModel(category));
+            //}
 
-            Costs.Clear();
-            foreach (var cost in DbWorker.GetCosts().Take(TOTAL_COUNT_COSTS))
-            {
-                Costs.Add(new CostViewModel(cost));
-            }
+            //Costs.Clear();
+            //foreach (var cost in DbWorker.GetCosts().Take(TOTAL_COUNT_COSTS))
+            //{
+            //    Costs.Add(new CostViewModel(cost));
+            //}
 
-            Accounts.UpdateData();
+            //Accounts.UpdateData();
         }
 
         internal async Task FetchCosts()
@@ -176,40 +175,40 @@ namespace Peppa.ViewModels
 
         #region Category
 
-        internal Task AddCategory(CategoryViewModel newCategory)
-        {
-            return Task.Factory.StartNew(() =>
-            {
-                App.RunUIAsync(() =>
-                {
-                    Categories.Add(newCategory);
-                });
+        //internal Task AddCategory(CategoryViewModel newCategory)
+        //{
+        //    return Task.Factory.StartNew(() =>
+        //    {
+        //        App.RunUIAsync(() =>
+        //        {
+        //            Categories.Add(newCategory);
+        //        });
 
-                DbWorker.AddCategory(newCategory.Model);
-            });
-        }
+        //        DbWorker.AddCategory(newCategory.Model);
+        //    });
+        //}
 
-        internal Task UpdateCategory(CategoryViewModel updateTag)
-        {
-            return Task.Factory.StartNew(() =>
-            {
-                updateTag.Update();
-                DbWorker.UpdateCategory(updateTag.Model);
-            });
-        }
+        //internal Task UpdateCategory(CategoryViewModel updateTag)
+        //{
+        //    return Task.Factory.StartNew(() =>
+        //    {
+        //        updateTag.Update();
+        //        DbWorker.UpdateCategory(updateTag.Model);
+        //    });
+        //}
 
-        internal Task DeleteCategory(CategoryViewModel category)
-        {
-            return Task.Factory.StartNew(() =>
-            {
-                App.RunUIAsync(() =>
-                {
-                    Categories.Remove(category);
-                });
+        //internal Task DeleteCategory(CategoryViewModel category)
+        //{
+        //    return Task.Factory.StartNew(() =>
+        //    {
+        //        App.RunUIAsync(() =>
+        //        {
+        //            Categories.Remove(category);
+        //        });
 
-                DbWorker.RemoveCategory(category.Model);
-            });
-        }
+        //        DbWorker.RemoveCategory(category.Model);
+        //    });
+        //}
 
         #endregion
 
@@ -258,7 +257,7 @@ namespace Peppa.ViewModels
 
         public ObservableCollection<CostViewModel> Costs { get; }
 
-        public ObservableCollection<CategoryViewModel> Categories { get; }
+        //public ObservableCollection<CategoryViewModel> Categories { get; }
 
         public AccountsViewModel Accounts { get; }
 
@@ -270,7 +269,7 @@ namespace Peppa.ViewModels
 
         public bool CanShowToast => SettingsWorker.Current.GetNotificatinsSetting() && ((DateTime.UtcNow - SettingsWorker.Current.GetLastTimeShow())?.Days ?? DAY_REMINDER - 1) > DAY_REMINDER;
 
-        public bool HaveCategories => Categories.GetEnumerator().MoveNext();
+        //public bool HaveCategories => Categories.GetEnumerator().MoveNext();
 
         public static MainViewModel Current = new MainViewModel();
     }

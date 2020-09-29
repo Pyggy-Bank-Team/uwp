@@ -7,6 +7,7 @@ using Peppa.ViewModels;
 using Peppa.Views.Accounts;
 using Peppa.Views.Donate;
 using Peppa.Views.Users;
+using Peppa.Views.Categories;
 
 namespace Peppa.Views
 {
@@ -62,8 +63,8 @@ namespace Peppa.Views
                     //NavView.Header = Localize.GetTranslateByKey(Localize.Costs);
                     break;
                 case Constants.categories:
-                    //ContentFrame.Navigate(typeof(CategoriesPage));
-                    //NavView.Header = Localize.GetTranslateByKey(Localize.Categories);
+                    ContentFrame.Navigate(typeof(CategoriesPage));
+                    NavView.Header = Localize.GetTranslateByKey(Localize.Categories);
                     break;
                 case Constants.diagrams:
                     //ContentFrame.Navigate(typeof(DiagramPage), _mainViewModel.Diagram);

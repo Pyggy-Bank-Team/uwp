@@ -5,7 +5,6 @@ using Windows.UI.Xaml.Navigation;
 using Peppa.Services;
 using Peppa.ViewModels;
 using Peppa.ViewModels.Accounts;
-using Peppa.ViewModels.Category;
 using Peppa.ViewModels.Operations;
 
 namespace Peppa.Views.Operations
@@ -22,19 +21,19 @@ namespace Peppa.Views.Operations
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _cost = e.Parameter as CostViewModel;
-            DatePicker.Date = _cost.DateOffset;
-            CategoriesComboBox.ItemsSource = MainViewModel.Current.Categories;
-            BalancesComboBox.ItemsSource = MainViewModel.Current.Accounts.List;
+            //_cost = e.Parameter as CostViewModel;
+            //DatePicker.Date = _cost.DateOffset;
+            ////CategoriesComboBox.ItemsSource = MainViewModel.Current.Categories;
+            //BalancesComboBox.ItemsSource = MainViewModel.Current.Accounts.List;
 
-            if (!_cost.IsNew)
-            {
-                CategoriesComboBox.SelectedItem = MainViewModel.Current.Categories.FirstOrDefault(t => t.Id == _cost.CategoryId);
-               // BalancesComboBox.SelectedItem = MainViewModel.Current.Accounts.List.FirstOrDefault(b=>b.Id == _cost.BalanceId);
-                CostTextBox.Text = _cost.Cost.ToString();
-            }
+            //if (!_cost.IsNew)
+            //{
+            //    //CategoriesComboBox.SelectedItem = MainViewModel.Current.Categories.FirstOrDefault(t => t.Id == _cost.CategoryId);
+            //   // BalancesComboBox.SelectedItem = MainViewModel.Current.Accounts.List.FirstOrDefault(b=>b.Id == _cost.BalanceId);
+            //    //CostTextBox.Text = _cost.Cost.ToString();
+            //}
 
-            _isInit = true;
+            //_isInit = true;
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -46,37 +45,37 @@ namespace Peppa.Views.Operations
 
         private async void OnSaveClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            if(CategoriesComboBox.SelectedItem == null)
-            {
-                await DialogService
-                    .GetInformationDialog(Localize.GetTranslateByKey(Localize.WarringCostContent))
-                    .ShowAsync();
+            //if(CategoriesComboBox.SelectedItem == null)
+            //{
+            //    await DialogService
+            //        .GetInformationDialog(Localize.GetTranslateByKey(Localize.WarringCostContent))
+            //        .ShowAsync();
 
-                return;
-            }
+            //    return;
+            //}
 
-            if(BalancesComboBox.SelectedItem == null)
-            {
-                await DialogService
-                    .GetInformationDialog(Localize.GetTranslateByKey(Localize.WarringBalanceCostContent))
-                    .ShowAsync();
-                return;
-            }
+            //if(BalancesComboBox.SelectedItem == null)
+            //{
+            //    await DialogService
+            //        .GetInformationDialog(Localize.GetTranslateByKey(Localize.WarringBalanceCostContent))
+            //        .ShowAsync();
+            //    return;
+            //}
 
-            if (_cost.IsNew)
-            {
-                _cost.IsNew = false;
-                await MainViewModel.Current.AddCost(_cost);
-            }
-            else
-            {
-                await MainViewModel.Current.UpdateCost(_cost);
-            }
+            //if (_cost.IsNew)
+            //{
+            //    _cost.IsNew = false;
+            //    await MainViewModel.Current.AddCost(_cost);
+            //}
+            //else
+            //{
+            //    await MainViewModel.Current.UpdateCost(_cost);
+            //}
 
-            if (Frame.CanGoBack)
-            {
-                Frame.GoBack();
-            }
+            //if (Frame.CanGoBack)
+            //{
+            //    Frame.GoBack();
+            //}
         }
 
         private void OnCloseClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -93,9 +92,9 @@ namespace Peppa.Views.Operations
             if (!_isInit)
                 return;
 
-            var selectedCategory = e.AddedItems[0] as CategoryViewModel;
+            //var selectedCategory = e.AddedItems[0] as CategoryViewModel;
 
-            _cost.ChangedCategory(selectedCategory?.Id);
+            //_cost.ChangedCategory(selectedCategory?.Id);
         }
 
         private async void OnDeleteClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -119,20 +118,20 @@ namespace Peppa.Views.Operations
 
         private void OnCostTextChanged(object sender, TextChangedEventArgs e)
         {
-           if (String.IsNullOrEmpty(CostTextBox.Text))
-                return;
+           //if (String.IsNullOrEmpty(CostTextBox.Text))
+           //     return;
 
-            int value;
-            bool canSet = Int32.TryParse(CostTextBox.Text, out value);
+           // int value;
+           // bool canSet = Int32.TryParse(CostTextBox.Text, out value);
 
-            if (canSet)
-            {
-                _cost.Cost = value;
-            }
-            else
-            {
-                _cost.Cost = 0;
-            }
+           // if (canSet)
+           // {
+           //     _cost.Cost = value;
+           // }
+           // else
+           // {
+           //     _cost.Cost = 0;
+           // }
         }
 
         private void OnBalanceSelectionChanged(object sender, SelectionChangedEventArgs e)

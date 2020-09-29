@@ -1,21 +1,17 @@
-﻿using System.Linq;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 using System;
 using Peppa.Services;
-using Peppa.ViewModels;
-using Peppa.ViewModels.Category;
-using Peppa.Extensions;
 
 namespace Peppa.Views.Categories
 {
 
     public sealed partial class EditCategoryPage : Page
     {
-        private CategoryViewModel _category;
+        //private CategoryViewModel _category;
 
         public EditCategoryPage()
         {
@@ -24,27 +20,27 @@ namespace Peppa.Views.Categories
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _category = e.Parameter as CategoryViewModel;
+           // _category = e.Parameter as CategoryViewModel;
 
-            if (!_category.IsNew)
-            {
-                foreach (Ellipse item in ColorsGridView.Items)
-                {
-                    if (item.Tag.ToString() == _category.Color)
-                        ColorsGridView.SelectedItem = item;
-                }
-            }
+            //if (!_category.IsNew)
+            //{
+            //    foreach (Ellipse item in ColorsGridView.Items)
+            //    {
+            //        if (item.Tag.ToString() == _category.Color)
+            //            ColorsGridView.SelectedItem = item;
+            //    }
+            //}
         }
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
         {
-            if(!_category.IsNew)
-                MainViewModel.Current.DeleteCategory(_category);
+            //if(!_category.IsNew)
+            //    MainViewModel.Current.DeleteCategory(_category);
 
-            if (Frame.CanGoBack)
-            {
-                Frame.GoBack();
-            }
+            //if (Frame.CanGoBack)
+            //{
+            //    Frame.GoBack();
+            //}
         }
 
         private async void OnSaveClick(object sender, RoutedEventArgs e)
@@ -58,26 +54,26 @@ namespace Peppa.Views.Categories
                 return;
             }
 
-            if (_category.IsNew)
-            {
-                _category.IsNew = false;
-                await MainViewModel.Current.AddCategory(_category);
-            }
-            else
-            {
-               await MainViewModel.Current.UpdateCategory(_category);
-            }
+            //if (_category.IsNew)
+            //{
+            //    _category.IsNew = false;
+            //    await MainViewModel.Current.AddCategory(_category);
+            //}
+            //else
+            //{
+            //   await MainViewModel.Current.UpdateCategory(_category);
+            //}
 
-            if (Frame.CanGoBack)
-            {
-                Frame.GoBack();
-            }
+            //if (Frame.CanGoBack)
+            //{
+            //    Frame.GoBack();
+            //}
         }
 
         private void OnColorSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItemBrush = (e.AddedItems[0] as Ellipse).Fill as SolidColorBrush;
-            _category.Color = selectedItemBrush.ToColor();
+            //_category.Color = selectedItemBrush.ToColor();
         }
 
         private void OnCloseClick(object sender, RoutedEventArgs e)

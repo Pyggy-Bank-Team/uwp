@@ -24,22 +24,23 @@ namespace Peppa.Models
                 var categories = await _service.GetCategories();
                 if (categories != null)
                 {
-                    foreach (var account in categories)
+                    foreach (var category in categories)
                     {
-                        var accountEntity = new Category
+                        var categoryEntity = new Category
                         {
-                            Id = account.Id,
-                            Title = account.Title,
-                            Type = account.Type,
-                            IsArchived = account.IsArchived,
-                            IsDeleted = account.IsDeleted,
+                            Id = category.Id,
+                            Title = category.Title,
+                            HexColor = category.HexColor,
+                            Type = category.Type,
+                            IsArchived = category.IsArchived,
+                            IsDeleted = category.IsDeleted,
                             IsSynchronized = true
                         };
 
-                        if (await _repository.HaveCategories(account.Id, token))
-                            await _repository.UpdateCategory(accountEntity, token);
+                        if (await _repository.HaveCategories(category.Id, token))
+                            await _repository.UpdateCategory(categoryEntity, token);
                         else
-                            await _repository.CreateCategory(accountEntity, token);
+                            await _repository.CreateCategory(categoryEntity, token);
                     }
                 }
             }

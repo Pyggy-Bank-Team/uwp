@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="CategoriesListView" Grid.Row="0" ItemsSource="{Binding Path=Categories}"
+        <ListView x:Name="CategoriesListView" Grid.Row="0" ItemsSource="{Binding Path=List}"
                   ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
                   ItemTemplate="{StaticResource ResourceKey=ListViewItemCategory}"
                   IsItemClickEnabled="True" SelectionMode="Single" ItemClick="OnCategoryItemClick"/>

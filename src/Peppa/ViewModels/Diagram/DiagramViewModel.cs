@@ -26,22 +26,22 @@ namespace Peppa.ViewModels.Diagram
 
             Datas.Clear();
 
-            foreach (var category in MainViewModel.Current.Categories)
-            {
-                var costsByCategory = costs.Where(c => c.CategoryId == category.Id);
+            //foreach (var category in MainViewModel.Current.Categories)
+            //{
+            //    var costsByCategory = costs.Where(c => c.CategoryId == category.Id);
 
-                if (costsByCategory.Count() > 0)
-                {
-                    double sumInCategory = costsByCategory.Sum(c => c.Cost);
-                    Datas.Add(
-                        new DataDiagramViewModel
-                        {
-                            Value = (sumInCategory / AllCosts) * 100,
-                            Color = category.Color,
-                            Title = category.Title
-                        });
-                }
-            }
+            //    if (costsByCategory.Count() > 0)
+            //    {
+            //        double sumInCategory = costsByCategory.Sum(c => c.Cost);
+            //        Datas.Add(
+            //            new DataDiagramViewModel
+            //            {
+            //                Value = (sumInCategory / AllCosts) * 100,
+            //                Color = category.Color,
+            //                Title = category.Title
+            //            });
+            //    }
+            //}
         }
 
         public void Finalization()
@@ -55,22 +55,22 @@ namespace Peppa.ViewModels.Diagram
 
             Datas.Clear();
 
-            foreach (var category in MainViewModel.Current.Categories)
-            {
-                var tempCosts = costs.Where(c => c.CategoryId == category.Id);
+            //foreach (var category in MainViewModel.Current.Categories)
+            //{
+            //    var tempCosts = costs.Where(c => c.CategoryId == category.Id);
 
-                if (tempCosts.Count() > 0)
-                {
-                    double sumInCategory = tempCosts.Sum(c => c.Cost);
-                    Datas.Add(
-                        new DataDiagramViewModel
-                        {
-                            Value = (sumInCategory / AllCosts) * 100,
-                            Color = category.Color,
-                            Title = category.Title
-                        });
-                }
-            }
+            //    if (tempCosts.Count() > 0)
+            //    {
+            //        double sumInCategory = tempCosts.Sum(c => c.Cost);
+            //        Datas.Add(
+            //            new DataDiagramViewModel
+            //            {
+            //                Value = (sumInCategory / AllCosts) * 100,
+            //                Color = category.Color,
+            //                Title = category.Title
+            //            });
+            //    }
+            //}
         }
 
         public Task UpdateTile()

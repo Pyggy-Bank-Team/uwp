@@ -7,6 +7,7 @@ using Peppa.Interface.Models;
 using Peppa.Models;
 using Peppa.Interface;
 using Peppa.Repositories;
+using Peppa.ViewModels.Categories;
 
 namespace Peppa.Extensions
 {
@@ -18,6 +19,9 @@ namespace Peppa.Extensions
             services.AddScoped<IUserService, PiggyService>();
             services.AddScoped<IAccountsModel, AccountsModel>();
             services.AddScoped<IPiggyRepository, PiggyRepository>();
+            services.AddScoped<ICategoryService, PiggyService>();
+            services.AddScoped<ICategoriesModel, CategoriesModel>();
+            services.AddSingleton<CategoriesViewModel>();
             services.AddSingleton<AccountsViewModel>();
             services.AddSingleton<UserViewModel>();
             services.AddHttpClient();

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Linq;
 using Peppa.Models;
 using Peppa.Utilities;
-using Peppa.ViewModels.Category;
 using Peppa.ViewModels.Interface;
 
 namespace Peppa.ViewModels.Operations
@@ -139,13 +137,13 @@ namespace Peppa.ViewModels.Operations
             }
         }
 
-        public CategoryViewModel Category
-        {
-            get
-            {
-                return MainViewModel.Current.Categories.FirstOrDefault(c => c.Id == CategoryId);
-            }
-        }
+        //public CategoryViewModel Category
+        //{
+        //    get
+        //    {
+        //        return MainViewModel.Current.Categories.FirstOrDefault(c => c.Id == CategoryId);
+        //    }
+        //}
 
         internal CostModel Model { get; }
     }

@@ -43,14 +43,14 @@ namespace Peppa.Views.Operations
 
         private async void OnAddedCostClick(object sender, RoutedEventArgs e)
         {
-            if (!MainViewModel.Current.HaveCategories)
-            {
-                await DialogService
-                    .GetInformationDialog(Localize.GetTranslateByKey(Localize.WarringCategoriesContent))
-                    .ShowAsync();
+            //if (!MainViewModel.Current.HaveCategories)
+            //{
+            //    await DialogService
+            //        .GetInformationDialog(Localize.GetTranslateByKey(Localize.WarringCategoriesContent))
+            //        .ShowAsync();
 
-                return;
-            }
+            //    return;
+            //}
 
             Frame.Navigate(typeof(EditCostPage), new CostViewModel());
         }

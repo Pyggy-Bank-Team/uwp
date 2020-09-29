@@ -1,22 +1,27 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Peppa.ViewModels;
-using Peppa.ViewModels.Category;
+using Peppa.ViewModels.Categoies;
+using Peppa.ViewModels.Categories;
 
 namespace Peppa.Views.Categories
 {
     public sealed partial class CategoriesPage : Page
     {
+        private CategoriesViewModel _dataContext;
+
         public CategoriesPage()
         {
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            CategoriesListView.ItemsSource = MainViewModel.Current.Categories;
+            _dataContext = (CategoriesViewModel)App.ServiceProvider.GetService(typeof(CategoriesViewModel));
+            DataContext = _dataContext;
+
+            await _dataContext.Initialization();
         }
 
         private void OnAddedCategoryClick(object sender, RoutedEventArgs e)

@@ -63,7 +63,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <Ellipse Grid.Column="0" Fill="{Binding Path=Color, Mode=OneWay}" Height="54" Width="54"
+            <Ellipse Grid.Column="0" Fill="{Binding Path=HexColor, Mode=OneWay}" Height="54" Width="54"
                      HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             <TextBlock Grid.Column="2" Text="{Binding Path=Title}" FontSize="18" 
