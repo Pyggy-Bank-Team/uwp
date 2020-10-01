@@ -8,16 +8,19 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="CategoriesListView" Grid.Row="0" ItemsSource="{Binding Path=List}"
+        <ProgressBar x:Name="UpdateProgressRing" Grid.Row="0" IsIndeterminate="True" Height="18" Visibility="Collapsed"/>
+
+        <ListView x:Name="CategoriesListView" Grid.Row="1" ItemsSource="{Binding Path=List}"
                   ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
                   ItemTemplate="{StaticResource ResourceKey=ListViewItemCategory}"
                   IsItemClickEnabled="True" SelectionMode="Single" ItemClick="OnCategoryItemClick"/>
 
-        <CommandBar Grid.Row="1">
+        <CommandBar Grid.Row="2">
             <AppBarButton x:Uid="AddCategoryAppBarButton" Icon="Add" Click="OnAddedCategoryClick"/>
         </CommandBar>
     </Grid>

@@ -5,6 +5,9 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 using System;
 using Peppa.Services;
+using Peppa.ViewModels.Categoies;
+using Peppa.Enums;
+using piggy_bank_uwp.Dialogs;
 
 namespace Peppa.Views.Categories
 {
@@ -12,6 +15,7 @@ namespace Peppa.Views.Categories
     public sealed partial class EditCategoryPage : Page
     {
         //private CategoryViewModel _category;
+        private CategoryViewModel _category;
 
         public EditCategoryPage()
         {
@@ -20,16 +24,17 @@ namespace Peppa.Views.Categories
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-           // _category = e.Parameter as CategoryViewModel;
+            _category = e.Parameter as CategoryViewModel;
+            Types.ItemsSource = Enum.GetValues(typeof(CategoryType));
 
-            //if (!_category.IsNew)
-            //{
-            //    foreach (Ellipse item in ColorsGridView.Items)
-            //    {
-            //        if (item.Tag.ToString() == _category.Color)
-            //            ColorsGridView.SelectedItem = item;
-            //    }
-            //}
+            if(!_category.IsNew)
+            {
+                foreach (Ellipse item in ColorsGridView.Items)
+                {
+                    if (item.Tag.ToString().ToLower() == _category.HexColor)
+                        ColorsGridView.SelectedItem = item;
+                }
+            }
         }
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
@@ -82,6 +87,22 @@ namespace Peppa.Views.Categories
             {
                 Frame.GoBack();
             }
+        }
+
+        private void OnTitleSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Types.Width = e.NewSize.Width;
+        }
+
+        private void OnColorsGridViewSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ChooseColorButton.Width = e.NewSize.Width;
+        }
+
+        private async void OnChooseColorButtonClicked(object sender, RoutedEventArgs e)
+        {
+            var dialog = new ColorPickerDialog();
+            await dialog.ShowAsync();
         }
     }
 }

@@ -14,54 +14,58 @@
 
         <StackPanel Grid.Row="0" Orientation="Vertical">
             <!--Title-->
-            <!--<TextBox x:Uid="TitleTextBox" Text="{x:Bind _category.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     FontSize="18" Margin="15"/>
+            <TextBox x:Uid="TitleTextBox" Text="{x:Bind _category.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     FontSize="18" Margin="15" SizeChanged="OnTitleSizeChanged"/>
             
-            --><!--Description--><!--
-            <TextBox x:Uid="DescriptionTextBox" Text="{x:Bind _category.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     FontSize="18" Margin="15"/>-->
+            <!--Description-->
+            <ComboBox x:Name="Types" Header="Type" SelectedItem="{x:Bind _category.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" MaxHeight="200" Margin="15"
+                          Width="{Binding ElementName=TitleTextBox, Path=ActualWidth}"/>
 
-            <GridView x:Name="ColorsGridView" SelectionMode="Single" MaxWidth="500" HorizontalAlignment="Left" 
-                      Margin="20 0 0 0" Padding="10" ItemContainerStyle="{StaticResource ElipseSelectedItem}" SelectionChanged="OnColorSelectionChanged">
-                <GridView.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock x:Uid="ColorTextBlock" Style="{StaticResource HeaderTextBlock}"/>
-                    </DataTemplate>
-                </GridView.HeaderTemplate>
-                <Ellipse Tag="#FFFFB900" Height="54" Width="54" Fill="#ffffb900"/>
-                <Ellipse Tag="#FFFF8C00" Height="54" Width="54" Fill="#ffff8c00"/>
-                <Ellipse Tag="#FFF7630C" Height="54" Width="54" Fill="#fff7630c"/>
-                <Ellipse Tag="#FFCA5010" Height="54" Width="54" Fill="#ffca5010"/>
-                <Ellipse Tag="#FFDA3B01" Height="54" Width="54" Fill="#ffda3b01"/>
-                <Ellipse Tag="#FFEF6950" Height="54" Width="54" Fill="#ffef6950"/>
-                <Ellipse Tag="#FFE74856" Height="54" Width="54" Fill="#ffe74856"/>
-                <Ellipse Tag="#FFE81123" Height="54" Width="54" Fill="#ffe81123"/>
-                <Ellipse Tag="#FFEA005E" Height="54" Width="54" Fill="#ffea005e"/>
-                <Ellipse Tag="#FFC30052" Height="54" Width="54" Fill="#ffc30052"/>
-                <Ellipse Tag="#FFE3008C" Height="54" Width="54" Fill="#ffe3008c"/>
-                <Ellipse Tag="#FFBF0077" Height="54" Width="54" Fill="#ffbf0077"/>
-                <Ellipse Tag="#FF0078D7" Height="54" Width="54" Fill="#ff0078d7"/>
-                <Ellipse Tag="#FF0063B1" Height="54" Width="54" Fill="#ff0063b1"/>
-                <Ellipse Tag="#FF8E8CD8" Height="54" Width="54" Fill="#ff8e8cd8"/>
-                <Ellipse Tag="#FF6B69D6" Height="54" Width="54" Fill="#ff6b69d6"/>
-                <Ellipse Tag="#FF8764B8" Height="54" Width="54" Fill="#ff8764b8"/>
-                <Ellipse Tag="#FF881798" Height="54" Width="54" Fill="#ff881798"/>
-                <Ellipse Tag="#FF0099BC" Height="54" Width="54" Fill="#ff0099bc"/>
-                <Ellipse Tag="#FF2D7D9A" Height="54" Width="54" Fill="#ff2d7d9a"/>
-                <Ellipse Tag="#FF038387" Height="54" Width="54" Fill="#ff038387"/>
-                <Ellipse Tag="#FF00B294" Height="54" Width="54" Fill="#ff00b294"/>
-                <Ellipse Tag="#FF018574" Height="54" Width="54" Fill="#ff018574"/>
-                <Ellipse Tag="#FF00CC6A" Height="54" Width="54" Fill="#ff00cc6a"/>
-                <Ellipse Tag="#FF10893E" Height="54" Width="54" Fill="#ff10893e"/>
-                <Ellipse Tag="#FF107C10" Height="54" Width="54" Fill="#ff107c10"/>
-                <Ellipse Tag="#FF498205" Height="54" Width="54" Fill="#ff498205"/>
-                <Ellipse Tag="#FF486860" Height="54" Width="54" Fill="#ff486860"/>
-                <Ellipse Tag="#FF515C6B" Height="54" Width="54" Fill="#ff515c6b"/>
-                <Ellipse Tag="#FF7E735F" Height="54" Width="54" Fill="#ff7e735f"/>
-                <Ellipse Tag="#FF847545" Height="54" Width="54" Fill="#ff847545"/>
-                <Ellipse Tag="#FF525E54" Height="54" Width="54" Fill="#ff525e54"/>
+            <Grid>
+                <TextBlock Text="Archived account" Margin="15" FontSize="18"/>
+                <ToggleSwitch OnContent="" OffContent="" FontSize="18" IsOn="{x:Bind _category.IsArchived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Width="60"/>
+            </Grid>
+
+            <GridView x:Name="ColorsGridView" SelectionMode="Single" MaxWidth="600" HorizontalAlignment="Left" 
+                      Margin="15 0 0 0" Padding="10" ItemContainerStyle="{StaticResource ElipseSelectedItem}" SelectionChanged="OnColorSelectionChanged"
+                      SizeChanged="OnColorsGridViewSizeChanged">
+                <Ellipse Tag="#FFB900" Height="54" Width="54" Fill="#ffb900"/>
+                <Ellipse Tag="#FF8C00" Height="54" Width="54" Fill="#ff8c00"/>
+                <Ellipse Tag="#F7630C" Height="54" Width="54" Fill="#f7630c"/>
+                <Ellipse Tag="#CA5010" Height="54" Width="54" Fill="#ca5010"/>
+                <Ellipse Tag="#DA3B01" Height="54" Width="54" Fill="#da3b01"/>
+                <Ellipse Tag="#EF6950" Height="54" Width="54" Fill="#ef6950"/>
+                <Ellipse Tag="#E74856" Height="54" Width="54" Fill="#e74856"/>
+                <Ellipse Tag="#E81123" Height="54" Width="54" Fill="#e81123"/>
+                <Ellipse Tag="#EA005E" Height="54" Width="54" Fill="#ea005e"/>
+                <Ellipse Tag="#C30052" Height="54" Width="54" Fill="#c30052"/>
+                <Ellipse Tag="#E3008C" Height="54" Width="54" Fill="#e3008c"/>
+                <Ellipse Tag="#BF0077" Height="54" Width="54" Fill="#bf0077"/>
+                <Ellipse Tag="#0078D7" Height="54" Width="54" Fill="#0078d7"/>
+                <Ellipse Tag="#0063B1" Height="54" Width="54" Fill="#0063b1"/>
+                <Ellipse Tag="#8E8CD8" Height="54" Width="54" Fill="#8e8cd8"/>
+                <Ellipse Tag="#6B69D6" Height="54" Width="54" Fill="#6b69d6"/>
+                <Ellipse Tag="#8764B8" Height="54" Width="54" Fill="#8764b8"/>
+                <Ellipse Tag="#881798" Height="54" Width="54" Fill="#881798"/>
+                <Ellipse Tag="#0099BC" Height="54" Width="54" Fill="#0099bc"/>
+                <Ellipse Tag="#2D7D9A" Height="54" Width="54" Fill="#2d7d9a"/>
+                <Ellipse Tag="#038387" Height="54" Width="54" Fill="#038387"/>
+                <Ellipse Tag="#00B294" Height="54" Width="54" Fill="#00b294"/>
+                <Ellipse Tag="#018574" Height="54" Width="54" Fill="#018574"/>
+                <Ellipse Tag="#00CC6A" Height="54" Width="54" Fill="#00cc6a"/>
+                <Ellipse Tag="#10893E" Height="54" Width="54" Fill="#10893e"/>
+                <Ellipse Tag="#107C10" Height="54" Width="54" Fill="#107c10"/>
+                <Ellipse Tag="#498205" Height="54" Width="54" Fill="#498205"/>
+                <Ellipse Tag="#486860" Height="54" Width="54" Fill="#486860"/>
+                <Ellipse Tag="#515C6B" Height="54" Width="54" Fill="#515c6b"/>
+                <Ellipse Tag="#7E735F" Height="54" Width="54" Fill="#7e735f"/>
+                <Ellipse Tag="#847545" Height="54" Width="54" Fill="#847545"/>
+                <Ellipse Tag="#525E54" Height="54" Width="54" Fill="#525e54"/>
             </GridView>
-            
+
+            <Button x:Name="ChooseColorButton"   Margin="15" Content="Selec your color" Width="{Binding ElementName=ColorsGridView, Path=ActualWidth}"
+                    Click="OnChooseColorButtonClicked"/>
+
         </StackPanel>
 
         <CommandBar Grid.Row="1">

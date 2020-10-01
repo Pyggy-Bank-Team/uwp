@@ -1,2 +1,10 @@
-MainPackage=C:\Users\dTrest\Documents\Visual Studio 2017\Projects\piggy-bank\piggybank\piggy-bank-uwp\bin\x64\Release\piggy-bank-uwp_1.0.0.0_x64.appx
-SymbolPackage=C:\Users\dTrest\Documents\Visual Studio 2017\Projects\piggy-bank\piggybank\piggy-bank-uwp\AppPackages\piggy-bank-uwp_1.0.0.0_Test\piggy-bank-uwp_1.0.0.0_x64.appxsym
+MainPackage=D:\Repos\uwp\src\Peppa\bin\x64\Debug\Peppa_1.0.1.0_x64_Debug.appx
+SymbolPackage=D:\Repos\uwp\src\Peppa\obj\x64\Debug\Symbols\Peppa_1.0.1.0_x64_Debug.appxsym
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Debug\Peppa_1.0.1.0_language-ru.appx
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Debug\Peppa_1.0.1.0_scale-100.appx
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Debug\Peppa_1.0.1.0_scale-125.appx
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Debug\Peppa_1.0.1.0_scale-140.appx
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Debug\Peppa_1.0.1.0_scale-150.appx
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Debug\Peppa_1.0.1.0_scale-180.appx
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Debug\Peppa_1.0.1.0_scale-240.appx
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Debug\Peppa_1.0.1.0_scale-400.appx
