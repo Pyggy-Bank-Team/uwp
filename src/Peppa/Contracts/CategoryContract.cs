@@ -28,6 +28,6 @@ namespace Peppa.Contracts
         public Guid CreatedBy { get; set; }
 
         [JsonProperty("createdOn")]
-        public DateTimeOffset CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

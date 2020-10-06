@@ -27,7 +27,7 @@ namespace Peppa.Services.PiggyService
         {
             var client = _httpClientFactory.CreateClient("CreateCategory");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string)SettingsWorker.Current.GetValue(Constants.AccessToken));
-            using (var response = await client.PostAsync($"{BaseUrl}/Category", new StringContent(JsonConvert.SerializeObject(contract), Encoding.UTF8, "application/json")))
+            using (var response = await client.PostAsync($"{BaseUrl}/Categories", new StringContent(JsonConvert.SerializeObject(contract), Encoding.UTF8, "application/json")))
             {
                 return response.IsSuccessStatusCode
                     ? JsonConvert.DeserializeObject<CategoryContract>(await response.Content.ReadAsStringAsync())

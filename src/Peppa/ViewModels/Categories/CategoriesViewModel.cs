@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Peppa.Interface.Models;
 using Peppa.ViewModels.Categoies;
 using Peppa.ViewModels.Interface;
+using piggy_bank_uwp.Enums;
 
 namespace Peppa.ViewModels.Categories
 {
@@ -30,6 +31,23 @@ namespace Peppa.ViewModels.Categories
         public void Finalization()
         {
             throw new System.NotImplementedException();
+        }
+
+        //TODO Split on two separated methods
+        internal async Task UpdateData()
+        {
+            switch (SelectedItem?.Action)
+            {
+                case ActionType.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
+                    await _model.CreateCategory(SelectedItem.MakeCategoryEntity(), GetToken());
+                    break;
+                case ActionType.Save when SelectedItem?.IsNew == false:
+                    await _model.UpdateCategory(SelectedItem.MakeCategoryEntity(), GetToken());
+                    break;
+                case ActionType.Delete:
+                    await _model.DeleteCategory(SelectedItem.Id, GetToken());
+                    break;
+            }
         }
 
         public ObservableCollection<CategoryViewModel> List { get; private set; }

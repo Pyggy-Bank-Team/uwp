@@ -8,6 +8,8 @@ using Peppa.Services;
 using Peppa.ViewModels.Categoies;
 using Peppa.Enums;
 using piggy_bank_uwp.Dialogs;
+using piggy_bank_uwp.Enums;
+using Peppa.Extensions;
 
 namespace Peppa.Views.Categories
 {
@@ -39,13 +41,8 @@ namespace Peppa.Views.Categories
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
         {
-            //if(!_category.IsNew)
-            //    MainViewModel.Current.DeleteCategory(_category);
-
-            //if (Frame.CanGoBack)
-            //{
-            //    Frame.GoBack();
-            //}
+            _category.Action = ActionType.Delete;
+            GoBack();
         }
 
         private async void OnSaveClick(object sender, RoutedEventArgs e)
@@ -59,35 +56,18 @@ namespace Peppa.Views.Categories
                 return;
             }
 
-            //if (_category.IsNew)
-            //{
-            //    _category.IsNew = false;
-            //    await MainViewModel.Current.AddCategory(_category);
-            //}
-            //else
-            //{
-            //   await MainViewModel.Current.UpdateCategory(_category);
-            //}
-
-            //if (Frame.CanGoBack)
-            //{
-            //    Frame.GoBack();
-            //}
+            _category.Action = ActionType.Save;
+            GoBack();
         }
 
         private void OnColorSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItemBrush = (e.AddedItems[0] as Ellipse).Fill as SolidColorBrush;
-            //_category.Color = selectedItemBrush.ToColor();
+            _category.HexColor = selectedItemBrush.ToColor();
         }
 
         private void OnCloseClick(object sender, RoutedEventArgs e)
-        {
-            if (Frame.CanGoBack)
-            {
-                Frame.GoBack();
-            }
-        }
+            => GoBack();
 
         private void OnTitleSizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -103,6 +83,12 @@ namespace Peppa.Views.Categories
         {
             var dialog = new ColorPickerDialog();
             await dialog.ShowAsync();
+        }
+
+        private void GoBack()
+        {
+            if (Frame.CanGoBack)
+                Frame.GoBack();
         }
     }
 }
