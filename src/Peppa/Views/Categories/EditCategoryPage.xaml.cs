@@ -33,7 +33,7 @@ namespace Peppa.Views.Categories
             {
                 foreach (Ellipse item in ColorsGridView.Items)
                 {
-                    if (item.Tag.ToString().ToLower() == _category.HexColor)
+                    if (item.Tag.ToString().ToUpper() == _category.HexColor.ToUpper())
                         ColorsGridView.SelectedItem = item;
                 }
             }
@@ -63,6 +63,7 @@ namespace Peppa.Views.Categories
         private void OnColorSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItemBrush = (e.AddedItems[0] as Ellipse).Fill as SolidColorBrush;
+            var temp = selectedItemBrush.Color.ToString();
             _category.HexColor = selectedItemBrush.ToColor();
         }
 
