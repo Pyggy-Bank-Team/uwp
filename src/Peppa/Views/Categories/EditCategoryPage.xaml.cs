@@ -10,6 +10,8 @@ using Peppa.Enums;
 using piggy_bank_uwp.Dialogs;
 using piggy_bank_uwp.Enums;
 using Peppa.Extensions;
+using System.Linq;
+using System.Drawing;
 
 namespace Peppa.Views.Categories
 {
@@ -29,13 +31,9 @@ namespace Peppa.Views.Categories
             _category = e.Parameter as CategoryViewModel;
             Types.ItemsSource = Enum.GetValues(typeof(CategoryType));
 
-            if(!_category.IsNew)
+            if (!_category.IsNew)
             {
-                foreach (Ellipse item in ColorsGridView.Items)
-                {
-                    if (item.Tag.ToString().ToUpper() == _category.HexColor.ToUpper())
-                        ColorsGridView.SelectedItem = item;
-                }
+                SetColor();
             }
         }
 
@@ -47,7 +45,7 @@ namespace Peppa.Views.Categories
 
         private async void OnSaveClick(object sender, RoutedEventArgs e)
         {
-            if(ColorsGridView.SelectedItem == null)
+            if (ColorsGridView.SelectedItem == null)
             {
                 await DialogService
                     .GetInformationDialog(Localize.GetTranslateByKey(Localize.WarringCategoryContent))
@@ -64,7 +62,7 @@ namespace Peppa.Views.Categories
         {
             var selectedItemBrush = (e.AddedItems[0] as Ellipse).Fill as SolidColorBrush;
             var temp = selectedItemBrush.Color.ToString();
-            _category.HexColor = selectedItemBrush.ToColor();
+            _category.HexColor = selectedItemBrush.Color.ToColor();
         }
 
         private void OnCloseClick(object sender, RoutedEventArgs e)
@@ -84,12 +82,33 @@ namespace Peppa.Views.Categories
         {
             var dialog = new ColorPickerDialog();
             await dialog.ShowAsync();
+
+            _category.HexColor = dialog.HexColor;
+            SetColor();
         }
 
         private void GoBack()
         {
             if (Frame.CanGoBack)
                 Frame.GoBack();
+        }
+
+        private void SetColor()
+        {
+            ColorsGridView.SelectedItem = null;
+
+
+            foreach (Ellipse item in ColorsGridView.Items)
+            {
+                if (item.Tag.ToString().ToUpper() == _category.HexColor.ToUpper())
+                    ColorsGridView.SelectedItem = item;
+            }
+
+            if (ColorsGridView.SelectedItem == null)
+            {
+                var converter = new ColorConverter();
+                var brush = converter.ConvertFromString(_category.HexColor);
+            }
         }
     }
 }

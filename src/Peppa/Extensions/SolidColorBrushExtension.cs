@@ -1,11 +1,11 @@
-﻿using Windows.UI.Xaml.Media;
+﻿using Windows.UI;
 
 namespace Peppa.Extensions
 {
     public static class SolidColorBrushExtension
     {
-        public static string ToColor(this SolidColorBrush brush)
+        public static string ToColor(this Color color)
             //TODO Remove alpha from color
-            => brush.Color.ToString().Replace("#FF", "#");
+            => color.ToString().Replace("#FF", "#");
     }
 }

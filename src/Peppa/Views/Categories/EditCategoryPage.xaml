@@ -22,7 +22,7 @@
                           Width="{Binding ElementName=TitleTextBox, Path=ActualWidth}"/>
 
             <Grid>
-                <TextBlock Text="Archived account" Margin="15" FontSize="18"/>
+                <TextBlock Text="Archived category" Margin="15" FontSize="18"/>
                 <ToggleSwitch OnContent="" OffContent="" FontSize="18" IsOn="{x:Bind _category.IsArchived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Width="60"/>
             </Grid>
 
@@ -63,8 +63,8 @@
                 <Ellipse Tag="#525E54" Height="54" Width="54" Fill="#525e54"/>
             </GridView>
 
-            <Button x:Name="ChooseColorButton"   Margin="15" Content="Selec your color" Width="{Binding ElementName=ColorsGridView, Path=ActualWidth}"
-                    Click="OnChooseColorButtonClicked"/>
+            <Button x:Name="ChooseColorButton"   Margin="15" Width="{Binding ElementName=ColorsGridView, Path=ActualWidth}"
+                    Click="OnChooseColorButtonClicked" Content="Select your color"/>
 
         </StackPanel>
 

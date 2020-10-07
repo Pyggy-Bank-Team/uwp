@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Peppa.Extensions;
+using Windows.UI.Xaml.Controls;
 
 namespace piggy_bank_uwp.Dialogs
 {
@@ -11,6 +12,9 @@ namespace piggy_bank_uwp.Dialogs
 
         private void OnSaveButton(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            HexColor = NewColor.Color.ToColor();
         }
+
+        public string HexColor { get; private set; }
     }
 }
