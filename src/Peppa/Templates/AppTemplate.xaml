@@ -56,20 +56,50 @@
 
     <DataTemplate x:Name="ListViewItemCategory">
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <converter:ValueToVisibilityConverter x:Key="VisibilityConverter"/>
+                <converter:ValueToCollapsedConverter x:Key="CollapsedConverter"/>
+            </Grid.Resources>
 
-            <Ellipse Grid.Column="0" Fill="{Binding Path=HexColor, Mode=OneWay}" Height="54" Width="54"
+            <Grid Visibility="{Binding Path=IsArchived, Converter={StaticResource ResourceKey=CollapsedConverter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Ellipse Grid.Column="0" Fill="{Binding Path=HexColor, Mode=OneWay}" Height="54" Width="54"
                      HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <TextBlock Grid.Column="2" Text="{Binding Path=Title}" FontSize="18" 
+                <TextBlock Grid.Column="2" Text="{Binding Path=Title}" FontSize="18" 
                        TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
 
-            <AppBarButton Grid.Column="3" Icon="Edit" IsEnabled="False" HorizontalAlignment="Right"/>
+                <AppBarButton Grid.Column="3" Icon="Edit" IsEnabled="False" HorizontalAlignment="Right"/>
+
+
+            </Grid>
+
+            <Grid Visibility="{Binding Path=IsArchived, Converter={StaticResource ResourceKey=VisibilityConverter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Ellipse Grid.Column="0" Fill="Gray" Height="54" Width="54"
+                     HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <TextBlock Grid.Column="2" Text="{Binding Path=Title}" FontSize="18" 
+                       TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Foreground="Gray"/>
+
+                <AppBarButton Grid.Column="3" Icon="Edit" IsEnabled="False" HorizontalAlignment="Right" Foreground="Gray"/>
+
+
+            </Grid>
+
+
         </Grid>
     </DataTemplate>
 
