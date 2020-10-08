@@ -84,7 +84,7 @@ namespace Peppa.Views.Categories
             await dialog.ShowAsync();
 
             _category.HexColor = dialog.HexColor;
-            SetColor();
+            ChooseColorButton.Background = new SolidColorBrush(_category.HexColor.GetColor());
         }
 
         private void GoBack()
@@ -95,8 +95,6 @@ namespace Peppa.Views.Categories
 
         private void SetColor()
         {
-            ColorsGridView.SelectedItem = null;
-
 
             foreach (Ellipse item in ColorsGridView.Items)
             {
