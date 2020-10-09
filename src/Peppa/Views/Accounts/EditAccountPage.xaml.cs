@@ -1,7 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using System;
 using Peppa.Enums;
 using Peppa.ViewModels.Accounts;
 using piggy_bank_uwp.Enums;
@@ -18,7 +17,7 @@ namespace Peppa.Views.Accounts
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             _account = e.Parameter as AccountViewModel;
-            Types.ItemsSource = Enum.GetValues(typeof(AccountType));
+            Types.ItemsSource = new[] { AccountType.Card, AccountType.Cash };
             Currencies.ItemsSource = new[] { _account.Currency };
         }
 

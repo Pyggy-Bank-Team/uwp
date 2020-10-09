@@ -12,9 +12,9 @@ namespace piggy_bank_uwp.Dialogs
 
         private void OnSaveButton(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            HexColor = NewColor.Color.ToColor();
+            SelectedColor = NewColor.Color.ToHexColor();
         }
 
-        public string HexColor { get; private set; }
+        public string SelectedColor { get; private set; }
     }
 }

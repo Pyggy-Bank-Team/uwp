@@ -26,6 +26,8 @@
                 <ToggleSwitch OnContent="" OffContent="" FontSize="18" IsOn="{x:Bind _category.IsArchived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Width="60"/>
             </Grid>
 
+            <Border x:Name="SelectedColor" Margin="15" HorizontalAlignment="Left"  BorderThickness="5"/>
+
             <GridView x:Name="ColorsGridView" SelectionMode="Single" MaxWidth="600" HorizontalAlignment="Left" 
                       Margin="15 0 0 0" Padding="10" ItemContainerStyle="{StaticResource ElipseSelectedItem}" SelectionChanged="OnColorSelectionChanged"
                       SizeChanged="OnColorsGridViewSizeChanged">
@@ -70,7 +72,16 @@
 
         <CommandBar Grid.Row="1">
             <AppBarButton x:Uid="SaveAppBarButton" Icon="Save" Click="OnSaveClick"/>
-            <AppBarButton x:Uid="DeleteAppBarButton" Icon="Delete" Click="OnDeleteClick"/>
+            <AppBarButton x:Uid="DeleteAppBarButton" Icon="Delete">
+                <AppBarButton.Flyout>
+                    <Flyout Placement="TopEdgeAlignedRight">
+                        <StackPanel>
+                            <TextBlock Text="All related operations with this category will be zero"/>
+                            <Button Content="Yes, I'm want to delete" Margin="0 5 0 0" Click="OnDeleteClick"/>
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
             <AppBarButton x:Uid="CancelAppBarButton" Icon="Cancel" Click="OnCloseClick"/>
         </CommandBar>
     </Grid>

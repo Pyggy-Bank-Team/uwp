@@ -4,21 +4,18 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 using System;
-using Peppa.Services;
 using Peppa.ViewModels.Categoies;
 using Peppa.Enums;
 using piggy_bank_uwp.Dialogs;
 using piggy_bank_uwp.Enums;
 using Peppa.Extensions;
-using System.Linq;
-using System.Drawing;
+using Peppa.Services;
 
 namespace Peppa.Views.Categories
 {
 
     public sealed partial class EditCategoryPage : Page
     {
-        //private CategoryViewModel _category;
         private CategoryViewModel _category;
 
         public EditCategoryPage()
@@ -29,11 +26,11 @@ namespace Peppa.Views.Categories
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             _category = e.Parameter as CategoryViewModel;
-            Types.ItemsSource = Enum.GetValues(typeof(CategoryType));
+            Types.ItemsSource = new[] { CategoryType.Income, CategoryType.Expense };
 
             if (!_category.IsNew)
             {
-                SetColor();
+                UpdateColor();
             }
         }
 
@@ -45,7 +42,7 @@ namespace Peppa.Views.Categories
 
         private async void OnSaveClick(object sender, RoutedEventArgs e)
         {
-            if (ColorsGridView.SelectedItem == null)
+            if (SelectedColor.BorderBrush == null)
             {
                 await DialogService
                     .GetInformationDialog(Localize.GetTranslateByKey(Localize.WarringCategoryContent))
@@ -61,12 +58,15 @@ namespace Peppa.Views.Categories
         private void OnColorSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItemBrush = (e.AddedItems[0] as Ellipse).Fill as SolidColorBrush;
-            var temp = selectedItemBrush.Color.ToString();
-            _category.HexColor = selectedItemBrush.Color.ToColor();
+            _category.HexColor = selectedItemBrush.Color.ToHexColor();
+            UpdateColor();
         }
 
         private void OnCloseClick(object sender, RoutedEventArgs e)
-            => GoBack();
+        {
+            _category.Action = ActionType.Cancel;
+            GoBack();
+        }
 
         private void OnTitleSizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -76,15 +76,16 @@ namespace Peppa.Views.Categories
         private void OnColorsGridViewSizeChanged(object sender, SizeChangedEventArgs e)
         {
             ChooseColorButton.Width = e.NewSize.Width;
+            SelectedColor.Width = e.NewSize.Width;
         }
 
         private async void OnChooseColorButtonClicked(object sender, RoutedEventArgs e)
         {
-            var dialog = new ColorPickerDialog();
-            await dialog.ShowAsync();
+            var colorPicker = new ColorPickerDialog();
+            await colorPicker.ShowAsync();
 
-            _category.HexColor = dialog.HexColor;
-            ChooseColorButton.Background = new SolidColorBrush(_category.HexColor.GetColor());
+            _category.HexColor = colorPicker.SelectedColor;
+            UpdateColor();
         }
 
         private void GoBack()
@@ -93,19 +94,19 @@ namespace Peppa.Views.Categories
                 Frame.GoBack();
         }
 
-        private void SetColor()
+        private void UpdateColor()
         {
+            SelectedColor.BorderBrush = null;
 
             foreach (Ellipse item in ColorsGridView.Items)
             {
                 if (item.Tag.ToString().ToUpper() == _category.HexColor.ToUpper())
-                    ColorsGridView.SelectedItem = item;
+                    SelectedColor.BorderBrush = new SolidColorBrush(_category.HexColor.ToColor());
             }
 
-            if (ColorsGridView.SelectedItem == null)
+            if (SelectedColor.BorderBrush == null)
             {
-                var converter = new ColorConverter();
-                var brush = converter.ConvertFromString(_category.HexColor);
+                SelectedColor.BorderBrush = new SolidColorBrush(_category.HexColor.ToColor());
             }
         }
     }
