@@ -113,6 +113,8 @@
     <Compile Include="Context\PiggyContext.cs" />
     <Compile Include="Contracts\AccountContract.cs" />
     <Compile Include="Contracts\CategoryContract.cs" />
+    <Compile Include="Contracts\Requests\GetTokenRequest.cs" />
+    <Compile Include="Contracts\Responses\ErrorResponse.cs" />
     <Compile Include="Controls\DiagramControl.xaml.cs">
       <DependentUpon>DiagramControl.xaml</DependentUpon>
     </Compile>

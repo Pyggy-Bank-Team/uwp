@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
@@ -48,8 +49,8 @@ namespace Peppa.Dialogs
 
             if (Password.Password != ConfirmPassword.Password)
             {
-                PasswrodNote.Text = "The passwords are not identical";
-                PasswrodNote.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                ErrorText.Text = "The passwords are not identical";
+                ErrorText.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 return;
             }
 
@@ -67,39 +68,26 @@ namespace Peppa.Dialogs
             //TODO Handler all cases
             switch (result.IdentityResult)
             {
-                case Enums.IdentityResultEnum.DuplicateUserName:
-                    UserNameNote.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                    break;
-                case Enums.IdentityResultEnum.TokenIsNullOrEmpty:
-                    break;
-                case Enums.IdentityResultEnum.TokenGenerateError:
-                    break;
                 case Enums.IdentityResultEnum.Successful:
                     Token = result.Token;
                     InputedUserName = UserName.Text;
                     Hide();
                     break;
-                case Enums.IdentityResultEnum.InternalServerError:
-                    break;
-                case Enums.IdentityResultEnum.PasswordTooShort:
-                    PasswrodNote.Text = result.Error.Description;
-                    PasswrodNote.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                    break;
                 default:
+                    ErrorText.Text = string.Join("\\n", result.Error.Errors);
+                    ErrorText.Visibility = Windows.UI.Xaml.Visibility.Visible;
                     break;
             }
         }
 
         private void OnPasswordLostFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            PasswrodNote.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            UserNameNote.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            ErrorText.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
-        private void OnUserNameLostFocuse(Windows.UI.Xaml.UIElement sender, Windows.UI.Xaml.Input.LosingFocusEventArgs args)
+        private void OnUserNameLostFocus(Windows.UI.Xaml.UIElement sender, Windows.UI.Xaml.Input.LosingFocusEventArgs args)
         {
-            PasswrodNote.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            UserNameNote.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            ErrorText.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
 
         public AccessTokenResponse Token { get; set; }

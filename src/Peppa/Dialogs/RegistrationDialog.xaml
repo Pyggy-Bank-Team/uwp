@@ -14,8 +14,8 @@
 
 
     <StackPanel x:Name="MainPanel">
-        <TextBox x:Name="UserName" Header="User name" LosingFocus="OnUserNameLostFocuse"/>
-        <TextBlock x:Name="UserNameNote" Text="A user with this email has already been registered" Visibility="Collapsed" FontSize="10" Foreground="Red"/>
+        <TextBlock x:Name="ErrorText" Visibility="Collapsed" FontSize="10" Foreground="Red"/>
+        <TextBox x:Name="UserName" Header="User name" LosingFocus="OnUserNameLostFocus"/>
         <ComboBox x:Name="Currencies" Header="Currency" Margin="0 5 0 0" Width="{Binding ElementName=MainPanel, Path=ActualWidth}">
             <ComboBox.ItemTemplate>
                 <DataTemplate x:DataType="responses:AvailableCurrency">
@@ -28,7 +28,6 @@
         </ComboBox>
         <PasswordBox x:Name="Password" Header="Password" Margin="0 5 0 0" LostFocus="OnPasswordLostFocus"/>
         <PasswordBox x:Name="ConfirmPassword" Header="Confirm Password" Margin="0 5 0 0"/>
-        <TextBlock x:Name="PasswrodNote" Text="The passwords are not identical" Visibility="Collapsed" FontSize="10" Foreground="Red"/>
     </StackPanel>
 
 </ContentDialog>

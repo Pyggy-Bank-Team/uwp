@@ -3,10 +3,7 @@
     public enum IdentityResultEnum
     {
         Successful,
-        DuplicateUserName,
-        TokenIsNullOrEmpty,
-        TokenGenerateError,
-        InternalServerError,
-        PasswordTooShort
+        UserNotCreated,
+        InternalServerError
     }
 }

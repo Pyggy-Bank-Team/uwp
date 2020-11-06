@@ -2,6 +2,7 @@
 using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
 using Peppa.Models;
+using piggy_bank_uwp.Contracts.Requests;
 
 namespace Peppa.Interface.Services
 {
@@ -9,7 +10,7 @@ namespace Peppa.Interface.Services
     {
         Task<RegitrationResult> RegistrationUser(UserRequest request);
 
-        Task<AccessTokenResponse> GetAccessToken(UserRequest userRequest);
+        Task<AccessTokenResponse> GetAccessToken(GetTokenRequest request);
 
         Task<AvailableCurrency[]> GetAvailableCurrencies();
     }

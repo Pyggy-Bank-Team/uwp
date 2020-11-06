@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
-using Peppa.Interface;
 using Peppa.Workers;
 using Peppa.Interface.Services;
+using piggy_bank_uwp.Contracts.Requests;
 
 namespace Peppa.ViewModels.Users
 {
@@ -16,7 +16,7 @@ namespace Peppa.ViewModels.Users
 
         public async Task OnLogin(string userName, string password)
         {
-            var request = new UserRequest
+            var request = new GetTokenRequest
             {
                 UserName = userName,
                 Password = password
@@ -46,7 +46,6 @@ namespace Peppa.ViewModels.Users
         public void SaveAccessToken(AccessTokenResponse accessToken)
         {
             SettingsWorker.Current.SaveValue(Constants.AccessToken, accessToken.AccessToken);
-            SettingsWorker.Current.SaveValue(Constants.RefreshToken, accessToken.RefreshToken);
         }
 
         public void SaveUserName(string userName)
