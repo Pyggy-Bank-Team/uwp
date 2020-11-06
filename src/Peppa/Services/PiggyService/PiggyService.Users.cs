@@ -21,7 +21,7 @@ namespace Peppa.Services.PiggyService
         {
             var client = _httpClientFactory.CreateClient("Regitration user");
             var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
-            using (var response = await client.PostAsync($"{BaseUrl}/api/Users", content))
+            using (var response = await client.PostAsync($"{BaseUrl}/Users", content))
             {
                 var result = new RegitrationResult();
                 switch (response.StatusCode)
@@ -47,8 +47,8 @@ namespace Peppa.Services.PiggyService
         public async Task<AccessTokenResponse> GetAccessToken(GetTokenRequest request)
         {
             var client = _httpClientFactory.CreateClient("Token");
-            var content = new StringContent(JsonConvert.SerializeObject(request));
-            using (var response = await client.PostAsync($"{BaseUrl}/api/Tokens/Connect", content))
+            var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            using (var response = await client.PostAsync($"{BaseUrl}/Tokens/Connect", content))
             {
                 return response.IsSuccessStatusCode
                     ? JsonConvert.DeserializeObject<AccessTokenResponse>(await response.Content.ReadAsStringAsync())
@@ -60,7 +60,7 @@ namespace Peppa.Services.PiggyService
         {
             var client = _httpClientFactory.CreateClient("Available currencies");
 
-            using (var response = await client.GetAsync($"{BaseUrl}/api/Currencies"))
+            using (var response = await client.GetAsync($"{BaseUrl}/Currencies"))
             {
                 return response.IsSuccessStatusCode
                     ? JsonConvert.DeserializeObject<AvailableCurrency[]>(await response.Content.ReadAsStringAsync())
