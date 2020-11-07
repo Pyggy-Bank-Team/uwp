@@ -9,6 +9,7 @@ using Peppa.Services;
 using Peppa.Utilities;
 using Peppa.ViewModels.Interface;
 using Peppa.Workers;
+using piggy_bank_uwp.Services.Windows;
 
 namespace Peppa.ViewModels.Diagram
 {
@@ -21,8 +22,8 @@ namespace Peppa.ViewModels.Diagram
 
         public async Task Initialization()
         {
-            List<CostModel> costs = DbWorker.Current.GetCosts();
-            AllCosts = costs.Sum(c => c.Cost);
+            //List<CostModel> costs = DbWorker.Current.GetCosts();
+            //AllCosts = costs.Sum(c => c.Cost);
 
             Datas.Clear();
 
@@ -51,7 +52,7 @@ namespace Peppa.ViewModels.Diagram
 
         public void ApplyFilter(DateTime startDate, DateTime endDate)
         {
-            var costs = DbWorker.Current.GetCosts().Where(c => DateUtility.GetLocalTimeFromUTCMilliseconds(c.Date) > startDate && DateUtility.GetLocalTimeFromUTCMilliseconds(c.Date) < endDate);
+            //var costs = DbWorker.Current.GetCosts().Where(c => DateUtility.GetLocalTimeFromUTCMilliseconds(c.Date) > startDate && DateUtility.GetLocalTimeFromUTCMilliseconds(c.Date) < endDate);
 
             Datas.Clear();
 

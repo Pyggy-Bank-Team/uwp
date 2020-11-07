@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
+using Peppa;
 
-namespace Peppa.Services
+namespace piggy_bank_uwp.Services.Windows
 {
     public static class ToastService
     {

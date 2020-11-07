@@ -14,6 +14,7 @@ using Peppa.ViewModels.Donate;
 using Peppa.ViewModels.Interface;
 using Peppa.ViewModels.Operations;
 using Peppa.Workers;
+using piggy_bank_uwp.Services.Windows;
 
 namespace Peppa.ViewModels
 {
@@ -25,7 +26,7 @@ namespace Peppa.ViewModels
         {
             Costs = new ObservableCollection<CostViewModel>();
             //Categories = new ObservableCollection<CategoryViewModel>();
-            DbWorker = DbWorker.Current;
+            //DbWorker = DbWorker.Current;
             //Accounts = new AccountsViewModel();
             Diagram = new DiagramViewModel();
             Donate = new DonateViewModel();
@@ -99,15 +100,15 @@ namespace Peppa.ViewModels
 
         internal async Task FetchCosts()
         {
-            foreach (CostModel item in DbWorker.Current.GetCosts(Costs.Count))
-            {
-                await Task.Delay(600);
-
-                await App.RunUIAsync(() =>
-                {
-                    Costs.Add(new CostViewModel(item));
-                });
-            }
+            // foreach (CostModel item in DbWorker.Current.GetCosts(Costs.Count))
+            // {
+            //     await Task.Delay(600);
+            //
+            //     await App.RunUIAsync(() =>
+            //     {
+            //         Costs.Add(new CostViewModel(item));
+            //     });
+            // }
         }
 
         #region Costs
@@ -129,7 +130,7 @@ namespace Peppa.ViewModels
                 //     DbWorker.UpdateBalance(currentAccount.Model);
                 // }
 
-                DbWorker.AddCost(newCost.Model);
+                //DbWorker.AddCost(newCost.Model);
 
                 Accounts.RaiseBalance();
             });
@@ -155,7 +156,7 @@ namespace Peppa.ViewModels
                     updateCost.HavePrevCost = false;
                 }
 
-                DbWorker.UpdateCost(updateCost.Model);
+                //DbWorker.UpdateCost(updateCost.Model);
             });
         }
 
@@ -168,7 +169,7 @@ namespace Peppa.ViewModels
                     Costs.Remove(cost);
                 });
 
-                DbWorker.RemoveCost(cost.Model);
+                //DbWorker.RemoveCost(cost.Model);
             });
         }
         #endregion
@@ -265,7 +266,7 @@ namespace Peppa.ViewModels
 
         public DonateViewModel Donate { get; }
 
-        public DbWorker DbWorker { get; }
+        //public DbWorker DbWorker { get; }
 
         public bool CanShowToast => SettingsWorker.Current.GetNotificatinsSetting() && ((DateTime.UtcNow - SettingsWorker.Current.GetLastTimeShow())?.Days ?? DAY_REMINDER - 1) > DAY_REMINDER;
 

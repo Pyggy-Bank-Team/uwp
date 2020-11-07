@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Peppa.Models;
 using Peppa.Context.Entities;
+using piggy_bank_uwp.Context.Entities;
 
 namespace Peppa.Context
 {
@@ -16,12 +16,10 @@ namespace Peppa.Context
             optionsBuilder.UseSqlite("Filename=Costs.db");
         }
 
-        public DbSet<Account> Accounts { get; set; }
-
-        public DbSet<CostModel> Costs { get; set; }
+        public DbSet<Account> Accounts { get; set; }     
 
         public DbSet<Category> Categories { get; set; }
 
-        public DbSet<BalanceModel> Balance { get; set; }
+        public DbSet<Operation> Operations { get; set; }
     }
 }

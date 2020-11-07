@@ -10,6 +10,7 @@ using piggy_bank_uwp.Dialogs;
 using piggy_bank_uwp.Enums;
 using Peppa.Extensions;
 using Peppa.Services;
+using piggy_bank_uwp.Services.Windows;
 
 namespace Peppa.Views.Categories
 {
