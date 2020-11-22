@@ -8,23 +8,26 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="4"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <ProgressBar x:Name="Progress" Grid.Row="0" IsIndeterminate="True" Height="18" Visibility="Collapsed"/>
+
         <RefreshContainer x:Name="RefreshContainer" RefreshRequested="OnRefreshRequested"
-                          PullDirection="BottomToTop">
+                          PullDirection="BottomToTop" Grid.Row="1">
             <ListView x:Name="CostsListView"
-                      ItemsSource="{x:Bind _dataContext.List}"
+                      ItemsSource="{x:Bind _dataContext.List, Mode=OneWay}"
                       ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
                       ItemTemplate="{StaticResource ResourceKey=ListViewItemCost}"
                       IsItemClickEnabled="True" SelectionMode="Single" ItemClick="OnCostItemClick" />
         </RefreshContainer>
 
-        <TextBlock x:Name="StubTextBlock" x:Uid="StubCostsTextBlock" Grid.Row="0"
+        <TextBlock x:Name="StubTextBlock" x:Uid="StubCostsTextBlock" Grid.Row="1"
                    HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWholeWords" />
 
-        <CommandBar Grid.Row="1">
+        <CommandBar Grid.Row="2">
             <AppBarButton x:Uid="RefreshCostsAppBarButton" Icon="Refresh" AccessKey="R" Click="OnRefreshClick" />
             <AppBarButton x:Name="AddCostAppBarButton" x:Uid="AddCostAppBarButton" Icon="Add" Click="OnAddedCostClick" />
         </CommandBar>

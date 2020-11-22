@@ -11,7 +11,7 @@ namespace Peppa.Views.Operations
 {
     public sealed partial class EditOperationPage : Page
     {
-        private OperationsViewModel _cost;
+        private OperationViewModel _dataContext;
         private bool _isInit;
 
         public EditOperationPage()

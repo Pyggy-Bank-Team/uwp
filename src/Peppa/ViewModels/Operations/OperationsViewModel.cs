@@ -20,7 +20,7 @@ namespace Peppa.ViewModels.Operations
             if (operations != null)
             {
                 List = new ObservableCollection<OperationViewModel>(operations.OrderBy(o => o.CreatedOn).Select(o => new OperationViewModel(o)));
-                RaisePropertiesChanged();
+                RaisePropertyChanged(nameof(List));
             }
         }
 

@@ -14,13 +14,20 @@ namespace Peppa.Views.Operations
         public OperationsPage()
         {
             this.InitializeComponent();
+            StupVisible();
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            Progress.Visibility = Visibility.Visible;
+
             _dataContext = (OperationsViewModel) App.ServiceProvider.GetService(typeof(OperationsViewModel));
             await _dataContext.Initialization();
+
+            StupCollapsed();
+            Progress.Visibility = Visibility.Collapsed;
         }
 
         private void OnCostItemClick(object sender, ItemClickEventArgs e)
