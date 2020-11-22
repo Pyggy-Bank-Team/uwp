@@ -1,5 +1,6 @@
 ﻿using piggy_bank_uwp.Enums;
 using System;
+using Peppa.Enums;
 
 namespace piggy_bank_uwp.Context.Entities
 {
@@ -7,11 +8,11 @@ namespace piggy_bank_uwp.Context.Entities
     {
         public long? CategoryId { get; set; }
     
-        public long? CategoryType { get; set; }
+        public CategoryType? CategoryType { get; set; }
 
         public string CategoryHexColor { get; set; }
 
-        public long? Amount { get; set; }
+        public decimal? Amount { get; set; }
 
         public long? AccountId { get; set; }
 

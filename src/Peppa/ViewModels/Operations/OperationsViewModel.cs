@@ -1,150 +1,36 @@
 ﻿using System;
-using Peppa.Models;
-using Peppa.Utilities;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using Peppa.ViewModels.Interface;
+using piggy_bank_uwp.Interface.Models;
 
 namespace Peppa.ViewModels.Operations
 {
-    public class CostViewModel : BaseViewModel, IUpdateable
+    public class OperationsViewModel : BaseViewModel, IBaseViewModel
     {
-        public CostViewModel()
+        private readonly IOperationsModel _model;
+
+        public OperationsViewModel(IOperationsModel model)
+            => _model = model;
+        
+        public async Task Initialization()
         {
-            Model = new CostModel { Id = SystemUtility.GetGuid() };
-            IsNew = true;
-            HavePrevCost = false;
-        }
-
-        internal CostViewModel(CostModel model)
-        {
-            Model = model;
-            IsNew = false;
-            HavePrevCost = false;
-        }
-
-        public void Update()
-        {
-            RaisePropertiesChanged();
-        }
-
-        public void ChangedCategory(string categoryId)
-        {
-            if (String.IsNullOrEmpty(categoryId))
-                return;
-
-            Model.CategoryId = categoryId;
-        }
-
-        public void ChangedBalance(string balanceId)
-        {
-            if (String.IsNullOrEmpty(balanceId))
-                return;
-
-            Model.BalanceId = balanceId;
-        }
-
-        public bool IsNew { get; set; }
-
-        public bool HavePrevCost { get; set; }
-
-        public string Comment
-        {
-            get
+            var operations = await _model.GetOperations(GetToken());
+            if (operations != null)
             {
-                return Model.Comment;
-            }
-            set
-            {
-                if (Model.Comment != value)
-                {
-                    Model.Comment = value;
-                }
+                List = new ObservableCollection<OperationViewModel>(operations.OrderBy(o => o.CreatedOn).Select(o => new OperationViewModel(o)));
+                RaisePropertiesChanged();
             }
         }
 
-        public int Cost
+        public void Finalization()
         {
-            get
-            {
-                return Model.Cost;
-            }
-            set
-            {
-                if (Model.Cost != value)
-                {
-                    if (!IsNew)
-                        HavePrevCost = true;
-
-                    Model.Cost = value;
-                }
-            }
+            throw new NotImplementedException();
         }
-
-        public DateTimeOffset DateOffset
-        {
-            get
-            {
-                if (Model.Date <= 0)
-                    return DateTimeOffset.UtcNow;
-
-                var localDate = DateUtility.GetLocalTimeFromUTCMilliseconds(Model.Date);
-                return DateTimeOffset.Parse(localDate.ToString());
-            }
-            set
-            {
-                Model.Date = DateUtility.GetUTCMillisecondsFromDateTime(value.UtcDateTime);
-            }
-        }
-
-        public string Date
-        {
-            get
-            {
-                string format = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
-                return DateUtility.GetLocalTimeFromUTCMilliseconds(Model.Date).Date.ToString(format);
-            }
-        }
-
-        public string CostWithCurrency
-        {
-            get
-            {
-                return string.Empty;
-                //return Model.Cost + MainViewModel.Current.Accounts.List.FirstOrDefault(b => b.Id == BalanceId)?.Currency;
-            }
-        }
-
-        public string Id
-        {
-            get
-            {
-                return Model.Id;
-            }
-        }
-
-        public string CategoryId
-        {
-            get
-            {
-                return Model.CategoryId;
-            }
-        }
-
-        public string BalanceId
-        {
-            get
-            {
-                return Model.BalanceId;
-            }
-        }
-
-        //public CategoryViewModel Category
-        //{
-        //    get
-        //    {
-        //        return MainViewModel.Current.Categories.FirstOrDefault(c => c.Id == CategoryId);
-        //    }
-        //}
-
-        internal CostModel Model { get; }
+        
+        public ObservableCollection<OperationViewModel> List { get; private set; }
+        
+        public OperationViewModel SelectedItem { get; set; }
     }
 }

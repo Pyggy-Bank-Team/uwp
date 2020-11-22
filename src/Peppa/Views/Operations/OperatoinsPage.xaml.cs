@@ -8,37 +8,24 @@ using Peppa.ViewModels.Operations;
 
 namespace Peppa.Views.Operations
 {
-    public sealed partial class CostsPage : Page
+    public sealed partial class OperationsPage : Page
     {
-        public CostsPage()
+        private OperationsViewModel _dataContext;
+        public OperationsPage()
         {
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            if (MainViewModel.Current.Costs.GetEnumerator().MoveNext())
-            {
-                CostsListView.ItemsSource = MainViewModel.Current.Costs;
-                StupCollapsed();
-            }
-            else
-            {
-                StupVisible();
-            }
-
-            if (MainViewModel.Current.CanShowToast)
-            {
-                MainViewModel.Current.ShowToast();
-                MainViewModel.Current.SaveLastTimeShow();
-            }
+            _dataContext = (OperationsViewModel) App.ServiceProvider.GetService(typeof(OperationsViewModel));
+            await _dataContext.Initialization();
         }
 
         private void OnCostItemClick(object sender, ItemClickEventArgs e)
         {
-            Frame.Navigate(typeof(EditCostPage), e.ClickedItem);
+            Frame.Navigate(typeof(EditOperationPage), e.ClickedItem);
         }
 
         private async void OnAddedCostClick(object sender, RoutedEventArgs e)
@@ -52,7 +39,7 @@ namespace Peppa.Views.Operations
             //    return;
             //}
 
-            Frame.Navigate(typeof(EditCostPage), new CostViewModel());
+            Frame.Navigate(typeof(EditOperationPage), new OperationViewModel());
         }
 
         private void OnRefreshClick(object sender, RoutedEventArgs e)
@@ -62,10 +49,7 @@ namespace Peppa.Views.Operations
 
         private async void OnRefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
         {
-            using (var complion = args.GetDeferral())
-            {
-                await MainViewModel.Current.FetchCosts();
-            }
+           
         }
 
         private void StupVisible()

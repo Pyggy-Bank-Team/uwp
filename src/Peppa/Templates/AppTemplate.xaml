@@ -18,7 +18,7 @@
             </Grid.RowDefinitions>
 
             <!--Date-->
-            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Date, Mode=OneWay}" FontSize="12"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=CreatedOn, Mode=OneWay}" FontSize="12"/>
 
             <Grid Grid.Row="1" Grid.Column="1" Margin="0 10 0 0">
                 <Grid.ColumnDefinitions>
@@ -35,20 +35,18 @@
                         <ColumnDefinition Width="0.5*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Ellipse Grid.Column="0" Fill="{Binding Path=Category.Color, Mode=OneWay}" Height="54" Width="54" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <Ellipse Grid.Column="0" Fill="White" Height="31" Width="31" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <Ellipse Grid.Column="0" Fill="{Binding Path=Category.Color, Mode=OneWay}" Height="28" Width="28" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Ellipse Grid.Column="0" Fill="{Binding Path=CategoryHexColor, Mode=OneWay}" Height="54" Width="54" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                     <StackPanel Grid.Column="2">
                         <TextBlock Text="{Binding Path=Comment}" FontSize="12" MaxHeight="40" TextTrimming="CharacterEllipsis" VerticalAlignment="Bottom"/>
-                        <TextBlock Text="{Binding Path=Category.Title}" FontSize="18" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=AccountTitle}" FontSize="18" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
 
                 <!--Cost-->
                 <TextBlock Grid.Column="2" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="SemiBold" TextTrimming="CharacterEllipsis">
                     <Run Text="-"/>
-                    <Run Text="{Binding Path=CostWithCurrency, Mode=OneWay}"/>
+                    <Run Text="{Binding Path=Amount, Mode=OneWay}"/>
                 </TextBlock>
             </Grid>
         </Grid>

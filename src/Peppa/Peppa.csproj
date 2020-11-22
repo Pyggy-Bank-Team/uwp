@@ -7,7 +7,7 @@
     <ProjectGuid>{7E85FAB4-69BF-4A97-8FA6-7B6265693A04}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>piggy_bank_uwp</RootNamespace>
+    <RootNamespace>Peppa</RootNamespace>
     <AssemblyName>PiggyBank</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
@@ -116,6 +116,7 @@
     <Compile Include="Context\PiggyContext.cs" />
     <Compile Include="Contracts\AccountContract.cs" />
     <Compile Include="Contracts\CategoryContract.cs" />
+    <Compile Include="Contracts\PageResult.cs" />
     <Compile Include="Contracts\Requests\GetTokenRequest.cs" />
     <Compile Include="Contracts\Responses\ErrorResponse.cs" />
     <Compile Include="Contracts\Responses\OperationResponse.cs" />
@@ -144,7 +145,6 @@
     <Compile Include="Enums\OperationType.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
-    <Compile Include="Fabrics\CostFactory.cs" />
     <Compile Include="Fabrics\CategoryFactory.cs" />
     <Compile Include="Fabrics\DonateFactory.cs" />
     <Compile Include="Interface\IAuthorization.cs" />
@@ -152,6 +152,7 @@
     <Compile Include="Interface\IPiggyRepository.cs" />
     <Compile Include="Interface\Models\IAccountsModel.cs" />
     <Compile Include="Interface\Models\ICategoriesModel.cs" />
+    <Compile Include="Interface\Models\IOperationsModel.cs" />
     <Compile Include="Interface\Services\IAccountService.cs" />
     <Compile Include="Interface\Services\ICategoryService.cs" />
     <Compile Include="Interface\Services\IOperationService.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoriesViewModel.cs" />
+    <Compile Include="ViewModels\Operations\OperationViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Diagram\DataDiagramViewModel.cs" />
@@ -192,7 +194,6 @@
     <Compile Include="ViewModels\Interface\IBaseViewModel.cs" />
     <Compile Include="ViewModels\Interface\IToastViewModel.cs" />
     <Compile Include="ViewModels\Interface\IUpdateable.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
     <Compile Include="Views\Accounts\AccountsPage.xaml.cs">
       <DependentUpon>AccountsPage.xaml</DependentUpon>
@@ -242,8 +243,6 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Peppa_TemporaryKey.pfx" />
-    <None Include="piggy-bank-uwp_StoreKey.pfx" />
-    <None Include="piggy-bank-uwp_TemporaryKey.pfx" />
     <Compile Include="Services\PiggyService\PiggyService.Accounts.cs" />
     <Compile Include="Services\PiggyService\PiggyBank.Categories.cs" />
     <PRIResource Include="Strings\ru-RU\Resources.resw" />

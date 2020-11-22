@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Peppa.Context;
 using Peppa.Interface;
 using Peppa.Context.Entities;
+using piggy_bank_uwp.Context.Entities;
 
 namespace Peppa.Repositories
 {
@@ -15,14 +16,8 @@ namespace Peppa.Repositories
         public PiggyRepository()
             => _context = new PiggyContext();
 
-        public async Task CreateAccount(Account newAccount, CancellationToken token)
-        {
-            if (newAccount == null)
-                return;
-
-            await _context.AddAsync(newAccount, token);
-            await _context.SaveChangesAsync(token);
-        }
+        public Task CreateAccount(Account newAccount, CancellationToken token)
+            => Add(newAccount, token);
 
         public async Task UpdateAccount(Account account, CancellationToken token)
         {
@@ -40,7 +35,7 @@ namespace Peppa.Repositories
             existAccount.IsArchived = account.IsArchived;
             existAccount.IsDeleted = account.IsDeleted;
             existAccount.IsSynchronized = account.IsSynchronized;
-
+            
             _context.Accounts.Update(existAccount);
             await _context.SaveChangesAsync(token);
         }
@@ -73,14 +68,8 @@ namespace Peppa.Repositories
             return existAccount != null;
         }
 
-        public async Task CreateCategory(Category newCategory, CancellationToken token)
-        {
-            if (newCategory == null)
-                return;
-
-            await _context.AddAsync(newCategory, token);
-            await _context.SaveChangesAsync(token);
-        }
+        public Task CreateCategory(Category newCategory, CancellationToken token)
+            => Add(newCategory, token);
 
         public async Task UpdateCategory(Category category, CancellationToken token)
         {
@@ -90,7 +79,7 @@ namespace Peppa.Repositories
             var existCategory = await _context.Categories.FirstOrDefaultAsync(a => a.Id == category.Id, token);
             if (existCategory == null)
                 return;
-            
+
             existCategory.HexColor = category.HexColor;
             existCategory.Title = category.Title;
             existCategory.Type = category.Type;
@@ -99,6 +88,55 @@ namespace Peppa.Repositories
             existCategory.IsSynchronized = category.IsSynchronized;
 
             _context.Categories.Update(existCategory);
+            await _context.SaveChangesAsync(token);
+        }
+
+        public Task<Operation[]> GetOperations(CancellationToken token)
+            => _context.Operations.Where(o => !o.IsDeleted).ToArrayAsync(token);
+
+        public async Task<bool> HaveOperation(int id, CancellationToken token)
+        {
+            var existAccount = await _context.Operations.FirstOrDefaultAsync(a => a.Id == id, token);
+            return existAccount != null;
+        }
+
+        public Task CreateOperation(Operation newOperation, CancellationToken token)
+            => Add(newOperation, token);
+
+        public async Task UpdateOperation(Operation operation, CancellationToken token)
+        {
+            if (operation == null)
+                return;
+
+            var existOperation = await _context.Operations.FirstOrDefaultAsync(a => a.Id == operation.Id, token);
+            if (existOperation == null)
+                return;
+
+            existOperation.Id = operation.Id;
+            existOperation.CategoryId = operation.CategoryId;
+            existOperation.CategoryType = operation.CategoryType;
+            existOperation.CategoryHexColor = operation.CategoryHexColor;
+            existOperation.Amount = operation.Amount;
+            existOperation.AccountId = operation.AccountId;
+            existOperation.AccountTitle = operation.AccountTitle;
+            existOperation.Comment = operation.Comment;
+            existOperation.Type = operation.Type;
+            existOperation.CreatedOn = operation.CreatedOn;
+            existOperation.PlanDate = operation.PlanDate;
+            existOperation.FromTitle = operation.FromTitle;
+            existOperation.ToTitle = operation.ToTitle;
+            existOperation.IsDeleted = operation.IsDeleted;
+
+            _context.Operations.Update(existOperation);
+            await _context.SaveChangesAsync(token);
+        }
+
+        private async Task Add<T>(T entity, CancellationToken token) where T : class
+        {
+            if (entity == null)
+                return;
+
+            await _context.AddAsync(entity, token);
             await _context.SaveChangesAsync(token);
         }
 

@@ -9,12 +9,12 @@ using Peppa.ViewModels.Operations;
 
 namespace Peppa.Views.Operations
 {
-    public sealed partial class EditCostPage : Page
+    public sealed partial class EditOperationPage : Page
     {
-        private CostViewModel _cost;
+        private OperationsViewModel _cost;
         private bool _isInit;
 
-        public EditCostPage()
+        public EditOperationPage()
         {
             this.InitializeComponent();
         }
@@ -99,9 +99,6 @@ namespace Peppa.Views.Operations
 
         private async void OnDeleteClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            if(!_cost.IsNew)
-                await MainViewModel.Current.DeleteCost(_cost);
-
             if (Frame.CanGoBack)
             {
                 Frame.GoBack();
@@ -110,10 +107,7 @@ namespace Peppa.Views.Operations
 
         private void OnDateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
-            if (args.NewDate == null)
-                return;
-
-            _cost.DateOffset = args.NewDate.Value;
+            
         }
 
         private void OnCostTextChanged(object sender, TextChangedEventArgs e)

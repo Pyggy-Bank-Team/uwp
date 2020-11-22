@@ -65,8 +65,8 @@
                 <Ellipse Tag="#525E54" Height="54" Width="54" Fill="#525e54"/>
             </GridView>
 
-            <Button x:Name="ChooseColorButton"   Margin="15" Width="{Binding ElementName=ColorsGridView, Path=ActualWidth}"
-                    Click="OnChooseColorButtonClicked" Content="Select your color"/>
+            <!--<Button x:Name="ChooseColorButton"   Margin="15" Width="{Binding ElementName=ColorsGridView, Path=ActualWidth}"
+                    Click="OnChooseColorButtonClicked" Content="Select your color"/>-->
 
         </StackPanel>
 

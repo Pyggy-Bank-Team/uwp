@@ -1,27 +1,29 @@
 ﻿using Newtonsoft.Json;
 using System;
+using Peppa.Enums;
+using piggy_bank_uwp.Enums;
 
 namespace piggy_bank_uwp.Contracts.Responses
 {
     public class OperationResponse
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("categoryId")]
-        public long CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         [JsonProperty("categoryType")]
-        public long CategoryType { get; set; }
+        public CategoryType? CategoryType { get; set; }
 
         [JsonProperty("categoryHexColor")]
         public string CategoryHexColor { get; set; }
 
         [JsonProperty("amount")]
-        public long Amount { get; set; }
+        public decimal? Amount { get; set; }
 
         [JsonProperty("accountId")]
-        public long AccountId { get; set; }
+        public int? AccountId { get; set; }
 
         [JsonProperty("accountTitle")]
         public string AccountTitle { get; set; }
@@ -30,7 +32,7 @@ namespace piggy_bank_uwp.Contracts.Responses
         public string Comment { get; set; }
 
         [JsonProperty("type")]
-        public long Type { get; set; }
+        public OperationType Type { get; set; }
 
         [JsonProperty("createdOn")]
         public DateTime CreatedOn { get; set; }

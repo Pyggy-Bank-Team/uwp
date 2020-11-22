@@ -1,6 +1,8 @@
 ﻿using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Interface.Services;
+using piggy_bank_uwp.Contracts;
 using piggy_bank_uwp.Contracts.Responses;
 
 namespace Peppa.Services.PiggyService
@@ -10,9 +12,9 @@ namespace Peppa.Services.PiggyService
         public OperationService(IHttpClientFactory httpClientFactory) 
             : base(httpClientFactory) { }
         
-        public async Task<OperationResponse[]> GetOperations()
+        public Task<PageResult<OperationResponse>> GetOperations(CancellationToken token)
         {
-            throw new System.NotImplementedException();
+            return Get<PageResult<OperationResponse>>("operations", token);
         }
     }
 }

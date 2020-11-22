@@ -3,29 +3,22 @@ using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Peppa.ViewModels;
 using Peppa.Views.Accounts;
-using Peppa.Views.Donate;
 using Peppa.Views.Users;
 using Peppa.Views.Categories;
+using Peppa.Views.Operations;
 
 namespace Peppa.Views
 {
     public sealed partial class MainPage : Page
     {
-        private MainViewModel _mainViewModel;
-
         public MainPage()
         {
             this.InitializeComponent();
-
-            _mainViewModel = MainViewModel.Current;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _mainViewModel.Init();
-            DataContext = _mainViewModel;
         }
 
         private void OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
@@ -59,7 +52,8 @@ namespace Peppa.Views
                     NavView.Header = Localize.GetTranslateByKey(Localize.Accounts);
                     break;
                 case Constants.costs:
-                    //ContentFrame.Navigate(typeof(CostsPage));
+                    ContentFrame.Navigate(typeof(OperationsPage));
+                    NavView.Header = "Operations";
                     //NavView.Header = Localize.GetTranslateByKey(Localize.Costs);
                     break;
                 case Constants.categories:
@@ -75,7 +69,7 @@ namespace Peppa.Views
                     NavView.Header = Localize.GetTranslateByKey(Localize.Synchronization);
                     break;
                 case Constants.donate:
-                    ContentFrame.Navigate(typeof(DonatePage), _mainViewModel.Donate);
+                    
                     NavView.Header = Localize.Donate;
                     break;
             }

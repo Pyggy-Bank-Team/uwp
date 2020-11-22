@@ -3,7 +3,6 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Peppa.Contracts;
 using Peppa.Workers;
 
 namespace Peppa.Services.PiggyService
@@ -13,11 +12,10 @@ namespace Peppa.Services.PiggyService
         protected PiggyServiceBase(IHttpClientFactory httpClientFactory)
             => HttpClientFactory = httpClientFactory;
 
-        protected async Task<TResponse> Get<TResponse, TRequest>(TRequest request, string requestUrl, CancellationToken token) where TResponse : class, new()
+        public async Task<TResponse> Get<TResponse>(string requestUrl, CancellationToken token) where TResponse : class, new()
         {
             var client = HttpClientFactory.CreateClient("Get");
-            client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", (string) SettingsWorker.Current.GetValue(Constants.AccessToken));
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string) SettingsWorker.Current.GetValue(Constants.AccessToken));
             using (var response = await client.GetAsync($"{BaseUrl}/{requestUrl}", token))
             {
                 return response.IsSuccessStatusCode
@@ -27,7 +25,7 @@ namespace Peppa.Services.PiggyService
         }
 
         public IHttpClientFactory HttpClientFactory { get; }
-        public string BaseUrl { get; } = @"http://piggy-api.somee.com/api";
+        public string BaseUrl { get; } = @"http://dev.piggybank.pro/api";
         public bool IsAuthorized => SettingsWorker.Current.HaveValue(Constants.AccessToken);
     }
 }

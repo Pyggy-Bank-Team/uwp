@@ -5,6 +5,7 @@ using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
 using Peppa.Interface;
 using Peppa.Interface.Services;
+using System;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -74,7 +75,7 @@ namespace Peppa.Dialogs
                     Hide();
                     break;
                 default:
-                    ErrorText.Text = string.Join("\\n", result.Error.Errors);
+                    ErrorText.Text = string.Join(Environment.NewLine, result.Error.Errors);
                     ErrorText.Visibility = Windows.UI.Xaml.Visibility.Visible;
                     break;
             }

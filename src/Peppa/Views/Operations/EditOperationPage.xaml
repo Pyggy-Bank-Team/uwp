@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Peppa.Views.Operations.EditCostPage"
+    x:Class="Peppa.Views.Operations.EditOperationPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -51,8 +51,8 @@
                 <!--<Controls:PatternTextBox x:Name="CostTextBox" x:Uid="CostTextBox" Pattern="0123456789" FontSize="18" Margin="15"
                                          TextChanged="OnCostTextChanged" />-->
                 <!--Comment-->
-                <TextBox x:Uid="CommentTextBox" Text="{x:Bind _cost.Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18"
-                         Height="200" Margin="15" TextWrapping="Wrap" />
+                <!-- <TextBox x:Uid="CommentTextBox" Text="{x:Bind _cost.Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" -->
+                <!--          Height="200" Margin="15" TextWrapping="Wrap" /> -->
 
             </StackPanel>
         </ScrollViewer>

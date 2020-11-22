@@ -76,7 +76,7 @@ namespace Peppa.Views.Categories
 
         private void OnColorsGridViewSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            ChooseColorButton.Width = e.NewSize.Width;
+            //ChooseColorButton.Width = e.NewSize.Width;
             SelectedColor.Width = e.NewSize.Width;
         }
 
