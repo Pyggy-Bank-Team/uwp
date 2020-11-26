@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Interface;
 using Peppa.Interface.Services;
+using System.Collections.Generic;
 
 namespace Peppa.Models
 {
@@ -11,9 +12,22 @@ namespace Peppa.Models
     {
         private readonly IPiggyRepository _repository;
         private readonly IOperationService _service;
+        private readonly Dictionary<string, string> _availableCurrencies;
 
         public OperationsModel(IPiggyRepository repository, IOperationService service)
-            => (_repository, _service) = (repository, service);
+        {
+            _repository = repository;
+            _service = service;
+            _availableCurrencies = new Dictionary<string, string>
+            {
+                {"RUB", "₽"},
+                {"BYN", "Br"},
+                {"UAH", "₴"},
+                {"KZT", "₸"},
+                {"USD", "$"},
+                {"EUR", "€"}
+            };
+        }
 
         public async Task<Operation[]> GetOperations(CancellationToken token)
         {
@@ -31,9 +45,12 @@ namespace Peppa.Models
                             CategoryId = operation.CategoryId,
                             CategoryType = operation.CategoryType,
                             CategoryHexColor = operation.CategoryHexColor,
+                            CategoryTitle = operation.CategoryTitle,
                             Amount = operation.Amount,
                             AccountId = operation.AccountId,
                             AccountTitle = operation.AccountTitle,
+                            Currency = operation.Currency,
+                            Symbol = GetSymbol(operation.Currency),
                             Comment = operation.Comment,
                             Type = operation.Type,
                             CreatedOn = operation.CreatedOn,
@@ -57,6 +74,23 @@ namespace Peppa.Models
         public void Dispose()
         {
             _repository?.Dispose();
+        }
+
+        private string GetSymbol(string currency)
+        {
+            if (string.IsNullOrWhiteSpace(currency))
+                return null;
+
+            try
+            {
+                return _availableCurrencies[currency];
+            }
+            catch
+            {
+                //TODO log
+            }
+
+            return null;
         }
     }
 }

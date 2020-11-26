@@ -37,17 +37,13 @@
 
                     <Ellipse Grid.Column="0" Fill="{Binding Path=CategoryHexColor, Mode=OneWay}" Height="54" Width="54" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                    <StackPanel Grid.Column="2">
-                        <TextBlock Text="{Binding Path=Comment}" FontSize="12" MaxHeight="40" TextTrimming="CharacterEllipsis" VerticalAlignment="Bottom"/>
-                        <TextBlock Text="{Binding Path=AccountTitle}" FontSize="18" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
-                    </StackPanel>
+                    <TextBlock Grid.Column="2" Text="{Binding Path=OperationTitle}" FontSize="18" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
                 </Grid>
 
                 <!--Cost-->
-                <TextBlock Grid.Column="2" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="SemiBold" TextTrimming="CharacterEllipsis">
-                    <Run Text="-"/>
-                    <Run Text="{Binding Path=Amount, Mode=OneWay}"/>
-                </TextBlock>
+                <TextBlock Grid.Column="2" Text="{Binding Path=OperationValue, Mode=OneWay}" FontSize="18" HorizontalAlignment="Right" 
+                           VerticalAlignment="Center" 
+                           FontWeight="SemiBold" TextTrimming="CharacterEllipsis"/>
             </Grid>
         </Grid>
     </DataTemplate>

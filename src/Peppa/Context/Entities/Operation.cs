@@ -12,11 +12,17 @@ namespace piggy_bank_uwp.Context.Entities
 
         public string CategoryHexColor { get; set; }
 
+        public string CategoryTitle { get; set; }
+
         public decimal? Amount { get; set; }
 
         public long? AccountId { get; set; }
 
         public string AccountTitle { get; set; }
+
+        public string Currency { get; set; }
+
+        public string Symbol { get; set; }
 
         public string Comment { get; set; }
 

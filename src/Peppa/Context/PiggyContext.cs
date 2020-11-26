@@ -13,7 +13,7 @@ namespace Peppa.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=Costs.db");
+            optionsBuilder.UseSqlite("Filename=piggy.db");
         }
 
         public DbSet<Account> Accounts { get; set; }     

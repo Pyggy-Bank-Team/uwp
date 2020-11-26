@@ -19,6 +19,9 @@ namespace piggy_bank_uwp.Contracts.Responses
         [JsonProperty("categoryHexColor")]
         public string CategoryHexColor { get; set; }
 
+        [JsonProperty("categoryTitle")]
+        public string CategoryTitle { get; set; }
+
         [JsonProperty("amount")]
         public decimal? Amount { get; set; }
 
@@ -27,6 +30,9 @@ namespace piggy_bank_uwp.Contracts.Responses
 
         [JsonProperty("accountTitle")]
         public string AccountTitle { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
 
         [JsonProperty("comment")]
         public string Comment { get; set; }
