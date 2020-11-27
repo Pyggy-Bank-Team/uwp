@@ -10,10 +10,10 @@ namespace Peppa.Interface
     {
         Task CreateAccount(Account newAccount, CancellationToken token);
         Task UpdateAccount(Account account, CancellationToken token);
-        Task DeleteAccount(int id,CancellationToken token);
+        Task DeleteAccount(int id, CancellationToken token);
         Task<bool> HaveAccount(int id, CancellationToken token);
-        Task<Account[]> GetAccounts(CancellationToken token);
-        Task<Category[]> GetCategories(CancellationToken token);
+        Task<Account[]> GetAccounts(CancellationToken token, bool all = true);
+        Task<Category[]> GetCategories(CancellationToken token, bool all = true);
         Task<bool> HaveCategories(int id, CancellationToken token);
         Task CreateCategory(Category newCategory, CancellationToken token);
         Task UpdateCategory(Category category, CancellationToken token);

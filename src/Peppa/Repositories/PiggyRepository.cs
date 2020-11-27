@@ -35,7 +35,7 @@ namespace Peppa.Repositories
             existAccount.IsArchived = account.IsArchived;
             existAccount.IsDeleted = account.IsDeleted;
             existAccount.IsSynchronized = account.IsSynchronized;
-            
+
             _context.Accounts.Update(existAccount);
             await _context.SaveChangesAsync(token);
         }
@@ -56,11 +56,16 @@ namespace Peppa.Repositories
             return existAccount != null;
         }
 
-        public Task<Account[]> GetAccounts(CancellationToken token)
-            => _context.Accounts.Where(a => !a.IsDeleted).ToArrayAsync(token);
+        public Task<Account[]> GetAccounts(CancellationToken token, bool all = true)
+            => all
+            ? _context.Accounts.Where(a => !a.IsDeleted).ToArrayAsync(token)
+            : _context.Accounts.Where(a => !a.IsDeleted && !a.IsArchived).ToArrayAsync(token);
 
-        public Task<Category[]> GetCategories(CancellationToken token)
-            => _context.Categories.Where(c => !c.IsDeleted).ToArrayAsync(token);
+
+        public Task<Category[]> GetCategories(CancellationToken token, bool all = true)
+            => all
+            ? _context.Categories.Where(c => !c.IsDeleted).ToArrayAsync(token)
+            : _context.Categories.Where(c => !c.IsDeleted && !c.IsArchived).ToArrayAsync(token);
 
         public async Task<bool> HaveCategories(int id, CancellationToken token)
         {

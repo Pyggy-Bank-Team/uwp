@@ -1,11 +1,8 @@
-﻿using System;
-using System.Linq;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Peppa.Services;
-using Peppa.ViewModels;
 using Peppa.ViewModels.Accounts;
 using Peppa.ViewModels.Operations;
+using piggy_bank_uwp.Enums;
 
 namespace Peppa.Views.Operations
 {
@@ -21,6 +18,14 @@ namespace Peppa.Views.Operations
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            _dataContext = e.Parameter as OperationViewModel;
+            DataContext = _dataContext;
+
+            AccountComboBox.ItemsSource = _dataContext.GetAccounts().Result;
+            CategoryComboBox.ItemsSource = _dataContext.GetCategories().Result;
+
+            Types.ItemsSource = new[] { OperationType.Budget, OperationType.Plan, OperationType.Transfer };
+
             //_cost = e.Parameter as CostViewModel;
             //DatePicker.Date = _cost.DateOffset;
             ////CategoriesComboBox.ItemsSource = MainViewModel.Current.Categories;
@@ -107,25 +112,7 @@ namespace Peppa.Views.Operations
 
         private void OnDateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
-            
-        }
 
-        private void OnCostTextChanged(object sender, TextChangedEventArgs e)
-        {
-           //if (String.IsNullOrEmpty(CostTextBox.Text))
-           //     return;
-
-           // int value;
-           // bool canSet = Int32.TryParse(CostTextBox.Text, out value);
-
-           // if (canSet)
-           // {
-           //     _cost.Cost = value;
-           // }
-           // else
-           // {
-           //     _cost.Cost = 0;
-           // }
         }
 
         private void OnBalanceSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -136,6 +123,15 @@ namespace Peppa.Views.Operations
             var selectedBalance = e.AddedItems[0] as AccountViewModel;
 
             //_cost.ChangedBalance(selectedBalance?.Id);
+        }
+
+        private void OnAmountChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            //var regex = new Regex(@"^\d$");
+            //if (regex.IsMatch(AmountTextBox.Text))
+            //    _dataContext.Amount = decimal.Parse(AmountTextBox.Text);
+            //else
+            //    AmountTextBox.Text = _dataContext.Amount.ToString();
         }
     }
 }

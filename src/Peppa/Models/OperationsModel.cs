@@ -12,7 +12,7 @@ namespace Peppa.Models
     {
         private readonly IPiggyRepository _repository;
         private readonly IOperationService _service;
-        private readonly Dictionary<string, string> _availableCurrencies;
+        private readonly Dictionary<string, string> _availableCurrencies;       
 
         public OperationsModel(IPiggyRepository repository, IOperationService service)
         {
@@ -28,6 +28,8 @@ namespace Peppa.Models
                 {"EUR", "€"}
             };
         }
+
+        public IPiggyRepository Repository => _repository;
 
         public async Task<Operation[]> GetOperations(CancellationToken token)
         {

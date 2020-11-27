@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Peppa.Models;
 using Peppa.ViewModels.Interface;
 using piggy_bank_uwp.Interface.Models;
 
@@ -13,13 +14,13 @@ namespace Peppa.ViewModels.Operations
 
         public OperationsViewModel(IOperationsModel model)
             => _model = model;
-        
+
         public async Task Initialization()
         {
             var operations = await _model.GetOperations(GetToken());
             if (operations != null)
             {
-                List = new ObservableCollection<OperationViewModel>(operations.OrderBy(o => o.CreatedOn).Select(o => new OperationViewModel(o)));
+                List = new ObservableCollection<OperationViewModel>(operations.OrderBy(o => o.CreatedOn).Select(o => new OperationViewModel(o, new OperationModel(_model.Repository))));
                 RaisePropertyChanged(nameof(List));
             }
         }
@@ -28,9 +29,9 @@ namespace Peppa.ViewModels.Operations
         {
             throw new NotImplementedException();
         }
-        
+
         public ObservableCollection<OperationViewModel> List { get; private set; }
-        
+
         public OperationViewModel SelectedItem { get; set; }
     }
 }

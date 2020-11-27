@@ -2,9 +2,10 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Peppa.Context.Entities;
 using Peppa.Enums;
 using Peppa.Interface.Models;
+using Peppa.ViewModels.Accounts;
+using Peppa.ViewModels.Categories;
 using piggy_bank_uwp.Context.Entities;
 using piggy_bank_uwp.Enums;
 
@@ -12,17 +13,17 @@ namespace Peppa.ViewModels.Operations
 {
     public class OperationViewModel : BaseViewModel
     {
-        private readonly IAccountsModel _accountsMode;
-        private readonly ICategoriesModel _categoriesModel;
+        private readonly IOperationModel _model;
 
-        public OperationViewModel()
+        public OperationViewModel(IOperationModel model)
         {
             IsNew = true;
             Type = OperationType.Budget;
             CategoryType = Enums.CategoryType.Expense;
+            _model = model;
         }
 
-        public OperationViewModel(Operation operation)
+        public OperationViewModel(Operation operation, IOperationModel model)
         {
             IsNew = false;
             CategoryId = operation.CategoryId;
@@ -41,15 +42,30 @@ namespace Peppa.ViewModels.Operations
             IsDeleted = operation.IsDeleted;
             Id = operation.Id;
             CreatedOn = operation.CreatedOn;
+            _model = model;
         }
 
-        public async Task<Category[]> GetCategories()
+        public async Task<CategoryItemViewModel[]> GetCategories()
         {
             if (CategoryType == null)
                 return null;
 
-            var categories =  await _categoriesModel.GetCategories(GetToken());
-            return categories.Where(c => c.Type == CategoryType).ToArray();
+            var categories = await _model.GetCategories(GetToken());
+            return categories.Where(c => c.Type == CategoryType).Select(c => new CategoryItemViewModel
+            {
+                Title = c.Title,
+                HexColor = c.HexColor
+            }).ToArray();
+        }
+
+        public async Task<AccountItemViewModel[]> GetAccounts()
+        {
+            var accounts = await _model.GetAccounts(GetToken());
+            return accounts.Select(a => new AccountItemViewModel
+            {
+                Title = a.Title,
+                BalanceWithCurrencySymbol = $"{a.Balance} {a.Currency}"
+            }).ToArray();
         }
 
         public bool IsNew { get; set; }

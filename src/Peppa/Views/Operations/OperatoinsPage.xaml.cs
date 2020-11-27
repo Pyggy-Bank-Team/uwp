@@ -46,7 +46,7 @@ namespace Peppa.Views.Operations
             //    return;
             //}
 
-            Frame.Navigate(typeof(EditOperationPage), new OperationViewModel());
+            //Frame.Navigate(typeof(EditOperationPage), new OperationViewModel());
         }
 
         private void OnRefreshClick(object sender, RoutedEventArgs e)

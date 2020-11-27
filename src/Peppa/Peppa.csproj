@@ -152,6 +152,7 @@
     <Compile Include="Interface\IPiggyRepository.cs" />
     <Compile Include="Interface\Models\IAccountsModel.cs" />
     <Compile Include="Interface\Models\ICategoriesModel.cs" />
+    <Compile Include="Interface\Models\IOperationModel.cs" />
     <Compile Include="Interface\Models\IOperationsModel.cs" />
     <Compile Include="Interface\Services\IAccountService.cs" />
     <Compile Include="Interface\Services\ICategoryService.cs" />
@@ -164,6 +165,7 @@
     <Compile Include="Models\CostModel.cs" />
     <Compile Include="Interface\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\OperationModel.cs" />
     <Compile Include="Models\OperationsModel.cs" />
     <Compile Include="Models\RegitrationResult.cs" />
     <Compile Include="Contracts\Requests\UserRequest.cs" />
@@ -180,6 +182,7 @@
     <Compile Include="Services\Windows\ToastService.cs" />
     <Compile Include="Utilities\DateUtility.cs" />
     <Compile Include="Utilities\DonateUtility.cs" />
+    <Compile Include="ViewModels\Accounts\AccountItemViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountsViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
