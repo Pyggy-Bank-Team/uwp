@@ -1,10 +1,10 @@
-﻿using piggy_bank_uwp.Context.Entities;
-using piggy_bank_uwp.Interface.Models;
+﻿using piggy_bank_uwp.Interface.Models;
 using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Interface;
 using Peppa.Interface.Services;
 using System.Collections.Generic;
+using Peppa.Context.Entities;
 
 namespace Peppa.Models
 {
@@ -44,22 +44,15 @@ namespace Peppa.Models
                         var entity = new Operation
                         {
                             Id = operation.Id,
-                            CategoryId = operation.CategoryId,
-                            CategoryType = operation.CategoryType,
-                            CategoryHexColor = operation.CategoryHexColor,
-                            CategoryTitle = operation.CategoryTitle,
+                            IsDeleted = operation.IsDeleted,
+                            AccountTitle = operation.Account.Title,
+                            ToTitle = operation.ToAccount?.Title,
+                            CategoryType = operation.Category?.Type,
+                            CategoryHexColor = operation.Category?.HexColor,
+                            CategoryTitle = operation.Category?.Title,
                             Amount = operation.Amount,
-                            AccountId = operation.AccountId,
-                            AccountTitle = operation.AccountTitle,
-                            Currency = operation.Currency,
-                            Symbol = GetSymbol(operation.Currency),
-                            Comment = operation.Comment,
                             Type = operation.Type,
-                            CreatedOn = operation.CreatedOn,
-                            PlanDate = operation.PlanDate,
-                            FromTitle = operation.FromTitle,
-                            ToTitle = operation.ToTitle,
-                            IsDeleted = operation.IsDeleted
+                            CreatedOn = operation.Date
                         };
 
                         if (await _repository.HaveOperation(operation.Id, token))

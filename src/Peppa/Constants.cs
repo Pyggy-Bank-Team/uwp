@@ -3,7 +3,7 @@
     public static class Constants
     {
         public const string accounts = "accounts";
-        public const string costs = "costs";
+        public const string operations = "operations";
         public const string categories = "categories";
         public const string diagrams = "diagrams";
         public const string synchronization = "synchronization";

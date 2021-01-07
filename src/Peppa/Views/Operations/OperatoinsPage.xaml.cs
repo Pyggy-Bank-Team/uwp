@@ -24,15 +24,16 @@ namespace Peppa.Views.Operations
             Progress.Visibility = Visibility.Visible;
 
             _dataContext = (OperationsViewModel) App.ServiceProvider.GetService(typeof(OperationsViewModel));
-            await _dataContext.Initialization();
+           await _dataContext.Initialization();
 
+            TableView.ItemsSource = _dataContext.List;
             StupCollapsed();
             Progress.Visibility = Visibility.Collapsed;
         }
 
         private void OnCostItemClick(object sender, ItemClickEventArgs e)
         {
-            Frame.Navigate(typeof(EditOperationPage), e.ClickedItem);
+            //Frame.Navigate(typeof(EditOperationPage), e.ClickedItem);
         }
 
         private async void OnAddedCostClick(object sender, RoutedEventArgs e)
@@ -51,7 +52,7 @@ namespace Peppa.Views.Operations
 
         private void OnRefreshClick(object sender, RoutedEventArgs e)
         {
-            RefreshContainer.RequestRefresh();
+            //RefreshContainer.RequestRefresh();
         }
 
         private async void OnRefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
@@ -61,14 +62,14 @@ namespace Peppa.Views.Operations
 
         private void StupVisible()
         {
-            RefreshContainer.Visibility = Visibility.Collapsed;
-            StubTextBlock.Visibility = Visibility.Visible;
+            //RefreshContainer.Visibility = Visibility.Collapsed;
+            //StubTextBlock.Visibility = Visibility.Visible;
         }
 
         private void StupCollapsed()
         {
-            RefreshContainer.Visibility = Visibility.Visible;
-            StubTextBlock.Visibility = Visibility.Collapsed;
+            //RefreshContainer.Visibility = Visibility.Visible;
+            //StubTextBlock.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -32,7 +32,7 @@
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
 
-            <NavigationViewItem x:Uid="CostsHeader" Tag="costs">
+            <NavigationViewItem Content="Operations" Tag="operations">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xEADF;"/>
                 </NavigationViewItem.Icon>

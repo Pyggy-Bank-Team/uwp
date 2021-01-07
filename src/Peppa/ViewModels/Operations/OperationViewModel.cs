@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Peppa.Context.Entities;
 using Peppa.Enums;
 using Peppa.Interface.Models;
 using Peppa.ViewModels.Accounts;
 using Peppa.ViewModels.Categories;
-using piggy_bank_uwp.Context.Entities;
 using piggy_bank_uwp.Enums;
 
 namespace Peppa.ViewModels.Operations
@@ -31,13 +31,10 @@ namespace Peppa.ViewModels.Operations
             CategoryHexColor = operation.CategoryHexColor;
             CategoryTitle = operation.CategoryTitle;
             Amount = operation.Amount;
-            AccountId = operation.AccountId;
             AccountTitle = operation.AccountTitle;
             CurrencySymbol = operation.Symbol;
             Comment = operation.Comment;
             Type = operation.Type;
-            PlanDate = operation.PlanDate;
-            FromTitle = operation.FromTitle;
             ToTitle = operation.ToTitle;
             IsDeleted = operation.IsDeleted;
             Id = operation.Id;

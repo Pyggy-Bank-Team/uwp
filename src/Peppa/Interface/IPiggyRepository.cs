@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Context.Entities;
-using piggy_bank_uwp.Context.Entities;
 
 namespace Peppa.Interface
 {

@@ -1,0 +1,65 @@
+﻿<ContentDialog
+    x:Class="Peppa.Dialogs.OperationDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Peppa.Dialogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="TITLE"
+    PrimaryButtonText="Save"
+    SecondaryButtonText="Remove"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Grid>
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical">
+
+                <!--Cost-->
+                <TextBox x:Name="AmountTextBox" x:Uid="CostTextBox" FontSize="18" Margin="15" Text="{x:Bind _dataContext.Amount, Mode=OneTime}" TextChanging="OnAmountChanging"/>
+
+                <ComboBox x:Name="Types" Header="Type"  HorizontalAlignment="Stretch" SelectedItem="{x:Bind _dataContext.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" MaxHeight="200" Margin="15"/>
+
+                <!--Date-->
+                <CalendarDatePicker x:Name="DatePicker" x:Uid="DatePicker" Date="{x:Bind _dataContext.CreatedOn, Mode=OneTime}" FontSize="18" Margin="15" DateChanged="OnDateChanged" />
+
+                <!--Accounts-->
+                <ComboBox x:Name="AccountComboBox" x:Uid="BalancesComboBox" Margin="15"
+                          HorizontalAlignment="Stretch" SelectionChanged="OnBalanceSelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="accounts:AccountItemViewModel">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.8*" />
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{x:Bind Title}" FontSize="18" />
+                                <TextBlock Grid.Column="2" Text="{x:Bind BalanceWithCurrencySymbol}" FontSize="18" />
+                            </Grid>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <!--Categories-->
+                <ComboBox x:Name="CategoryComboBox" x:Uid="CategoriesComboBox" Margin="15"
+                          HorizontalAlignment="Stretch" SelectionChanged="OnTagSelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="categories:CategoryItemViewModel">
+                            <StackPanel Orientation="Horizontal">
+                                <Ellipse Height="18" Width="18" Fill="{x:Bind HexColor}" />
+                                <TextBlock Text="{x:Bind Title}" FontSize="18" Margin="10 0 0 0" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <!--Comment-->
+                <TextBox x:Uid="CommentTextBox" Text="{x:Bind _dataContext.Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" 
+                          Height="200" Margin="15" TextWrapping="Wrap" />
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</ContentDialog>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace piggy_bank_uwp.Context.Entities
+namespace Peppa.Context.Entities
 {
     public abstract class EntityModifiedBase : EntityBase
     {

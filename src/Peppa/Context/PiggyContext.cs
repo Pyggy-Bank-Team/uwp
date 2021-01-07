@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Peppa.Context.Entities;
-using piggy_bank_uwp.Context.Entities;
 
 namespace Peppa.Context
 {

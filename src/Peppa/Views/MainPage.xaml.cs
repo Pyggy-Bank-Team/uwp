@@ -49,16 +49,13 @@ namespace Peppa.Views
             {
                 case Constants.accounts:
                     ContentFrame.Navigate(typeof(BalancesPage));
-                    NavView.Header = Localize.GetTranslateByKey(Localize.Accounts);
                     break;
-                case Constants.costs:
+                case Constants.operations:
                     ContentFrame.Navigate(typeof(OperationsPage));
-                    NavView.Header = "Operations";
                     //NavView.Header = Localize.GetTranslateByKey(Localize.Costs);
                     break;
                 case Constants.categories:
                     ContentFrame.Navigate(typeof(CategoriesPage));
-                    NavView.Header = Localize.GetTranslateByKey(Localize.Categories);
                     break;
                 case Constants.diagrams:
                     //ContentFrame.Navigate(typeof(DiagramPage), _mainViewModel.Diagram);
@@ -66,11 +63,8 @@ namespace Peppa.Views
                     break;
                 case Constants.synchronization:
                     ContentFrame.Navigate(typeof(SyncPage));
-                    NavView.Header = Localize.GetTranslateByKey(Localize.Synchronization);
                     break;
                 case Constants.donate:
-                    
-                    NavView.Header = Localize.Donate;
                     break;
             }
         }

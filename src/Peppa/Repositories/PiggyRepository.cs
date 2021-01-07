@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Peppa.Context;
 using Peppa.Interface;
 using Peppa.Context.Entities;
-using piggy_bank_uwp.Context.Entities;
 
 namespace Peppa.Repositories
 {
@@ -122,13 +121,10 @@ namespace Peppa.Repositories
             existOperation.CategoryType = operation.CategoryType;
             existOperation.CategoryHexColor = operation.CategoryHexColor;
             existOperation.Amount = operation.Amount;
-            existOperation.AccountId = operation.AccountId;
             existOperation.AccountTitle = operation.AccountTitle;
             existOperation.Comment = operation.Comment;
             existOperation.Type = operation.Type;
             existOperation.CreatedOn = operation.CreatedOn;
-            existOperation.PlanDate = operation.PlanDate;
-            existOperation.FromTitle = operation.FromTitle;
             existOperation.ToTitle = operation.ToTitle;
             existOperation.IsDeleted = operation.IsDeleted;
 

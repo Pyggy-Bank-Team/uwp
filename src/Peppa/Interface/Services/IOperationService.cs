@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Peppa.Contracts.Responses;
 using piggy_bank_uwp.Contracts;
-using piggy_bank_uwp.Contracts.Responses;
 
 namespace Peppa.Interface.Services
 {

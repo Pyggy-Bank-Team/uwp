@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace piggy_bank_uwp.Context.Entities
+namespace Peppa.Context.Entities
 {
     public abstract class EntityBase
     {

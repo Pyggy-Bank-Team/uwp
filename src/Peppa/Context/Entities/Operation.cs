@@ -1,8 +1,8 @@
-﻿using piggy_bank_uwp.Enums;
-using System;
+﻿using System;
 using Peppa.Enums;
+using piggy_bank_uwp.Enums;
 
-namespace piggy_bank_uwp.Context.Entities
+namespace Peppa.Context.Entities
 {
     public class Operation : EntityModifiedBase
     {
@@ -14,23 +14,15 @@ namespace piggy_bank_uwp.Context.Entities
 
         public string CategoryTitle { get; set; }
 
-        public decimal? Amount { get; set; }
-
-        public long? AccountId { get; set; }
+        public decimal Amount { get; set; }
 
         public string AccountTitle { get; set; }
-
-        public string Currency { get; set; }
 
         public string Symbol { get; set; }
 
         public string Comment { get; set; }
 
         public OperationType Type { get; set; }
-
-        public DateTime? PlanDate { get; set; }
-
-        public string FromTitle { get; set; }
   
         public string ToTitle { get; set; }
 

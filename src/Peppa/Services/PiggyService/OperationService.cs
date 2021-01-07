@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Peppa.Contracts.Responses;
 using Peppa.Interface.Services;
 using piggy_bank_uwp.Contracts;
-using piggy_bank_uwp.Contracts.Responses;
 
 namespace Peppa.Services.PiggyService
 {

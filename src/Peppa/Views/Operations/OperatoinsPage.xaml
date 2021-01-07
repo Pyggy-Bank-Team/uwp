@@ -9,25 +9,69 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="4"/>
+            <RowDefinition Height="20" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <ProgressBar x:Name="Progress" Grid.Row="0" IsIndeterminate="True" Height="18" Visibility="Collapsed"/>
 
-        <RefreshContainer x:Name="RefreshContainer" RefreshRequested="OnRefreshRequested"
-                          PullDirection="BottomToTop" Grid.Row="1">
-            <ListView x:Name="CostsListView"
-                      ItemsSource="{x:Bind _dataContext.List, Mode=OneWay}"
-                      ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
-                      ItemTemplate="{StaticResource ResourceKey=ListViewItemCost}"
-                      IsItemClickEnabled="True" SelectionMode="Single" ItemClick="OnCostItemClick" />
-        </RefreshContainer>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,1,0">
+                <TextBlock Text="Type" HorizontalAlignment="Center" Foreground="Gray"></TextBlock>
+            </Border>
+
+            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="0,0,1,0">
+                <TextBlock  Text="From" HorizontalAlignment="Center" Foreground="Gray"></TextBlock>
+            </Border>
+
+            <Border Grid.Column="2"  BorderBrush="Gray" BorderThickness="0,0,1,0">
+                <TextBlock Text="To" HorizontalAlignment="Center" Foreground="Gray"></TextBlock>
+            </Border>
+
+            <Border Grid.Column="3" BorderBrush="Gray" BorderThickness="0,0,1,0">
+                <TextBlock Text="Amount" HorizontalAlignment="Center" Foreground="Gray"></TextBlock>
+            </Border>
+
+            <Border Grid.Column="4" BorderBrush="Gray" BorderThickness="0,0,1,0">
+                <TextBlock  Text="Date" HorizontalAlignment="Center" Foreground="Gray"></TextBlock>
+            </Border>
+
+            <TextBlock Grid.Column="5" Text="Comment" HorizontalAlignment="Center" Foreground="Gray"></TextBlock>
+
+        </Grid>
+
+        <ListView Grid.Row="2" x:Name="TableView" 
+                  ItemsSource="{x:Bind _dataContext.List}"
+                  ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
+                  ItemTemplate="{StaticResource OperationTemplate}"
+                  IsItemClickEnabled="True" SelectionMode="Single"/>
+
+
+
+
+        <!-- <RefreshContainer x:Name="RefreshContainer" RefreshRequested="OnRefreshRequested" -->
+        <!--                   PullDirection="BottomToTop" Grid.Row="1"> -->
+        <!--     <ListView x:Name="CostsListView" -->
+        <!--               ItemsSource="{x:Bind _dataContext.List, Mode=OneWay}" -->
+        <!--               ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}" -->
+        <!--               ItemTemplate="{StaticResource ResourceKey=ListViewItemCost}" -->
+        <!--               IsItemClickEnabled="True" SelectionMode="Single" ItemClick="OnCostItemClick" /> -->
+        <!-- </RefreshContainer> -->
 
         <TextBlock x:Name="StubTextBlock" x:Uid="StubCostsTextBlock" Grid.Row="1"
-                   HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWholeWords" />
+                   HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWholeWords" Visibility="Collapsed"/>
 
-        <CommandBar Grid.Row="2">
+        <CommandBar Grid.Row="3">
             <AppBarButton x:Uid="RefreshCostsAppBarButton" Icon="Refresh" AccessKey="R" Click="OnRefreshClick" />
             <AppBarButton x:Name="AddCostAppBarButton" x:Uid="AddCostAppBarButton" Icon="Add" Click="OnAddedCostClick" />
         </CommandBar>

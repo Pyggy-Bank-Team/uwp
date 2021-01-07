@@ -20,7 +20,7 @@ namespace Peppa.ViewModels.Operations
             var operations = await _model.GetOperations(GetToken());
             if (operations != null)
             {
-                List = new ObservableCollection<OperationViewModel>(operations.OrderBy(o => o.CreatedOn).Select(o => new OperationViewModel(o, new OperationModel(_model.Repository))));
+                List = new ObservableCollection<ListItemViewModel>(operations.OrderBy(o => o.CreatedOn).Select(o => new ListItemViewModel(o)));
                 RaisePropertyChanged(nameof(List));
             }
         }
@@ -30,7 +30,7 @@ namespace Peppa.ViewModels.Operations
             throw new NotImplementedException();
         }
 
-        public ObservableCollection<OperationViewModel> List { get; private set; }
+        public ObservableCollection<ListItemViewModel> List { get; private set; }
 
         public OperationViewModel SelectedItem { get; set; }
     }
