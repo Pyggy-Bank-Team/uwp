@@ -21,6 +21,7 @@
                     IsBackButtonVisible="Visible"
                     IsBackEnabled="True"
                     Loaded="OnNavViewLoaded"
+                    PaneDisplayMode="Top"
                     BackRequested="OnBackRequested">
 
         <NavigationView.MenuItems>
