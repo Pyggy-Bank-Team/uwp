@@ -8,10 +8,9 @@
     xmlns:accounts="using:Peppa.ViewModels.Accounts"
     xmlns:categories="using:Peppa.ViewModels.Categories"
     mc:Ignorable="d"
+    CloseButtonText="Close"
     PrimaryButtonText="Save"
-    SecondaryButtonText="Remove"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
     Loaded="OnLoaded">
 
     <Grid>
@@ -19,16 +18,30 @@
             <StackPanel Orientation="Vertical">
 
                 <!--Cost-->
-                <TextBox x:Name="AmountTextBox" x:Uid="CostTextBox" FontSize="18" Margin="15" Text="{x:Bind _item.Amount, Mode=OneTime}"/>
+                <TextBox x:Name="AmountTextBox" x:Uid="CostTextBox" FontSize="18" Text="{x:Bind _item.Amount, Mode=OneTime}"/>
 
-                <ComboBox x:Name="Types" Header="Type"  HorizontalAlignment="Stretch" SelectedItem="{x:Bind _item.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" MaxHeight="200" Margin="15"/>
+                <GridView HorizontalAlignment="Stretch">
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Income"/>
+                        <TextBlock Grid.Column="1" Text="Outcome"/>
+                        <TextBlock Grid.Column="3" Text="Trnasfer"/>
+
+                    </Grid>                   
+                </GridView>
+
+                <ComboBox x:Name="Types" Header="Type"  HorizontalAlignment="Stretch" SelectedItem="{x:Bind _item.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18"/>
 
                 <!--Date-->
-                <CalendarDatePicker x:Name="DatePicker" x:Uid="DatePicker" HorizontalAlignment="Stretch" Date="{x:Bind _item.Date, Mode=OneTime}" FontSize="18" Margin="15"/>
+                <CalendarDatePicker x:Name="DatePicker" x:Uid="DatePicker" HorizontalAlignment="Stretch" Date="{x:Bind _item.Date, Mode=OneTime}" FontSize="18"/>
 
                 <!--Accounts-->
-                <ComboBox x:Name="AccountComboBox" x:Uid="BalancesComboBox" Margin="15"
-                          HorizontalAlignment="Stretch">
+                <ComboBox x:Name="AccountComboBox" x:Uid="BalancesComboBox" HorizontalAlignment="Stretch">
                     <ComboBox.ItemTemplate>
                         <DataTemplate x:DataType="accounts:AccountItemViewModel">
                             <Grid>
@@ -45,8 +58,7 @@
                 </ComboBox>
 
                 <!--Categories-->
-                <ComboBox x:Name="CategoryComboBox" x:Uid="CategoriesComboBox" Margin="15"
-                          HorizontalAlignment="Stretch">
+                <ComboBox x:Name="CategoryComboBox" x:Uid="CategoriesComboBox" HorizontalAlignment="Stretch">
                     <ComboBox.ItemTemplate>
                         <DataTemplate x:DataType="categories:CategoryItemViewModel">
                             <StackPanel Orientation="Horizontal">
@@ -59,7 +71,7 @@
 
                 <!--Comment-->
                 <TextBox x:Uid="CommentTextBox" Text="{x:Bind _item.Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" 
-                          Height="100" Margin="15" TextWrapping="Wrap" />
+                          Height="100" TextWrapping="Wrap"/>
 
             </StackPanel>
         </ScrollViewer>
