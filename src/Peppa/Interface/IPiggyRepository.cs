@@ -17,8 +17,10 @@ namespace Peppa.Interface
         Task CreateCategory(Category newCategory, CancellationToken token);
         Task UpdateCategory(Category category, CancellationToken token);
         Task<Operation[]> GetOperations(CancellationToken token);
+        Task<Operation> GetOperation(int id, CancellationToken token);
         Task<bool> HaveOperation(int id, CancellationToken token);
         Task CreateOperation(Operation newOperation, CancellationToken token);
         Task UpdateOperation(Operation operation, CancellationToken token);
+        Task AddOrUpdateOperation(Operation operation, CancellationToken token);
     }
 }

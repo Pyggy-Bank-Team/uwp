@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using Peppa.ViewModels.Operations;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Peppa.Dialogs
 {
     public sealed partial class OperationDialog : ContentDialog
     {
-        public OperationDialog()
+        private readonly OperationsViewModel _viewModel;
+        private readonly ListItemViewModel _item;
+
+        public OperationDialog(OperationsViewModel viewModel, ListItemViewModel item)
         {
             this.InitializeComponent();
+            _viewModel = viewModel;
+            _item = item;
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -30,6 +23,20 @@ namespace Peppa.Dialogs
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+        }
+
+        private async void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var accountTask = _viewModel.GetAccounts();
+            var categoryTask = _viewModel.GetCategories(_item.CategoryType);
+            var operationTask = _viewModel.GetBudgetOperation(_item.Id);
+
+            await Task.WhenAll(accountTask, categoryTask, operationTask);
+
+            AccountComboBox.ItemsSource = accountTask.Result;
+            AccountComboBox.SelectedItem = accountTask.Result.First(a => a.Id == operationTask.Result.AccountId);
+            CategoryComboBox.ItemsSource = categoryTask.Result;
+            CategoryComboBox.SelectedItem = categoryTask.Result.First(c => c.Id == operationTask.Result.CategoryId);
         }
     }
 }

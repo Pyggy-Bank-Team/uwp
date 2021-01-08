@@ -28,7 +28,7 @@ namespace Peppa.ViewModels
             }
         }
         
-        internal CancellationToken GetToken(int minutes = 1)
+        internal CancellationToken GetCancellationToken(int minutes = 1)
             => new CancellationTokenSource(TimeSpan.FromMinutes(minutes)).Token;
 
         public event PropertyChangedEventHandler PropertyChanged;

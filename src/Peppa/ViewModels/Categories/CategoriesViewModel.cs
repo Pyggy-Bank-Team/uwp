@@ -20,7 +20,7 @@ namespace Peppa.ViewModels.Categories
         
         public async Task Initialization()
         {
-            var categories = await _model.GetCategories(GetToken());
+            var categories = await _model.GetCategories(GetCancellationToken());
             if (categories != null)
             {
                 List = new ObservableCollection<CategoryViewModel>(categories.Select(c => new CategoryViewModel(c)).OrderBy(c => c.IsArchived));
@@ -39,13 +39,13 @@ namespace Peppa.ViewModels.Categories
             switch (SelectedItem?.Action)
             {
                 case ActionType.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
-                    await _model.CreateCategory(SelectedItem.MakeCategoryEntity(), GetToken());
+                    await _model.CreateCategory(SelectedItem.MakeCategoryEntity(), GetCancellationToken());
                     break;
                 case ActionType.Save when SelectedItem?.IsNew == false:
-                    await _model.UpdateCategory(SelectedItem.MakeCategoryEntity(), GetToken());
+                    await _model.UpdateCategory(SelectedItem.MakeCategoryEntity(), GetCancellationToken());
                     break;
                 case ActionType.Delete:
-                    await _model.DeleteCategory(SelectedItem.Id, GetToken());
+                    await _model.DeleteCategory(SelectedItem.Id, GetCancellationToken());
                     break;
             }
         }

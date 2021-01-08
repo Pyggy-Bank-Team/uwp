@@ -2,7 +2,7 @@
 using Windows.UI.Xaml.Navigation;
 using Peppa.ViewModels.Accounts;
 using Peppa.ViewModels.Operations;
-using piggy_bank_uwp.Enums;
+using Peppa.Enums;
 
 namespace Peppa.Views.Operations
 {
@@ -21,10 +21,10 @@ namespace Peppa.Views.Operations
             _dataContext = e.Parameter as OperationViewModel;
             DataContext = _dataContext;
 
-            AccountComboBox.ItemsSource = _dataContext.GetAccounts().Result;
-            CategoryComboBox.ItemsSource = _dataContext.GetCategories().Result;
+            //AccountComboBox.ItemsSource = _dataContext.GetAccounts().Result;
+            //CategoryComboBox.ItemsSource = _dataContext.GetCategories().Result;
 
-            Types.ItemsSource = new[] { OperationType.Budget, OperationType.Plan, OperationType.Transfer };
+            Types.ItemsSource = new[] { OperationType.Budget, OperationType.Transfer };
 
             //_cost = e.Parameter as CostViewModel;
             //DatePicker.Date = _cost.DateOffset;

@@ -2,7 +2,6 @@
 using System.Text;
 using Peppa.Context.Entities;
 using Peppa.Enums;
-using piggy_bank_uwp.Enums;
 
 namespace Peppa.ViewModels.Operations
 {
@@ -10,10 +9,12 @@ namespace Peppa.ViewModels.Operations
     {
         public ListItemViewModel(Operation operation)
         {
+            Id = operation.Id;
             Type = operation.Type;
             IsBudget = Type == OperationType.Budget;
             CategoryHexColor = operation.CategoryHexColor;
             CategoryTitle = operation.CategoryTitle;
+            CategoryType = operation.CategoryType ?? CategoryType.Undefined;
             AccountTitle = operation.AccountTitle;
             ToTitle = Type == OperationType.Budget ? operation.AccountTitle : operation.ToTitle;
             Amount = GetAmountValue(Type, CategoryType, operation.Amount);
@@ -52,7 +53,7 @@ namespace Peppa.ViewModels.Operations
 
         public OperationType Type { get; set; }
 
-        public CategoryType? CategoryType { get; set; }
+        public CategoryType CategoryType { get; set; }
 
         public string CategoryHexColor { get; set; }
 

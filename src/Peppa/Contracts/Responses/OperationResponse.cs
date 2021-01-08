@@ -1,7 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Peppa.Enums;
-using piggy_bank_uwp.Enums;
 
 namespace Peppa.Contracts.Responses
 {
@@ -49,5 +48,4 @@ namespace Peppa.Contracts.Responses
         [JsonProperty("title")]
         public string Title { get; set; }
     }
-
 }

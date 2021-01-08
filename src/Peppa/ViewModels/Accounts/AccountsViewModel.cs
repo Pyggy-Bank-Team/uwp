@@ -20,7 +20,7 @@ namespace Peppa.ViewModels.Accounts
 
         public async Task Initialization()
         {
-            var accounts = await _model.GetAccounts(GetToken());
+            var accounts = await _model.GetAccounts(GetCancellationToken());
             if (accounts != null)
             {
                 List = new ObservableCollection<AccountViewModel>(accounts.Select(a => new AccountViewModel(a)).OrderBy(a => a.IsArchived));
@@ -39,13 +39,13 @@ namespace Peppa.ViewModels.Accounts
             switch (SelectedItem?.Action)
             {
                 case ActionType.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
-                    await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetToken());
+                    await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
                     break;
                 case ActionType.Save when SelectedItem?.IsNew == false:
-                    await _model.UpdateAccount(SelectedItem.MakeAccountEntity(), GetToken());
+                    await _model.UpdateAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
                     break;
                 case ActionType.Delete:
-                    await _model.DeleteAccount(SelectedItem.Id, GetToken());
+                    await _model.DeleteAccount(SelectedItem.Id, GetCancellationToken());
                     break;
             }
         }

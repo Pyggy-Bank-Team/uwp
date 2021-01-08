@@ -5,6 +5,7 @@ using Windows.UI.Xaml.Navigation;
 using Peppa.Services;
 using Peppa.ViewModels;
 using Peppa.ViewModels.Operations;
+using Peppa.Dialogs;
 
 namespace Peppa.Views.Operations
 {
@@ -31,8 +32,12 @@ namespace Peppa.Views.Operations
             Progress.Visibility = Visibility.Collapsed;
         }
 
-        private void OnCostItemClick(object sender, ItemClickEventArgs e)
+        private async void OnOperationClick(object sender, ItemClickEventArgs e)
         {
+            var operationModal = new OperationDialog(_dataContext, (ListItemViewModel)e.ClickedItem);
+
+            await operationModal.ShowAsync();
+
             //Frame.Navigate(typeof(EditOperationPage), e.ClickedItem);
         }
 

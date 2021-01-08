@@ -54,7 +54,7 @@
                   ItemsSource="{x:Bind _dataContext.List}"
                   ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
                   ItemTemplate="{StaticResource OperationTemplate}"
-                  IsItemClickEnabled="True" SelectionMode="Single"/>
+                  IsItemClickEnabled="True" SelectionMode="Single" ItemClick="OnOperationClick"/>
 
 
 

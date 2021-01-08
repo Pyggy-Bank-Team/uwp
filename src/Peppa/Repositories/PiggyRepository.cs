@@ -132,6 +132,36 @@ namespace Peppa.Repositories
             await _context.SaveChangesAsync(token);
         }
 
+        public async Task AddOrUpdateOperation(Operation operation, CancellationToken token)
+        {
+            if (operation == null)
+                return;
+
+            var existOperation = await _context.Operations.FirstOrDefaultAsync(a => a.Id == operation.Id, token);
+
+            if (existOperation == null)
+                await Add(operation, token);
+            else
+            {
+                existOperation.CategoryId = operation.CategoryId == default ? existOperation.CategoryId : operation.CategoryId;
+                existOperation.AccountId = operation.AccountId == default ? existOperation.AccountId : operation.AccountId;
+                existOperation.ToId = operation.ToId == default ? existOperation.ToId : operation.ToId;
+                existOperation.Amount = operation.Amount == default ? existOperation.Amount : operation.Amount;
+                existOperation.Comment = operation.Comment == default ? existOperation.Comment : operation.Comment;
+                existOperation.Type = operation.Type;
+                existOperation.CreatedOn = operation.CreatedOn;
+
+                _context.Operations.Update(existOperation);
+                await _context.SaveChangesAsync(token);
+            }
+        }
+
+        public Task<Operation> GetOperation(int id, CancellationToken token)
+            => _context.Operations.FirstOrDefaultAsync(o => o.Id == id, token);       
+
+        public void Dispose()
+            => _context?.Dispose();
+
         private async Task Add<T>(T entity, CancellationToken token) where T : class
         {
             if (entity == null)
@@ -140,8 +170,5 @@ namespace Peppa.Repositories
             await _context.AddAsync(entity, token);
             await _context.SaveChangesAsync(token);
         }
-
-        public void Dispose()
-            => _context?.Dispose();
     }
 }
