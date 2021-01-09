@@ -1,4 +1,5 @@
-﻿using Peppa.ViewModels.Operations;
+﻿using Peppa.Enums;
+using Peppa.ViewModels.Operations;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
@@ -27,6 +28,8 @@ namespace Peppa.Dialogs
 
         private async void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            Types.ItemsSource = new[] { OperationType.Budget, OperationType.Transfer };
+
             var accountTask = _viewModel.GetAccounts();
             var categoryTask = _viewModel.GetCategories(_item.CategoryType);
             var operationTask = _viewModel.GetBudgetOperation(_item.Id);

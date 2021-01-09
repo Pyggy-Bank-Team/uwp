@@ -2,10 +2,9 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Peppa.Services;
-using Peppa.ViewModels;
 using Peppa.ViewModels.Operations;
 using Peppa.Dialogs;
+using Peppa.ViewModels.Pagination;
 
 namespace Peppa.Views.Operations
 {
@@ -28,6 +27,7 @@ namespace Peppa.Views.Operations
            await _dataContext.Initialization();
 
             TableView.ItemsSource = _dataContext.List;
+            PaganationView.ItemsSource = _dataContext.Pagination;
             StupCollapsed();
             Progress.Visibility = Visibility.Collapsed;
         }
@@ -75,6 +75,18 @@ namespace Peppa.Views.Operations
         {
             //RefreshContainer.Visibility = Visibility.Visible;
             //StubTextBlock.Visibility = Visibility.Collapsed;
+        }
+
+        private async void OnPaganationClick(object sender, ItemClickEventArgs e)
+        {
+            _dataContext.CurrentPage = ((PaginationItemViewModel)e.ClickedItem).Number;
+            Progress.Visibility = Visibility.Visible;
+
+            await _dataContext.Initialization();
+
+            TableView.ItemsSource = _dataContext.List;
+
+            Progress.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -20,21 +20,6 @@
                 <!--Cost-->
                 <TextBox x:Name="AmountTextBox" x:Uid="CostTextBox" FontSize="18" Text="{x:Bind _item.Amount, Mode=OneTime}"/>
 
-                <GridView HorizontalAlignment="Stretch">
-                    <Grid HorizontalAlignment="Stretch">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock Grid.Column="0" Text="Income"/>
-                        <TextBlock Grid.Column="1" Text="Outcome"/>
-                        <TextBlock Grid.Column="3" Text="Trnasfer"/>
-
-                    </Grid>                   
-                </GridView>
-
                 <ComboBox x:Name="Types" Header="Type"  HorizontalAlignment="Stretch" SelectedItem="{x:Bind _item.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18"/>
 
                 <!--Date-->

@@ -12,6 +12,7 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <ProgressBar x:Name="Progress" Grid.Row="0" IsIndeterminate="True" Height="18" Visibility="Collapsed"/>
@@ -57,8 +58,6 @@
                   IsItemClickEnabled="True" SelectionMode="Single" ItemClick="OnOperationClick"/>
 
 
-
-
         <!-- <RefreshContainer x:Name="RefreshContainer" RefreshRequested="OnRefreshRequested" -->
         <!--                   PullDirection="BottomToTop" Grid.Row="1"> -->
         <!--     <ListView x:Name="CostsListView" -->
@@ -71,7 +70,25 @@
         <TextBlock x:Name="StubTextBlock" x:Uid="StubCostsTextBlock" Grid.Row="1"
                    HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWholeWords" Visibility="Collapsed"/>
 
-        <CommandBar Grid.Row="3">
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.4*"/>
+            </Grid.ColumnDefinitions>
+
+            <GridView x:Name="PaganationView" Grid.Column="1" ItemsSource="{x:Bind _dataContext.Pagination}" IsItemClickEnabled="True"
+                      SelectionMode="Single" ItemClick="OnPaganationClick">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Number}"/>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+                        
+        </Grid>
+
+        <CommandBar Grid.Row="4">
             <AppBarButton x:Uid="RefreshCostsAppBarButton" Icon="Refresh" AccessKey="R" Click="OnRefreshClick" />
             <AppBarButton x:Name="AddCostAppBarButton" x:Uid="AddCostAppBarButton" Icon="Add" Click="OnAddedCostClick" />
         </CommandBar>

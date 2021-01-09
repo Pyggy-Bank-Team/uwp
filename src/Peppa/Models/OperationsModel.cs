@@ -5,6 +5,8 @@ using Peppa.Interface;
 using Peppa.Interface.Services;
 using System.Collections.Generic;
 using Peppa.Context.Entities;
+using Peppa.Dto;
+using System.Linq;
 
 namespace Peppa.Models
 {
@@ -12,7 +14,7 @@ namespace Peppa.Models
     {
         private readonly IPiggyRepository _repository;
         private readonly IOperationService _service;
-        private readonly Dictionary<string, string> _availableCurrencies;       
+        private readonly Dictionary<string, string> _availableCurrencies;
 
         public OperationsModel(IPiggyRepository repository, IOperationService service)
         {
@@ -31,39 +33,54 @@ namespace Peppa.Models
 
         public IPiggyRepository Repository => _repository;
 
-        public async Task<Operation[]> GetOperations(CancellationToken token)
+        public async Task<PageResult<Operation>> GetOperations(int page, CancellationToken token)
         {
             //If user is logged in then sync accounts
             if (_service.IsAuthorized)
             {
-                var pageResult = await _service.GetOperations(token);
-                if (pageResult != null)
+                var response = await _service.GetOperations(page, token);
+                if (response != null)
                 {
-                    foreach (var operation in pageResult.Result)
-                    {
-                        var entity = new Operation
-                        {
-                            Id = operation.Id,
-                            IsDeleted = operation.IsDeleted,
-                            AccountTitle = operation.Account.Title,
-                            ToTitle = operation.ToAccount?.Title,
-                            CategoryType = operation.Category?.Type,
-                            CategoryHexColor = operation.Category?.HexColor,
-                            CategoryTitle = operation.Category?.Title,
-                            Amount = operation.Amount,
-                            Type = operation.Type,
-                            CreatedOn = operation.Date
-                        };
 
-                        if (await _repository.HaveOperation(operation.Id, token))
-                            await _repository.UpdateOperation(entity, token);
-                        else
-                            await _repository.CreateOperation(entity, token);
-                    }
+                    var entities = response.Result.Select(o => new Operation
+                    {
+                        Id = o.Id,
+                        IsDeleted = o.IsDeleted,
+                        AccountTitle = o.Account.Title,
+                        ToTitle = o.ToAccount?.Title,
+                        CategoryType = o.Category?.Type,
+                        CategoryHexColor = o.Category?.HexColor,
+                        CategoryTitle = o.Category?.Title,
+                        Amount = o.Amount,
+                        Type = o.Type,
+                        CreatedOn = o.Date
+                    });
+
+                    //TODO Save into db
+
+                    return new PageResult<Operation>
+                    {
+                        TotalPages = response.TotalPages,
+                        CurrentPage = response.CurrentPage,
+                        Result = response.Result.Select(o => new Operation
+                        {
+                            Id = o.Id,
+                            IsDeleted = o.IsDeleted,
+                            AccountTitle = o.Account.Title,
+                            ToTitle = o.ToAccount?.Title,
+                            CategoryType = o.Category?.Type,
+                            CategoryHexColor = o.Category?.HexColor,
+                            CategoryTitle = o.Category?.Title,
+                            Amount = o.Amount,
+                            Type = o.Type,
+                            CreatedOn = o.Date
+                        }).ToArray()
+                    };
                 }
             }
 
-            return await _repository.GetOperations(token);
+            return null;
+            //return await _repository.GetOperations(token);
         }
 
         public Task<Account[]> GetAccounts(CancellationToken token)
@@ -88,7 +105,7 @@ namespace Peppa.Models
                     {
                         Id = response.Id,
                         CategoryId = response.CategoryId,
-                        AccountId  = response.AccountId,
+                        AccountId = response.AccountId,
                         Amount = response.Amount,
                         CreatedOn = response.Date,
                         Type = response.Type,

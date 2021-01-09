@@ -6,6 +6,7 @@ using Peppa.Enums;
 using Peppa.ViewModels.Accounts;
 using Peppa.ViewModels.Categories;
 using Peppa.ViewModels.Interface;
+using Peppa.ViewModels.Pagination;
 using piggy_bank_uwp.Interface.Models;
 
 namespace Peppa.ViewModels.Operations
@@ -19,11 +20,15 @@ namespace Peppa.ViewModels.Operations
 
         public async Task Initialization()
         {
-            var operations = await _model.GetOperations(GetCancellationToken());
-            if (operations != null)
+            var pageResult = await _model.GetOperations(CurrentPage, GetCancellationToken());
+            if (pageResult != null)
             {
-                List = new ObservableCollection<ListItemViewModel>(operations.OrderBy(o => o.CreatedOn).Select(o => new ListItemViewModel(o)));
+                List = new ObservableCollection<ListItemViewModel>(pageResult.Result.OrderByDescending(o => o.CreatedOn).Select(o => new ListItemViewModel(o)));
+                CurrentPage = pageResult.CurrentPage;
+                TotalPages = pageResult.TotalPages;
+                Pagination = new ObservableCollection<PaginationItemViewModel>(Enumerable.Range(1, TotalPages).Select(i => new PaginationItemViewModel { Number = i }));
                 RaisePropertyChanged(nameof(List));
+                RaisePropertyChanged(nameof(Pagination));
             }
         }
 
@@ -62,6 +67,10 @@ namespace Peppa.ViewModels.Operations
 
         public ObservableCollection<ListItemViewModel> List { get; private set; }
 
-        public OperationViewModel SelectedItem { get; set; }
+        public ObservableCollection<PaginationItemViewModel> Pagination { get; set; }
+
+        public int CurrentPage { get; set; } = 1;
+
+        public int TotalPages { get; set; }
     }
 }

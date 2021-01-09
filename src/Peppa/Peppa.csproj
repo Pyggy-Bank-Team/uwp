@@ -143,6 +143,7 @@
     <Compile Include="Dialogs\RegistrationDialog.xaml.cs">
       <DependentUpon>RegistrationDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dto\PageResult.cs" />
     <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Enums\ActionType.cs" />
     <Compile Include="Enums\CategoryType.cs" />
@@ -157,7 +158,6 @@
     <Compile Include="Interface\IPiggyRepository.cs" />
     <Compile Include="Interface\Models\IAccountsModel.cs" />
     <Compile Include="Interface\Models\ICategoriesModel.cs" />
-    <Compile Include="Interface\Models\IOperationModel.cs" />
     <Compile Include="Interface\Models\IOperationsModel.cs" />
     <Compile Include="Interface\Services\IAccountService.cs" />
     <Compile Include="Interface\Services\ICategoryService.cs" />
@@ -170,7 +170,6 @@
     <Compile Include="Models\CostModel.cs" />
     <Compile Include="Interface\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
-    <Compile Include="Models\OperationModel.cs" />
     <Compile Include="Models\OperationsModel.cs" />
     <Compile Include="Models\RegitrationResult.cs" />
     <Compile Include="Contracts\Requests\UserRequest.cs" />
@@ -195,6 +194,7 @@
     <Compile Include="ViewModels\Categories\CategoryItemViewModel.cs" />
     <Compile Include="ViewModels\Operations\ListItemViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationViewModel.cs" />
+    <Compile Include="ViewModels\Pagination\PaginationItemViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Diagram\DataDiagramViewModel.cs" />

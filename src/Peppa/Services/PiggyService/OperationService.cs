@@ -1,9 +1,9 @@
 ﻿using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Peppa.Contracts;
 using Peppa.Contracts.Responses;
 using Peppa.Interface.Services;
-using piggy_bank_uwp.Contracts;
 
 namespace Peppa.Services.PiggyService
 {
@@ -12,8 +12,8 @@ namespace Peppa.Services.PiggyService
         public OperationService(IHttpClientFactory httpClientFactory)
             : base(httpClientFactory) { }
 
-        public Task<PageResult<OperationResponse>> GetOperations(CancellationToken token)
-            => Get<PageResult<OperationResponse>>("operations", token);
+        public Task<PageResult<OperationResponse>> GetOperations(int page, CancellationToken token)
+            => Get<PageResult<OperationResponse>>($"operations?page={page}", token);
 
         public Task<BudgetOperationResponse> GetBudgetOperation(int id, CancellationToken token)
             => Get<BudgetOperationResponse>($"operations/budget/{id}", token);
