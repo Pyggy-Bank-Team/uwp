@@ -89,7 +89,6 @@
         </Grid>
 
         <CommandBar Grid.Row="4">
-            <AppBarButton x:Uid="RefreshCostsAppBarButton" Icon="Refresh" AccessKey="R" Click="OnRefreshClick" />
             <AppBarButton x:Name="AddCostAppBarButton" x:Uid="AddCostAppBarButton" Icon="Add" Click="OnAddedCostClick" />
         </CommandBar>
     </Grid>

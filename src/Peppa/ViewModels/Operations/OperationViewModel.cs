@@ -24,7 +24,19 @@ namespace Peppa.ViewModels.Operations
             IsDeleted = operation.IsDeleted;
             Id = operation.Id;
             CreatedOn = operation.CreatedOn;
-        }        
+            ViewType = GetViewType(Type, CategoryType ?? Enums.CategoryType.Undefined);
+        }
+        
+        private static OperationViewType GetViewType(OperationType operationType, CategoryType categoryType)
+        {
+            if (operationType == OperationType.Transfer)
+                return OperationViewType.Transfer;
+
+            if (categoryType == Enums.CategoryType.Expense)
+                return OperationViewType.Expense;
+            else
+                return OperationViewType.Income;
+        }
 
         public bool IsNew { get; set; }
 
@@ -47,6 +59,8 @@ namespace Peppa.ViewModels.Operations
         public string Comment { get; set; }
 
         public OperationType Type { get; set; }
+
+        public OperationViewType ViewType { get; set; }
 
         public DateTime? PlanDate { get; set; }
 

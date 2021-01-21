@@ -1,10 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Peppa.Enums;
 using Peppa.Interface.Models;
-using Peppa.ViewModels.Categoies;
 using Peppa.ViewModels.Interface;
-using piggy_bank_uwp.Enums;
 
 namespace Peppa.ViewModels.Categories
 {

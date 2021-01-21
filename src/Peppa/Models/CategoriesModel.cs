@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Peppa.Context.Entities;
-using Peppa.Contracts;
+using Peppa.Contracts.Responses;
 using Peppa.Interface;
 using Peppa.Interface.Models;
 using Peppa.Interface.Services;
+using Category = Peppa.Context.Entities.Category;
 
 namespace Peppa.Models
 {
@@ -21,7 +21,7 @@ namespace Peppa.Models
             //If user is logged in then sync accounts
             if (_service.IsAuthorized)
             {
-                var categories = await _service.GetCategories();
+                var categories = await _service.GetCategories(token);
                 if (categories != null)
                 {
                     foreach (var category in categories)
@@ -52,7 +52,7 @@ namespace Peppa.Models
         {
             if (_service.IsAuthorized)
             {
-                var request = new CategoryContract
+                var request = new CategoryResponse
                 {
                     HexColor = category.HexColor,
                     Title = category.Title,
@@ -60,7 +60,7 @@ namespace Peppa.Models
                     IsArchived = category.IsArchived
                 };
 
-                var createdAccount = await _service.CreateCategory(request);
+                var createdAccount = await _service.CreateCategory(request, token);
                 //TODO Add a log about service result
                 if (createdAccount != null)
                 {
@@ -84,7 +84,7 @@ namespace Peppa.Models
         {
             if (_service.IsAuthorized)
             {
-                var isSuccessful = await _service.DeleteCategory(id);
+                var isSuccessful = await _service.DeleteCategory(id, token);
                 //TODO Add a log about service result
                 if (isSuccessful)
                 {
@@ -100,7 +100,7 @@ namespace Peppa.Models
         {
             if (_service.IsAuthorized)
             {
-                var request = new CategoryContract
+                var request = new CategoryResponse
                 {
                     Id = category.Id,
                     HexColor = category.HexColor,
@@ -109,7 +109,7 @@ namespace Peppa.Models
                     IsArchived = category.IsArchived
                 };
 
-                var isSuccessful = await _service.UpdateCategory(request);
+                var isSuccessful = await _service.UpdateCategory(request, token);
                 //TODO Add a log about service result
                 if (isSuccessful)
                 {

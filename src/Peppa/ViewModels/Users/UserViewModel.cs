@@ -3,7 +3,6 @@ using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
 using Peppa.Workers;
 using Peppa.Interface.Services;
-using piggy_bank_uwp.Contracts.Requests;
 
 namespace Peppa.ViewModels.Users
 {

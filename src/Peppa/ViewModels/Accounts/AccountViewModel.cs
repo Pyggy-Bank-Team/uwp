@@ -1,6 +1,5 @@
 ﻿using Peppa.Enums;
 using Peppa.Context.Entities;
-using piggy_bank_uwp.Enums;
 using Peppa.Workers;
 using System.Globalization;
 

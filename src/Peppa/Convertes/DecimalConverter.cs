@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 
-namespace piggy_bank_uwp.Convertes
+namespace Peppa.Convertes
 {
     public class DecimalConverter : IValueConverter
     {

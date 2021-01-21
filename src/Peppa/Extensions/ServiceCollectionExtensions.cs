@@ -9,7 +9,6 @@ using Peppa.Interface;
 using Peppa.Repositories;
 using Peppa.ViewModels.Categories;
 using Peppa.ViewModels.Operations;
-using piggy_bank_uwp.Interface.Models;
 
 namespace Peppa.Extensions
 {
@@ -17,11 +16,11 @@ namespace Peppa.Extensions
     {
         public static void DependencyInjection(this IServiceCollection services)
         {
-            services.AddScoped<IAccountService, PiggyService>();
+            services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IUserService, PiggyService>();
             services.AddScoped<IAccountsModel, AccountsModel>();
             services.AddScoped<IPiggyRepository, PiggyRepository>();
-            services.AddScoped<ICategoryService, PiggyService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICategoriesModel, CategoriesModel>();
             services.AddScoped<IOperationService, OperationService>();
             services.AddScoped<IOperationsModel, OperationsModel>();

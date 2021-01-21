@@ -3,11 +3,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Peppa.Enums;
+using Peppa.Interface.Models;
 using Peppa.ViewModels.Accounts;
 using Peppa.ViewModels.Categories;
 using Peppa.ViewModels.Interface;
 using Peppa.ViewModels.Pagination;
-using piggy_bank_uwp.Interface.Models;
 
 namespace Peppa.ViewModels.Operations
 {

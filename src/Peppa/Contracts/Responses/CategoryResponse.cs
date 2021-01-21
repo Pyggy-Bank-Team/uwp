@@ -2,9 +2,9 @@
 using Newtonsoft.Json;
 using Peppa.Enums;
 
-namespace Peppa.Contracts
+namespace Peppa.Contracts.Responses
 {
-    public class CategoryContract
+    public class CategoryResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }

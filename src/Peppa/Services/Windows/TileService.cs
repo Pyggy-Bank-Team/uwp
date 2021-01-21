@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Peppa.ViewModels.Diagram;
 
-namespace piggy_bank_uwp.Services.Windows
+namespace Peppa.Services.Windows
 {
     public static class TileService
     {

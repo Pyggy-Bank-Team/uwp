@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Windows.UI.Notifications;
 using Peppa.Models;
 using Peppa.Services;
+using Peppa.Services.Windows;
 using Peppa.Utilities;
 using Peppa.ViewModels.Interface;
 using Peppa.Workers;
-using piggy_bank_uwp.Services.Windows;
 
 namespace Peppa.ViewModels.Diagram
 {

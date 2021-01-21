@@ -114,11 +114,11 @@
     <Compile Include="Context\Entities\EntityModifiedBase.cs" />
     <Compile Include="Context\Entities\Operation.cs" />
     <Compile Include="Context\PiggyContext.cs" />
-    <Compile Include="Contracts\AccountContract.cs" />
-    <Compile Include="Contracts\CategoryContract.cs" />
     <Compile Include="Contracts\PageResult.cs" />
     <Compile Include="Contracts\Requests\GetTokenRequest.cs" />
+    <Compile Include="Contracts\Responses\AccountResponse.cs" />
     <Compile Include="Contracts\Responses\BudgetOperationResponse.cs" />
+    <Compile Include="Contracts\Responses\CategoryResponse.cs" />
     <Compile Include="Contracts\Responses\ErrorResponse.cs" />
     <Compile Include="Contracts\Responses\OperationResponse.cs" />
     <Compile Include="Contracts\Responses\TransferOperationResponse.cs" />
@@ -149,6 +149,7 @@
     <Compile Include="Enums\CategoryType.cs" />
     <Compile Include="Enums\IdentityResultEnum.cs" />
     <Compile Include="Enums\OperationType.cs" />
+    <Compile Include="Enums\OperationViewType.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
     <Compile Include="Fabrics\CategoryFactory.cs" />
@@ -177,6 +178,8 @@
     <Compile Include="Contracts\Responses\AvailableCurrency.cs" />
     <Compile Include="Contracts\Responses\IdentityErrorResponse.cs" />
     <Compile Include="Repositories\PiggyRepository.cs" />
+    <Compile Include="Services\PiggyService\AccountService.cs" />
+    <Compile Include="Services\PiggyService\CategoryService.cs" />
     <Compile Include="Services\PiggyService\OperationService.cs" />
     <Compile Include="Services\PiggyService\PiggyService.cs" />
     <Compile Include="Services\PiggyService\PiggyService.Users.cs" />
@@ -253,8 +256,6 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Peppa_TemporaryKey.pfx" />
-    <Compile Include="Services\PiggyService\PiggyService.Accounts.cs" />
-    <Compile Include="Services\PiggyService\PiggyBank.Categories.cs" />
     <PRIResource Include="Strings\ru-RU\Resources.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>

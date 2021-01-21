@@ -1,5 +1,4 @@
-﻿using System;
-using Peppa.Enums;
+﻿using Peppa.Enums;
 
 namespace Peppa.Context.Entities
 {

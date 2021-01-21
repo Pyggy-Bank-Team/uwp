@@ -1,7 +1,7 @@
-﻿using Peppa.Extensions;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
+using Peppa.Extensions;
 
-namespace piggy_bank_uwp.Dialogs
+namespace Peppa.Dialogs
 {
     public sealed partial class ColorPickerDialog : ContentDialog
     {

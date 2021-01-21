@@ -1,8 +1,7 @@
 ﻿using Peppa.Context.Entities;
 using Peppa.Enums;
-using piggy_bank_uwp.Enums;
 
-namespace Peppa.ViewModels.Categoies
+namespace Peppa.ViewModels.Categories
 {
     public class CategoryViewModel : BaseViewModel
     {

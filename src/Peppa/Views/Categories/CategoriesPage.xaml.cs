@@ -1,7 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Peppa.ViewModels.Categoies;
 using Peppa.ViewModels.Categories;
 
 namespace Peppa.Views.Categories

@@ -2,7 +2,6 @@
 using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
 using Peppa.Models;
-using piggy_bank_uwp.Contracts.Requests;
 
 namespace Peppa.Interface.Services
 {

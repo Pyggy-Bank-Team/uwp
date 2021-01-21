@@ -8,7 +8,6 @@ using Peppa.Contracts.Responses;
 using Peppa.Enums;
 using Peppa.Models;
 using Peppa.Interface.Services;
-using piggy_bank_uwp.Contracts.Requests;
 
 namespace Peppa.Services.PiggyService
 {

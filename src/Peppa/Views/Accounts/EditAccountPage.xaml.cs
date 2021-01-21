@@ -3,7 +3,6 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Peppa.Enums;
 using Peppa.ViewModels.Accounts;
-using piggy_bank_uwp.Enums;
 
 namespace Peppa.Views.Accounts
 {

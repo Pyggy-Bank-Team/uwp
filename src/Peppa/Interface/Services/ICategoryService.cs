@@ -1,16 +1,17 @@
-﻿using System.Threading.Tasks;
-using Peppa.Contracts;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Peppa.Contracts.Responses;
 
 namespace Peppa.Interface.Services
 {
     public interface ICategoryService : IAuthorization
     {
-        Task<CategoryContract[]> GetCategories();
+        Task<CategoryResponse[]> GetCategories(CancellationToken token);
 
-        Task<CategoryContract> CreateCategory(CategoryContract contract);
+        Task<CategoryResponse> CreateCategory(CategoryResponse response, CancellationToken token);
         
-        Task<bool> UpdateCategory(CategoryContract contract);
+        Task<bool> UpdateCategory(CategoryResponse response, CancellationToken token);
 
-        Task<bool> DeleteCategory(int id);
+        Task<bool> DeleteCategory(int id, CancellationToken token);
     }
 }

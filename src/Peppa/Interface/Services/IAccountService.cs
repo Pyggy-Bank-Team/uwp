@@ -1,16 +1,18 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Peppa.Contracts;
+using Peppa.Contracts.Responses;
 
 namespace Peppa.Interface.Services
 {
     public interface IAccountService : IAuthorization
     {
-        Task<AccountContract[]> GetAccounts();
+        Task<AccountResponse[]> GetAccounts(CancellationToken token);
 
-        Task<AccountContract> CreateAccount(AccountContract contract);
+        Task<AccountResponse> CreateAccount(AccountResponse response, CancellationToken token);
 
-        Task<bool> UpdateAccount(AccountContract contract);
+        Task<bool> UpdateAccount(AccountResponse response, CancellationToken token);
 
-        Task<bool> DeleteAccount(int id);
+        Task<bool> DeleteAccount(int id, CancellationToken token);
     }
 }

@@ -20,7 +20,7 @@
                 <!--Cost-->
                 <TextBox x:Name="AmountTextBox" x:Uid="CostTextBox" FontSize="18" Text="{x:Bind _item.Amount, Mode=OneTime}"/>
 
-                <ComboBox x:Name="Types" Header="Type"  HorizontalAlignment="Stretch" SelectedItem="{x:Bind _item.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18"/>
+                <ComboBox x:Name="Types" Header="Type"  HorizontalAlignment="Stretch" FontSize="18"/>
 
                 <!--Date-->
                 <CalendarDatePicker x:Name="DatePicker" x:Uid="DatePicker" HorizontalAlignment="Stretch" Date="{x:Bind _item.Date, Mode=OneTime}" FontSize="18"/>

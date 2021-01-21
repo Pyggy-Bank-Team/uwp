@@ -1,5 +1,4 @@
-﻿using piggy_bank_uwp.Interface.Models;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Interface;
 using Peppa.Interface.Services;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using Peppa.Context.Entities;
 using Peppa.Dto;
 using System.Linq;
+using Peppa.Interface.Models;
 
 namespace Peppa.Models
 {
@@ -119,7 +119,7 @@ namespace Peppa.Models
             return await _repository.GetOperation(operationId, token);
         }
 
-        public async Task<Operation> GetTransaferOperation(int operationId, CancellationToken token)
+        public async Task<Operation> GetTransferOperation(int operationId, CancellationToken token)
         {
             if (_service.IsAuthorized)
             {

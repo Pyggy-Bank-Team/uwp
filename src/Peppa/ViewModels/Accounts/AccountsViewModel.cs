@@ -2,9 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Peppa.Enums;
 using Peppa.ViewModels.Interface;
 using Peppa.Interface.Models;
-using piggy_bank_uwp.Enums;
 
 namespace Peppa.ViewModels.Accounts
 {

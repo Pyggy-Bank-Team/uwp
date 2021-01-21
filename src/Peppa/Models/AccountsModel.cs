@@ -3,8 +3,9 @@ using System.Threading.Tasks;
 using Peppa.Interface;
 using Peppa.Interface.Models;
 using Peppa.Interface.Services;
-using Peppa.Context.Entities;
 using Peppa.Contracts;
+using Peppa.Contracts.Responses;
+using Account = Peppa.Context.Entities.Account;
 
 namespace Peppa.Models
 {
@@ -21,7 +22,7 @@ namespace Peppa.Models
         {
             if (_service.IsAuthorized)
             {
-                var request = new AccountContract
+                var request = new AccountResponse
                 {
                     Balance = account.Balance,
                     Currency = account.Currency,
@@ -30,7 +31,7 @@ namespace Peppa.Models
                     IsArchived = account.IsArchived
                 };
 
-                var createdAccount = await _service.CreateAccount(request);
+                var createdAccount = await _service.CreateAccount(request, token);
                 //TODO Add a log about service result
                 if (createdAccount != null)
                 {
@@ -55,7 +56,7 @@ namespace Peppa.Models
         {
             if (_service.IsAuthorized)
             {
-                var isSuccessful = await _service.DeleteAccount(id);
+                var isSuccessful = await _service.DeleteAccount(id, token);
                 //TODO Add a log about service result
                 if (isSuccessful)
                 {
@@ -71,7 +72,7 @@ namespace Peppa.Models
         {
             if (_service.IsAuthorized)
             {
-                var request = new AccountContract
+                var request = new AccountResponse
                 {
                     Id = account.Id,
                     Balance = account.Balance,
@@ -81,7 +82,7 @@ namespace Peppa.Models
                     IsArchived = account.IsArchived
                 };
 
-                var isSuccessful = await _service.UpdateAccount(request);
+                var isSuccessful = await _service.UpdateAccount(request, token);
                 //TODO Add a log about service result
                 if (isSuccessful)
                 {
@@ -97,7 +98,7 @@ namespace Peppa.Models
             //If user is logged in then sync accounts
             if (_service.IsAuthorized)
             {
-                var accounts = await _service.GetAccounts();
+                var accounts = await _service.GetAccounts(token);
                 if (accounts != null)
                 {
                     foreach (var account in accounts)

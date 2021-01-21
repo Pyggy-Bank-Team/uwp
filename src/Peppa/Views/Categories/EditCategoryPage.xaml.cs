@@ -4,13 +4,12 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 using System;
-using Peppa.ViewModels.Categoies;
+using Peppa.Dialogs;
 using Peppa.Enums;
-using piggy_bank_uwp.Dialogs;
-using piggy_bank_uwp.Enums;
 using Peppa.Extensions;
 using Peppa.Services;
-using piggy_bank_uwp.Services.Windows;
+using Peppa.Services.Windows;
+using Peppa.ViewModels.Categories;
 
 namespace Peppa.Views.Categories
 {

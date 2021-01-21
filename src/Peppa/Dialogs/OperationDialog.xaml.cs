@@ -28,7 +28,7 @@ namespace Peppa.Dialogs
 
         private async void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Types.ItemsSource = new[] { OperationType.Budget, OperationType.Transfer };
+            Types.ItemsSource = new[] { OperationViewType.Income, OperationViewType.Expense, OperationViewType.Transfer };
 
             var accountTask = _viewModel.GetAccounts();
             var categoryTask = _viewModel.GetCategories(_item.CategoryType);
@@ -36,10 +36,14 @@ namespace Peppa.Dialogs
 
             await Task.WhenAll(accountTask, categoryTask, operationTask);
 
+
+            var operation = operationTask.Result;
+            Types.SelectedItem = operation.ViewType;
+
             AccountComboBox.ItemsSource = accountTask.Result;
-            AccountComboBox.SelectedItem = accountTask.Result.First(a => a.Id == operationTask.Result.AccountId);
+            AccountComboBox.SelectedItem = accountTask.Result.First(a => a.Id == operation.AccountId);
             CategoryComboBox.ItemsSource = categoryTask.Result;
-            CategoryComboBox.SelectedItem = categoryTask.Result.First(c => c.Id == operationTask.Result.CategoryId);
+            CategoryComboBox.SelectedItem = categoryTask.Result.First(c => c.Id == operation.CategoryId);
         }
     }
 }

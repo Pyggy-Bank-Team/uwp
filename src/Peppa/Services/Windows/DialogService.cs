@@ -1,7 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
-using Peppa;
 
-namespace piggy_bank_uwp.Services.Windows
+namespace Peppa.Services.Windows
 {
     public static class DialogService
     {
