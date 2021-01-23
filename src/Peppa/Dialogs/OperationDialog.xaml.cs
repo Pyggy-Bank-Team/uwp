@@ -103,7 +103,9 @@ namespace Peppa.Dialogs
                 BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
-                var categoryTask = _viewModel.GetCategories(false, _item.CategoryType);
+                var operationViewType = (OperationViewType)e.ClickedItem; 
+
+                var categoryTask = _viewModel.GetCategories(false, operationViewType == OperationViewType.Expense ? CategoryType.Expense : CategoryType.Income);
 
                 await Task.WhenAll(accountTask, categoryTask);
 

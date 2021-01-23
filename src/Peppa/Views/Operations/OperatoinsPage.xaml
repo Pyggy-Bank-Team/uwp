@@ -52,7 +52,7 @@
         </Grid>
 
         <ListView Grid.Row="2" x:Name="TableView" 
-                  ItemsSource="{x:Bind _dataContext.List}"
+                  ItemsSource="{x:Bind _dataContext.List, Mode=OneWay}"
                   ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
                   ItemTemplate="{StaticResource OperationTemplate}"
                   IsItemClickEnabled="True" SelectionMode="Single" ItemClick="OnOperationClick"/>
