@@ -40,7 +40,8 @@ namespace Peppa.Views.Operations
             await operationModal.ShowAsync();
             
             await _dataContext.DoAction(operation);
-            await _dataContext.Initialization();
+            if (operation.Action != Enums.ActionType.Cancel)
+                await _dataContext.Initialization();
         }
 
         private async void OnAddOperationClick(object sender, RoutedEventArgs e)
@@ -51,7 +52,8 @@ namespace Peppa.Views.Operations
             await operationModel.ShowAsync();
 
             await _dataContext.DoAction(newOperation);
-            await _dataContext.Initialization();
+            if (newOperation.Action != Enums.ActionType.Cancel)
+                await _dataContext.Initialization();
         }
 
         private void OnRefreshClick(object sender, RoutedEventArgs e)

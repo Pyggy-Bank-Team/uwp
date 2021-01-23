@@ -21,7 +21,13 @@
                 <!--Cost-->
                 <TextBox x:Name="AmountTextBox" x:Uid="CostTextBox" FontSize="18" Text="{x:Bind _item.EntityAmount, Mode=OneTime}" TextChanged="AmountTextBox_TextChanged"/>
 
-                <GridView x:Name="Types" Header="Type" HorizontalAlignment="Stretch" FontSize="18" IsItemClickEnabled="True" ItemContainerStyle="{StaticResource GridViewStretch}" ItemClick="OnTypeItemClick"/>
+                <GridView x:Name="Types" Header="Type" HorizontalAlignment="Stretch" FontSize="18" IsItemClickEnabled="True" ItemContainerStyle="{StaticResource GridViewStretch}" ItemClick="OnTypeItemClick">
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
 
                 <!--Date-->
                 <CalendarDatePicker x:Name="DatePicker" x:Uid="DatePicker" HorizontalAlignment="Stretch" Date="{x:Bind _item.Date, Mode=OneTime}" FontSize="18"/>
