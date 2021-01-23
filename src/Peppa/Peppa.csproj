@@ -115,6 +115,8 @@
     <Compile Include="Context\Entities\Operation.cs" />
     <Compile Include="Context\PiggyContext.cs" />
     <Compile Include="Contracts\PageResult.cs" />
+    <Compile Include="Contracts\Requests\CreateBudgetOperationRequest.cs" />
+    <Compile Include="Contracts\Requests\CreateTransferOperationRequest.cs" />
     <Compile Include="Contracts\Requests\GetTokenRequest.cs" />
     <Compile Include="Contracts\Responses\AccountResponse.cs" />
     <Compile Include="Contracts\Responses\BudgetOperationResponse.cs" />

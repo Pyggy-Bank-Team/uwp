@@ -10,7 +10,8 @@
     mc:Ignorable="d"
     CloseButtonText="Close"
     PrimaryButtonText="Save"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    PrimaryButtonClick="OnSaveButtonClick"
+    CloseButtonClick="OnCancelButtonClick"
     Loaded="OnLoaded">
 
     <Grid>

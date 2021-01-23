@@ -38,6 +38,16 @@ namespace Peppa.Services.PiggyService
             }
         }
         
+        protected async Task<bool> Post<TRequest>(string requestUrl, TRequest request, CancellationToken token) where TRequest : class
+        {
+            var client = HttpClientFactory.CreateClient("Post");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string) SettingsWorker.Current.GetValue(Constants.AccessToken));
+            using (var response = await client.PostAsync($"{BaseUrl}/{requestUrl}", ToStringContent(request), token))
+            {
+                return response.IsSuccessStatusCode;
+            }
+        }
+        
         protected async Task<bool> Put<TRequest>(string requestUrl, TRequest request, CancellationToken token) where TRequest : class
         {
             var client = HttpClientFactory.CreateClient("Put");

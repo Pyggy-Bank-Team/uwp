@@ -13,5 +13,7 @@ namespace Peppa.Interface.Models
         Task<Category[]> GetCategories(bool all, CancellationToken token);
         Task<Operation> GetBudgetOperation(int operationId, CancellationToken token);
         Task<Operation> GetTransferOperation(int  operationId, CancellationToken token);
+        Task CreateBudgetOperation(Operation operation, CancellationToken token);
+        Task CreateTransferOperation(Operation operation, CancellationToken token);
     }
 }

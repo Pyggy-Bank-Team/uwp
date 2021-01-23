@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Interface;
 using Peppa.Interface.Services;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using Peppa.Context.Entities;
 using Peppa.Dto;
 using System.Linq;
+using Peppa.Contracts.Requests;
 using Peppa.Interface.Models;
 
 namespace Peppa.Models
@@ -142,6 +144,43 @@ namespace Peppa.Models
             }
 
             return await _repository.GetOperation(operationId, token);
+        }
+
+        public async Task CreateBudgetOperation(Operation operation, CancellationToken token)
+        {
+            if (_service.IsAuthorized)
+            {
+                var request = new CreateBudgetOperationRequest
+                {
+                    Amount = operation.Amount,
+                    AccountId = operation.AccountId.Value,
+                    CategoryId = operation.CategoryId.Value,
+                    OperationDate = operation.CreatedOn,
+                    Comment = operation.Comment
+                };
+
+                var result = await _service.CreateBudgetOperation(request, token);
+                
+                //TODO: save to db
+            }
+        }
+
+        public async Task CreateTransferOperation(Operation operation, CancellationToken token)
+        {
+            if (_service.IsAuthorized)
+            {
+                var request = new CreateTransferOperationRequest
+                {
+                    From = operation.AccountId.Value,
+                    To = operation.ToId.Value,
+                    OperationDate = operation.CreatedOn,
+                    Comment = operation.Comment
+                };
+
+                var result = await _service.CreateTransferOperation(request, token);
+                
+                //TODO: save to db
+            }
         }
     }
 }

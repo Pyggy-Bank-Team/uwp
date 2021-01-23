@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Contracts;
+using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
 using Peppa.Interface.Services;
 
@@ -20,5 +21,11 @@ namespace Peppa.Services.PiggyService
 
         public Task<TransferOperationResponse> GetTransferOperation(int id, CancellationToken token)
              => Get<TransferOperationResponse>($"operations/transfer/{id}", token);
+
+        public Task<bool> CreateBudgetOperation(CreateBudgetOperationRequest request, CancellationToken token)
+            => Post("operations/budget", request, token);
+
+        public Task<bool> CreateTransferOperation(CreateTransferOperationRequest request, CancellationToken token)
+            => Post("operations/transfer", request, token);
     }
 }

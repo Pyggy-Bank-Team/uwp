@@ -18,12 +18,9 @@ namespace Peppa.Dialogs
             _item = item;
         }
 
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private void OnSaveButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-        }
-
-        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
+            ActionType = ActionType.Save;
         }
 
         private async void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -88,18 +85,44 @@ namespace Peppa.Dialogs
             }
         }
 
-        private void OnTypeItemClick(object sender, ItemClickEventArgs e)
+        private async void OnTypeItemClick(object sender, ItemClickEventArgs e)
         {
+            var accountTask = _viewModel.GetAccounts(true);
+
             if ((OperationViewType)(e.ClickedItem) == OperationViewType.Transfer)
             {
                 BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+                await Task.WhenAll(accountTask);
+
+                var accounts = accountTask.Result;
+
+                FromComboBox.ItemsSource = accounts;
+                ToComboBox.ItemsSource = accounts;
             }
             else
             {
                 BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
+                var categoryTask = _viewModel.GetCategories(true, _item.CategoryType);
+
+                await Task.WhenAll(accountTask, categoryTask);
+
+                var accounts = accountTask.Result;
+                var categories = categoryTask.Result;
+
+                AccountComboBox.ItemsSource = accounts;
+                CategoryComboBox.ItemsSource = categories;
             }
+        }
+
+        public ActionType ActionType { get; private set; }
+
+        private void OnCancelButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            ActionType = ActionType.Cancel;
         }
     }
 }
