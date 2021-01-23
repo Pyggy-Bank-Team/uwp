@@ -17,13 +17,13 @@ namespace Peppa.ViewModels.Operations
         {
             Id = operation.Id;
             Type = operation.Type;
-            IsBudget = Type == OperationType.Budget;
             CategoryHexColor = operation.CategoryHexColor;
             CategoryTitle = operation.CategoryTitle;
             CategoryType = operation.CategoryType ?? CategoryType.Undefined;
             AccountTitle = operation.AccountTitle;
             ToTitle = Type == OperationType.Budget ? operation.AccountTitle : operation.ToTitle;
             Amount = GetAmountValue(Type, CategoryType, operation.Amount);
+            EntityAmount = operation.Amount;
             Date = operation.CreatedOn;
             Comment = operation.Comment;
             IsNew = false;
@@ -48,6 +48,7 @@ namespace Peppa.ViewModels.Operations
                             stringBuilder.Append("-");
                             break;
                     }
+
                     break;
             }
 
@@ -57,6 +58,18 @@ namespace Peppa.ViewModels.Operations
 
             return stringBuilder.ToString();
         }
+        
+        public static implicit operator Operation(ListItemViewModel viewModel)
+            => new Operation
+            {
+                Amount = viewModel.EntityAmount,
+                Comment = viewModel.Comment,
+                Id = viewModel.Id,
+                AccountId = viewModel.Budget?.AccountId ?? viewModel.Transfer.FromId,
+                CategoryId = viewModel.Budget?.CategoryId,
+                ToId = viewModel.Transfer?.ToId,
+                CreatedOn = viewModel.Date
+            };
 
         public OperationType Type { get; set; }
 
@@ -67,6 +80,8 @@ namespace Peppa.ViewModels.Operations
         public string CategoryTitle { get; set; }
 
         public string Amount { get; set; }
+        
+        public decimal EntityAmount { get; set;}
 
         public string AccountTitle { get; set; }
 
@@ -76,12 +91,17 @@ namespace Peppa.ViewModels.Operations
 
         public string ToTitle { get; set; }
 
-        public bool IsBudget { get; }
+        public bool IsBudget => Type == OperationType.Budget;
 
         public int Id { get; }
 
         public DateTime Date { get; set; }
 
         public bool IsNew { get; set; }
+        
+        public ActionType Action { get; set; }
+
+        public BudgetOperationViewModel Budget { get; set; }
+        public TransferOperationViewModel Transfer { get; set;}
     }
 }

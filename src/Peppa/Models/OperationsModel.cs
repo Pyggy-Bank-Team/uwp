@@ -171,6 +171,7 @@ namespace Peppa.Models
             {
                 var request = new CreateTransferOperationRequest
                 {
+                    Amount = operation.Amount,
                     From = operation.AccountId.Value,
                     To = operation.ToId.Value,
                     OperationDate = operation.CreatedOn,

@@ -34,11 +34,13 @@ namespace Peppa.Views.Operations
 
         private async void OnOperationClick(object sender, ItemClickEventArgs e)
         {
-            var operationModal = new OperationDialog(_dataContext, (ListItemViewModel)e.ClickedItem);
-
+            var operation = (ListItemViewModel) e.ClickedItem;
+            
+            var operationModal = new OperationDialog(_dataContext, operation);
             await operationModal.ShowAsync();
-
-            //Frame.Navigate(typeof(EditOperationPage), e.ClickedItem);
+            
+            await _dataContext.DoAction(operation);
+            await _dataContext.Initialization();
         }
 
         private async void OnAddOperationClick(object sender, RoutedEventArgs e)
@@ -47,6 +49,9 @@ namespace Peppa.Views.Operations
 
             var operationModel = new OperationDialog(_dataContext, newOperation);
             await operationModel.ShowAsync();
+
+            await _dataContext.DoAction(newOperation);
+            await _dataContext.Initialization();
         }
 
         private void OnRefreshClick(object sender, RoutedEventArgs e)

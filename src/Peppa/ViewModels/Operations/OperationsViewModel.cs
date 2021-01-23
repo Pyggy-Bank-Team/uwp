@@ -32,6 +32,29 @@ namespace Peppa.ViewModels.Operations
             }
         }
 
+        public async Task DoAction(ListItemViewModel operation)
+        {
+            switch (operation.Action)
+            {
+                case ActionType.Save when operation.IsNew:
+
+                    if (operation.IsBudget)
+                        await _model.CreateBudgetOperation(operation, GetCancellationToken());
+                    else
+                        await _model.CreateTransferOperation(operation, GetCancellationToken());
+                    
+                    break;
+                case ActionType.Save when !operation.IsNew:
+                    
+                    break;
+                case ActionType.Delete:
+                    break;
+                default:
+                    //TODO: Do nothing
+                break;
+            }
+        }
+
         public async Task<CategoryItemViewModel[]> GetCategories(bool all, CategoryType categoryType)
         {
             var categories = await _model.GetCategories(all, GetCancellationToken());
@@ -54,16 +77,16 @@ namespace Peppa.ViewModels.Operations
             }).ToArray();
         }
 
-        public async Task<OperationViewModel> GetBudgetOperation(int id)
+        public async Task<BudgetOperationViewModel> GetBudgetOperation(int id)
         {
             var operation = await _model.GetBudgetOperation(id, GetCancellationToken());
-            return new OperationViewModel(operation);
+            return new BudgetOperationViewModel{AccountId = operation.AccountId.Value, CategoryId = operation.CategoryId.Value};
         }
 
-        public async Task<OperationViewModel> GetTransferOperation(int id)
+        public async Task<TransferOperationViewModel> GetTransferOperation(int id)
         {
             var operation = await _model.GetTransferOperation(id, GetCancellationToken());
-            return new OperationViewModel(operation);
+            return new TransferOperationViewModel{FromId = operation.AccountId.Value, ToId = operation.ToId.Value};
         }
 
         public void Finalization()

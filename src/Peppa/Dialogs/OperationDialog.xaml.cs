@@ -3,6 +3,8 @@ using Peppa.ViewModels.Operations;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
+using Peppa.ViewModels.Accounts;
+using Peppa.ViewModels.Categories;
 
 namespace Peppa.Dialogs
 {
@@ -17,12 +19,7 @@ namespace Peppa.Dialogs
             _viewModel = viewModel;
             _item = item;
         }
-
-        private void OnSaveButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-            ActionType = ActionType.Save;
-        }
-
+        
         private async void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Types.ItemsSource = new[] { OperationViewType.Expense, OperationViewType.Income, OperationViewType.Transfer };
@@ -53,7 +50,7 @@ namespace Peppa.Dialogs
                     await Task.WhenAll(accountTask, categoryTask, operationTask);
 
                     var operation = operationTask.Result;
-                    Types.SelectedItem = operation.ViewType;
+                    Types.SelectedItem = GetViewType(_item.Type, _item.CategoryType);
                     Types.IsEnabled = false;
 
                     AccountComboBox.ItemsSource = accountTask.Result;
@@ -77,17 +74,17 @@ namespace Peppa.Dialogs
                     var operation = operationTask.Result;
 
                     FromComboBox.ItemsSource = accounts;
-                    FromComboBox.SelectedItem = accounts.FirstOrDefault(a => a.Id == operation.AccountId);
+                    FromComboBox.SelectedItem = accounts.FirstOrDefault(a => a.Id == operation.FromId);
 
                     ToComboBox.ItemsSource = accounts;
-                    ToComboBox.SelectedItem = accounts.FirstOrDefault(a => a.Id == operation.ToAccountId);
+                    ToComboBox.SelectedItem = accounts.FirstOrDefault(a => a.Id == operation.ToId);
                 }               
             }
         }
 
         private async void OnTypeItemClick(object sender, ItemClickEventArgs e)
         {
-            var accountTask = _viewModel.GetAccounts(true);
+            var accountTask = _viewModel.GetAccounts(false);
 
             if ((OperationViewType)(e.ClickedItem) == OperationViewType.Transfer)
             {
@@ -106,7 +103,7 @@ namespace Peppa.Dialogs
                 BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
-                var categoryTask = _viewModel.GetCategories(true, _item.CategoryType);
+                var categoryTask = _viewModel.GetCategories(false, _item.CategoryType);
 
                 await Task.WhenAll(accountTask, categoryTask);
 
@@ -118,11 +115,54 @@ namespace Peppa.Dialogs
             }
         }
 
-        public ActionType ActionType { get; private set; }
-
         private void OnCancelButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            ActionType = ActionType.Cancel;
+            _item.Action = ActionType.Cancel;
+        }
+        
+        private void OnSaveButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            _item.Action = ActionType.Save;
+
+            if (Types.SelectedItem is OperationViewType selectedType)
+            {
+                if (selectedType == OperationViewType.Transfer)
+                {
+                    var from = FromComboBox.SelectedItem as AccountItemViewModel;
+                    var to = ToComboBox.SelectedItem as AccountItemViewModel;
+                    if (from != null && to != null)
+                    {
+                        _item.Type = OperationType.Transfer;
+                        _item.Transfer = new TransferOperationViewModel {FromId = from.Id, ToId = to.Id};
+                    }
+                }
+                else
+                {
+                    var account = AccountComboBox.SelectedItem as AccountItemViewModel;
+                    var category = CategoryComboBox.SelectedItem as CategoryItemViewModel;
+                    if (account != null && category != null)
+                    {
+                        _item.Type = OperationType.Budget;
+                        _item.Budget = new BudgetOperationViewModel {AccountId = account.Id, CategoryId = category.Id};
+                    }
+                }
+            }
+        }
+        
+        private static OperationViewType GetViewType(OperationType operationType, CategoryType categoryType)
+        {
+            if (operationType == OperationType.Transfer)
+                return OperationViewType.Transfer;
+
+            return categoryType == CategoryType.Expense ? OperationViewType.Expense : OperationViewType.Income;
+        }
+
+        private void AmountTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (decimal.TryParse(AmountTextBox.Text, out var result))
+            {
+                _item.EntityAmount = result;
+            }
         }
     }
 }

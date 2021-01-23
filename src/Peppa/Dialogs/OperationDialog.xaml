@@ -19,7 +19,7 @@
             <StackPanel Orientation="Vertical">
 
                 <!--Cost-->
-                <TextBox x:Name="AmountTextBox" x:Uid="CostTextBox" FontSize="18" Text="{x:Bind _item.Amount, Mode=OneTime}"/>
+                <TextBox x:Name="AmountTextBox" x:Uid="CostTextBox" FontSize="18" Text="{x:Bind _item.EntityAmount, Mode=OneTime}" TextChanged="AmountTextBox_TextChanged"/>
 
                 <GridView x:Name="Types" Header="Type" HorizontalAlignment="Stretch" FontSize="18" IsItemClickEnabled="True" ItemContainerStyle="{StaticResource GridViewStretch}" ItemClick="OnTypeItemClick"/>
 
@@ -60,7 +60,7 @@
 
                 <StackPanel x:Name="TransferOperationBudget" Visibility="Collapsed">
                     <!--Accounts from-->
-                    <ComboBox x:Name="FromComboBox" x:Uid="BalancesComboBox" HorizontalAlignment="Stretch">
+                    <ComboBox x:Name="FromComboBox" Header="From" HorizontalAlignment="Stretch">
                         <ComboBox.ItemTemplate>
                             <DataTemplate x:DataType="accounts:AccountItemViewModel">
                                 <Grid>
@@ -77,7 +77,7 @@
                     </ComboBox>
 
                     <!--Accounts to-->
-                    <ComboBox x:Name="ToComboBox" x:Uid="BalancesComboBox" HorizontalAlignment="Stretch">
+                    <ComboBox x:Name="ToComboBox" Header="To" HorizontalAlignment="Stretch">
                         <ComboBox.ItemTemplate>
                             <DataTemplate x:DataType="accounts:AccountItemViewModel">
                                 <Grid>
