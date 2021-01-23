@@ -20,39 +20,79 @@
                 <!--Cost-->
                 <TextBox x:Name="AmountTextBox" x:Uid="CostTextBox" FontSize="18" Text="{x:Bind _item.Amount, Mode=OneTime}"/>
 
-                <ComboBox x:Name="Types" Header="Type"  HorizontalAlignment="Stretch" FontSize="18"/>
+                <GridView x:Name="Types" Header="Type" HorizontalAlignment="Stretch" FontSize="18" IsItemClickEnabled="True" ItemContainerStyle="{StaticResource GridViewStretch}" ItemClick="OnTypeItemClick"/>
 
                 <!--Date-->
                 <CalendarDatePicker x:Name="DatePicker" x:Uid="DatePicker" HorizontalAlignment="Stretch" Date="{x:Bind _item.Date, Mode=OneTime}" FontSize="18"/>
 
-                <!--Accounts-->
-                <ComboBox x:Name="AccountComboBox" x:Uid="BalancesComboBox" HorizontalAlignment="Stretch">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate x:DataType="accounts:AccountItemViewModel">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.8*" />
-                                    <ColumnDefinition Width="20" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{x:Bind Title}" FontSize="18" />
-                                <TextBlock Grid.Column="2" Text="{x:Bind BalanceWithCurrencySymbol}" FontSize="18" />
-                            </Grid>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
+                <StackPanel x:Name="BudgetOperationPanel">
+                    <!--Accounts-->
+                    <ComboBox x:Name="AccountComboBox" x:Uid="BalancesComboBox" HorizontalAlignment="Stretch">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="accounts:AccountItemViewModel">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*" />
+                                        <ColumnDefinition Width="20" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{x:Bind Title}" FontSize="18" />
+                                    <TextBlock Grid.Column="2" Text="{x:Bind BalanceWithCurrencySymbol}" FontSize="18" />
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
 
-                <!--Categories-->
-                <ComboBox x:Name="CategoryComboBox" x:Uid="CategoriesComboBox" HorizontalAlignment="Stretch">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate x:DataType="categories:CategoryItemViewModel">
-                            <StackPanel Orientation="Horizontal">
-                                <Ellipse Height="18" Width="18" Fill="{x:Bind HexColor}" />
-                                <TextBlock Text="{x:Bind Title}" FontSize="18" Margin="10 0 0 0" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
+                    <!--Categories-->
+                    <ComboBox x:Name="CategoryComboBox" x:Uid="CategoriesComboBox" HorizontalAlignment="Stretch">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="categories:CategoryItemViewModel">
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Height="18" Width="18" Fill="{x:Bind HexColor}" />
+                                    <TextBlock Text="{x:Bind Title}" FontSize="18" Margin="10 0 0 0" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+
+                <StackPanel x:Name="TransferOperationBudget" Visibility="Collapsed">
+                    <!--Accounts from-->
+                    <ComboBox x:Name="FromComboBox" x:Uid="BalancesComboBox" HorizontalAlignment="Stretch">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="accounts:AccountItemViewModel">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*" />
+                                        <ColumnDefinition Width="20" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{x:Bind Title}" FontSize="18" />
+                                    <TextBlock Grid.Column="2" Text="{x:Bind BalanceWithCurrencySymbol}" FontSize="18" />
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <!--Accounts to-->
+                    <ComboBox x:Name="ToComboBox" x:Uid="BalancesComboBox" HorizontalAlignment="Stretch">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="accounts:AccountItemViewModel">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*" />
+                                        <ColumnDefinition Width="20" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{x:Bind Title}" FontSize="18" />
+                                    <TextBlock Grid.Column="2" Text="{x:Bind BalanceWithCurrencySymbol}" FontSize="18" />
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    
+                </StackPanel>               
 
                 <!--Comment-->
                 <TextBox x:Uid="CommentTextBox" Text="{x:Bind _item.Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" 

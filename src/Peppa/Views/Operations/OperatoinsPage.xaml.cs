@@ -41,18 +41,12 @@ namespace Peppa.Views.Operations
             //Frame.Navigate(typeof(EditOperationPage), e.ClickedItem);
         }
 
-        private async void OnAddedCostClick(object sender, RoutedEventArgs e)
+        private async void OnAddOperationClick(object sender, RoutedEventArgs e)
         {
-            //if (!MainViewModel.Current.HaveCategories)
-            //{
-            //    await DialogService
-            //        .GetInformationDialog(Localize.GetTranslateByKey(Localize.WarringCategoriesContent))
-            //        .ShowAsync();
+            var newOperation = new ListItemViewModel();
 
-            //    return;
-            //}
-
-            //Frame.Navigate(typeof(EditOperationPage), new OperationViewModel());
+            var operationModel = new OperationDialog(_dataContext, newOperation);
+            await operationModel.ShowAsync();
         }
 
         private void OnRefreshClick(object sender, RoutedEventArgs e)

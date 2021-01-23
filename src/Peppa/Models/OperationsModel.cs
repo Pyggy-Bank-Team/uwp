@@ -83,11 +83,11 @@ namespace Peppa.Models
             //return await _repository.GetOperations(token);
         }
 
-        public Task<Account[]> GetAccounts(CancellationToken token)
-           => _repository.GetAccounts(token, all: false);
+        public Task<Account[]> GetAccounts(bool all, CancellationToken token)
+           => _repository.GetAccounts(token, all);
 
-        public Task<Category[]> GetCategories(CancellationToken token)
-            => _repository.GetCategories(token, all: false);
+        public Task<Category[]> GetCategories(bool all, CancellationToken token)
+            => _repository.GetCategories(token, all);
 
         public void Dispose()
         {

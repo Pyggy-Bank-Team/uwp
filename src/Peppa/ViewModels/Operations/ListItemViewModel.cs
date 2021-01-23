@@ -7,6 +7,12 @@ namespace Peppa.ViewModels.Operations
 {
     public class ListItemViewModel
     {
+        public ListItemViewModel()
+        {
+            IsNew = true;
+            Date = DateTime.UtcNow;
+        }
+
         public ListItemViewModel(Operation operation)
         {
             Id = operation.Id;
@@ -20,6 +26,7 @@ namespace Peppa.ViewModels.Operations
             Amount = GetAmountValue(Type, CategoryType, operation.Amount);
             Date = operation.CreatedOn;
             Comment = operation.Comment;
+            IsNew = false;
         }
 
         private static string GetAmountValue(OperationType type, CategoryType? categoryType, decimal amount)
@@ -34,7 +41,7 @@ namespace Peppa.ViewModels.Operations
                 default:
                     switch (categoryType)
                     {
-                        case Enums.CategoryType.Income:
+                        case CategoryType.Income:
                             stringBuilder.Append("+");
                             break;
                         default:
@@ -75,5 +82,6 @@ namespace Peppa.ViewModels.Operations
 
         public DateTime Date { get; set; }
 
+        public bool IsNew { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace Peppa.ViewModels.Operations
             Amount = operation.Amount;
             AccountTitle = operation.AccountTitle;
             AccountId = operation.AccountId;
+            ToAccountId = operation.ToId;
             CurrencySymbol = operation.Symbol;
             Comment = operation.Comment;
             Type = operation.Type;
@@ -51,6 +52,8 @@ namespace Peppa.ViewModels.Operations
         public decimal? Amount { get; set; }
 
         public long? AccountId { get; set; }
+
+        public long? ToAccountId { get; set; }
 
         public string AccountTitle { get; set; }
 

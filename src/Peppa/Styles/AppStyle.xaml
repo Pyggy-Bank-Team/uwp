@@ -7,6 +7,10 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     </Style>
 
+    <Style x:Name="GridViewStretch" TargetType="GridViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    </Style>
+
     <Style x:Name="HeaderTextBlock" TargetType="TextBlock">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="Margin" Value="15"/>

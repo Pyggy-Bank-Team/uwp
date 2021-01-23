@@ -89,7 +89,7 @@
         </Grid>
 
         <CommandBar Grid.Row="4">
-            <AppBarButton x:Name="AddCostAppBarButton" x:Uid="AddCostAppBarButton" Icon="Add" Click="OnAddedCostClick" />
+            <AppBarButton x:Name="AddCostAppBarButton" x:Uid="AddCostAppBarButton" Icon="Add" Click="OnAddOperationClick" />
         </CommandBar>
     </Grid>
 </Page>

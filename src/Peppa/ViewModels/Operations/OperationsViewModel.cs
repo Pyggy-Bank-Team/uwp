@@ -32,9 +32,9 @@ namespace Peppa.ViewModels.Operations
             }
         }
 
-        public async Task<CategoryItemViewModel[]> GetCategories(CategoryType categoryType)
+        public async Task<CategoryItemViewModel[]> GetCategories(bool all, CategoryType categoryType)
         {
-            var categories = await _model.GetCategories(GetCancellationToken());
+            var categories = await _model.GetCategories(all, GetCancellationToken());
             return categories.Where(c => c.Type == categoryType).Select(c => new CategoryItemViewModel
             {
                 Id = c.Id,
@@ -43,9 +43,9 @@ namespace Peppa.ViewModels.Operations
             }).ToArray();
         }
 
-        public async Task<AccountItemViewModel[]> GetAccounts()
+        public async Task<AccountItemViewModel[]> GetAccounts(bool all)
         {
-            var accounts = await _model.GetAccounts(GetCancellationToken());
+            var accounts = await _model.GetAccounts(all, GetCancellationToken());
             return accounts.Select(a => new AccountItemViewModel
             {
                 Id = a.Id,
@@ -57,6 +57,12 @@ namespace Peppa.ViewModels.Operations
         public async Task<OperationViewModel> GetBudgetOperation(int id)
         {
             var operation = await _model.GetBudgetOperation(id, GetCancellationToken());
+            return new OperationViewModel(operation);
+        }
+
+        public async Task<OperationViewModel> GetTransferOperation(int id)
+        {
+            var operation = await _model.GetTransferOperation(id, GetCancellationToken());
             return new OperationViewModel(operation);
         }
 
