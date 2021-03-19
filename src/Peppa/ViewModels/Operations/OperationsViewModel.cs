@@ -45,6 +45,11 @@ namespace Peppa.ViewModels.Operations
                     
                     break;
                 case ActionType.Save when !operation.IsNew:
+
+                    if (operation.IsBudget)
+                        await _model.UpdateBudgetOperation(operation, GetCancellationToken());
+                    else
+                        await _model.UpdateTransferOperation(operation, GetCancellationToken());
                     
                     break;
                 case ActionType.Delete:

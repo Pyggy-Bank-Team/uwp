@@ -185,5 +185,37 @@ namespace Peppa.Models
                 //TODO: save to db
             }
         }
+
+        public async Task UpdateBudgetOperation(Operation operation, CancellationToken token)
+        {
+            if (_service.IsAuthorized)
+            {
+                var request = new UpdateBudgetOperationRequest
+                {
+                    AccountId = operation.AccountId.Value,
+                    Amount = operation.Amount,
+                    CategoryId = operation.CategoryId.Value,
+                    Comment = operation.Comment
+                };
+
+                await _service.UpdateBudgetOperation(operation.Id, request, token);
+            }
+        }
+
+        public async Task UpdateTransferOperation(Operation operation, CancellationToken token)
+        {
+            if (_service.IsAuthorized)
+            {
+                var request = new UpdateTransferOperationRequest
+                {
+                    From = operation.AccountId.Value,
+                    Amount = operation.Amount,
+                    To = operation.ToId.Value,
+                    Comment = operation.Comment
+                };
+
+                await _service.UpdateTransferOperation(operation.Id, request, token);
+            }
+        }
     }
 }
