@@ -13,5 +13,7 @@ namespace Peppa.Interface.Services
         Task<TransferOperationResponse> GetTransferOperation(int id, CancellationToken token);
         Task<bool> CreateBudgetOperation(CreateBudgetOperationRequest request, CancellationToken token);
         Task<bool> CreateTransferOperation(CreateTransferOperationRequest request, CancellationToken token);
+        Task<bool> UpdateBudgetOperation(int id, UpdateBudgetOperationRequest request, CancellationToken token);
+        Task<bool> UpdateTransferOperation(int id, UpdateTransferOperationRequest request, CancellationToken token);
     }
 }

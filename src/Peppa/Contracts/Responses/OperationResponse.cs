@@ -29,6 +29,8 @@ namespace Peppa.Contracts.Responses
 
         [JsonProperty("date")]
         public DateTime Date { get; set; }
+
+        public string Comment { get; set; }
     }
 
     public class Account

@@ -15,5 +15,7 @@ namespace Peppa.Interface.Models
         Task<Operation> GetTransferOperation(int  operationId, CancellationToken token);
         Task CreateBudgetOperation(Operation operation, CancellationToken token);
         Task CreateTransferOperation(Operation operation, CancellationToken token);
+        Task UpdateBudgetOperation(Operation operation, CancellationToken token);
+        Task UpdateTransferOperation(Operation operation, CancellationToken token);
     }
 }

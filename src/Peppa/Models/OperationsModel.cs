@@ -55,7 +55,8 @@ namespace Peppa.Models
                         CategoryTitle = o.Category?.Title,
                         Amount = o.Amount,
                         Type = o.Type,
-                        CreatedOn = o.Date
+                        CreatedOn = o.Date,
+                        Comment = o.Comment
                     });
 
                     //TODO Save into db
@@ -75,7 +76,8 @@ namespace Peppa.Models
                             CategoryTitle = o.Category?.Title,
                             Amount = o.Amount,
                             Type = o.Type,
-                            CreatedOn = o.Date
+                            CreatedOn = o.Date,
+                            Comment = o.Comment
                         }).ToArray()
                     };
                 }
