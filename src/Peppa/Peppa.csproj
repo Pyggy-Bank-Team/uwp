@@ -117,12 +117,16 @@
     <Compile Include="Contracts\PageResult.cs" />
     <Compile Include="Contracts\Requests\CreateBudgetOperationRequest.cs" />
     <Compile Include="Contracts\Requests\CreateTransferOperationRequest.cs" />
+    <Compile Include="Contracts\Requests\GetChartByCategoriesRequest.cs" />
+    <Compile Include="Contracts\Requests\GetChartByExpensePerDaysRequest.cs" />
     <Compile Include="Contracts\Requests\GetTokenRequest.cs" />
     <Compile Include="Contracts\Requests\UpdateBudgetOperationRequest.cs" />
     <Compile Include="Contracts\Requests\UpdateTransferOperationRequest.cs" />
     <Compile Include="Contracts\Responses\AccountResponse.cs" />
     <Compile Include="Contracts\Responses\BudgetOperationResponse.cs" />
     <Compile Include="Contracts\Responses\CategoryResponse.cs" />
+    <Compile Include="Contracts\Responses\ChartByCategoriesResponse.cs" />
+    <Compile Include="Contracts\Responses\ChartByExpenseDaysResponse.cs" />
     <Compile Include="Contracts\Responses\ErrorResponse.cs" />
     <Compile Include="Contracts\Responses\OperationResponse.cs" />
     <Compile Include="Contracts\Responses\TransferOperationResponse.cs" />
@@ -147,6 +151,7 @@
     <Compile Include="Dialogs\RegistrationDialog.xaml.cs">
       <DependentUpon>RegistrationDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dto\ChartByCategories.cs" />
     <Compile Include="Dto\PageResult.cs" />
     <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Enums\ActionType.cs" />
@@ -164,9 +169,11 @@
     <Compile Include="Interface\Models\IAccountsModel.cs" />
     <Compile Include="Interface\Models\ICategoriesModel.cs" />
     <Compile Include="Interface\Models\IOperationsModel.cs" />
+    <Compile Include="Interface\Models\IReportModel.cs" />
     <Compile Include="Interface\Services\IAccountService.cs" />
     <Compile Include="Interface\Services\ICategoryService.cs" />
     <Compile Include="Interface\Services\IOperationService.cs" />
+    <Compile Include="Interface\Services\IReportService.cs" />
     <Compile Include="Interface\Services\IUserService.cs" />
     <Compile Include="Localize.cs" />
     <Compile Include="Models\AccountsModel.cs" />
@@ -181,6 +188,7 @@
     <Compile Include="Contracts\Responses\AccessTokenResponse.cs" />
     <Compile Include="Contracts\Responses\AvailableCurrency.cs" />
     <Compile Include="Contracts\Responses\IdentityErrorResponse.cs" />
+    <Compile Include="Models\ReportModel.cs" />
     <Compile Include="Repositories\PiggyRepository.cs" />
     <Compile Include="Services\PiggyService\AccountService.cs" />
     <Compile Include="Services\PiggyService\CategoryService.cs" />
@@ -188,6 +196,7 @@
     <Compile Include="Services\PiggyService\PiggyService.cs" />
     <Compile Include="Services\PiggyService\PiggyService.Users.cs" />
     <Compile Include="Services\PiggyService\PiggyServiceBase.cs" />
+    <Compile Include="Services\PiggyService\ReportService.cs" />
     <Compile Include="Services\Windows\DialogService.cs" />
     <Compile Include="Services\Windows\TileService.cs" />
     <Compile Include="Services\Windows\ToastService.cs" />

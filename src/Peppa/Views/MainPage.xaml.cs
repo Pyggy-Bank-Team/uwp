@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Navigation;
 using Peppa.Views.Accounts;
 using Peppa.Views.Users;
 using Peppa.Views.Categories;
+using Peppa.Views.Diagram;
 using Peppa.Views.Operations;
 
 namespace Peppa.Views
@@ -58,8 +59,8 @@ namespace Peppa.Views
                     ContentFrame.Navigate(typeof(CategoriesPage));
                     break;
                 case Constants.diagrams:
-                    //ContentFrame.Navigate(typeof(DiagramPage), _mainViewModel.Diagram);
-                    //NavView.Header = Localize.GetTranslateByKey(Localize.Diagrama);
+                    ContentFrame.Navigate(typeof(DiagramPage));
+                    NavView.Header = Localize.GetTranslateByKey(Localize.Diagrama);
                     break;
                 case Constants.synchronization:
                     ContentFrame.Navigate(typeof(SyncPage));

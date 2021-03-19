@@ -8,6 +8,7 @@ using Peppa.Models;
 using Peppa.Interface;
 using Peppa.Repositories;
 using Peppa.ViewModels.Categories;
+using Peppa.ViewModels.Diagram;
 using Peppa.ViewModels.Operations;
 
 namespace Peppa.Extensions
@@ -24,10 +25,13 @@ namespace Peppa.Extensions
             services.AddScoped<ICategoriesModel, CategoriesModel>();
             services.AddScoped<IOperationService, OperationService>();
             services.AddScoped<IOperationsModel, OperationsModel>();
+            services.AddScoped<IReportService, ReportService>();
+            services.AddScoped<IReportModel, ReportModel>();
             services.AddSingleton<CategoriesViewModel>();
             services.AddSingleton<AccountsViewModel>();
             services.AddSingleton<UserViewModel>();
             services.AddSingleton<OperationsViewModel>();
+            services.AddSingleton<DiagramViewModel>();
             services.AddHttpClient();
         }
     }

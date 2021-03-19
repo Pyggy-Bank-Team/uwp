@@ -4,45 +4,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Notifications;
-using Peppa.Models;
-using Peppa.Services;
+using Peppa.Enums;
+using Peppa.Interface.Models;
 using Peppa.Services.Windows;
-using Peppa.Utilities;
 using Peppa.ViewModels.Interface;
-using Peppa.Workers;
 
 namespace Peppa.ViewModels.Diagram
 {
     public class DiagramViewModel : BaseViewModel, IBaseViewModel
     {
-        public DiagramViewModel()
+        private readonly IReportModel _model;
+
+        public DiagramViewModel(IReportModel model)
         {
+            _model = model;
             Datas = new List<DataDiagramViewModel>();
         }
 
         public async Task Initialization()
         {
-            //List<CostModel> costs = DbWorker.Current.GetCosts();
-            //AllCosts = costs.Sum(c => c.Cost);
-
-            Datas.Clear();
-
-            //foreach (var category in MainViewModel.Current.Categories)
-            //{
-            //    var costsByCategory = costs.Where(c => c.CategoryId == category.Id);
-
-            //    if (costsByCategory.Count() > 0)
-            //    {
-            //        double sumInCategory = costsByCategory.Sum(c => c.Cost);
-            //        Datas.Add(
-            //            new DataDiagramViewModel
-            //            {
-            //                Value = (sumInCategory / AllCosts) * 100,
-            //                Color = category.Color,
-            //                Title = category.Title
-            //            });
-            //    }
-            //}
+            var items = await _model.GetChartByCategories(CategoryType.Expense, DateTime.Now.AddYears(-1), DateTime.Now, GetCancellationToken());
+            if (items != null)
+            {
+                Datas = items.Select(d => new DataDiagramViewModel
+                {
+                    Value = d.Amount,
+                    Color = d.CategoryHexColor,
+                    Title = d.CategoryTitle
+                }).ToList();
+            }
         }
 
         public void Finalization()
@@ -88,7 +78,7 @@ namespace Peppa.ViewModels.Diagram
 
         public double AllCosts { get; private set; }
 
-        public List<DataDiagramViewModel> Datas { get; }
+        public List<DataDiagramViewModel> Datas { get; set; }
 
         public bool IsEmpty
         {

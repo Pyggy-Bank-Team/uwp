@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Peppa.Interface;
 using Peppa.Interface.Models;
 using Peppa.Interface.Services;
-using Peppa.Contracts;
 using Peppa.Contracts.Responses;
 using Account = Peppa.Context.Entities.Account;
 

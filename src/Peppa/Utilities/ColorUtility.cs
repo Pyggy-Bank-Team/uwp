@@ -11,9 +11,8 @@ namespace Peppa.Utilities
             byte a = byte.Parse(hexString.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
             byte r = byte.Parse(hexString.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
             byte g = byte.Parse(hexString.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
-            byte b = byte.Parse(hexString.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
 
-            return Color.FromArgb(a, r, g, b);
+            return Color.FromArgb(255, a, r, g);
         }
 
         public static string GetHexStringFromColor(Color color)

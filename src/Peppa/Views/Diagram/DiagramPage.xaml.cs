@@ -16,11 +16,11 @@ namespace Peppa.Views.Diagram
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            _diagram = e.Parameter as DiagramViewModel;
+            _diagram = (DiagramViewModel) App.ServiceProvider.GetService(typeof(DiagramViewModel));
 
-            _diagram.Initialization();
+            await  _diagram.Initialization();
 
             Diagram.Series[0].ItemsSource = _diagram.Datas;
 
@@ -35,7 +35,7 @@ namespace Peppa.Views.Diagram
             LabelsListView.ItemsSource = _diagram.Datas;
 
             if (!_diagram.IsEmpty)
-                _diagram.UpdateTile();
+                await _diagram.UpdateTile();
         }
 
         private void OnFilterClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
