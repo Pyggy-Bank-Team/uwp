@@ -22,14 +22,14 @@ namespace Peppa.ViewModels.Operations
             CategoryType = operation.CategoryType ?? CategoryType.Undefined;
             AccountTitle = operation.AccountTitle;
             ToTitle = Type == OperationType.Budget ? operation.AccountTitle : operation.ToTitle;
-            Amount = GetAmountValue(Type, CategoryType, operation.Amount);
+            Amount = GetAmountValue(Type, CategoryType, operation.Amount, operation.Symbol);
             EntityAmount = operation.Amount;
             Date = operation.CreatedOn;
             Comment = operation.Comment;
             IsNew = false;
         }
 
-        private static string GetAmountValue(OperationType type, CategoryType? categoryType, decimal amount)
+        private static string GetAmountValue(OperationType type, CategoryType? categoryType, decimal amount, string symbol)
         {
             var stringBuilder = new StringBuilder();
 
@@ -54,7 +54,7 @@ namespace Peppa.ViewModels.Operations
 
             stringBuilder.Append(amount);
             stringBuilder.Append(" ");
-            //stringBuilder.Append(CurrencySymbol);
+            stringBuilder.Append(symbol);
 
             return stringBuilder.ToString();
         }

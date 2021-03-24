@@ -15,6 +15,7 @@ namespace Peppa.ViewModels.Operations
             CategoryHexColor = operation.CategoryHexColor;
             CategoryTitle = operation.CategoryTitle;
             Amount = operation.Amount;
+            AmountValue = GetAmountValue(operation.Type, operation.CategoryType ?? Enums.CategoryType.Undefined, operation.Amount, operation.Symbol);
             AccountTitle = operation.AccountTitle;
             AccountId = operation.AccountId;
             ToAccountId = operation.ToId;
@@ -37,6 +38,35 @@ namespace Peppa.ViewModels.Operations
                 return OperationViewType.Expense;
             else
                 return OperationViewType.Income;
+        }
+
+        private static string GetAmountValue(OperationType operationType, CategoryType categoryType, decimal amount, string symbol)
+        {
+            var stringBuilder = new StringBuilder();
+
+            switch (operationType)
+            {
+                case OperationType.Transfer:
+                    stringBuilder.Append("+");
+                    break;
+                default:
+                    switch (categoryType)
+                    {
+                        case Enums.CategoryType.Income:
+                            stringBuilder.Append("+");
+                            break;
+                        default:
+                            stringBuilder.Append("-");
+                            break;
+                    }
+                    break;
+            }
+
+            stringBuilder.Append(amount);
+            stringBuilder.Append(" ");
+            stringBuilder.Append(symbol);
+
+            return stringBuilder.ToString();
         }
 
         public bool IsNew { get; set; }
@@ -72,6 +102,8 @@ namespace Peppa.ViewModels.Operations
         public string ToTitle { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public string AmountValue { get; set; }
 
         public string OperationValue
         {

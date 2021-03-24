@@ -5,6 +5,7 @@ using Peppa.Interface.Models;
 using Peppa.Interface.Services;
 using Peppa.Contracts.Responses;
 using Account = Peppa.Context.Entities.Account;
+using System.Collections.Generic;
 
 namespace Peppa.Models
 {
@@ -12,9 +13,22 @@ namespace Peppa.Models
     {
         private readonly IAccountService _service;
         private readonly IPiggyRepository _repository;
+        private readonly Dictionary<string, string> _availableCurrencies;
 
         public AccountsModel(IAccountService service, IPiggyRepository repository)
-            => (_service, _repository) = (service, repository);
+        {
+            _service = service;
+            _repository = repository;
+            _availableCurrencies = new Dictionary<string, string>
+            {
+                {"RUB", "₽"},
+                {"BYN", "Br"},
+                {"UAH", "₴"},
+                {"KZT", "₸"},
+                {"USD", "$"},
+                {"EUR", "€"}
+            };
+        }
 
 
         public async Task CreatedAccount(Account account, CancellationToken token)
@@ -106,7 +120,7 @@ namespace Peppa.Models
                         {
                             Id = account.Id,
                             Balance = account.Balance,
-                            Currency = account.Currency,
+                            Currency = GetSymbol(account.Currency),
                             Title = account.Title,
                             Type = account.Type,
                             IsArchived = account.IsArchived,
@@ -127,5 +141,22 @@ namespace Peppa.Models
 
         public void Dispose()
             => _repository?.Dispose();
+
+        private string GetSymbol(string currency)
+        {
+            if (string.IsNullOrWhiteSpace(currency))
+                return null;
+
+            try
+            {
+                return _availableCurrencies[currency];
+            }
+            catch
+            {
+                //TODO log
+            }
+
+            return null;
+        }
     }
 }

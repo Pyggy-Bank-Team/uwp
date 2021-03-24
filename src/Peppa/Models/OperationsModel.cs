@@ -77,7 +77,8 @@ namespace Peppa.Models
                             Amount = o.Amount,
                             Type = o.Type,
                             CreatedOn = o.Date,
-                            Comment = o.Comment
+                            Comment = o.Comment,
+                            Symbol = GetSymbol(o.Account.Currency)
                         }).ToArray()
                     };
                 }
@@ -216,6 +217,23 @@ namespace Peppa.Models
 
                 await _service.UpdateTransferOperation(operation.Id, request, token);
             }
+        }
+
+        private string GetSymbol(string currency)
+        {
+            if (string.IsNullOrWhiteSpace(currency))
+                return null;
+
+            try
+            {
+                return _availableCurrencies[currency];
+            }
+            catch
+            {
+                //TODO log
+            }
+
+            return null;
         }
     }
 }
