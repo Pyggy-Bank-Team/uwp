@@ -213,10 +213,11 @@
     <Compile Include="ViewModels\Operations\OperationViewModel.cs" />
     <Compile Include="ViewModels\Operations\TransferOperationViewModel.cs" />
     <Compile Include="ViewModels\Pagination\PaginationItemViewModel.cs" />
+    <Compile Include="ViewModels\Report\ChartByCategoriesViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
-    <Compile Include="ViewModels\Diagram\DataDiagramViewModel.cs" />
-    <Compile Include="ViewModels\Diagram\DiagramViewModel.cs" />
+    <Compile Include="ViewModels\Report\DataDiagramViewModel.cs" />
+    <Compile Include="ViewModels\Report\ReportViewModel.cs" />
     <Compile Include="ViewModels\Donate\DonateItemViewModel.cs" />
     <Compile Include="ViewModels\Donate\DonateViewModel.cs" />
     <Compile Include="ViewModels\Interface\IBaseViewModel.cs" />

@@ -1,15 +1,16 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using System.Collections.Generic;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Peppa.Utilities;
-using Peppa.ViewModels.Diagram;
+using Peppa.ViewModels.Report;
 using Telerik.UI.Xaml.Controls.Chart;
 
 namespace Peppa.Views.Diagram
 {
     public sealed partial class DiagramPage : Page
     {
-        private DiagramViewModel _diagram;
+        private ReportViewModel _report;
 
         public DiagramPage()
         {
@@ -18,55 +19,33 @@ namespace Peppa.Views.Diagram
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            _diagram = (DiagramViewModel) App.ServiceProvider.GetService(typeof(DiagramViewModel));
+            _report = (ReportViewModel) App.ServiceProvider.GetService(typeof(ReportViewModel));
 
-            await  _diagram.Initialization();
+            await  _report.Initialization();
+            UpdateChartByCategories(Diagram, LabelsListView, _report.ExpenseChart.Data);
+            UpdateChartByCategories(Income, IncomeLabels, _report.IncomeChart.Data);
+        }
 
-            Diagram.Series[0].ItemsSource = _diagram.Datas;
+        private void UpdateChartByCategories(RadPieChart chart, ListView labels, List<DataDiagramViewModel> data)
+        {
+            chart.Series[0].ItemsSource = _report.ExpenseChart.Data;
 
             ChartPalette palette = new ChartPalette { Name = "CustomsDark" };
 
-            foreach (var color in _diagram.Datas)
+            foreach (var color in data)
             {
                 palette.FillEntries.Brushes.Add(new SolidColorBrush(ColorUtility.GetColorFromHexString(color.Color)));
             }
 
-            Diagram.Palette = palette;
-            LabelsListView.ItemsSource = _diagram.Datas;
-
-            if (!_diagram.IsEmpty)
-                await _diagram.UpdateTile();
+            chart.Palette = palette;
+            labels.ItemsSource = data;
         }
 
-        private void OnFilterClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void ApplyFilter(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            FilterFlyout.ShowAt((AppBarButton)sender);
-        }
-
-        private void OnCheckMarkClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            FilterFlyout.Hide();
-
-            _diagram.ApplyFilter(StartDatePicker.Date.Date, EndDatePicker.Date.Date);
-
-            Diagram.Series[0].ItemsSource = null;
-            Diagram.Series[0].ItemsSource = _diagram.Datas;
-
-            ChartPalette palette = new ChartPalette { Name = "CustomsDark" };
-
-            foreach (var color in _diagram.Datas)
-            {
-                palette.FillEntries.Brushes.Add(new SolidColorBrush(ColorUtility.GetColorFromHexString(color.Color)));
-            }
-
-            Diagram.Palette = palette;
-            LabelsListView.ItemsSource = null;
-            LabelsListView.ItemsSource = _diagram.Datas;
-        }
-
-        private void OnCancelClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            FilterFlyout.Hide();
+            await _report.ApplyFilter(StartDatePicker.Date.Value.UtcDateTime, EndDatePicker.Date.Value.UtcDateTime);
+            UpdateChartByCategories(Diagram, LabelsListView, _report.ExpenseChart.Data);
+            UpdateChartByCategories(Income, IncomeLabels, _report.IncomeChart.Data);
         }
     }
 }

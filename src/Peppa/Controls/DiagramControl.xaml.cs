@@ -3,14 +3,14 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Peppa.Utilities;
-using Peppa.ViewModels.Diagram;
+using Peppa.ViewModels.Report;
 
 
 namespace Peppa.Controls
 {
     public sealed partial class DiagramControl : UserControl
     {
-        private DiagramViewModel _diagram;
+        private ReportViewModel _report;
 
         public DiagramControl()
         {
@@ -19,18 +19,18 @@ namespace Peppa.Controls
 
         private void OnDataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
-            _diagram = args.NewValue as DiagramViewModel;
+            _report = args.NewValue as ReportViewModel;
 
-            Diagram.Series[0].ItemsSource = _diagram.Datas;
-
-            ChartPalette palette = new ChartPalette { Name = "CustomsDark" };
-
-            foreach (var color in _diagram.Datas)
-            {
-                palette.FillEntries.Brushes.Add(new SolidColorBrush(ColorUtility.GetColorFromHexString(color.Color)));
-            }
-
-            Diagram.Palette = palette;
+            // Diagram.Series[0].ItemsSource = _report.Datas;
+            //
+            // ChartPalette palette = new ChartPalette { Name = "CustomsDark" };
+            //
+            // foreach (var color in _report.Datas)
+            // {
+            //     palette.FillEntries.Brushes.Add(new SolidColorBrush(ColorUtility.GetColorFromHexString(color.Color)));
+            // }
+            //
+            // Diagram.Palette = palette;
         }
     }
 }

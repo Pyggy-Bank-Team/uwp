@@ -8,8 +8,8 @@ using Peppa.Models;
 using Peppa.Interface;
 using Peppa.Repositories;
 using Peppa.ViewModels.Categories;
-using Peppa.ViewModels.Diagram;
 using Peppa.ViewModels.Operations;
+using Peppa.ViewModels.Report;
 
 namespace Peppa.Extensions
 {
@@ -31,7 +31,7 @@ namespace Peppa.Extensions
             services.AddSingleton<AccountsViewModel>();
             services.AddSingleton<UserViewModel>();
             services.AddSingleton<OperationsViewModel>();
-            services.AddSingleton<DiagramViewModel>();
+            services.AddSingleton<ReportViewModel>();
             services.AddHttpClient();
         }
     }

@@ -53,14 +53,12 @@ namespace Peppa.Views
                     break;
                 case Constants.operations:
                     ContentFrame.Navigate(typeof(OperationsPage));
-                    //NavView.Header = Localize.GetTranslateByKey(Localize.Costs);
                     break;
                 case Constants.categories:
                     ContentFrame.Navigate(typeof(CategoriesPage));
                     break;
                 case Constants.diagrams:
                     ContentFrame.Navigate(typeof(DiagramPage));
-                    NavView.Header = Localize.GetTranslateByKey(Localize.Diagrama);
                     break;
                 case Constants.synchronization:
                     ContentFrame.Navigate(typeof(SyncPage));

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Toolkit.Uwp.Notifications;
-using Peppa.ViewModels.Diagram;
+using Peppa.ViewModels.Report;
 
 namespace Peppa.Services.Windows
 {
