@@ -4,6 +4,7 @@
     {
         Successful,
         UserNotCreated,
-        InternalServerError
+        InternalServerError,
+        PasswordInvalid
     }
 }

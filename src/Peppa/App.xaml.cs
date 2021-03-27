@@ -15,6 +15,7 @@ using Peppa.Views;
 using Peppa.Workers;
 using Peppa.Extensions;
 using UnhandledExceptionEventArgs = Windows.UI.Xaml.UnhandledExceptionEventArgs;
+using Peppa.Views.Login;
 
 namespace Peppa
 {
@@ -86,10 +87,11 @@ namespace Peppa
             {
                 if (rootFrame.Content == null)
                 {
-                    // When the navigation stack isn't restored navigate to the first page,
-                    // configuring the new page by passing required information as a navigation
-                    // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    if (SettingsWorker.Current.HaveValue(Constants.AccessToken))
+                        rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    else
+                        rootFrame.Navigate(typeof(LoginPage), e.Arguments);
+
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();

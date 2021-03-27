@@ -4,6 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Peppa.Utilities;
 using Peppa.Workers;
+using Peppa.Views.Login;
 
 namespace Peppa.Views.SettingsPage
 {
@@ -58,6 +59,17 @@ namespace Peppa.Views.SettingsPage
                 return;
 
             await Launcher.LaunchUriAsync(new Uri(url));
+        }
+
+        private void OnAccountSettings(object sender, RoutedEventArgs e)
+        {
+            //TODO: Move to VM
+            SettingsWorker.Current.RemoveValue(Constants.AccessToken);
+            SettingsWorker.Current.RemoveValue(Constants.RefreshToken);
+            SettingsWorker.Current.RemoveValue(Constants.UserName);
+
+            //Clean a page
+            Frame.Navigate(typeof(LoginPage));
         }
     }
 }

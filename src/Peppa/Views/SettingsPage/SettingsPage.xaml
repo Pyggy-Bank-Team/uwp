@@ -10,17 +10,27 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20 0 0 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
+        <StackPanel x:Name="UserGrid" Grid.Row="0">
+            <TextBlock Text="Person info" FontSize="25" FontWeight="Normal" Margin="0 0 0 15"/>
+            <PersonPicture x:Name="Avatar" DisplayName="denis" HorizontalAlignment="Left" Margin="0 0 0 0"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="UserName" Text="Denis" Margin="20 5 0 0"/>
+                <HyperlinkButton Margin="5 -1 0 0" Content="Logout" Click="OnAccountSettings"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
             <TextBlock x:Uid="ThemeTextBlock" FontSize="25" FontWeight="Normal" Margin="0 0 0 15"/>
             <RadioButton x:Name="LightTheme" x:Uid="LightRadioButton" GroupName="Theme" Checked="OnLitghButtonChecked"/>
             <RadioButton x:Name="DarkTheme" x:Uid="DarkRadioButton" GroupName="Theme" Checked="OnDarkButtonChecked"/>
             <TextBlock x:Name="ChangedTextBlock" x:Uid="ThemeChangedTextBlock" Visibility="Collapsed"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="0 15">
+        <StackPanel Grid.Row="2" Margin="0 15">
             <TextBlock x:Uid="AboutTextBlock" FontSize="25" FontWeight="Normal" Margin="0 0 0 10"/>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                 <Image Source="ms-appx:///Assets/Square44x44Logo.png" 

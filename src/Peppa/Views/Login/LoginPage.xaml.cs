@@ -1,7 +1,7 @@
 ﻿using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
 using Peppa.ViewModels.Users;
-using Peppa.Views.Operations;
+using System;
 using System.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -32,7 +32,7 @@ namespace Peppa.Views.Login
 
             UpdateProgressBar.Visibility = Visibility.Collapsed;
 
-            Frame.Navigate(typeof(OperationsPage));
+            Frame.Navigate(typeof(MainPage));
         }
 
         private void OnRegistrationLinkClick(object sender, RoutedEventArgs e)
@@ -94,21 +94,25 @@ namespace Peppa.Views.Login
                 CurrencyBase = selectedCurrency?.Code ?? RegionInfo.CurrentRegion.ISOCurrencySymbol
             };
 
-            var result = await _dataContext.RegistrationUser(request);
+            var result = await _dataContext.OnRegistration(UserName.Text, Password.Password, selectedCurrency?.Code ?? RegionInfo.CurrentRegion.ISOCurrencySymbol);
 
             //TODO Handler all cases
             switch (result.IdentityResult)
             {
                 case Enums.IdentityResultEnum.Successful:
-                    Token = result.Token;
-                    InputedUserName = UserName.Text;
-                    Hide();
+                    _dataContext.SaveAccessToken(result.Token);
+                    Frame.Navigate(typeof(MainPage));
                     break;
                 default:
                     ErrorText.Text = string.Join(Environment.NewLine, result.Error.Errors);
-                    ErrorText.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                    ErrorText.Visibility = Visibility.Visible;
                     break;
             }
+        }
+
+        private void OnPasswordLostFocus(object sender, RoutedEventArgs e)
+        {
+            ErrorText.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -13,9 +13,6 @@ namespace Peppa.Services.PiggyService
 {
     public partial class PiggyService : IUserService
     {
-        private const string ClientSecret = "secret";
-        private const string Scopes = "api1 offline_access";
-
         public async Task<RegitrationResult> RegistrationUser(UserRequest request)
         {
             var client = _httpClientFactory.CreateClient("Regitration user");

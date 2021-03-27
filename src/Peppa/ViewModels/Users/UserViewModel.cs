@@ -3,6 +3,7 @@ using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
 using Peppa.Workers;
 using Peppa.Interface.Services;
+using Peppa.Models;
 
 namespace Peppa.ViewModels.Users
 {
@@ -29,7 +30,7 @@ namespace Peppa.ViewModels.Users
             }
         }
 
-        public async Task OnRegistration(string userName, string password, string currency)
+        public Task<RegitrationResult> OnRegistration(string userName, string password, string currency)
         {
             //TODO: Add main currency
             var request = new UserRequest
@@ -39,7 +40,7 @@ namespace Peppa.ViewModels.Users
                 CurrencyBase = currency
             };
 
-            var result = await _userService.RegistrationUser(request);
+            return _userService.RegistrationUser(request);
         }
 
         public void SaveAccessToken(AccessTokenResponse accessToken)

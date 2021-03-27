@@ -26,17 +26,17 @@
 
         <NavigationView.MenuItems>
 
-            <NavigationViewItem x:Uid="AccountsHeader" Tag="accounts">
-                <NavigationViewItem.Icon>
-                    <FontIcon Glyph="&#xF5ED;"/>
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-
             <NavigationViewItem Content="Operations" Tag="operations">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xEADF;"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
+
+            <NavigationViewItem x:Uid="AccountsHeader" Tag="accounts">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xF5ED;"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>           
 
             <NavigationViewItem x:Uid="CategoriesHeader" Tag="categories">
                 <NavigationViewItem.Icon>
@@ -50,7 +50,7 @@
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
 
-            <NavigationViewItem x:Uid="SynchronizationHeader" Tag="synchronization">
+            <!--<NavigationViewItem x:Uid="SynchronizationHeader" Tag="synchronization">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xE13D;"/>
                 </NavigationViewItem.Icon>
@@ -60,7 +60,7 @@
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xE170;"/>
                 </NavigationViewItem.Icon>
-            </NavigationViewItem>
+            </NavigationViewItem>-->
         </NavigationView.MenuItems>
 
         <NavigationView.PaneFooter>

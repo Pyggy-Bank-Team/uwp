@@ -35,7 +35,6 @@ namespace Peppa.Views
             if (args.IsSettingsInvoked)
             {
                 ContentFrame.Navigate(typeof(SettingsPage.SettingsPage));
-                NavView.Header = Localize.GetTranslateByKey(Localize.Settings);
             }
             else
             {
@@ -70,7 +69,7 @@ namespace Peppa.Views
 
         private void OnNavViewLoaded(object sender, RoutedEventArgs e)
         {
-            var item = NavView.MenuItems.OfType<NavigationViewItem>().First(n => (string)n.Tag == Constants.synchronization);
+            var item = NavView.MenuItems.OfType<NavigationViewItem>().First(n => (string)n.Tag == Constants.operations);
             NavViewNavigate(item);
         }
 
