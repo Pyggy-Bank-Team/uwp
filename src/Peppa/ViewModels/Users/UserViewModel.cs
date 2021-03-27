@@ -59,6 +59,9 @@ namespace Peppa.ViewModels.Users
             SettingsWorker.Current.RemoveValue(Constants.UserName);
         }
 
+        public Task<AvailableCurrency[]> GetCurrencies()
+            => _userService.GetAvailableCurrencies();
+
         public string Token
             => (string)SettingsWorker.Current.GetValue(Constants.AccessToken);
 

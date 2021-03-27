@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="Peppa.Views.Login.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+    xmlns:responses="using:Peppa.Contracts.Responses"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="LoginPanel" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <TextBox x:Name="LoginText" Header="Login" Margin="0 5 0 0" Width="150"/>
+                <PasswordBox x:Name="PasswordText" Header="Password" Margin="0 5 0 0" Width="150"/>
+                <ProgressBar x:Name="UpdateProgressBar" IsIndeterminate="True" Visibility="Collapsed" Margin="0 5 0 0"/>
+                <Button x:Name="LoginButton" x:Uid="LoginButton" Margin="0 10 0 0" Click="OnLoginClick" Width="150"/>
+                <HyperlinkButton Margin="0 0 0 0" Content="Or registration" Click="OnRegistrationLinkClick"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel x:Name="RegistrationPanel"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock x:Name="ErrorText" Visibility="Collapsed" FontSize="10" Foreground="Red"/>
+            <TextBox x:Name="UserName" Header="User name" LosingFocus="OnUserNameLostFocus"/>
+            <ComboBox x:Name="Currencies" Header="Currency" Margin="0 5 0 0" Width="{Binding ElementName=MainPanel, Path=ActualWidth}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate x:DataType="responses:AvailableCurrency">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Code}"/>
+                            <TextBlock Margin="10 0 0 0" Text="{Binding Path=Symbol}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <PasswordBox x:Name="Password" Header="Password" Margin="0 5 0 0" LostFocus="OnPasswordLostFocus"/>
+            <PasswordBox x:Name="ConfirmPassword" Header="Confirm Password" Margin="0 5 0 0"/>
+            <Button x:Name="ReButton" Content="Registration" Margin="0 10 0 0" Click="OnRegistrationClick" Width="150"/>
+            <HyperlinkButton Margin="0 0 0 0" Content="Or login" Click="OnLoginLinkClick"/>
+        </StackPanel>
+
+    </Grid>
+</Page>
