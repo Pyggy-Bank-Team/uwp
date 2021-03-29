@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Peppa.Contracts.Requests;
@@ -52,14 +53,14 @@ namespace Peppa.Services.PiggyService
             }
         }
 
-        public async Task<AvailableCurrency[]> GetAvailableCurrencies()
+        public async Task<CurrencyResponse[]> GetAvailableCurrencies(CancellationToken token)
         {
             var client = _httpClientFactory.CreateClient("Available currencies");
 
-            using (var response = await client.GetAsync($"{BaseUrl}/Currencies"))
+            using (var response = await client.GetAsync($"{BaseUrl}/Currencies", token))
             {
                 return response.IsSuccessStatusCode
-                    ? JsonConvert.DeserializeObject<AvailableCurrency[]>(await response.Content.ReadAsStringAsync())
+                    ? JsonConvert.DeserializeObject<CurrencyResponse[]>(await response.Content.ReadAsStringAsync())
                     : null;
             }
         }

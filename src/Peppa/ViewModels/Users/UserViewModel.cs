@@ -60,7 +60,7 @@ namespace Peppa.ViewModels.Users
             SettingsWorker.Current.RemoveValue(Constants.UserName);
         }
 
-        public Task<AvailableCurrency[]> GetCurrencies()
+        public Task<CurrencyResponse[]> GetCurrencies()
             => _userService.GetAvailableCurrencies();
 
         public string Token

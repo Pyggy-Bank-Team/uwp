@@ -25,7 +25,7 @@
             <TextBox x:Name="UserName" Header="User name" LosingFocus="OnUserNameLostFocus" Width="250"/>
             <ComboBox x:Name="Currencies" Header="Currency" Margin="0 5 0 0" Width="250">
                 <ComboBox.ItemTemplate>
-                    <DataTemplate x:DataType="responses:AvailableCurrency">
+                    <DataTemplate x:DataType="responses:CurrencyResponse">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Path=Code}"/>
                             <TextBlock Margin="10 0 0 0" Text="{Binding Path=Symbol}"/>

@@ -33,7 +33,7 @@ namespace Peppa.Dialogs
             else
             {
                 //TODO: Add a log that server send we back error
-                var currentCurrency = new AvailableCurrency
+                var currentCurrency = new CurrencyResponse
                 {
                     Symbol = NumberFormatInfo.CurrentInfo.CurrencySymbol,
                     Code = RegionInfo.CurrentRegion.ISOCurrencySymbol
@@ -55,7 +55,7 @@ namespace Peppa.Dialogs
                 return;
             }
 
-            var selectedCurrency = Currencies.SelectedItem as AvailableCurrency;
+            var selectedCurrency = Currencies.SelectedItem as CurrencyResponse;
 
             var request = new UserRequest
             {

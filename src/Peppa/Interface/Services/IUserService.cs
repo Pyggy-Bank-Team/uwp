@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
 using Peppa.Models;
@@ -11,6 +12,6 @@ namespace Peppa.Interface.Services
 
         Task<AccessTokenResponse> GetAccessToken(GetTokenRequest request);
 
-        Task<AvailableCurrency[]> GetAvailableCurrencies();
+        Task<CurrencyResponse[]> GetAvailableCurrencies(CancellationToken token);
     }
 }

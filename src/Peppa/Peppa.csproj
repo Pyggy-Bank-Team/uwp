@@ -113,6 +113,7 @@
     <Compile Include="Context\Entities\EntityBase.cs" />
     <Compile Include="Context\Entities\EntityModifiedBase.cs" />
     <Compile Include="Context\Entities\Operation.cs" />
+    <Compile Include="Context\Entities\User.cs" />
     <Compile Include="Context\PiggyContext.cs" />
     <Compile Include="Contracts\PageResult.cs" />
     <Compile Include="Contracts\Requests\CreateBudgetOperationRequest.cs" />
@@ -152,6 +153,7 @@
       <DependentUpon>RegistrationDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dto\ChartByCategories.cs" />
+    <Compile Include="Dto\Currency.cs" />
     <Compile Include="Dto\PageResult.cs" />
     <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Enums\ActionType.cs" />
@@ -168,6 +170,7 @@
     <Compile Include="Interface\IPiggyRepository.cs" />
     <Compile Include="Interface\Models\IAccountsModel.cs" />
     <Compile Include="Interface\Models\ICategoriesModel.cs" />
+    <Compile Include="Interface\Models\ILoginModel.cs" />
     <Compile Include="Interface\Models\IOperationsModel.cs" />
     <Compile Include="Interface\Models\IReportModel.cs" />
     <Compile Include="Interface\Services\IAccountService.cs" />
@@ -178,15 +181,17 @@
     <Compile Include="Localize.cs" />
     <Compile Include="Models\AccountsModel.cs" />
     <Compile Include="Models\BalanceModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CategoriesModel.cs" />
     <Compile Include="Models\CostModel.cs" />
     <Compile Include="Interface\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\OperationsModel.cs" />
     <Compile Include="Models\RegitrationResult.cs" />
     <Compile Include="Contracts\Requests\UserRequest.cs" />
     <Compile Include="Contracts\Responses\AccessTokenResponse.cs" />
-    <Compile Include="Contracts\Responses\AvailableCurrency.cs" />
+    <Compile Include="Contracts\Responses\CurrencyResponse.cs" />
     <Compile Include="Contracts\Responses\IdentityErrorResponse.cs" />
     <Compile Include="Models\ReportModel.cs" />
     <Compile Include="Repositories\PiggyRepository.cs" />
