@@ -192,7 +192,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\OperationsModel.cs" />
     <Compile Include="Models\RegitrationResult.cs" />
-    <Compile Include="Contracts\Requests\UserRequest.cs" />
+    <Compile Include="Contracts\Requests\CreateUserRequest.cs" />
     <Compile Include="Contracts\Responses\AccessTokenResponse.cs" />
     <Compile Include="Contracts\Responses\CurrencyResponse.cs" />
     <Compile Include="Contracts\Responses\IdentityErrorResponse.cs" />

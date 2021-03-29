@@ -8,7 +8,7 @@ namespace Peppa.Interface.Services
 {
     public interface IUserService : IAuthorization
     {
-        Task<RegitrationResult> RegistrationUser(UserRequest request, CancellationToken token);
+        Task<RegitrationResult> RegistrationUser(CreateUserRequest request, CancellationToken token);
 
         Task<AccessTokenResponse> GetAccessToken(GetTokenRequest request, CancellationToken token);
 

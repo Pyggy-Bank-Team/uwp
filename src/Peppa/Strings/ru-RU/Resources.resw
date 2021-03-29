@@ -308,4 +308,10 @@
   <data name="NotValidUserNameOrPassword" xml:space="preserve">
     <value>Неверное имя пользователя или пароль</value>
   </data>
+  <data name="PasswordAndConfirmPasswordNotEquals" xml:space="preserve">
+    <value>Пароли не идентичны</value>
+  </data>
+  <data name="CurrencyNotSelected" xml:space="preserve">
+    <value>Валюта не выбрана</value>
+  </data>
 </root>

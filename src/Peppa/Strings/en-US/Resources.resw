@@ -300,4 +300,10 @@
   <data name="NotValidUserNameOrPassword" xml:space="preserve">
     <value>Invalid username or password</value>
   </data>
+  <data name="PasswordAndConfirmPasswordNotEquals" xml:space="preserve">
+    <value>The passwords are not identical</value>
+  </data>
+  <data name="CurrencyNotSelected" xml:space="preserve">
+    <value>Currency not selected</value>
+  </data>
 </root>

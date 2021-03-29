@@ -16,7 +16,7 @@ namespace Peppa.Services.PiggyService
 {
     public partial class PiggyService : IUserService
     {
-        public async Task<RegitrationResult> RegistrationUser(UserRequest request, CancellationToken token)
+        public async Task<RegitrationResult> RegistrationUser(CreateUserRequest request, CancellationToken token)
         {
             var client = _httpClientFactory.CreateClient("Regitration user");
             var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");

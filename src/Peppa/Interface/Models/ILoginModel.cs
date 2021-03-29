@@ -10,6 +10,7 @@ namespace Peppa.Interface.Models
         string UserName { get; set; }
         string Password { get; set; }
         string ConfirmPassword { get; set; }
+        string Email { get; set; }
         string Error { get; set; }
         List<Currency> Currencies { get; set; }
         Currency SelectedCurrency { get; set; }

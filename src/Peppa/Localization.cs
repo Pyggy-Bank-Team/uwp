@@ -21,6 +21,8 @@ namespace Peppa
         public const string PurchaseStatusOk = "PurchaseStatusOk";
         public const string PurchaseStatusBad = "PurchaseStatusBad";
         public const string NotValidUserNameOrPassword = "NotValidUserNameOrPassword";
+        public const string PasswordAndConfirmPasswordNotEquals = "PasswordAndConfirmPasswordNotEquals";
+        public const string CurrencyNotSelected = "CurrencyNotSelected";
 
         public static string GetTranslateByKey(string key)
         {

@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Context.Entities;
 using Peppa.Contracts.Requests;
 using Peppa.Dto;
+using Peppa.Enums;
 using Peppa.Interface;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
@@ -31,6 +33,7 @@ namespace Peppa.Models
         public string UserName { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
+        public string Email { get; set; }
 
         public string Error
         {
@@ -63,14 +66,55 @@ namespace Peppa.Models
                 Error = _localizationService.GetTranslateByKey(Localization.NotValidUserNameOrPassword);
                 return;
             }
-            
+
             _settingsService.AddOrUpdateValue(Constants.AccessToken, response.AccessToken);
             await UpdateUserInfo(token);
         }
 
-        public Task Signup(CancellationToken token)
+        public async Task Signup(CancellationToken token)
         {
-            throw new System.NotImplementedException();
+            if (Password != ConfirmPassword)
+            {
+                Error = _localizationService.GetTranslateByKey(Localization.PasswordAndConfirmPasswordNotEquals);
+                return;
+            }
+
+            if (SelectedCurrency?.Code == null)
+            {
+                Error = _localizationService.GetTranslateByKey(Localization.CurrencyNotSelected);
+                ;
+                return;
+            }
+
+            var request = new CreateUserRequest
+            {
+                Email = Email,
+                Password = Password,
+                CurrencyBase = SelectedCurrency.Code,
+                UserName = UserName
+            };
+
+            var response = await _service.RegistrationUser(request, token);
+
+            switch (response.IdentityResult)
+            {
+                case IdentityResultEnum.Successful:
+                    _settingsService.AddOrUpdateValue(Constants.AccessToken, response.Token.AccessToken);
+                    await UpdateUserInfo(token);
+                    break;
+                case IdentityResultEnum.UserNotCreated:
+                    Error = "";
+                    break;
+                case IdentityResultEnum.InternalServerError:
+                    Error = "";
+                    break;
+                case IdentityResultEnum.PasswordInvalid:
+                    Error = "";
+                    break;
+                default:
+                    Error = "";
+                    break;
+            }
         }
 
         public async Task UpdateCurrencies(CancellationToken token)
@@ -80,9 +124,12 @@ namespace Peppa.Models
             {
                 foreach (var currency in response)
                     Currencies.Add(new Currency {Code = currency.Code, Symbol = currency.Symbol});
-                
-                OnPropertyChanged(nameof(Currencies));
             }
+            //If we can't get available currencies from services then we set user's currency
+            else
+                Currencies.Add(new Currency {Symbol = NumberFormatInfo.CurrentInfo.CurrencySymbol, Code = RegionInfo.CurrentRegion.ISOCurrencySymbol});
+
+            OnPropertyChanged(nameof(Currencies));
         }
 
         private async Task UpdateUserInfo(CancellationToken token)

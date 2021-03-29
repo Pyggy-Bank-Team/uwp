@@ -87,7 +87,7 @@ namespace Peppa.Views.Login
 
             var selectedCurrency = Currencies.SelectedItem as CurrencyResponse;
 
-            var request = new UserRequest
+            var request = new CreateUserRequest
             {
                 UserName = UserName.Text,
                 Password = Password.Password,
