@@ -1,9 +1,13 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
+using Peppa.Context.Entities;
+using Peppa.Contracts.Requests;
 using Peppa.Dto;
 using Peppa.Interface;
 using Peppa.Interface.Models;
 using Peppa.Interface.Services;
+using Peppa.Workers;
 
 namespace Peppa.Models
 {
@@ -13,7 +17,6 @@ namespace Peppa.Models
         private readonly IUserService _service;
 
         private string _error;
-        private Currency[] _currencies;
 
         public LoginModel(IPiggyRepository repository, IUserService service)
         {
@@ -38,32 +41,60 @@ namespace Peppa.Models
             }
         }
 
-        public Currency[] Currencies
+        public List<Currency> Currencies { get; set; }
+
+        public Currency SelectedCurrency { get; set; }
+
+        public async Task Signin(CancellationToken token)
         {
-            get => _currencies;
-            set
+            var request = new GetTokenRequest
             {
-                _currencies = value;
+                UserName = UserName,
+                Password = Password
+            };
+
+            var response = await _service.GetAccessToken(request, token);
+            if (response == null)
+            {
+                Error = Localize.GetTranslateByKey(Localize.WarringCostContent);
+                return;
+            }
+            
+            SettingsWorker.Current.SaveValue(Constants.AccessToken, response.AccessToken);
+            await UpdateUserInfo(token);
+        }
+
+        public Task Signup(CancellationToken token)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task UpdateCurrencies(CancellationToken token)
+        {
+            var response = await _service.GetAvailableCurrencies(token);
+            if (response != null)
+            {
+                foreach (var currency in response)
+                    Currencies.Add(new Currency {Code = currency.Code, Symbol = currency.Symbol});
+                
                 OnPropertyChanged(nameof(Currencies));
             }
         }
 
-        public Currency SelectedCurrency { get; set; }
-
-        public Task Signin()
+        private async Task UpdateUserInfo(CancellationToken token)
         {
-            throw new System.NotImplementedException();
-        }
+            var response = await _service.GetUserInfo(token);
+            if (response != null)
+            {
+                var user = new User
+                {
+                    Email = response.Email,
+                    CurrencyBase = response.CurrencyBase,
+                    UserName = response.UserName
+                };
 
-        public Task Signup()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public async Task GetCurrencies(CancellationToken token)
-        {
-            var response = await _service.GetAvailableCurrencies(token);
-            
+                await _repository.CreateUser(user, token);
+            }
         }
     }
 }

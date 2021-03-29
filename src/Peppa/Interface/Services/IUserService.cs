@@ -8,10 +8,12 @@ namespace Peppa.Interface.Services
 {
     public interface IUserService : IAuthorization
     {
-        Task<RegitrationResult> RegistrationUser(UserRequest request);
+        Task<RegitrationResult> RegistrationUser(UserRequest request, CancellationToken token);
 
-        Task<AccessTokenResponse> GetAccessToken(GetTokenRequest request);
+        Task<AccessTokenResponse> GetAccessToken(GetTokenRequest request, CancellationToken token);
 
         Task<CurrencyResponse[]> GetAvailableCurrencies(CancellationToken token);
+
+        Task<UserInfoResponse> GetUserInfo(CancellationToken token);
     }
 }

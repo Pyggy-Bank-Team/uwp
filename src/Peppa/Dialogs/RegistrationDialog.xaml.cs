@@ -6,6 +6,7 @@ using Peppa.Contracts.Responses;
 using Peppa.Interface;
 using Peppa.Interface.Services;
 using System;
+using System.Threading;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,7 +24,7 @@ namespace Peppa.Dialogs
 
         private async void SetAvailableCurrincies()
         {
-            var currencies = await _userService.GetAvailableCurrencies();
+            var currencies = await _userService.GetAvailableCurrencies(CancellationToken.None);
 
             if (currencies != null)
             {
@@ -64,7 +65,7 @@ namespace Peppa.Dialogs
                 CurrencyBase = selectedCurrency?.Code ?? RegionInfo.CurrentRegion.ISOCurrencySymbol
             };
 
-            var result = await _userService.RegistrationUser(request);
+            var result = await _userService.RegistrationUser(request, CancellationToken.None);
             
             //TODO Handler all cases
             switch (result.IdentityResult)
