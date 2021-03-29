@@ -5,9 +5,9 @@ using Peppa.Context.Entities;
 using Peppa.Contracts.Requests;
 using Peppa.Dto;
 using Peppa.Interface;
+using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
 using Peppa.Interface.Services;
-using Peppa.Workers;
 
 namespace Peppa.Models
 {
@@ -15,13 +15,17 @@ namespace Peppa.Models
     {
         private readonly IPiggyRepository _repository;
         private readonly IUserService _service;
+        private readonly ISettingsService _settingsService;
+        private readonly ILocalizationService _localizationService;
 
         private string _error;
 
-        public LoginModel(IPiggyRepository repository, IUserService service)
+        public LoginModel(IPiggyRepository repository, IUserService service, ISettingsService settingsService, ILocalizationService localizationService)
         {
             _repository = repository;
             _service = service;
+            _settingsService = settingsService;
+            _localizationService = localizationService;
         }
 
         public string UserName { get; set; }
@@ -56,11 +60,11 @@ namespace Peppa.Models
             var response = await _service.GetAccessToken(request, token);
             if (response == null)
             {
-                Error = Localize.GetTranslateByKey(Localize.WarringCostContent);
+                Error = _localizationService.GetTranslateByKey(Localization.NotValidUserNameOrPassword);
                 return;
             }
             
-            SettingsWorker.Current.SaveValue(Constants.AccessToken, response.AccessToken);
+            _settingsService.AddOrUpdateValue(Constants.AccessToken, response.AccessToken);
             await UpdateUserInfo(token);
         }
 

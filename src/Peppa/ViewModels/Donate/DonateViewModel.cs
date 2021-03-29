@@ -51,16 +51,16 @@ namespace Peppa.ViewModels.Donate
                 switch (result.Status)
                 {
                     case StorePurchaseStatus.Succeeded:
-                        return Localize.GetTranslateByKey(Localize.PurchaseStatusOk);
+                        return Localization.GetTranslateByKey(Localization.PurchaseStatusOk);
                     case StorePurchaseStatus.NotPurchased:
                         return String.Empty;
                     default:
-                        return Localize.GetTranslateByKey(Localize.PurchaseStatusBad);
+                        return Localization.GetTranslateByKey(Localization.PurchaseStatusBad);
                 }
             }
             catch
             {
-                return Localize.GetTranslateByKey(Localize.PurchaseStatusBad);
+                return Localization.GetTranslateByKey(Localization.PurchaseStatusBad);
             }
         }
 

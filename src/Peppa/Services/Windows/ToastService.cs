@@ -17,11 +17,11 @@ namespace Peppa.Services.Windows
                         {
                             new AdaptiveText
                             {
-                                Text = Localize.GetTranslateByKey(Localize.HeaderReminderNotifi)
+                                Text = Localization.GetTranslateByKey(Localization.HeaderReminderNotifi)
                             },
                             new AdaptiveText
                             {
-                                Text =  Localize.GetTranslateByKey(Localize.DescriptionRemiderNotifi)
+                                Text =  Localization.GetTranslateByKey(Localization.DescriptionRemiderNotifi)
                             }
                         }
                     }

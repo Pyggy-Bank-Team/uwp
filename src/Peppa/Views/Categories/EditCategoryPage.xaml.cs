@@ -45,7 +45,7 @@ namespace Peppa.Views.Categories
             if (SelectedColor.BorderBrush == null)
             {
                 await DialogService
-                    .GetInformationDialog(Localize.GetTranslateByKey(Localize.WarringCategoryContent))
+                    .GetInformationDialog(Localization.GetTranslateByKey(Localization.WarringCategoryContent))
                     .ShowAsync();
 
                 return;

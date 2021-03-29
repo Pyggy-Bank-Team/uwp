@@ -297,4 +297,7 @@
   <data name="AddBalanceAppBarButton.Label" xml:space="preserve">
     <value>Add account</value>
   </data>
+  <data name="NotValidUserNameOrPassword" xml:space="preserve">
+    <value>Invalid username or password</value>
+  </data>
 </root>
