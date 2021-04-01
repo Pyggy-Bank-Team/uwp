@@ -323,4 +323,25 @@
   <data name="UserNotCreated" xml:space="preserve">
     <value>Пользователь не создан. Пожалуйста попробуйте позднее.</value>
   </data>
+  <data name="ConfirmPasswordText.Header" xml:space="preserve">
+    <value>Подтверждение пароля</value>
+  </data>
+  <data name="CurrencyComboBox.Header" xml:space="preserve">
+    <value>Валюта</value>
+  </data>
+  <data name="LoginLinkButton.Content" xml:space="preserve">
+    <value>Или войти</value>
+  </data>
+  <data name="PasswordText.Header" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="RegistrationButton.Content" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="RegistrationLinkButton.Content" xml:space="preserve">
+    <value>Или зарегестрироваться</value>
+  </data>
+  <data name="UsernameText.Header" xml:space="preserve">
+    <value>Имя пользователя</value>
+  </data>
 </root>

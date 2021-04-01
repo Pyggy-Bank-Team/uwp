@@ -218,6 +218,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryItemViewModel.cs" />
+    <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="ViewModels\Operations\BudgetOperationViewModel.cs" />
     <Compile Include="ViewModels\Operations\ListItemViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationViewModel.cs" />

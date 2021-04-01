@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Dto;
 
 namespace Peppa.Interface.Models
 {
-    public interface ILoginModel
+    public interface ILoginModel : INotifyPropertyChanged
     {
         string UserName { get; set; }
         string Password { get; set; }
