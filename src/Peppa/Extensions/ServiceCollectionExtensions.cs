@@ -7,8 +7,10 @@ using Peppa.Interface.Models;
 using Peppa.Models;
 using Peppa.Interface;
 using Peppa.Interface.InternalServices;
+using Peppa.Interface.WindowsService;
 using Peppa.Repositories;
 using Peppa.Services.Internal;
+using Peppa.Services.Windows;
 using Peppa.ViewModels.Categories;
 using Peppa.ViewModels.Operations;
 using Peppa.ViewModels.Report;
@@ -31,6 +33,7 @@ namespace Peppa.Extensions
             services.AddScoped<IReportModel, ReportModel>();
             services.AddScoped<ISettingsService, SettingsService>();
             services.AddScoped<ILocalizationService, LocalizationService>();
+            services.AddScoped<IToastService, ToastService>();
             services.AddSingleton<CategoriesViewModel>();
             services.AddSingleton<AccountsViewModel>();
             services.AddSingleton<UserViewModel>();

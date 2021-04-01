@@ -167,7 +167,6 @@
     <Compile Include="Fabrics\CategoryFactory.cs" />
     <Compile Include="Fabrics\DonateFactory.cs" />
     <Compile Include="Interface\IAuthorization.cs" />
-    <Compile Include="Interface\IDetailPage.cs" />
     <Compile Include="Interface\InternalServices\ILocalizationService.cs" />
     <Compile Include="Interface\InternalServices\ISettingsService.cs" />
     <Compile Include="Interface\IPiggyRepository.cs" />
@@ -181,6 +180,7 @@
     <Compile Include="Interface\Services\IOperationService.cs" />
     <Compile Include="Interface\Services\IReportService.cs" />
     <Compile Include="Interface\Services\IUserService.cs" />
+    <Compile Include="Interface\WindowsService\IToastService.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Models\AccountsModel.cs" />
     <Compile Include="Models\BalanceModel.cs" />

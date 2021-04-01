@@ -1,32 +1,37 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
+﻿using Windows.UI.Notifications;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Peppa.Interface.WindowsService;
 
 namespace Peppa.Services.Windows
 {
-    public static class ToastService
+    public class ToastService : IToastService
     {
-        public static ToastContent GenerateToastContent()
+        private readonly ToastNotifier _notifier;
+
+        public ToastService()
         {
-            return new ToastContent
+            _notifier = ToastNotificationManager.CreateToastNotifier();
+        }
+
+        public void ShowNotification(string header, string description)
+        {
+            var content = new ToastContent
             {
-                Scenario = ToastScenario.Reminder,
+                Scenario = ToastScenario.Default,
                 Visual = new ToastVisual
                 {
                     BindingGeneric = new ToastBindingGeneric
                     {
                         Children =
                         {
-                            new AdaptiveText
-                            {
-                                Text = Localization.GetTranslateByKey(Localization.HeaderReminderNotifi)
-                            },
-                            new AdaptiveText
-                            {
-                                Text =  Localization.GetTranslateByKey(Localization.DescriptionRemiderNotifi)
-                            }
+                            new AdaptiveText {Text = header},
+                            new AdaptiveText {Text = description}
                         }
                     }
                 }
             };
-        } 
+            
+            _notifier.Show(new ToastNotification(content.GetXml()));
+        }
     }
 }

@@ -1,21 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Windows.UI.Xaml;
 using Peppa.Dto;
+using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
+using Peppa.Interface.WindowsService;
 
 namespace Peppa.ViewModels.Login
 {
     public class LoginViewModel : BaseViewModel
     {
         private readonly ILoginModel _model;
+        private readonly IToastService _toastService;
+        private readonly ILocalizationService _localizationService;
 
-        public LoginViewModel(ILoginModel model)
+        public LoginViewModel(ILoginModel model, IToastService toastService, ILocalizationService localizationService)
         {
             IsLoginPanelShow = true;
             IsRegistrationPanelShow = false;
             IsLoginProgressShow = false;
             _model = model;
+            _toastService = toastService;
+            _localizationService = localizationService;
             _model.PropertyChanged += OnModelPropertyChanged;
         }
 
@@ -84,7 +91,14 @@ namespace Peppa.ViewModels.Login
             IsLoginProgressShow = true;
             RaisePropertyChanged(nameof(IsLoginProgressShow));
 
-            await _model.Signin(GetCancellationToken());
+            try
+            {
+                await _model.Signin(GetCancellationToken());
+            }
+            catch
+            {
+                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
+            }
         }
         
         public async void OnRegistrationButtonClick(object sender, RoutedEventArgs e)
