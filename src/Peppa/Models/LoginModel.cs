@@ -82,7 +82,6 @@ namespace Peppa.Models
             if (SelectedCurrency?.Code == null)
             {
                 Error = _localizationService.GetTranslateByKey(Localization.CurrencyNotSelected);
-                ;
                 return;
             }
 
@@ -103,16 +102,13 @@ namespace Peppa.Models
                     await UpdateUserInfo(token);
                     break;
                 case IdentityResultEnum.UserNotCreated:
-                    Error = "";
-                    break;
-                case IdentityResultEnum.InternalServerError:
-                    Error = "";
+                    Error = _localizationService.GetTranslateByKey(Localization.UserNotCreated);
                     break;
                 case IdentityResultEnum.PasswordInvalid:
-                    Error = "";
+                    Error = _localizationService.GetTranslateByKey(Localization.PasswordInvalid);
                     break;
                 default:
-                    Error = "";
+                    Error = _localizationService.GetTranslateByKey(Localization.OopsError);
                     break;
             }
         }

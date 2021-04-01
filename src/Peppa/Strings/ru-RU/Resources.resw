@@ -314,4 +314,13 @@
   <data name="CurrencyNotSelected" xml:space="preserve">
     <value>Валюта не выбрана</value>
   </data>
+  <data name="OopsError" xml:space="preserve">
+    <value>Оопс! Кажется, произошла невиданная ошибка! Попробуйте позже...</value>
+  </data>
+  <data name="PasswordInvalid" xml:space="preserve">
+    <value>Пароль должен быть больше 6 символов, содержать буквы и цифры, и специальные символы</value>
+  </data>
+  <data name="UserNotCreated" xml:space="preserve">
+    <value>Пользователь не создан. Пожалуйста попробуйте позднее.</value>
+  </data>
 </root>

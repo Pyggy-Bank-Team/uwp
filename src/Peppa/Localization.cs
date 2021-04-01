@@ -23,6 +23,9 @@ namespace Peppa
         public const string NotValidUserNameOrPassword = "NotValidUserNameOrPassword";
         public const string PasswordAndConfirmPasswordNotEquals = "PasswordAndConfirmPasswordNotEquals";
         public const string CurrencyNotSelected = "CurrencyNotSelected";
+        public const string UserNotCreated = "UserNotCreated";
+        public const string PasswordInvalid = "PasswordInvalid";
+        public const string OopsError = "OopsError";
 
         public static string GetTranslateByKey(string key)
         {

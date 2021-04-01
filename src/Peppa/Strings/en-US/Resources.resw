@@ -306,4 +306,13 @@
   <data name="CurrencyNotSelected" xml:space="preserve">
     <value>Currency not selected</value>
   </data>
+  <data name="OopsError" xml:space="preserve">
+    <value>Oops! It seems that an unprecedented error has occurred! Try again later...</value>
+  </data>
+  <data name="PasswordInvalid" xml:space="preserve">
+    <value>The password must be more than 6 characters, contain letters and numbers, and special characters</value>
+  </data>
+  <data name="UserNotCreated" xml:space="preserve">
+    <value>User wasn't created. Please, try it late</value>
+  </data>
 </root>
