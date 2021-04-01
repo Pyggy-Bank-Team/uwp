@@ -1,12 +1,13 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Peppa.ViewModels.Login;
+using Microsoft.Extensions.DependencyInjection;
+using Peppa.Interface.ViewModels;
 
 namespace Peppa.Views.Login
 {
     public sealed partial class LoginPage : Page
     {
-        private LoginViewModel _loginViewModel;
+        private ILoginViewModel _loginViewModel;
 
         public LoginPage()
         {
@@ -15,7 +16,7 @@ namespace Peppa.Views.Login
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+            _loginViewModel = App.ServiceProvider.GetService<ILoginViewModel>();
         }
     }
 }

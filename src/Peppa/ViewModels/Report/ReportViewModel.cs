@@ -7,7 +7,7 @@ using Peppa.ViewModels.Interface;
 
 namespace Peppa.ViewModels.Report
 {
-    public class ReportViewModel : BaseViewModel, IBaseViewModel
+    public class ReportViewModel : BaseViewModel, IInitialization
     {
         private readonly IReportModel _model;
 

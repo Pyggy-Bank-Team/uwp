@@ -7,7 +7,7 @@ using Peppa.ViewModels.Interface;
 
 namespace Peppa.ViewModels.Donate
 {
-    public class DonateViewModel : IBaseViewModel
+    public class DonateViewModel : IInitialization
     {
         private StoreContext _storeContext;
         private bool _isLoaded;

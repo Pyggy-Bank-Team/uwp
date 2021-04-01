@@ -11,7 +11,7 @@ using Peppa.ViewModels.Pagination;
 
 namespace Peppa.ViewModels.Operations
 {
-    public class OperationsViewModel : BaseViewModel, IBaseViewModel
+    public class OperationsViewModel : BaseViewModel, IInitialization
     {
         private readonly IOperationsModel _model;
 

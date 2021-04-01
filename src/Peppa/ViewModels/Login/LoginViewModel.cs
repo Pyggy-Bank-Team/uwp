@@ -116,12 +116,21 @@ namespace Peppa.ViewModels.Login
             }
         }
 
-        public void OnRegistrationLinkButtonClick(object sender, RoutedEventArgs e)
+        public async void OnRegistrationLinkButtonClick(object sender, RoutedEventArgs e)
         {
             IsLoginPanelShow = false;
             IsRegistrationPanelShow = true;
             RaisePropertyChanged(nameof(IsLoginPanelShow));
             RaisePropertyChanged(nameof(IsRegistrationPanelShow));
+            
+            try
+            {
+                await _model.UpdateCurrencies(GetCancellationToken());
+            }
+            catch
+            {
+                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
+            }
         }
 
         public void OnLoginLinkClick(object sender, RoutedEventArgs e)

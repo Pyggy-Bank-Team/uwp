@@ -8,7 +8,7 @@ using Peppa.Interface.Models;
 
 namespace Peppa.ViewModels.Accounts
 {
-    public class AccountsViewModel : BaseViewModel, IBaseViewModel
+    public class AccountsViewModel : BaseViewModel, IInitialization
     {
         private readonly IAccountsModel _model;
 

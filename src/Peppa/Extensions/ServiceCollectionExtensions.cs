@@ -21,7 +21,7 @@ namespace Peppa.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void DependencyInjection(this IServiceCollection services)
+        public static void DependencyInjectionSetup(this IServiceCollection services)
         {
             //Models
             services.AddScoped<IAccountsModel, AccountsModel>();
