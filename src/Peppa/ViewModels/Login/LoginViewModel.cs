@@ -73,7 +73,6 @@ namespace Peppa.ViewModels.Login
             }
         }
         
-        //TODO Change to Bool
         public bool IsLoginProgressShow { get; set; }
         
         public bool IsLoginPanelShow { get; set; }
@@ -82,7 +81,10 @@ namespace Peppa.ViewModels.Login
 
         public async void OnLoginButtonClick(object sender, RoutedEventArgs e)
         {
-            
+            IsLoginProgressShow = true;
+            RaisePropertyChanged(nameof(IsLoginProgressShow));
+
+            await _model.Signin(GetCancellationToken());
         }
         
         public async void OnRegistrationButtonClick(object sender, RoutedEventArgs e)
