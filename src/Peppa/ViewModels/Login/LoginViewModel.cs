@@ -6,6 +6,7 @@ using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
 using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
+using Peppa.Views;
 
 namespace Peppa.ViewModels.Login
 {
@@ -31,6 +32,9 @@ namespace Peppa.ViewModels.Login
             get => _model.UserName;
             set
             {
+                if (_model.UserName == value)
+                    return;
+
                 _model.UserName = value;
                 RaisePropertyChanged(nameof(UserName));
             }
@@ -41,6 +45,9 @@ namespace Peppa.ViewModels.Login
             get => _model.Password;
             set
             {
+                if (_model.Password == value)
+                    return;
+
                 _model.Password = value;
                 RaisePropertyChanged(nameof(Password));
             }
@@ -51,6 +58,9 @@ namespace Peppa.ViewModels.Login
             get => _model.ConfirmPassword;
             set
             {
+                if (_model.ConfirmPassword == value)
+                    return;
+
                 _model.ConfirmPassword = value;
                 RaisePropertyChanged(nameof(ConfirmPassword));
             }
@@ -61,6 +71,9 @@ namespace Peppa.ViewModels.Login
             get => _model.Email;
             set
             {
+                if (_model.Email == value)
+                    return;
+
                 _model.Email = value;
                 RaisePropertyChanged(nameof(Email));
             }
@@ -75,6 +88,9 @@ namespace Peppa.ViewModels.Login
             get => _model.SelectedCurrency;
             set
             {
+                if (_model.SelectedCurrency == value)
+                    return;
+
                 _model.SelectedCurrency = value;
                 RaisePropertyChanged(nameof(SelectedCurrency));
             }
@@ -102,6 +118,8 @@ namespace Peppa.ViewModels.Login
 
             IsLoginProgressShow = false;
             RaisePropertyChanged(nameof(IsLoginProgressShow));
+
+            Frame.Navigate(typeof(MainPage));
         }
         
         public async void OnRegistrationButtonClick(object sender, RoutedEventArgs e)

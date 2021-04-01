@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Peppa.Dto;
+using System.ComponentModel;
 
 namespace Peppa.Interface.ViewModels
 {
-    public interface ILoginViewModel
+    public interface ILoginViewModel : INotifyPropertyChanged
     {
         string UserName { get; set; }
         string Password { get; set; }

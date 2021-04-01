@@ -2,6 +2,8 @@
 using Windows.UI.Xaml.Navigation;
 using Microsoft.Extensions.DependencyInjection;
 using Peppa.Interface.ViewModels;
+using Peppa.ViewModels.Login;
+using System;
 
 namespace Peppa.Views.Login
 {
@@ -16,7 +18,7 @@ namespace Peppa.Views.Login
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _loginViewModel = App.ServiceProvider.GetService<ILoginViewModel>();
+            _loginViewModel = App.ServiceProvider.GetService<ILoginViewModel>();            
         }
     }
 }

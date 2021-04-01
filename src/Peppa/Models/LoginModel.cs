@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Context.Entities;
@@ -28,6 +29,7 @@ namespace Peppa.Models
             _service = service;
             _settingsService = settingsService;
             _localizationService = localizationService;
+            Currencies = new List<Currency>();
         }
 
         public string UserName { get; set; }
@@ -125,7 +127,10 @@ namespace Peppa.Models
             else
                 Currencies.Add(new Currency {Symbol = NumberFormatInfo.CurrentInfo.CurrencySymbol, Code = RegionInfo.CurrentRegion.ISOCurrencySymbol});
 
+            SelectedCurrency = Currencies.First();
+
             OnPropertyChanged(nameof(Currencies));
+            OnPropertyChanged(nameof(SelectedCurrency));
         }
 
         private async Task UpdateUserInfo(CancellationToken token)
