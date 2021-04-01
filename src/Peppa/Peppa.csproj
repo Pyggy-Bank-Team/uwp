@@ -180,6 +180,7 @@
     <Compile Include="Interface\Services\IOperationService.cs" />
     <Compile Include="Interface\Services\IReportService.cs" />
     <Compile Include="Interface\Services\IUserService.cs" />
+    <Compile Include="Interface\ViewModels\ILoginViewModel.cs" />
     <Compile Include="Interface\WindowsService\IToastService.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Models\AccountsModel.cs" />

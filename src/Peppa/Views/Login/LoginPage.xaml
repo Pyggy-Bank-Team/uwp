@@ -22,8 +22,8 @@
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{x:Bind _loginViewModel.IsRegistrationPanelShow, Mode=OneWay}">
             <TextBlock Text="{x:Bind _loginViewModel.Error, Mode=OneWay}" Visibility="Visible" Width="250" TextWrapping="WrapWholeWords" FontSize="10" Foreground="Red" />
-            <TextBox x:Uid="UsernameText" Text="{x:Bind _loginViewModel.UserName, Mode=TwoWay}" LosingFocus="OnUserNameLostFocus" Width="250" />
-            <TextBox Header="Email" Text="{x:Bind _loginViewModel.Email, Mode=TwoWay}" LosingFocus="OnUserNameLostFocus" Width="250" />
+            <TextBox x:Uid="UsernameText" Text="{x:Bind _loginViewModel.UserName, Mode=TwoWay}" Width="250" />
+            <TextBox Header="Email" Text="{x:Bind _loginViewModel.Email, Mode=TwoWay}" Width="250" />
             <ComboBox x:Uid="CurrencyComboBox" Margin="0 5 0 0" Width="250" ItemsSource="{x:Bind _loginViewModel.Currencies, Mode=OneWay}"
                       SelectedItem="{x:Bind _loginViewModel.SelectedCurrency, Mode=TwoWay}">
                 <ComboBox.ItemTemplate>
@@ -35,7 +35,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <PasswordBox x:Uid="PasswordText" Password="{x:Bind _loginViewModel.Password, Mode=TwoWay}" Margin="0 5 0 0" LostFocus="OnPasswordLostFocus" Width="250" />
+            <PasswordBox x:Uid="PasswordText" Password="{x:Bind _loginViewModel.Password, Mode=TwoWay}" Margin="0 5 0 0" Width="250" />
             <PasswordBox x:Uid="ConfirmPasswordText" Password="{x:Bind _loginViewModel.ConfirmPassword, Mode=TwoWay}" Margin="0 5 0 0" Width="250" />
             <Button x:Uid="RegistrationButton" Margin="0 10 0 0" Click="{x:Bind _loginViewModel.OnRegistrationButtonClick}" Width="250" />
             <HyperlinkButton x:Uid="LoginLinkButton" Margin="0 0 0 0" Click="{x:Bind _loginViewModel.OnLoginLinkClick}" />

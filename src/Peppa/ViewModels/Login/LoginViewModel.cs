@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using Windows.UI.Xaml;
 using Peppa.Dto;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
+using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
 
 namespace Peppa.ViewModels.Login
 {
-    public class LoginViewModel : BaseViewModel
+    public class LoginViewModel : BaseViewModel, ILoginViewModel
     {
         private readonly ILoginModel _model;
         private readonly IToastService _toastService;
@@ -99,21 +99,37 @@ namespace Peppa.ViewModels.Login
             {
                 _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
             }
+
+            IsLoginProgressShow = false;
+            RaisePropertyChanged(nameof(IsLoginProgressShow));
         }
         
         public async void OnRegistrationButtonClick(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+                await _model.Signup(GetCancellationToken());
+            }
+            catch
+            {
+                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
+            }
         }
 
         public void OnRegistrationLinkButtonClick(object sender, RoutedEventArgs e)
         {
-            
+            IsLoginPanelShow = false;
+            IsRegistrationPanelShow = true;
+            RaisePropertyChanged(nameof(IsLoginPanelShow));
+            RaisePropertyChanged(nameof(IsRegistrationPanelShow));
         }
 
         public void OnLoginLinkClick(object sender, RoutedEventArgs e)
         {
-            
+            IsLoginPanelShow = true;
+            IsRegistrationPanelShow = false;
+            RaisePropertyChanged(nameof(IsLoginPanelShow));
+            RaisePropertyChanged(nameof(IsRegistrationPanelShow));
         }
 
         private void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
