@@ -10,19 +10,25 @@
 
     <Grid>
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{x:Bind _loginViewModel.IsLoginPanelShow, Mode=OneWay}">
-            <TextBox x:Uid="UsernameText" Text="{x:Bind _loginViewModel.UserName, Mode=TwoWay}" Margin="0 5 0 0" Width="250" />
-            <PasswordBox x:Uid="PasswordText" Password="{x:Bind _loginViewModel.Password, Mode=TwoWay}" Margin="0 5 0 0" Width="250" />
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{x:Bind _loginViewModel.IsLoginPanelShow, Mode=OneWay}">
+
+            <Image Source="ms-appx:///Assets/Logo.png" Height="105" Width="105" Margin="0 0 0 50"/>
+            
+            <TextBox x:Uid="UsernameText" Text="{x:Bind _loginViewModel.UserName, Mode=TwoWay}" Margin="0 10 0 0" Width="250" />
+            <PasswordBox x:Uid="PasswordText" Password="{x:Bind _loginViewModel.Password, Mode=TwoWay}" Margin="0 10 0 0" Width="250" />
             <ProgressBar IsIndeterminate="True" Visibility="{x:Bind _loginViewModel.IsLoginProgressShow, Mode=OneWay}" Margin="0 5 0 0" />
-            <Button x:Uid="LoginButton" Margin="0 10 0 0" Click="{x:Bind _loginViewModel.OnLoginButtonClick}" Width="250" />
+            <Button x:Uid="LoginButton" Margin="0 15 0 0" Click="{x:Bind _loginViewModel.OnLoginButtonClick}" Width="250" />
             <HyperlinkButton x:Uid="RegistrationLinkButton" Margin="0 0 0 0" Click="{x:Bind _loginViewModel.OnRegistrationLinkButtonClick}" />
         </StackPanel>
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{x:Bind _loginViewModel.IsRegistrationPanelShow, Mode=OneWay}">
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{x:Bind _loginViewModel.IsRegistrationPanelShow, Mode=OneWay}">
+
+            <Image Source="ms-appx:///Assets/Logo.png" Height="105" Width="105" Margin="0 0 0 50"/>
+
             <TextBlock Text="{x:Bind _loginViewModel.Error, Mode=OneWay}" Visibility="Visible" Width="250" TextWrapping="WrapWholeWords" FontSize="10" Foreground="Red" />
-            <TextBox x:Uid="UsernameText" Text="{x:Bind _loginViewModel.UserName, Mode=TwoWay}" Width="250" />
-            <TextBox Header="Email" Text="{x:Bind _loginViewModel.Email, Mode=TwoWay}" Width="250" />
-            <ComboBox x:Uid="CurrencyComboBox" Margin="0 5 0 0" Width="250" ItemsSource="{x:Bind _loginViewModel.Currencies, Mode=OneWay}"
+            <TextBox x:Uid="UsernameText" Text="{x:Bind _loginViewModel.UserName, Mode=TwoWay}" Width="250"/>
+            <TextBox Header="Email" Text="{x:Bind _loginViewModel.Email, Mode=TwoWay}" Width="250" Margin="0 10 0 0"/>
+            <ComboBox x:Uid="CurrencyComboBox" Margin="0 10 0 0" Width="250" ItemsSource="{x:Bind _loginViewModel.Currencies, Mode=OneWay}"
                       SelectedItem="{x:Bind _loginViewModel.SelectedCurrency, Mode=TwoWay}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="dto:Currency">
@@ -33,9 +39,9 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <PasswordBox x:Uid="PasswordText" Password="{x:Bind _loginViewModel.Password, Mode=TwoWay}" Margin="0 5 0 0" Width="250" />
-            <PasswordBox x:Uid="ConfirmPasswordText" Password="{x:Bind _loginViewModel.ConfirmPassword, Mode=TwoWay}" Margin="0 5 0 0" Width="250" />
-            <Button x:Uid="RegistrationButton" Margin="0 10 0 0" Click="{x:Bind _loginViewModel.OnRegistrationButtonClick}" Width="250" />
+            <PasswordBox x:Uid="PasswordText" Password="{x:Bind _loginViewModel.Password, Mode=TwoWay}" Margin="0 10 0 0" Width="250" />
+            <PasswordBox x:Uid="ConfirmPasswordText" Password="{x:Bind _loginViewModel.ConfirmPassword, Mode=TwoWay}" Margin="0 10 0 0" Width="250" />
+            <Button x:Uid="RegistrationButton" Margin="0 15 0 0" Click="{x:Bind _loginViewModel.OnRegistrationButtonClick}" Width="250" />
             <HyperlinkButton x:Uid="LoginLinkButton" Margin="0 0 0 0" Click="{x:Bind _loginViewModel.OnLoginLinkClick}" />
         </StackPanel>
 
