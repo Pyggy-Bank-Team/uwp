@@ -11,13 +11,11 @@
     <Grid>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{x:Bind _loginViewModel.IsLoginPanelShow, Mode=OneWay}">
-            <StackPanel>
-                <TextBox x:Uid="UsernameText" Text="{x:Bind _loginViewModel.UserName, Mode=TwoWay}" Margin="0 5 0 0" Width="250" />
-                <PasswordBox x:Uid="PasswordText" Password="{x:Bind _loginViewModel.Password, Mode=TwoWay}" Margin="0 5 0 0" Width="250" />
-                <ProgressBar IsIndeterminate="True" Visibility="{x:Bind _loginViewModel.IsLoginProgressShow, Mode=OneWay}" Margin="0 5 0 0" />
-                <Button x:Uid="LoginButton" Margin="0 10 0 0" Click="{x:Bind _loginViewModel.OnLoginButtonClick}" Width="250" />
-                <HyperlinkButton x:Uid="RegistrationLinkButton" Margin="0 0 0 0" Click="{x:Bind _loginViewModel.OnRegistrationLinkButtonClick}" />
-            </StackPanel>
+            <TextBox x:Uid="UsernameText" Text="{x:Bind _loginViewModel.UserName, Mode=TwoWay}" Margin="0 5 0 0" Width="250" />
+            <PasswordBox x:Uid="PasswordText" Password="{x:Bind _loginViewModel.Password, Mode=TwoWay}" Margin="0 5 0 0" Width="250" />
+            <ProgressBar IsIndeterminate="True" Visibility="{x:Bind _loginViewModel.IsLoginProgressShow, Mode=OneWay}" Margin="0 5 0 0" />
+            <Button x:Uid="LoginButton" Margin="0 10 0 0" Click="{x:Bind _loginViewModel.OnLoginButtonClick}" Width="250" />
+            <HyperlinkButton x:Uid="RegistrationLinkButton" Margin="0 0 0 0" Click="{x:Bind _loginViewModel.OnRegistrationLinkButtonClick}" />
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{x:Bind _loginViewModel.IsRegistrationPanelShow, Mode=OneWay}">

@@ -140,6 +140,9 @@ namespace Peppa.ViewModels.Login
             IsRegistrationPanelShow = true;
             RaisePropertyChanged(nameof(IsLoginPanelShow));
             RaisePropertyChanged(nameof(IsRegistrationPanelShow));
+
+            if (Currencies.Count > 0)
+                return;
             
             try
             {
