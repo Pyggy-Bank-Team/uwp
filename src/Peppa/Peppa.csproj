@@ -113,6 +113,7 @@
     <Compile Include="Context\Entities\EntityBase.cs" />
     <Compile Include="Context\Entities\EntityModifiedBase.cs" />
     <Compile Include="Context\Entities\Operation.cs" />
+    <Compile Include="Context\Entities\User.cs" />
     <Compile Include="Context\PiggyContext.cs" />
     <Compile Include="Contracts\PageResult.cs" />
     <Compile Include="Contracts\Requests\CreateBudgetOperationRequest.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Contracts\Responses\ErrorResponse.cs" />
     <Compile Include="Contracts\Responses\OperationResponse.cs" />
     <Compile Include="Contracts\Responses\TransferOperationResponse.cs" />
+    <Compile Include="Contracts\Responses\UserInfoResponse.cs" />
     <Compile Include="Controls\DiagramControl.xaml.cs">
       <DependentUpon>DiagramControl.xaml</DependentUpon>
     </Compile>
@@ -152,6 +154,7 @@
       <DependentUpon>RegistrationDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dto\ChartByCategories.cs" />
+    <Compile Include="Dto\Currency.cs" />
     <Compile Include="Dto\PageResult.cs" />
     <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Enums\ActionType.cs" />
@@ -164,10 +167,12 @@
     <Compile Include="Fabrics\CategoryFactory.cs" />
     <Compile Include="Fabrics\DonateFactory.cs" />
     <Compile Include="Interface\IAuthorization.cs" />
-    <Compile Include="Interface\IDetailPage.cs" />
+    <Compile Include="Interface\InternalServices\ILocalizationService.cs" />
+    <Compile Include="Interface\InternalServices\ISettingsService.cs" />
     <Compile Include="Interface\IPiggyRepository.cs" />
     <Compile Include="Interface\Models\IAccountsModel.cs" />
     <Compile Include="Interface\Models\ICategoriesModel.cs" />
+    <Compile Include="Interface\Models\ILoginModel.cs" />
     <Compile Include="Interface\Models\IOperationsModel.cs" />
     <Compile Include="Interface\Models\IReportModel.cs" />
     <Compile Include="Interface\Services\IAccountService.cs" />
@@ -175,21 +180,27 @@
     <Compile Include="Interface\Services\IOperationService.cs" />
     <Compile Include="Interface\Services\IReportService.cs" />
     <Compile Include="Interface\Services\IUserService.cs" />
-    <Compile Include="Localize.cs" />
+    <Compile Include="Interface\ViewModels\ILoginViewModel.cs" />
+    <Compile Include="Interface\WindowsService\IToastService.cs" />
+    <Compile Include="Localization.cs" />
     <Compile Include="Models\AccountsModel.cs" />
     <Compile Include="Models\BalanceModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CategoriesModel.cs" />
     <Compile Include="Models\CostModel.cs" />
     <Compile Include="Interface\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\OperationsModel.cs" />
     <Compile Include="Models\RegitrationResult.cs" />
-    <Compile Include="Contracts\Requests\UserRequest.cs" />
+    <Compile Include="Contracts\Requests\CreateUserRequest.cs" />
     <Compile Include="Contracts\Responses\AccessTokenResponse.cs" />
-    <Compile Include="Contracts\Responses\AvailableCurrency.cs" />
+    <Compile Include="Contracts\Responses\CurrencyResponse.cs" />
     <Compile Include="Contracts\Responses\IdentityErrorResponse.cs" />
     <Compile Include="Models\ReportModel.cs" />
     <Compile Include="Repositories\PiggyRepository.cs" />
+    <Compile Include="Services\Internal\LocalizationService.cs" />
+    <Compile Include="Services\Internal\SettingsService.cs" />
     <Compile Include="Services\PiggyService\AccountService.cs" />
     <Compile Include="Services\PiggyService\CategoryService.cs" />
     <Compile Include="Services\PiggyService\OperationService.cs" />
@@ -208,6 +219,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryItemViewModel.cs" />
+    <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="ViewModels\Operations\BudgetOperationViewModel.cs" />
     <Compile Include="ViewModels\Operations\ListItemViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationViewModel.cs" />
@@ -220,7 +232,7 @@
     <Compile Include="ViewModels\Report\ReportViewModel.cs" />
     <Compile Include="ViewModels\Donate\DonateItemViewModel.cs" />
     <Compile Include="ViewModels\Donate\DonateViewModel.cs" />
-    <Compile Include="ViewModels\Interface\IBaseViewModel.cs" />
+    <Compile Include="ViewModels\Interface\IInitialization.cs" />
     <Compile Include="ViewModels\Interface\IToastViewModel.cs" />
     <Compile Include="ViewModels\Interface\IUpdateable.cs" />
     <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
@@ -285,6 +297,7 @@
     <Content Include="Assets\BadgeLogo.scale-200.png" />
     <Content Include="Assets\BadgeLogo.scale-400.png" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Logo.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />
     <Content Include="Assets\SplashScreen.scale-150.png" />

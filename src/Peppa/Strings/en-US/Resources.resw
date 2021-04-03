@@ -297,4 +297,43 @@
   <data name="AddBalanceAppBarButton.Label" xml:space="preserve">
     <value>Add account</value>
   </data>
+  <data name="NotValidUserNameOrPassword" xml:space="preserve">
+    <value>Invalid username or password</value>
+  </data>
+  <data name="PasswordAndConfirmPasswordNotEquals" xml:space="preserve">
+    <value>The passwords are not identical</value>
+  </data>
+  <data name="CurrencyNotSelected" xml:space="preserve">
+    <value>Currency not selected</value>
+  </data>
+  <data name="OopsError" xml:space="preserve">
+    <value>Oops! It seems that an unprecedented error has occurred! Try again later...</value>
+  </data>
+  <data name="PasswordInvalid" xml:space="preserve">
+    <value>The password must be more than 6 characters, contain letters and numbers, and special characters</value>
+  </data>
+  <data name="UserNotCreated" xml:space="preserve">
+    <value>User wasn't created. Please, try it late</value>
+  </data>
+  <data name="ConfirmPasswordText.Header" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="CurrencyComboBox.Header" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="LoginLinkButton.Content" xml:space="preserve">
+    <value>Or login</value>
+  </data>
+  <data name="PasswordText.Header" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="RegistrationButton.Content" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="RegistrationLinkButton.Content" xml:space="preserve">
+    <value>Or registration</value>
+  </data>
+  <data name="UsernameText.Header" xml:space="preserve">
+    <value>Login</value>
+  </data>
 </root>

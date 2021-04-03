@@ -2,7 +2,7 @@
 
 namespace Peppa
 {
-    public static class Localize
+    public static class Localization
     {
         public const string Accounts = "Accounts";
         public const string Costs = "Costs";
@@ -20,6 +20,12 @@ namespace Peppa
         public const string Ok = "Ok";
         public const string PurchaseStatusOk = "PurchaseStatusOk";
         public const string PurchaseStatusBad = "PurchaseStatusBad";
+        public const string NotValidUserNameOrPassword = "NotValidUserNameOrPassword";
+        public const string PasswordAndConfirmPasswordNotEquals = "PasswordAndConfirmPasswordNotEquals";
+        public const string CurrencyNotSelected = "CurrencyNotSelected";
+        public const string UserNotCreated = "UserNotCreated";
+        public const string PasswordInvalid = "PasswordInvalid";
+        public const string OopsError = "OopsError";
 
         public static string GetTranslateByKey(string key)
         {

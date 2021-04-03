@@ -20,5 +20,7 @@ namespace Peppa.Context
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Operation> Operations { get; set; }
+        
+        public DbSet<User> Users { get; set; }
     }
 }

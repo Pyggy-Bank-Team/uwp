@@ -9,7 +9,7 @@ namespace Peppa.Services.Windows
             return new ContentDialog
             {
                 Content = content,
-                PrimaryButtonText = Localize.GetTranslateByKey(Localize.Ok)
+                PrimaryButtonText = Localization.GetTranslateByKey(Localization.Ok)
             };
         }
 
@@ -18,7 +18,7 @@ namespace Peppa.Services.Windows
             return new ContentDialog
             {
                 Content = status,
-                PrimaryButtonText = Localize.GetTranslateByKey(Localize.Ok)
+                PrimaryButtonText = Localization.GetTranslateByKey(Localization.Ok)
             };
         }
     }

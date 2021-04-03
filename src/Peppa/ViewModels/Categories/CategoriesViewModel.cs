@@ -7,7 +7,7 @@ using Peppa.ViewModels.Interface;
 
 namespace Peppa.ViewModels.Categories
 {
-    public class CategoriesViewModel : BaseViewModel, IBaseViewModel
+    public class CategoriesViewModel : BaseViewModel, IInitialization
     {
         private readonly ICategoriesModel _model;
 

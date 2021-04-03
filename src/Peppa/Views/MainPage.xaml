@@ -18,7 +18,7 @@
 
     <NavigationView x:Name="NavView"
                     ItemInvoked="OnItemInvoked"
-                    IsBackButtonVisible="Visible"
+                    IsBackButtonVisible="Collapsed"
                     IsBackEnabled="True"
                     Loaded="OnNavViewLoaded"
                     PaneDisplayMode="Top"

@@ -15,7 +15,7 @@
         public const string UserName = "UserName";
         public const string BaseCurrency = "BaseCurrency";
 
-        public static readonly string[] Locales = new string[] { "be","uk", "en", "ru" };
+        public static readonly string[] Locales = { "en", "ru" };
         public const string defaultLocale = "en"; 
     }
 }

@@ -36,17 +36,14 @@ namespace Peppa
 
             Current.RequestedTheme = SettingsWorker.Current.GetRequestedTheme();
             var serviceCollection = new ServiceCollection();
-            serviceCollection.DependencyInjection();
+            serviceCollection.DependencyInjectionSetup();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
         }
-        
+
         public static Task RunUIAsync(Action agileCallback)
         {
-            return CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Low, () =>
-            {
-                agileCallback();
-            }).AsTask();
+            return CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Low, () => { agileCallback(); }).AsTask();
         }
 
         /// <summary>
@@ -73,10 +70,12 @@ namespace Peppa
                     {
                         if (ApplicationData.Current.LocalSettings.Values.ContainsKey("navigationState"))
                         {
-                            rootFrame.SetNavigationState((string)ApplicationData.Current.LocalSettings.Values["navigationState"]);
+                            rootFrame.SetNavigationState((string) ApplicationData.Current.LocalSettings.Values["navigationState"]);
                         }
                     }
-                    catch { }
+                    catch
+                    {
+                    }
                 }
 
                 // Place the frame in the current Window
@@ -91,18 +90,18 @@ namespace Peppa
                         rootFrame.Navigate(typeof(MainPage), e.Arguments);
                     else
                         rootFrame.Navigate(typeof(LoginPage), e.Arguments);
-
                 }
+
                 // Ensure the current window is active
                 Window.Current.Activate();
 
                 ExtendAcrylicIntoTitleBar();
             }
         }
-        
+
         protected override void OnActivated(IActivatedEventArgs args)
         {
-            if(args.Kind == ActivationKind.ToastNotification)
+            if (args.Kind == ActivationKind.ToastNotification)
             {
                 Frame rootFrame = Window.Current.Content as Frame;
                 if (rootFrame == null)
@@ -110,6 +109,7 @@ namespace Peppa
                     rootFrame = new Frame();
                     Window.Current.Content = rootFrame;
                 }
+
                 rootFrame.Navigate(typeof(MainPage));
                 Window.Current.Activate();
             }
@@ -172,9 +172,8 @@ namespace Peppa
 
         private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-
         }
 
-        public static ServiceProvider  ServiceProvider { get; private set; }
+        public static ServiceProvider ServiceProvider { get; private set; }
     }
 }

@@ -7,7 +7,7 @@ using Peppa.Models;
 
 namespace Peppa.ViewModels.Users
 {
-    public class UserViewModel
+    public class UserViewModel : BaseViewModel
     {
         private readonly IUserService _userService;
 
@@ -22,7 +22,7 @@ namespace Peppa.ViewModels.Users
                 Password = password
             };
 
-            var accessToken = await _userService.GetAccessToken(request);
+            var accessToken = await _userService.GetAccessToken(request, GetCancellationToken());
 
             if (accessToken != null)
             {
@@ -33,14 +33,14 @@ namespace Peppa.ViewModels.Users
         public Task<RegitrationResult> OnRegistration(string userName, string password, string currency)
         {
             //TODO: Add main currency
-            var request = new UserRequest
+            var request = new CreateUserRequest
             {
                 UserName = userName,
                 Password = password,
                 CurrencyBase = currency
             };
 
-            return _userService.RegistrationUser(request);
+            return _userService.RegistrationUser(request, GetCancellationToken());
         }
 
         public void SaveAccessToken(AccessTokenResponse accessToken)
@@ -60,8 +60,8 @@ namespace Peppa.ViewModels.Users
             SettingsWorker.Current.RemoveValue(Constants.UserName);
         }
 
-        public Task<AvailableCurrency[]> GetCurrencies()
-            => _userService.GetAvailableCurrencies();
+        public Task<CurrencyResponse[]> GetCurrencies()
+            => _userService.GetAvailableCurrencies(GetCancellationToken());
 
         public string Token
             => (string)SettingsWorker.Current.GetValue(Constants.AccessToken);

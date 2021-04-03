@@ -2,11 +2,18 @@
 using System.ComponentModel;
 using System.Reflection;
 using System.Threading;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace Peppa.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
+        protected BaseViewModel()
+        {
+            Frame = Window.Current.Content as Frame;
+        }
+        
         internal virtual void RaisePropertyChanged(string propertyName)
         {
             App.RunUIAsync(() =>
@@ -30,6 +37,8 @@ namespace Peppa.ViewModels
         
         internal CancellationToken GetCancellationToken(int minutes = 1)
             => new CancellationTokenSource(TimeSpan.FromMinutes(minutes)).Token;
+
+        public Frame Frame { get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

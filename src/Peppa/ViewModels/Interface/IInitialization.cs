@@ -2,10 +2,8 @@
 
 namespace Peppa.ViewModels.Interface
 {
-    public interface IBaseViewModel
+    public interface IInitialization
     {
         Task Initialization();
-
-        void Finalization();
     }
 }
