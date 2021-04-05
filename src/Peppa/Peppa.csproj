@@ -153,9 +153,10 @@
     <Compile Include="Dialogs\RegistrationDialog.xaml.cs">
       <DependentUpon>RegistrationDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dto\Account.cs" />
+    <Compile Include="Dto\Category.cs" />
     <Compile Include="Dto\ChartByCategories.cs" />
     <Compile Include="Dto\Currency.cs" />
-    <Compile Include="Dto\PageResult.cs" />
     <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Enums\ActionType.cs" />
     <Compile Include="Enums\CategoryType.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Interface\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\OperationModel.cs" />
     <Compile Include="Models\OperationsModel.cs" />
     <Compile Include="Models\RegitrationResult.cs" />
     <Compile Include="Contracts\Requests\CreateUserRequest.cs" />

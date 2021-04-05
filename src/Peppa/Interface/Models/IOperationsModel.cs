@@ -2,7 +2,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Context.Entities;
-using Peppa.Dto;
+using Peppa.Contracts;
+using Account = Peppa.Context.Entities.Account;
+using Category = Peppa.Context.Entities.Category;
 
 namespace Peppa.Interface.Models
 {
@@ -12,10 +14,11 @@ namespace Peppa.Interface.Models
         Task<Account[]> GetAccounts(bool all, CancellationToken token);
         Task<Category[]> GetCategories(bool all, CancellationToken token);
         Task<Operation> GetBudgetOperation(int operationId, CancellationToken token);
-        Task<Operation> GetTransferOperation(int  operationId, CancellationToken token);
+        Task<Operation> GetTransferOperation(int operationId, CancellationToken token);
         Task CreateBudgetOperation(Operation operation, CancellationToken token);
         Task CreateTransferOperation(Operation operation, CancellationToken token);
         Task UpdateBudgetOperation(Operation operation, CancellationToken token);
         Task UpdateTransferOperation(Operation operation, CancellationToken token);
+        Task UpdateOperations(CancellationToken token);
     }
 }
