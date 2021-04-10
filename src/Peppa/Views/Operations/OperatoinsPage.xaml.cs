@@ -10,11 +10,10 @@ namespace Peppa.Views.Operations
 {
     public sealed partial class OperationsPage : Page
     {
-        private OperationsViewModel _dataContext;
+        private OperationsViewModel _operationsViewModel;
         public OperationsPage()
         {
             this.InitializeComponent();
-            StupVisible();
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -23,12 +22,11 @@ namespace Peppa.Views.Operations
 
             Progress.Visibility = Visibility.Visible;
 
-            _dataContext = (OperationsViewModel) App.ServiceProvider.GetService(typeof(OperationsViewModel));
-           await _dataContext.Initialization();
+            _operationsViewModel = (OperationsViewModel) App.ServiceProvider.GetService(typeof(OperationsViewModel));
+           await _operationsViewModel.Initialization();
 
-            TableView.ItemsSource = _dataContext.List;
-            PaganationView.ItemsSource = _dataContext.Pagination;
-            StupCollapsed();
+            TableView.ItemsSource = _operationsViewModel.List;
+            PaganationView.ItemsSource = _operationsViewModel.Pagination;
             Progress.Visibility = Visibility.Collapsed;
         }
 
@@ -36,56 +34,34 @@ namespace Peppa.Views.Operations
         {
             var operation = (ListItemViewModel) e.ClickedItem;
             
-            var operationModal = new OperationDialog(_dataContext, operation);
+            var operationModal = new OperationDialog(_operationsViewModel, operation);
             await operationModal.ShowAsync();
             
-            await _dataContext.DoAction(operation);
+            await _operationsViewModel.DoAction(operation);
             if (operation.Action != Enums.ActionType.Cancel)
-                await _dataContext.Initialization();
+                await _operationsViewModel.Initialization();
         }
 
         private async void OnAddOperationClick(object sender, RoutedEventArgs e)
         {
             var newOperation = new ListItemViewModel();
 
-            var operationModel = new OperationDialog(_dataContext, newOperation);
+            var operationModel = new OperationDialog(_operationsViewModel, newOperation);
             await operationModel.ShowAsync();
 
-            await _dataContext.DoAction(newOperation);
+            await _operationsViewModel.DoAction(newOperation);
             if (newOperation.Action != Enums.ActionType.Cancel)
-                await _dataContext.Initialization();
-        }
-
-        private void OnRefreshClick(object sender, RoutedEventArgs e)
-        {
-            //RefreshContainer.RequestRefresh();
-        }
-
-        private async void OnRefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
-        {
-           
-        }
-
-        private void StupVisible()
-        {
-            //RefreshContainer.Visibility = Visibility.Collapsed;
-            //StubTextBlock.Visibility = Visibility.Visible;
-        }
-
-        private void StupCollapsed()
-        {
-            //RefreshContainer.Visibility = Visibility.Visible;
-            //StubTextBlock.Visibility = Visibility.Collapsed;
+                await _operationsViewModel.Initialization();
         }
 
         private async void OnPaganationClick(object sender, ItemClickEventArgs e)
         {
-            _dataContext.CurrentPage = ((PaginationItemViewModel)e.ClickedItem).Number;
+            _operationsViewModel.CurrentPage = ((PaginationItemViewModel)e.ClickedItem).Number;
             Progress.Visibility = Visibility.Visible;
 
-            await _dataContext.Initialization();
+            await _operationsViewModel.Initialization();
 
-            TableView.ItemsSource = _dataContext.List;
+            TableView.ItemsSource = _operationsViewModel.List;
 
             Progress.Visibility = Visibility.Collapsed;
         }

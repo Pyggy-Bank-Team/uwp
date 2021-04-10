@@ -344,4 +344,25 @@
   <data name="UsernameText.Header" xml:space="preserve">
     <value>Имя пользователя</value>
   </data>
+  <data name="AddOperationButton.Text" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="AmountHeader.Text" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="CommentHeader.Text" xml:space="preserve">
+    <value>Комментарий</value>
+  </data>
+  <data name="DateHeader.Text" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="FromHeader.Text" xml:space="preserve">
+    <value>От</value>
+  </data>
+  <data name="ToHeader.Text" xml:space="preserve">
+    <value>В</value>
+  </data>
+  <data name="TypeHeader.Text" xml:space="preserve">
+    <value>Тип</value>
+  </data>
 </root>

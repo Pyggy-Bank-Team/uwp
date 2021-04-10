@@ -1,110 +1,99 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Threading.Tasks;
-using Peppa.Enums;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Peppa.Interface.Models;
-using Peppa.ViewModels.Accounts;
-using Peppa.ViewModels.Categories;
 using Peppa.ViewModels.Interface;
-using Peppa.ViewModels.Pagination;
 
 namespace Peppa.ViewModels.Operations
 {
     public class OperationsViewModel : BaseViewModel, IInitialization
     {
         private readonly IOperationsModel _model;
+        private OperationViewModel _selectedOperaton;
 
         public OperationsViewModel(IOperationsModel model)
-            => _model = model;
+        {
+            _model = model;
+            Operations = new ObservableCollection<OperationViewModel>();
+            IsProgressShow = false;
+            
+            _model.PropertyChanged += OnModelPropertyChanged;
+        }
 
         public async Task Initialization()
         {
-            var pageResult = await _model.GetOperations(CurrentPage, GetCancellationToken());
-            if (pageResult != null)
+            
+        }
+
+        public async void OnOperationClick(object sender, ItemClickEventArgs e)
+        {
+            
+        }
+
+        public async void OnAddOperationClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public async void OnNextButtonClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        
+        public async void OnPreviousButtonClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+            => RaisePropertyChanged(e.PropertyName);
+        
+        public ObservableCollection<OperationViewModel> Operations { get; }
+
+        public OperationViewModel SelectedOperation
+        {
+            get => _selectedOperaton;
+            set
             {
-                List = new ObservableCollection<ListItemViewModel>(pageResult.Result.OrderByDescending(o => o.CreatedOn).Select(o => new ListItemViewModel(o)));
-                CurrentPage = pageResult.CurrentPage;
-                TotalPages = pageResult.TotalPages;
-                Pagination = new ObservableCollection<PaginationItemViewModel>(Enumerable.Range(1, TotalPages).Select(i => new PaginationItemViewModel { Number = i }));
-                RaisePropertyChanged(nameof(List));
-                RaisePropertyChanged(nameof(Pagination));
+                if (_selectedOperaton != value)
+                {
+                    _selectedOperaton = value;
+                    RaisePropertyChanged(nameof(SelectedOperation));
+                }
             }
         }
 
-        public async Task DoAction(ListItemViewModel operation)
+        public int CurrentPageNumber
         {
-            switch (operation.Action)
+            get => _model.CurrentPageNumber;
+            set
             {
-                case ActionType.Save when operation.IsNew:
-
-                    if (operation.IsBudget)
-                        await _model.CreateBudgetOperation(operation, GetCancellationToken());
-                    else
-                        await _model.CreateTransferOperation(operation, GetCancellationToken());
-                    
-                    break;
-                case ActionType.Save when !operation.IsNew:
-
-                    if (operation.IsBudget)
-                        await _model.UpdateBudgetOperation(operation, GetCancellationToken());
-                    else
-                        await _model.UpdateTransferOperation(operation, GetCancellationToken());
-                    
-                    break;
-                case ActionType.Delete:
-                    break;
-                default:
-                    //TODO: Do nothing
-                break;
+                if (_model.CurrentPageNumber != value)
+                {
+                    _model.CurrentPageNumber = value;
+                    RaisePropertyChanged(nameof(CurrentPageNumber));
+                }
             }
         }
 
-        public async Task<CategoryItemViewModel[]> GetCategories(bool all, CategoryType categoryType)
+        public int TotalPages
         {
-            var categories = await _model.GetCategories(all, GetCancellationToken());
-            return categories.Where(c => c.Type == categoryType).Select(c => new CategoryItemViewModel
+            get => _model.TotalPages;
+            set
             {
-                Id = c.Id,
-                Title = c.Title,
-                HexColor = c.HexColor
-            }).ToArray();
+                if (_model.TotalPages != value)
+                {
+                    _model.TotalPages = value;
+                    RaisePropertyChanged(nameof(TotalPages));
+                }
+            }
         }
-
-        public async Task<AccountItemViewModel[]> GetAccounts(bool all)
-        {
-            var accounts = await _model.GetAccounts(all, GetCancellationToken());
-            return accounts.Select(a => new AccountItemViewModel
-            {
-                Id = a.Id,
-                Title = a.Title,
-                BalanceWithCurrencySymbol = $"{a.Balance} {a.Currency}"
-            }).ToArray();
-        }
-
-        public async Task<BudgetOperationViewModel> GetBudgetOperation(int id)
-        {
-            var operation = await _model.GetBudgetOperation(id, GetCancellationToken());
-            return new BudgetOperationViewModel{AccountId = operation.AccountId.Value, CategoryId = operation.CategoryId.Value};
-        }
-
-        public async Task<TransferOperationViewModel> GetTransferOperation(int id)
-        {
-            var operation = await _model.GetTransferOperation(id, GetCancellationToken());
-            return new TransferOperationViewModel{FromId = operation.AccountId.Value, ToId = operation.ToId.Value};
-        }
-
-        public void Finalization()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ObservableCollection<ListItemViewModel> List { get; private set; }
-
-        public ObservableCollection<PaginationItemViewModel> Pagination { get; set; }
-
-        public int CurrentPage { get; set; } = 1;
-
-        public int TotalPages { get; set; }
+        
+        public bool IsProgressShow { get; set; }
+        
+        public bool CanPreviousButtonClick { get; set; }
+        public bool CanNextButtonClick { get; set; }
     }
 }

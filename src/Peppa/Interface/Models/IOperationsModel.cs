@@ -1,24 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
-using Peppa.Context.Entities;
-using Peppa.Contracts;
-using Account = Peppa.Context.Entities.Account;
-using Category = Peppa.Context.Entities.Category;
+using Peppa.Models;
 
 namespace Peppa.Interface.Models
 {
-    public interface IOperationsModel : IDisposable
+    public interface IOperationsModel : IDisposable, INotifyPropertyChanged
     {
-        Task<PageResult<Operation>> GetOperations(int page, CancellationToken token);
-        Task<Account[]> GetAccounts(bool all, CancellationToken token);
-        Task<Category[]> GetCategories(bool all, CancellationToken token);
-        Task<Operation> GetBudgetOperation(int operationId, CancellationToken token);
-        Task<Operation> GetTransferOperation(int operationId, CancellationToken token);
-        Task CreateBudgetOperation(Operation operation, CancellationToken token);
-        Task CreateTransferOperation(Operation operation, CancellationToken token);
-        Task UpdateBudgetOperation(Operation operation, CancellationToken token);
-        Task UpdateTransferOperation(Operation operation, CancellationToken token);
         Task UpdateOperations(CancellationToken token);
+        Task SaveOperation(OperationModel newOperation, CancellationToken token);
+        Task UpdateSelectedOperation(OperationModel operation, CancellationToken token);
+        Task DeleteOperation(OperationModel operation, CancellationToken token);
+        List<OperationModel> Operations { get; }
+        int CurrentPageNumber { get; set; }
+        int TotalPages { get; set; }
     }
 }

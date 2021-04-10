@@ -336,4 +336,25 @@
   <data name="UsernameText.Header" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="AddOperationButton.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AmountHeader.Text" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="CommentHeader.Text" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="DateHeader.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="FromHeader.Text" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="ToHeader.Text" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="TypeHeader.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
 </root>
