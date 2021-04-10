@@ -2,15 +2,17 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.Extensions.DependencyInjection;
 using Peppa.ViewModels.Operations;
 using Peppa.Dialogs;
+using Peppa.Interface.ViewModels;
 using Peppa.ViewModels.Pagination;
 
 namespace Peppa.Views.Operations
 {
     public sealed partial class OperationsPage : Page
     {
-        private OperationsViewModel _operationsViewModel;
+        private IOperationsViewModel _operationsViewModel;
         public OperationsPage()
         {
             this.InitializeComponent();
@@ -19,27 +21,7 @@ namespace Peppa.Views.Operations
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            Progress.Visibility = Visibility.Visible;
-
-            _operationsViewModel = (OperationsViewModel) App.ServiceProvider.GetService(typeof(OperationsViewModel));
-           await _operationsViewModel.Initialization();
-
-            TableView.ItemsSource = _operationsViewModel.List;
-            PaganationView.ItemsSource = _operationsViewModel.Pagination;
-            Progress.Visibility = Visibility.Collapsed;
-        }
-
-        private async void OnOperationClick(object sender, ItemClickEventArgs e)
-        {
-            var operation = (ListItemViewModel) e.ClickedItem;
-            
-            var operationModal = new OperationDialog(_operationsViewModel, operation);
-            await operationModal.ShowAsync();
-            
-            await _operationsViewModel.DoAction(operation);
-            if (operation.Action != Enums.ActionType.Cancel)
-                await _operationsViewModel.Initialization();
+            _operationsViewModel = App.ServiceProvider.GetService<IOperationsViewModel>();
         }
 
         private async void OnAddOperationClick(object sender, RoutedEventArgs e)

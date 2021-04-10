@@ -9,7 +9,7 @@ using Peppa.Interface.Services;
 using Account = Peppa.Dto.Account;
 using Category = Peppa.Dto.Category;
 
-namespace Peppa.Models
+namespace Peppa.Models.Operations
 {
     public class OperationModel : BaseModel, IOperationModel
     {

@@ -1,12 +1,12 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
-using Peppa.Interface;
-using Peppa.Interface.Services;
-using System.Collections.Generic;
 using Peppa.Context.Entities;
+using Peppa.Interface;
 using Peppa.Interface.Models;
+using Peppa.Interface.Services;
 
-namespace Peppa.Models
+namespace Peppa.Models.Operations
 {
     public class OperationsModel : BaseModel, IOperationsModel
     {
@@ -34,7 +34,7 @@ namespace Peppa.Models
                 {"EUR", "€"}
             };
 
-            Operations = new List<OperationModel>();
+            Operations = new List<IOperationModel>();
             CurrentPageNumber = 1;
             _totalPages = 1;
         }
@@ -84,7 +84,7 @@ namespace Peppa.Models
             }
         }
 
-        public async Task SaveOperation(OperationModel newOperation, CancellationToken token)
+        public async Task SaveOperation(IOperationModel newOperation, CancellationToken token)
         {
             if (newOperation == null)
                 return;
@@ -96,7 +96,7 @@ namespace Peppa.Models
             OnPropertyChanged(nameof(Operations));
         }
 
-        public async Task UpdateSelectedOperation(OperationModel operation, CancellationToken token)
+        public async Task UpdateOperation(IOperationModel operation, CancellationToken token)
         {
             if (operation == null)
                 return;
@@ -105,7 +105,7 @@ namespace Peppa.Models
             OnPropertyChanged(nameof(Operations));
         }
 
-        public async Task DeleteOperation(OperationModel operation, CancellationToken token)
+        public async Task DeleteOperation(IOperationModel operation, CancellationToken token)
         {
             if (operation == null)
                 return;
@@ -136,7 +136,7 @@ namespace Peppa.Models
             return null;
         }
 
-        public List<OperationModel> Operations { get; private set; }
+        public List<IOperationModel> Operations { get; private set; }
         
         public int CurrentPageNumber { get; set; }
 

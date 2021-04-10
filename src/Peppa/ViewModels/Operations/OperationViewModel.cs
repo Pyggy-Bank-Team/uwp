@@ -66,6 +66,7 @@ namespace Peppa.ViewModels.Operations
             return stringBuilder.ToString();
         }
         
+        public ActionType Action { get; set; }
         public OperationViewType ViewType { get; }
         public string TypeTitle { get;  }
         public string CategoryHexColor { get; }
@@ -77,5 +78,6 @@ namespace Peppa.ViewModels.Operations
         public string AmountTitle { get; }
         public string OperationDate { get; }
         public string Comment { get; set; }
+        public IOperationModel Model { get; }
     }
 }

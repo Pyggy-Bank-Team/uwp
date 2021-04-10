@@ -13,7 +13,7 @@ namespace Peppa.Dialogs
         private readonly OperationsViewModel _viewModel;
         private readonly ListItemViewModel _item;
 
-        public OperationDialog(OperationsViewModel viewModel, ListItemViewModel item)
+        public OperationDialog(OperationViewModel viewModel)
         {
             this.InitializeComponent();
             _viewModel = viewModel;

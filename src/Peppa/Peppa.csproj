@@ -183,6 +183,7 @@
     <Compile Include="Interface\Services\IReportService.cs" />
     <Compile Include="Interface\Services\IUserService.cs" />
     <Compile Include="Interface\ViewModels\ILoginViewModel.cs" />
+    <Compile Include="Interface\ViewModels\IOperationsViewModel.cs" />
     <Compile Include="Interface\WindowsService\IToastService.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Models\AccountsModel.cs" />
@@ -193,8 +194,8 @@
     <Compile Include="Interface\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\OperationModel.cs" />
-    <Compile Include="Models\OperationsModel.cs" />
+    <Compile Include="Models\Operations\OperationModel.cs" />
+    <Compile Include="Models\Operations\OperationsModel.cs" />
     <Compile Include="Models\RegitrationResult.cs" />
     <Compile Include="Contracts\Requests\CreateUserRequest.cs" />
     <Compile Include="Contracts\Responses\AccessTokenResponse.cs" />
@@ -256,9 +257,6 @@
     </Compile>
     <Compile Include="Views\Operations\OperatoinsPage.xaml.cs">
       <DependentUpon>OperatoinsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Operations\EditOperationPage.xaml.cs">
-      <DependentUpon>EditOperationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Default\DefaultPage.xaml.cs">
       <DependentUpon>DefaultPage.xaml</DependentUpon>
@@ -406,10 +404,6 @@
     <Page Include="Views\Operations\OperatoinsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Operations\EditOperationPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Default\DefaultPage.xaml">
       <Generator>MSBuild:Compile</Generator>

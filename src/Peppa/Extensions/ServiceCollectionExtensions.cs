@@ -9,6 +9,7 @@ using Peppa.Interface;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
+using Peppa.Models.Operations;
 using Peppa.Repositories;
 using Peppa.Services.Internal;
 using Peppa.Services.Windows;
