@@ -1,66 +1,63 @@
-﻿using System;
-using System.Text;
-using Peppa.Context.Entities;
+﻿using System.Text;
 using Peppa.Enums;
+using Peppa.Interface.InternalServices;
+using Peppa.Interface.Models;
 
 namespace Peppa.ViewModels.Operations
 {
     public class OperationViewModel : BaseViewModel
     {
-        public OperationViewModel(Operation operation)
+        private readonly IOperationModel _model;
+        private readonly ILocalizationService _localizationService;
+
+        public OperationViewModel(IOperationModel model, ILocalizationService localizationService)
         {
-            IsNew = false;
-            CategoryId = operation.CategoryId;
-            CategoryType = operation.CategoryType;
-            CategoryHexColor = operation.CategoryHexColor;
-            CategoryTitle = operation.CategoryTitle;
-            Amount = operation.Amount;
-            AmountValue = GetAmountValue(operation.Type, operation.CategoryType ?? Enums.CategoryType.Undefined, operation.Amount, operation.Symbol);
-            AccountTitle = operation.AccountTitle;
-            AccountId = operation.AccountId;
-            ToAccountId = operation.ToId;
-            CurrencySymbol = operation.Symbol;
-            Comment = operation.Comment;
-            Type = operation.Type;
-            ToTitle = operation.ToTitle;
-            IsDeleted = operation.IsDeleted;
-            Id = operation.Id;
-            CreatedOn = operation.CreatedOn;
-            ViewType = GetViewType(Type, CategoryType ?? Enums.CategoryType.Undefined);
+            _model = model;
+            _localizationService = localizationService;
+            ViewType = GetOperationViewType(model.CategoryType);
+            TypeTitle = GetTypeTitle(model.CategoryType, localizationService);
+            CategoryHexColor = model.CategoryHexColor;
+            CategoryTitle = model.CategoryTitle;
+            AccountTitle = model.AccountTitle;
+            ToTitle = model.ToAccountTitle;
+            AmountTitle = GetAmountTitle(model.CategoryType, model.Amount, model.Symbol);
+            OperationDate = model.OperationDate.ToShortDateString();
+            Comment = model.Comment;
+        }
+
+        private string GetTypeTitle(CategoryType categoryType, ILocalizationService service)
+        {
+            switch (categoryType)
+            {
+                case CategoryType.Income:
+                    return service.GetTranslateByKey(Localization.Income);
+                case CategoryType.Expense:
+                    return service.GetTranslateByKey(Localization.Expense);
+                case CategoryType.Undefined:
+                    return service.GetTranslateByKey(Localization.Transfer);
+                default:
+                    return "null";
+            }
         }
         
-        private static OperationViewType GetViewType(OperationType operationType, CategoryType categoryType)
+        private static OperationViewType GetOperationViewType(CategoryType categoryType)
         {
-            if (operationType == OperationType.Transfer)
-                return OperationViewType.Transfer;
-
-            if (categoryType == Enums.CategoryType.Expense)
-                return OperationViewType.Expense;
-            else
-                return OperationViewType.Income;
+            switch (categoryType)
+            {
+                case CategoryType.Income:
+                    return OperationViewType.Income;
+                case CategoryType.Expense:
+                    return OperationViewType.Expense;
+               default:
+                   return OperationViewType.Transfer;
+            }
         }
-
-        private static string GetAmountValue(OperationType operationType, CategoryType categoryType, decimal amount, string symbol)
+        
+        private static string GetAmountTitle(CategoryType categoryType, decimal amount, string symbol)
         {
             var stringBuilder = new StringBuilder();
 
-            switch (operationType)
-            {
-                case OperationType.Transfer:
-                    stringBuilder.Append("+");
-                    break;
-                default:
-                    switch (categoryType)
-                    {
-                        case Enums.CategoryType.Income:
-                            stringBuilder.Append("+");
-                            break;
-                        default:
-                            stringBuilder.Append("-");
-                            break;
-                    }
-                    break;
-            }
+            stringBuilder.Append(categoryType == CategoryType.Expense ? "-" : "+");
 
             stringBuilder.Append(amount);
             stringBuilder.Append(" ");
@@ -68,97 +65,17 @@ namespace Peppa.ViewModels.Operations
 
             return stringBuilder.ToString();
         }
-
-        public bool IsNew { get; set; }
-
-        public long? CategoryId { get; set; }
-
-        public CategoryType? CategoryType { get; set; }
-
-        public string CategoryHexColor { get; set; }
-
-        public string CategoryTitle { get; set; }
-
-        public decimal? Amount { get; set; }
-
-        public long? AccountId { get; set; }
-
-        public long? ToAccountId { get; set; }
-
-        public string AccountTitle { get; set; }
-
-        public string CurrencySymbol { get; set; }
-
+        
+        public OperationViewType ViewType { get; }
+        public string TypeTitle { get;  }
+        public string CategoryHexColor { get; }
+        public string CategoryTitle { get;  }
+        public bool IsBudget => ViewType != OperationViewType.Transfer;
+        public bool IsTransfer => ViewType == OperationViewType.Transfer;
+        public string AccountTitle { get; }
+        public string ToTitle { get; }
+        public string AmountTitle { get; }
+        public string OperationDate { get; }
         public string Comment { get; set; }
-
-        public OperationType Type { get; set; }
-
-        public OperationViewType ViewType { get; set; }
-
-        public DateTime? PlanDate { get; set; }
-
-        public string FromTitle { get; set; }
-
-        public string ToTitle { get; set; }
-
-        public bool IsDeleted { get; set; }
-
-        public string AmountValue { get; set; }
-
-        public string OperationValue
-        {
-            get
-            {
-                var stringBuilder = new StringBuilder();
-
-                switch (Type)
-                {
-                    case OperationType.Transfer:
-                        stringBuilder.Append("+");
-                        break;
-                    default:
-                        switch (CategoryType)
-                        {
-                            case Enums.CategoryType.Income:
-                                stringBuilder.Append("+");
-                                break;
-                            default:
-                                stringBuilder.Append("-");
-                                break;
-                        }
-                        break;
-                }
-
-                stringBuilder.Append(Amount);
-                stringBuilder.Append(" ");
-                stringBuilder.Append(CurrencySymbol);
-
-                return stringBuilder.ToString();
-            }
-        }
-
-        public string OperationTitle
-        {
-            get
-            {
-                var stringBuilder = new StringBuilder();
-
-                switch (CategoryType)
-                {
-                    case Enums.CategoryType.Income:
-                        stringBuilder.Append($"{CategoryTitle} > {AccountTitle}");
-                        break;
-                    default:
-                        stringBuilder.Append($"{AccountTitle} > {CategoryTitle}");
-                        break;
-                }
-
-                return stringBuilder.ToString();
-            }
-        }
-
-        public int Id { get; }
-
-        public DateTime CreatedOn { get; set; }
     }
 }

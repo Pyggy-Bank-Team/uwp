@@ -365,4 +365,13 @@
   <data name="TypeHeader.Text" xml:space="preserve">
     <value>Тип</value>
   </data>
+  <data name="Expense" xml:space="preserve">
+    <value>Расход</value>
+  </data>
+  <data name="Income" xml:space="preserve">
+    <value>Доход</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Перевод</value>
+  </data>
 </root>

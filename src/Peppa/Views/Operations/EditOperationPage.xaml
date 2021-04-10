@@ -19,9 +19,9 @@
             <StackPanel Orientation="Vertical">
 
                 <!--Cost-->
-                <TextBox x:Name="AmountTextBox" x:Uid="CostTextBox" FontSize="18" Margin="15" Text="{x:Bind _dataContext.Amount, Mode=OneTime}" TextChanging="OnAmountChanging"/>
+                <TextBox x:Name="AmountTextBox" x:Uid="CostTextBox" FontSize="18" Margin="15" Text="{x:Bind _dataContext.AmountTitle, Mode=OneTime}" TextChanging="OnAmountChanging"/>
 
-                <ComboBox x:Name="Types" Header="Type"  HorizontalAlignment="Stretch" SelectedItem="{x:Bind _dataContext.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" MaxHeight="200" Margin="15"/>
+                <ComboBox x:Name="Types" Header="Type"  HorizontalAlignment="Stretch" SelectedItem="{x:Bind _dataContext.TypeTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" MaxHeight="200" Margin="15"/>
 
                 <!--Date-->
                 <CalendarDatePicker x:Name="DatePicker" x:Uid="DatePicker" Date="{x:Bind _dataContext.CreatedOn, Mode=OneTime}" FontSize="18" Margin="15" DateChanged="OnDateChanged" />

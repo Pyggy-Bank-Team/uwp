@@ -4,11 +4,14 @@ using System.Threading.Tasks;
 using Peppa.Context.Entities;
 using Peppa.Enums;
 using Peppa.Interface;
+using Peppa.Interface.Models;
 using Peppa.Interface.Services;
+using Account = Peppa.Dto.Account;
+using Category = Peppa.Dto.Category;
 
 namespace Peppa.Models
 {
-    public class OperationModel : BaseModel
+    public class OperationModel : BaseModel, IOperationModel
     {
         private readonly Operation _operation;
         private readonly IPiggyRepository _repository;
@@ -34,6 +37,14 @@ namespace Peppa.Models
         public string Comment { get; set; }
         
         public DateTime OperationDate { get; set; }
+        
+        public CategoryType CategoryType { get; }
+        
+        public string CategoryHexColor { get; }
+        public string CategoryTitle { get;  }
+        public string AccountTitle { get; }
+        public string ToAccountTitle { get; }
+        public string Symbol { get; }
         
         public List<Account> Accounts { get; private set; }
         

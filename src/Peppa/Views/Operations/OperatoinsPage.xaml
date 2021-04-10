@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Peppa.ViewModels.Operations"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -73,8 +74,36 @@
             <ListView Grid.Row="1" x:Name="TableView" 
                       ItemsSource="{x:Bind _operationsViewModel.Operations, Mode=OneWay}"
                       ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
-                      ItemTemplate="{StaticResource OperationTemplate}"
-                      IsItemClickEnabled="True" SelectionMode="Single" ItemClick="{x:Bind _operationsViewModel.OnOperationClick}"/>
+                      IsItemClickEnabled="True" SelectionMode="Single" ItemClick="{x:Bind _operationsViewModel.OnOperationClick}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:OperationViewModel">
+                        <Grid HorizontalAlignment="Stretch">
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="0.2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{x:Bind TypeTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <StackPanel Grid.Column="1" Visibility="{x:Bind  IsBudget}" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Ellipse Fill="{x:Bind CategoryHexColor}" Height="20" Width="20"/>
+                                <TextBlock  Text="{x:Bind CategoryTitle}" Margin="10 0 0 0"/>
+                            </StackPanel>
+                            <TextBlock Grid.Column="1" Visibility="{x:Bind IsTransfer}" Text="{x:Bind AccountTitle}" HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="2" Text="{x:Bind ToTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="3" Text="{x:Bind AmountTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Text="{x:Bind OperationDate}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="5" Text="{x:Bind Comment}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             
         </Grid>
         
@@ -90,5 +119,6 @@
                 </Button.Content>
             </Button>
         </StackPanel>
+        
     </Grid>
 </Page>

@@ -357,4 +357,13 @@
   <data name="TypeHeader.Text" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="Expense" xml:space="preserve">
+    <value>Expense</value>
+  </data>
+  <data name="Income" xml:space="preserve">
+    <value>Income</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
 </root>

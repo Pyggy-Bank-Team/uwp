@@ -26,6 +26,9 @@ namespace Peppa
         public const string UserNotCreated = "UserNotCreated";
         public const string PasswordInvalid = "PasswordInvalid";
         public const string OopsError = "OopsError";
+        public const string Income = "Income";
+        public const string Expense = "Expense";
+        public const string Transfer = "Transfer";
 
         public static string GetTranslateByKey(string key)
         {
