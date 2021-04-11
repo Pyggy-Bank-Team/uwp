@@ -43,10 +43,10 @@ namespace Peppa.Extensions
             services.AddScoped<IPiggyRepository, PiggyRepository>();
             //ViewModels
             services.AddScoped<ILoginViewModel, LoginViewModel>();
+            services.AddScoped<IOperationsViewModel, OperationsViewModel>();
             services.AddSingleton<CategoriesViewModel>();
             services.AddSingleton<AccountsViewModel>();
             services.AddSingleton<UserViewModel>();
-            services.AddSingleton<OperationsViewModel>();
             services.AddSingleton<ReportViewModel>();
             services.AddHttpClient();
         }

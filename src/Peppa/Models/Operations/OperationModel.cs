@@ -28,6 +28,17 @@ namespace Peppa.Models.Operations
             _categoryService = categoryService;
             Accounts = new List<Account>();
             Categories = new List<Category>();
+
+            Amount = operation.Amount;
+            Type = operation.Type;
+            Comment = operation.Comment;
+            OperationDate = operation.CreatedOn;
+            CategoryType = operation.CategoryType ?? CategoryType.Undefined;
+            CategoryHexColor = operation.CategoryHexColor ?? "#FFFFFF";
+            CategoryTitle = operation.CategoryTitle;
+            AccountTitle = operation.AccountTitle;
+            ToAccountTitle = operation.ToTitle;
+            Symbol = operation.Symbol;
         }
 
         public decimal Amount { get; set; }

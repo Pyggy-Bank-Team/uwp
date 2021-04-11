@@ -16,8 +16,8 @@ namespace Peppa.Dialogs
         public OperationDialog(OperationViewModel viewModel)
         {
             this.InitializeComponent();
-            _viewModel = viewModel;
-            _item = item;
+            //_viewModel = viewModel;
+            //_item = item;
         }
         
         private async void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -28,93 +28,93 @@ namespace Peppa.Dialogs
             if (_item.IsNew)
             {
                 Types.SelectedItem = OperationViewType.Expense;
-                var accountTask = _viewModel.GetAccounts(false);
-                var categoryTask = _viewModel.GetCategories(false, CategoryType.Expense);
+                //var accountTask = _viewModel.GetAccounts(false);
+                //var categoryTask = _viewModel.GetCategories(false, CategoryType.Expense);
 
-                await Task.WhenAll(accountTask, categoryTask);
+                //await Task.WhenAll(accountTask, categoryTask);
 
-                AccountComboBox.ItemsSource = accountTask.Result;
-                CategoryComboBox.ItemsSource = categoryTask.Result;
+                //AccountComboBox.ItemsSource = accountTask.Result;
+                //CategoryComboBox.ItemsSource = categoryTask.Result;
             }
             else
             {
-                var accountTask = _viewModel.GetAccounts(true);
-                if (_item.Type == OperationType.Budget)
-                {
-                    BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                    TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                //var accountTask = _viewModel.GetAccounts(true);
+                //if (_item.Type == OperationType.Budget)
+                //{
+                //    BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                //    TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
-                    var categoryTask = _viewModel.GetCategories(true, _item.CategoryType);
-                    var operationTask = _viewModel.GetBudgetOperation(_item.Id);
+                //    var categoryTask = _viewModel.GetCategories(true, _item.CategoryType);
+                //    var operationTask = _viewModel.GetBudgetOperation(_item.Id);
 
-                    await Task.WhenAll(accountTask, categoryTask, operationTask);
+                //    await Task.WhenAll(accountTask, categoryTask, operationTask);
 
-                    var operation = operationTask.Result;
-                    Types.SelectedItem = GetViewType(_item.Type, _item.CategoryType);
-                    Types.IsEnabled = false;
+                //    var operation = operationTask.Result;
+                //    Types.SelectedItem = GetViewType(_item.Type, _item.CategoryType);
+                //    Types.IsEnabled = false;
 
-                    AccountComboBox.ItemsSource = accountTask.Result;
-                    AccountComboBox.SelectedItem = accountTask.Result.FirstOrDefault(a => a.Id == operation.AccountId);
-                    CategoryComboBox.ItemsSource = categoryTask.Result;
-                    CategoryComboBox.SelectedItem = categoryTask.Result.FirstOrDefault(c => c.Id == operation.CategoryId);
-                }
-                else
-                {
-                    BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                    TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                //    AccountComboBox.ItemsSource = accountTask.Result;
+                //    AccountComboBox.SelectedItem = accountTask.Result.FirstOrDefault(a => a.Id == operation.AccountId);
+                //    CategoryComboBox.ItemsSource = categoryTask.Result;
+                //    CategoryComboBox.SelectedItem = categoryTask.Result.FirstOrDefault(c => c.Id == operation.CategoryId);
+                //}
+                //else
+                //{
+                //    BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                //    TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
-                    var operationTask = _viewModel.GetTransferOperation(_item.Id);
+                //    var operationTask = _viewModel.GetTransferOperation(_item.Id);
 
-                    await Task.WhenAll(accountTask, operationTask);
+                //    await Task.WhenAll(accountTask, operationTask);
 
-                    Types.SelectedItem = OperationViewType.Transfer;
-                    Types.IsEnabled = false;
+                //    Types.SelectedItem = OperationViewType.Transfer;
+                //    Types.IsEnabled = false;
 
-                    var accounts = accountTask.Result;
-                    var operation = operationTask.Result;
+                //    var accounts = accountTask.Result;
+                //    var operation = operationTask.Result;
 
-                    FromComboBox.ItemsSource = accounts;
-                    FromComboBox.SelectedItem = accounts.FirstOrDefault(a => a.Id == operation.FromId);
+                //    FromComboBox.ItemsSource = accounts;
+                //    FromComboBox.SelectedItem = accounts.FirstOrDefault(a => a.Id == operation.FromId);
 
-                    ToComboBox.ItemsSource = accounts;
-                    ToComboBox.SelectedItem = accounts.FirstOrDefault(a => a.Id == operation.ToId);
-                }               
+                //    ToComboBox.ItemsSource = accounts;
+                //    ToComboBox.SelectedItem = accounts.FirstOrDefault(a => a.Id == operation.ToId);
+                //}               
             }
         }
 
         private async void OnTypeItemClick(object sender, ItemClickEventArgs e)
         {
-            var accountTask = _viewModel.GetAccounts(false);
+            //var accountTask = _viewModel.GetAccounts(false);
 
-            if ((OperationViewType)(e.ClickedItem) == OperationViewType.Transfer)
-            {
-                BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            //if ((OperationViewType)(e.ClickedItem) == OperationViewType.Transfer)
+            //{
+            //    BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            //    TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
-                await Task.WhenAll(accountTask);
+            //    await Task.WhenAll(accountTask);
 
-                var accounts = accountTask.Result;
+            //    var accounts = accountTask.Result;
 
-                FromComboBox.ItemsSource = accounts;
-                ToComboBox.ItemsSource = accounts;
-            }
-            else
-            {
-                BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Visible;
-                TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            //    FromComboBox.ItemsSource = accounts;
+            //    ToComboBox.ItemsSource = accounts;
+            //}
+            //else
+            //{
+            //    BudgetOperationPanel.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            //    TransferOperationBudget.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
 
-                var operationViewType = (OperationViewType)e.ClickedItem; 
+            //    var operationViewType = (OperationViewType)e.ClickedItem; 
 
-                var categoryTask = _viewModel.GetCategories(false, operationViewType == OperationViewType.Expense ? CategoryType.Expense : CategoryType.Income);
+            //    var categoryTask = _viewModel.GetCategories(false, operationViewType == OperationViewType.Expense ? CategoryType.Expense : CategoryType.Income);
 
-                await Task.WhenAll(accountTask, categoryTask);
+            //    await Task.WhenAll(accountTask, categoryTask);
 
-                var accounts = accountTask.Result;
-                var categories = categoryTask.Result;
+            //    var accounts = accountTask.Result;
+            //    var categories = categoryTask.Result;
 
-                AccountComboBox.ItemsSource = accounts;
-                CategoryComboBox.ItemsSource = categories;
-            }
+            //    AccountComboBox.ItemsSource = accounts;
+            //    CategoryComboBox.ItemsSource = categories;
+            //}
         }
 
         private void OnCancelButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

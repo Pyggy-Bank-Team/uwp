@@ -14,26 +14,26 @@
             <RowDefinition Height="0.1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         
         <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource AccentButtonStyle}" Click="{x:Bind _operationsViewModel.OnAddOperationClick}">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
-                    <FontIcon Glyph="&#xE700;"/>
-                    <TextBlock x:Uid="AddOperationButton" Margin="10, 0 , 0 ,0"/>
+                    <FontIcon Glyph="&#xE710;"/>
+                    <TextBlock x:Uid="AddOperationButton" Margin="10, 0"/>
                 </StackPanel>
             </Button.Content>
         </Button>
 
         <ProgressRing Grid.Row="1" Grid.Column="1" IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center"
-                      Visibility="{x:Bind _operationsViewModel.IsProgressShow}"/>
+                      Visibility="{x:Bind _operationsViewModel.IsProgressShow, Mode=OneWay}"/>
 
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!-- Headers -->
@@ -107,13 +107,13 @@
             
         </Grid>
         
-        <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right">
-            <Button Click="{x:Bind _operationsViewModel.OnPreviousButtonClick}" IsEnabled="{x:Bind _operationsViewModel.CanPreviousButtonClick}">
+        <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Click="{x:Bind _operationsViewModel.OnPreviousButtonClick}" IsEnabled="{x:Bind _operationsViewModel.CanPreviousButtonClick, Mode=OneWay}">
                 <Button.Content>
                     <FontIcon Glyph="&#xE76B;"/>
                 </Button.Content>
             </Button>
-            <Button Click="{x:Bind _operationsViewModel.OnNextButtonClick}" IsEnabled="{x:Bind _operationsViewModel.CanNextButtonClick}">
+            <Button Click="{x:Bind _operationsViewModel.OnNextButtonClick}" IsEnabled="{x:Bind _operationsViewModel.CanNextButtonClick, Mode=OneWay}">
                 <Button.Content>
                     <FontIcon Glyph="&#xE76C;"/>
                 </Button.Content>

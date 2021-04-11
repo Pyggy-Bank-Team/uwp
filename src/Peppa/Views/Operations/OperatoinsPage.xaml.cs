@@ -17,6 +17,7 @@ namespace Peppa.Views.Operations
         {
             base.OnNavigatedTo(e);
             _operationsViewModel = App.ServiceProvider.GetService<IOperationsViewModel>();
+            await _operationsViewModel.Initialization();
         }
     }
 }

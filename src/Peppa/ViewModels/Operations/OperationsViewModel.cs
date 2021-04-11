@@ -45,6 +45,13 @@ namespace Peppa.ViewModels.Operations
                 _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
             }
 
+            Operations.Clear();
+
+            foreach (var operation in _model.Operations)
+                Operations.Add(new OperationViewModel(operation, _localizationService));
+
+            RaisePropertyChanged(nameof(Operations));
+
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
         }
@@ -145,6 +152,6 @@ namespace Peppa.ViewModels.Operations
 
         public bool IsProgressShow { get; private set; }
         public bool CanPreviousButtonClick => _model.CurrentPageNumber == 1;
-        public bool CanNextButtonClick => _model.CurrentPageNumber == _model.TotalPages;
+        public bool CanNextButtonClick => _model.TotalPages > _model.CurrentPageNumber;
     }
 }

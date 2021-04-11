@@ -228,7 +228,6 @@
     <Compile Include="ViewModels\Operations\ListItemViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationViewModel.cs" />
     <Compile Include="ViewModels\Operations\TransferOperationViewModel.cs" />
-    <Compile Include="ViewModels\Pagination\PaginationItemViewModel.cs" />
     <Compile Include="ViewModels\Report\ChartByCategoriesViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
