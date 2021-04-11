@@ -31,23 +31,16 @@ namespace Peppa.Models.Operations
         }
 
         public decimal Amount { get; set; }
-        
         public OperationType Type { get; set; }
-        
         public string Comment { get; set; }
-        
         public DateTime OperationDate { get; set; }
-        
         public CategoryType CategoryType { get; }
-        
         public string CategoryHexColor { get; }
         public string CategoryTitle { get;  }
         public string AccountTitle { get; }
         public string ToAccountTitle { get; }
         public string Symbol { get; }
-        
         public List<Account> Accounts { get; private set; }
-        
         public List<Category> Categories { get; set; }
 
         public Task Save()

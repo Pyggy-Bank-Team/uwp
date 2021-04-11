@@ -19,7 +19,6 @@ namespace Peppa.ViewModels.Operations
         private readonly IOperationsModel _model;
         private readonly IToastService _toastService;
         private readonly ILocalizationService _localizationService;
-        private OperationViewModel _selectedOperation;
 
         public OperationsViewModel(IOperationsModel model, IToastService toastService, ILocalizationService localizationService)
         {
@@ -71,14 +70,60 @@ namespace Peppa.ViewModels.Operations
 
         public async void OnAddOperationClick(object sender, RoutedEventArgs e)
         {
+            var newOperation = new OperationViewModel(_model.CreateNewOperation(), _localizationService);
+            var editOperationDialog = new OperationDialog(newOperation);
+            await editOperationDialog.ShowAsync();
+
+            if (newOperation.Action == ActionType.Save)
+                await _model.SaveOperation(newOperation.Model, GetCancellationToken());
         }
 
         public async void OnNextButtonClick(object sender, RoutedEventArgs e)
         {
+            IsProgressShow = true;
+            RaisePropertyChanged(nameof(IsProgressShow));
+
+            if (_model.CurrentPageNumber >= _model.TotalPages)
+                return;
+
+            _model.CurrentPageNumber++;
+            
+            try
+            {
+                await _model.UpdateOperations(GetCancellationToken());
+            }
+            catch
+            {
+                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
+            }
+            
+            IsProgressShow = false;
+            RaisePropertyChanged(nameof(IsProgressShow));
+            RaisePropertyChanged(nameof(CanNextButtonClick));
         }
 
         public async void OnPreviousButtonClick(object sender, RoutedEventArgs e)
         {
+            IsProgressShow = true;
+            RaisePropertyChanged(nameof(IsProgressShow));
+
+            if (_model.CurrentPageNumber <= _model.TotalPages)
+                return;
+
+            _model.CurrentPageNumber--;
+            
+            try
+            {
+                await _model.UpdateOperations(GetCancellationToken());
+            }
+            catch
+            {
+                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
+            }
+            
+            IsProgressShow = false;
+            RaisePropertyChanged(nameof(IsProgressShow));
+            RaisePropertyChanged(nameof(CanPreviousButtonClick));
         }
         
         private void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -98,20 +143,7 @@ namespace Peppa.ViewModels.Operations
 
         public ObservableCollection<OperationViewModel> Operations { get; }
 
-        public OperationViewModel SelectedOperation
-        {
-            get => _selectedOperation;
-            set
-            {
-                if (_selectedOperation != value)
-                {
-                    _selectedOperation = value;
-                    RaisePropertyChanged(nameof(SelectedOperation));
-                }
-            }
-        }
-
-        public bool IsProgressShow { get; set; }
+        public bool IsProgressShow { get; private set; }
         public bool CanPreviousButtonClick => _model.CurrentPageNumber == 1;
         public bool CanNextButtonClick => _model.CurrentPageNumber == _model.TotalPages;
     }

@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Context.Entities;
+using Peppa.Enums;
 using Peppa.Interface;
 using Peppa.Interface.Models;
 using Peppa.Interface.Services;
@@ -37,6 +39,18 @@ namespace Peppa.Models.Operations
             Operations = new List<IOperationModel>();
             CurrentPageNumber = 1;
             _totalPages = 1;
+        }
+
+        public IOperationModel CreateNewOperation()
+        {
+            var entity = new Operation
+            {
+                Type = OperationType.Budget,
+                CreatedOn = DateTime.UtcNow,
+                CategoryType = CategoryType.Expense
+            };
+
+            return new OperationModel(entity, _repository, _operationService, _accountService, _categoryService);
         }
         
         public async Task UpdateOperations(CancellationToken token)

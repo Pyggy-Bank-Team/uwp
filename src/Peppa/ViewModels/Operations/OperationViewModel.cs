@@ -79,5 +79,6 @@ namespace Peppa.ViewModels.Operations
         public string OperationDate { get; }
         public string Comment { get; set; }
         public IOperationModel Model { get; }
+        public bool CanDelete { get; set; }//If not equals a new operation
     }
 }

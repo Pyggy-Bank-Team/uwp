@@ -8,6 +8,7 @@ namespace Peppa.Interface.Models
 {
     public interface IOperationsModel : IDisposable, INotifyPropertyChanged
     {
+        IOperationModel CreateNewOperation();
         Task UpdateOperations(CancellationToken token);
         Task SaveOperation(IOperationModel newOperation, CancellationToken token);
         Task UpdateOperation(IOperationModel operation, CancellationToken token);

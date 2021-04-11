@@ -14,8 +14,7 @@ namespace Peppa.Interface.ViewModels
         void OnNextButtonClick(object sender, RoutedEventArgs e);
         void OnPreviousButtonClick(object sender, RoutedEventArgs e);
         ObservableCollection<OperationViewModel> Operations { get; }
-        OperationViewModel SelectedOperation { get; set; }
-        bool IsProgressShow { get; set; }
+        bool IsProgressShow { get; }
         bool CanPreviousButtonClick { get; }
         bool CanNextButtonClick { get; }
     }
