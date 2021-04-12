@@ -3,10 +3,11 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Peppa.ViewModels.Operations;
+using System.ComponentModel;
 
 namespace Peppa.Interface.ViewModels
 {
-    public interface IOperationsViewModel
+    public interface IOperationsViewModel : INotifyPropertyChanged
     {
         Task Initialization();
         void OnOperationClick(object sender, ItemClickEventArgs e);

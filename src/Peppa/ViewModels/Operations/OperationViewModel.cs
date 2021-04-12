@@ -23,6 +23,7 @@ namespace Peppa.ViewModels.Operations
             AmountTitle = GetAmountTitle(model.CategoryType, model.Amount, model.Symbol);
             OperationDate = model.OperationDate.ToShortDateString();
             Comment = model.Comment;
+            Title = GetTitle(model.CategoryType, model.AccountTitle, model.CategoryTitle, model.ToAccountTitle);
         }
 
         private string GetTypeTitle(CategoryType categoryType, ILocalizationService service)
@@ -65,6 +66,21 @@ namespace Peppa.ViewModels.Operations
 
             return stringBuilder.ToString();
         }
+
+        private static string GetTitle(CategoryType categoryType, string accountTitle, string categoryTitle, string toTitle)
+        {
+            switch (categoryType)
+            {
+                case CategoryType.Income:
+                    return $"{categoryTitle} > {accountTitle}";
+                case CategoryType.Expense:
+                    return $"{accountTitle}  > {categoryTitle}";
+                case CategoryType.Undefined:
+                    return $"{accountTitle}  > {toTitle}";
+                default:
+                    return "null";
+            }
+        }
         
         public ActionType Action { get; set; }
         public OperationViewType ViewType { get; }
@@ -80,5 +96,6 @@ namespace Peppa.ViewModels.Operations
         public string Comment { get; set; }
         public IOperationModel Model { get; }
         public bool CanDelete { get; set; }//If not equals a new operation
+        public string Title { get; set; }
     }
 }

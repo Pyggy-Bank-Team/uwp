@@ -11,12 +11,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="*" />
-            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.05*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="0.2*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="0.2*"/>
         </Grid.ColumnDefinitions>
         
         <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource AccentButtonStyle}" Click="{x:Bind _operationsViewModel.OnAddOperationClick}">
@@ -35,39 +35,37 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <!-- Headers -->
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.1*"/>
                     <ColumnDefinition Width="0.2*"/>
-                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.3*"/>
                     <ColumnDefinition Width="0.1*"/>
                     <ColumnDefinition Width="0.2*"/>
                     <ColumnDefinition Width="0.2*"/>
                 </Grid.ColumnDefinitions>
               
-                <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,1,0">
+                <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1,0,1,0">
                     <TextBlock x:Uid="TypeHeader" HorizontalAlignment="Center" Foreground="Gray"/>
                 </Border>
 
                 <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="0,0,1,0">
-                    <TextBlock x:Uid="FromHeader" HorizontalAlignment="Center" Foreground="Gray"/>
+                    <TextBlock x:Uid="TitleHeader" HorizontalAlignment="Center" Foreground="Gray"/>
                 </Border>
 
-                <Border Grid.Column="2"  BorderBrush="Gray" BorderThickness="0,0,1,0">
-                    <TextBlock x:Uid="ToHeader" HorizontalAlignment="Center" Foreground="Gray"/>
-                </Border>
-
-                <Border Grid.Column="3" BorderBrush="Gray" BorderThickness="0,0,1,0">
+                <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="0,0,1,0">
                     <TextBlock x:Uid="AmountHeader" HorizontalAlignment="Center" Foreground="Gray"/>
                 </Border>
 
-                <Border Grid.Column="4" BorderBrush="Gray" BorderThickness="0,0,1,0">
+                <Border Grid.Column="3" BorderBrush="Gray" BorderThickness="0,0,1,0">
                     <TextBlock x:Uid="DateHeader" HorizontalAlignment="Center" Foreground="Gray"/>
                 </Border>
 
-                <TextBlock Grid.Column="5" x:Uid="CommentHeader" HorizontalAlignment="Center" Foreground="Gray"/>
+                <Border Grid.Column="4" BorderBrush="Gray" BorderThickness="0,0,1,0">
+                    <TextBlock  x:Uid="CommentHeader" HorizontalAlignment="Center" Foreground="Gray"/>
+                </Border>
             </Grid>
             
             <!-- Body -->
@@ -80,25 +78,22 @@
                         <Grid HorizontalAlignment="Stretch">
                             
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.1*"/>
                                 <ColumnDefinition Width="0.2*"/>
-                                <ColumnDefinition Width="0.2*"/>
+                                <ColumnDefinition Width="0.3*"/>
                                 <ColumnDefinition Width="0.1*"/>
                                 <ColumnDefinition Width="0.2*"/>
                                 <ColumnDefinition Width="0.2*"/>
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" Text="{x:Bind TypeTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <StackPanel Grid.Column="1" Visibility="{x:Bind  IsBudget}" Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Ellipse Fill="{x:Bind CategoryHexColor}" Height="20" Width="20"/>
-                                <TextBlock  Text="{x:Bind CategoryTitle}" Margin="10 0 0 0"/>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Ellipse Fill="{x:Bind CategoryHexColor}" Visibility="{x:Bind IsBudget}" Height="20" Width="20"/>
+                                <FontIcon Glyph="&#xE895;" Visibility="{x:Bind IsTransfer}"/>
+                                <TextBlock  Text="{x:Bind Title}" Margin="10 0 0 0"/>
                             </StackPanel>
-                            <TextBlock Grid.Column="1" Visibility="{x:Bind IsTransfer}" Text="{x:Bind AccountTitle}" HorizontalAlignment="Center" 
-                                       VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="2" Text="{x:Bind ToTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="3" Text="{x:Bind AmountTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="4" Text="{x:Bind OperationDate}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="5" Text="{x:Bind Comment}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="2" Text="{x:Bind AmountTitle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="3" Text="{x:Bind OperationDate}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Text="{x:Bind Comment}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                         </Grid>
                     </DataTemplate>
@@ -108,7 +103,7 @@
         </Grid>
         
         <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button Click="{x:Bind _operationsViewModel.OnPreviousButtonClick}" IsEnabled="{x:Bind _operationsViewModel.CanPreviousButtonClick, Mode=OneWay}">
+            <Button Click="{x:Bind _operationsViewModel.OnPreviousButtonClick}" IsEnabled="{x:Bind _operationsViewModel.CanPreviousButtonClick, Mode=OneWay}" Margin="0 0 5 0">
                 <Button.Content>
                     <FontIcon Glyph="&#xE76B;"/>
                 </Button.Content>

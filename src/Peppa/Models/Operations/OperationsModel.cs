@@ -73,6 +73,7 @@ namespace Peppa.Models.Operations
                 return;
 
             TotalPages = response.TotalPages;
+            Operations.Clear();
 
             foreach (var receivedOperation in response.Result)
             {
@@ -93,7 +94,6 @@ namespace Peppa.Models.Operations
                 };
 
                 await _repository.AddOrUpdateOperation(entity, token);
-                
                 Operations.Add(new OperationModel(entity, _repository, _operationService, _accountService, _categoryService));
             }
         }

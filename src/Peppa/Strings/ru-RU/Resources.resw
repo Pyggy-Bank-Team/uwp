@@ -356,12 +356,6 @@
   <data name="DateHeader.Text" xml:space="preserve">
     <value>Дата</value>
   </data>
-  <data name="FromHeader.Text" xml:space="preserve">
-    <value>От</value>
-  </data>
-  <data name="ToHeader.Text" xml:space="preserve">
-    <value>В</value>
-  </data>
   <data name="TypeHeader.Text" xml:space="preserve">
     <value>Тип</value>
   </data>
@@ -373,5 +367,8 @@
   </data>
   <data name="Transfer" xml:space="preserve">
     <value>Перевод</value>
+  </data>
+  <data name="TitleHeader.Text" xml:space="preserve">
+    <value>Заголовок</value>
   </data>
 </root>

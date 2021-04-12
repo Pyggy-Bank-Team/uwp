@@ -50,10 +50,12 @@ namespace Peppa.ViewModels.Operations
             foreach (var operation in _model.Operations)
                 Operations.Add(new OperationViewModel(operation, _localizationService));
 
-            RaisePropertyChanged(nameof(Operations));
 
             IsProgressShow = false;
+
             RaisePropertyChanged(nameof(IsProgressShow));
+            RaisePropertyChanged(nameof(CanNextButtonClick));
+            RaisePropertyChanged(nameof(CanPreviousButtonClick));
         }
 
         public async void OnOperationClick(object sender, ItemClickEventArgs e)
@@ -90,8 +92,14 @@ namespace Peppa.ViewModels.Operations
             IsProgressShow = true;
             RaisePropertyChanged(nameof(IsProgressShow));
 
-            if (_model.CurrentPageNumber >= _model.TotalPages)
+            if (_model.CurrentPageNumber > _model.TotalPages)
+            {
+                IsProgressShow = false;
+                RaisePropertyChanged(nameof(IsProgressShow));
+                RaisePropertyChanged(nameof(CanNextButtonClick));
+                RaisePropertyChanged(nameof(CanPreviousButtonClick));
                 return;
+            }
 
             _model.CurrentPageNumber++;
             
@@ -103,10 +111,16 @@ namespace Peppa.ViewModels.Operations
             {
                 _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
             }
-            
+
+            Operations.Clear();
+
+            foreach (var operation in _model.Operations)
+                Operations.Add(new OperationViewModel(operation, _localizationService));
+
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
             RaisePropertyChanged(nameof(CanNextButtonClick));
+            RaisePropertyChanged(nameof(CanPreviousButtonClick));
         }
 
         public async void OnPreviousButtonClick(object sender, RoutedEventArgs e)
@@ -114,8 +128,14 @@ namespace Peppa.ViewModels.Operations
             IsProgressShow = true;
             RaisePropertyChanged(nameof(IsProgressShow));
 
-            if (_model.CurrentPageNumber <= _model.TotalPages)
+            if (_model.CurrentPageNumber <= 1)
+            {
+                IsProgressShow = false;
+                RaisePropertyChanged(nameof(IsProgressShow));
+                RaisePropertyChanged(nameof(CanNextButtonClick));
+                RaisePropertyChanged(nameof(CanPreviousButtonClick));
                 return;
+            }
 
             _model.CurrentPageNumber--;
             
@@ -127,31 +147,27 @@ namespace Peppa.ViewModels.Operations
             {
                 _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
             }
-            
+
+            Operations.Clear();
+
+            foreach (var operation in _model.Operations)
+                Operations.Add(new OperationViewModel(operation, _localizationService));
+
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
             RaisePropertyChanged(nameof(CanPreviousButtonClick));
+            RaisePropertyChanged(nameof(CanNextButtonClick));
         }
         
         private void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(_model.Operations))
-            {
-                Operations.Clear();
-
-                foreach (var operation in _model.Operations)
-                    Operations.Add(new OperationViewModel(operation, _localizationService));
-
-                RaisePropertyChanged(nameof(Operations));
-            }
-            else
-                RaisePropertyChanged(e.PropertyName);
+            RaisePropertyChanged(e.PropertyName);
         }
 
         public ObservableCollection<OperationViewModel> Operations { get; }
 
         public bool IsProgressShow { get; private set; }
-        public bool CanPreviousButtonClick => _model.CurrentPageNumber == 1;
+        public bool CanPreviousButtonClick => _model.CurrentPageNumber != 1;
         public bool CanNextButtonClick => _model.TotalPages > _model.CurrentPageNumber;
     }
 }

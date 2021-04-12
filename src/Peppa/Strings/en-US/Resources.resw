@@ -348,12 +348,6 @@
   <data name="DateHeader.Text" xml:space="preserve">
     <value>Date</value>
   </data>
-  <data name="FromHeader.Text" xml:space="preserve">
-    <value>From</value>
-  </data>
-  <data name="ToHeader.Text" xml:space="preserve">
-    <value>To</value>
-  </data>
   <data name="TypeHeader.Text" xml:space="preserve">
     <value>Type</value>
   </data>
@@ -365,5 +359,8 @@
   </data>
   <data name="Transfer" xml:space="preserve">
     <value>Transfer</value>
+  </data>
+  <data name="TitleHeader.Text" xml:space="preserve">
+    <value>Title</value>
   </data>
 </root>
