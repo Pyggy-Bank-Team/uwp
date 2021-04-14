@@ -21,9 +21,9 @@ namespace Peppa.ViewModels.Operations
             AccountTitle = model.AccountTitle;
             ToTitle = model.ToAccountTitle;
             AmountTitle = GetAmountTitle(model.CategoryType, model.Amount, model.Symbol);
-            OperationDate = model.OperationDate.ToShortDateString();
+            OperationDate = model.OperationDate.ToString("d MMMM yyyy");
             Comment = model.Comment;
-            Title = GetTitle(model.CategoryType, model.AccountTitle, model.CategoryTitle, model.ToAccountTitle);
+            OperationTitle = GetTitle(model.CategoryType, model.AccountTitle, model.CategoryTitle, model.ToAccountTitle);
         }
 
         private string GetTypeTitle(CategoryType categoryType, ILocalizationService service)
@@ -89,13 +89,16 @@ namespace Peppa.ViewModels.Operations
         public string CategoryTitle { get;  }
         public bool IsBudget => ViewType != OperationViewType.Transfer;
         public bool IsTransfer => ViewType == OperationViewType.Transfer;
+        public bool IsIncome => _model.CategoryType == CategoryType.Income;
+        public bool IsNotIncome => _model.CategoryType != CategoryType.Income;
         public string AccountTitle { get; }
         public string ToTitle { get; }
         public string AmountTitle { get; }
         public string OperationDate { get; }
         public string Comment { get; set; }
         public IOperationModel Model { get; }
-        public bool CanDelete { get; set; }//If not equals a new operation
-        public string Title { get; set; }
+        //If not equals a new operation
+        public bool CanDelete { get; set; }
+        public string OperationTitle { get; set; }
     }
 }
