@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Dto;
 using Peppa.Enums;
@@ -21,10 +22,10 @@ namespace Peppa.Interface.Models
         string Symbol { get; }
         List<Account> Accounts { get; }
         List<Category> Categories { get; set; }
-        Task Save();
-        Task Update();
-        Task Delete();
-        Task UpdateAccounts();
-        Task UpdateCategories();
+        Task Save(CancellationToken token);
+        Task Update(CancellationToken token);
+        Task Delete(CancellationToken token);
+        Task UpdateAccounts(bool showArchivedAccounts, CancellationToken token);
+        Task UpdateCategories(CancellationToken token);
     }
 }

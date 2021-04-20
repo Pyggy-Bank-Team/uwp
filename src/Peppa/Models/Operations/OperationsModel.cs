@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Context.Entities;
 using Peppa.Enums;
+using Peppa.Helpers;
 using Peppa.Interface;
 using Peppa.Interface.Models;
 using Peppa.Interface.Services;
@@ -17,7 +18,6 @@ namespace Peppa.Models.Operations
         private readonly IOperationService _operationService;
         private readonly IAccountService _accountService;
         private readonly ICategoryService _categoryService;
-        private readonly Dictionary<string, string> _availableCurrencies;
         private int _totalPages;
 
         public OperationsModel(IPiggyRepository repository, IOperationService operationService, IAccountService accountService, ICategoryService categoryService)
@@ -26,15 +26,6 @@ namespace Peppa.Models.Operations
             _operationService = operationService;
             _accountService = accountService;
             _categoryService = categoryService;
-            _availableCurrencies = new Dictionary<string, string>
-            {
-                {"RUB", "₽"},
-                {"BYN", "Br"},
-                {"UAH", "₴"},
-                {"KZT", "₸"},
-                {"USD", "$"},
-                {"EUR", "€"}
-            };
 
             Operations = new List<IOperationModel>();
             CurrentPageNumber = 1;
@@ -90,7 +81,7 @@ namespace Peppa.Models.Operations
                     Type = receivedOperation.Type,
                     CreatedOn = receivedOperation.Date,
                     Comment = receivedOperation.Comment,
-                    Symbol = GetSymbol(receivedOperation.Account.Currency)
+                    Symbol = CurrencyHelper.GetSymbol(receivedOperation.Account.Currency)
                 };
 
                 await _repository.AddOrUpdateOperation(entity, token);
@@ -103,7 +94,7 @@ namespace Peppa.Models.Operations
             if (newOperation == null)
                 return;
 
-            await newOperation.Save();
+            await newOperation.Save(token);
             
             //Adding an new operation in begin of list
             Operations.Insert(0, newOperation);
@@ -115,7 +106,7 @@ namespace Peppa.Models.Operations
             if (operation == null)
                 return;
 
-            await operation.Update();
+            await operation.Update(token);
             OnPropertyChanged(nameof(Operations));
         }
 
@@ -124,7 +115,7 @@ namespace Peppa.Models.Operations
             if (operation == null)
                 return;
 
-            await operation.Delete();
+            await operation.Delete(token);
             
             Operations.Remove(operation);
             OnPropertyChanged(nameof(Operations));
@@ -132,23 +123,6 @@ namespace Peppa.Models.Operations
 
         public void Dispose()
             => _repository?.Dispose();
-        
-        private string GetSymbol(string currency)
-        {
-            if (string.IsNullOrWhiteSpace(currency))
-                return null;
-
-            try
-            {
-                return _availableCurrencies[currency];
-            }
-            catch
-            {
-                //TODO log
-            }
-
-            return null;
-        }
 
         public List<IOperationModel> Operations { get; private set; }
         

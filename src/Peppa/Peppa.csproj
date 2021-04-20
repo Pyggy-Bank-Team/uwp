@@ -167,6 +167,7 @@
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
     <Compile Include="Fabrics\CategoryFactory.cs" />
     <Compile Include="Fabrics\DonateFactory.cs" />
+    <Compile Include="Helpers\CurrencyHelper.cs" />
     <Compile Include="Interface\IAuthorization.cs" />
     <Compile Include="Interface\InternalServices\ILocalizationService.cs" />
     <Compile Include="Interface\InternalServices\ISettingsService.cs" />
