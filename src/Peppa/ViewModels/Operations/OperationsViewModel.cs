@@ -62,16 +62,20 @@ namespace Peppa.ViewModels.Operations
         {
             if (!(e.ClickedItem is OperationViewModel selectedOperation))
                 return;
-            
-            var editOperationDialog = new OperationDialog(selectedOperation);
+
+            var editOperationDialog = new OperationDialog(new OperationDialogViewModel(selectedOperation.Model, selectedOperation.ViewType))
+            {
+                PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
+                CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
+            };
             await editOperationDialog.ShowAsync();
 
             switch (selectedOperation.Action)
             {
-                case ActionType.Save:
+                case DialogResult.Save:
                     await _model.UpdateOperation(selectedOperation.Model, GetCancellationToken());
                     break;
-                case ActionType.Delete:
+                case DialogResult.Delete:
                     await _model.DeleteOperation(selectedOperation.Model, GetCancellationToken());
                     break;
             }
@@ -80,10 +84,14 @@ namespace Peppa.ViewModels.Operations
         public async void OnAddOperationClick(object sender, RoutedEventArgs e)
         {
             var newOperation = new OperationViewModel(_model.CreateNewOperation(), _localizationService);
-            var editOperationDialog = new OperationDialog(newOperation);
+            var editOperationDialog = new OperationDialog(new OperationDialogViewModel(newOperation.Model, newOperation.ViewType))
+            {
+                PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
+                CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
+            };
             await editOperationDialog.ShowAsync();
 
-            if (newOperation.Action == ActionType.Save)
+            if (newOperation.Action == DialogResult.Save)
                 await _model.SaveOperation(newOperation.Model, GetCancellationToken());
         }
 
@@ -102,7 +110,7 @@ namespace Peppa.ViewModels.Operations
             }
 
             _model.CurrentPageNumber++;
-            
+
             try
             {
                 await _model.UpdateOperations(GetCancellationToken());
@@ -138,7 +146,7 @@ namespace Peppa.ViewModels.Operations
             }
 
             _model.CurrentPageNumber--;
-            
+
             try
             {
                 await _model.UpdateOperations(GetCancellationToken());
@@ -158,7 +166,7 @@ namespace Peppa.ViewModels.Operations
             RaisePropertyChanged(nameof(CanPreviousButtonClick));
             RaisePropertyChanged(nameof(CanNextButtonClick));
         }
-        
+
         private void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             RaisePropertyChanged(e.PropertyName);

@@ -29,7 +29,7 @@ namespace Peppa.ViewModels.Operations
             IsNew = false;
         }
 
-        private static string GetAmountValue(OperationType type, CategoryType? categoryType, decimal amount, string symbol)
+        private static string GetAmountValue(OperationType type, CategoryType? categoryType, double amount, string symbol)
         {
             var stringBuilder = new StringBuilder();
 
@@ -81,7 +81,7 @@ namespace Peppa.ViewModels.Operations
 
         public string Amount { get; set; }
         
-        public decimal EntityAmount { get; set;}
+        public double EntityAmount { get; set;}
 
         public string AccountTitle { get; set; }
 
@@ -99,7 +99,7 @@ namespace Peppa.ViewModels.Operations
 
         public bool IsNew { get; set; }
         
-        public ActionType Action { get; set; }
+        public DialogResult Action { get; set; }
 
         public BudgetOperationViewModel Budget { get; set; }
         public TransferOperationViewModel Transfer { get; set;}

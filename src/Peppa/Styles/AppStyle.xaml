@@ -15,7 +15,7 @@
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="Margin" Value="15"/>
     </Style>
-
+    
     <Style x:Name="ElipseSelectedItem" TargetType="GridViewItem">
         <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />

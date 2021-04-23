@@ -158,7 +158,7 @@
     <Compile Include="Dto\ChartByCategories.cs" />
     <Compile Include="Dto\Currency.cs" />
     <Compile Include="Enums\AccountType.cs" />
-    <Compile Include="Enums\ActionType.cs" />
+    <Compile Include="Enums\DialogResult.cs" />
     <Compile Include="Enums\CategoryType.cs" />
     <Compile Include="Enums\IdentityResultEnum.cs" />
     <Compile Include="Enums\OperationType.cs" />
@@ -227,6 +227,7 @@
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="ViewModels\Operations\BudgetOperationViewModel.cs" />
     <Compile Include="ViewModels\Operations\ListItemViewModel.cs" />
+    <Compile Include="ViewModels\Operations\OperationDialogViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationViewModel.cs" />
     <Compile Include="ViewModels\Operations\TransferOperationViewModel.cs" />
     <Compile Include="ViewModels\Report\ChartByCategoriesViewModel.cs" />

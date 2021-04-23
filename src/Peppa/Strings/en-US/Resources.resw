@@ -363,4 +363,22 @@
   <data name="TitleHeader.Text" xml:space="preserve">
     <value>Title</value>
   </data>
+  <data name="OperationDialogTitle.Text" xml:space="preserve">
+    <value>Edit operation</value>
+  </data>
+  <data name="ExpenseRadioButton.Content" xml:space="preserve">
+    <value>Expense</value>
+  </data>
+  <data name="IncomeRadioButton.Content" xml:space="preserve">
+    <value>Income</value>
+  </data>
+  <data name="TransferRadioButton.Content" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>

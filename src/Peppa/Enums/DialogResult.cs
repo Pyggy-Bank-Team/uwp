@@ -1,6 +1,6 @@
 ﻿namespace Peppa.Enums
 {
-    public enum ActionType
+    public enum DialogResult
     {
         Cancel,
         Save,

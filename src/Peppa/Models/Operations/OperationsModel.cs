@@ -41,7 +41,7 @@ namespace Peppa.Models.Operations
                 CategoryType = CategoryType.Expense
             };
 
-            return new OperationModel(entity, _repository, _operationService, _accountService, _categoryService);
+            return new OperationModel(entity, _repository, _operationService, _accountService, _categoryService, isNew:true);
         }
         
         public async Task UpdateOperations(CancellationToken token)

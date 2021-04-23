@@ -93,7 +93,7 @@
 
                             <TextBlock Grid.Column="1" Text="{x:Bind AmountTitle}" Visibility="{x:Bind IsIncome}" HorizontalAlignment="Left" VerticalAlignment="Center"
                                        Foreground="#3f6d51"/>
-                            <TextBlock Grid.Column="1" Text="{x:Bind AmountTitle}" Visibility="{x:Bind IsNotIncome}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="{x:Bind AmountTitle}" Visibility="{x:Bind IsExpense}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="2" Text="{x:Bind TypeTitle}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="3" Text="{x:Bind OperationDate}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="4" Text="{x:Bind Comment}" HorizontalAlignment="Left" VerticalAlignment="Center"/>

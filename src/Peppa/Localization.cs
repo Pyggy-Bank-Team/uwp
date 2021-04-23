@@ -29,6 +29,8 @@ namespace Peppa
         public const string Income = "Income";
         public const string Expense = "Expense";
         public const string Transfer = "Transfer";
+        public const string Save = "Save";
+        public const string Cancel = "Cancel";
 
         public static string GetTranslateByKey(string key)
         {

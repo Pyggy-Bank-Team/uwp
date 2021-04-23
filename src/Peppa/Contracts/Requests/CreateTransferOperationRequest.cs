@@ -7,7 +7,7 @@ namespace Peppa.Contracts.Requests
         public DateTime OperationDate { get; set; }
         public int From { get; set; }
         public int To { get; set; }
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
         public string Comment { get; set; }
     }
 }

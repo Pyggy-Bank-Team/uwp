@@ -5,5 +5,6 @@ namespace Peppa.Dto
         public int Id { get; set; }
         public string  Title { get; set; }
         public string BalanceWithCurrency { get; set; }
+        public string Currency { get; set; }
     }
 }

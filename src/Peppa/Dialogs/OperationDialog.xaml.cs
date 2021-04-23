@@ -1,33 +1,27 @@
 ﻿using Peppa.Enums;
 using Peppa.ViewModels.Operations;
-using System.Linq;
-using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
-using Peppa.ViewModels.Accounts;
-using Peppa.ViewModels.Categories;
 
 namespace Peppa.Dialogs
 {
     public sealed partial class OperationDialog : ContentDialog
     {
-        private readonly OperationsViewModel _viewModel;
-        private readonly ListItemViewModel _item;
+        private readonly OperationDialogViewModel _viewModel;
 
-        public OperationDialog(OperationViewModel viewModel)
+        public OperationDialog(OperationDialogViewModel viewModel)
         {
             this.InitializeComponent();
-            //_viewModel = viewModel;
-            //_item = item;
+            _viewModel = viewModel;
         }
         
         private async void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Types.ItemsSource = new[] { OperationViewType.Expense, OperationViewType.Income, OperationViewType.Transfer };
+            //Types.ItemsSource = new[] { OperationViewType.Expense, OperationViewType.Income, OperationViewType.Transfer };
            
 
-            if (_item.IsNew)
-            {
-                Types.SelectedItem = OperationViewType.Expense;
+            // if (_item.IsNew)
+            // {
+                //Types.SelectedItem = OperationViewType.Expense;
                 //var accountTask = _viewModel.GetAccounts(false);
                 //var categoryTask = _viewModel.GetCategories(false, CategoryType.Expense);
 
@@ -35,9 +29,9 @@ namespace Peppa.Dialogs
 
                 //AccountComboBox.ItemsSource = accountTask.Result;
                 //CategoryComboBox.ItemsSource = categoryTask.Result;
-            }
-            else
-            {
+            // }
+            // else
+            // {
                 //var accountTask = _viewModel.GetAccounts(true);
                 //if (_item.Type == OperationType.Budget)
                 //{
@@ -79,7 +73,7 @@ namespace Peppa.Dialogs
                 //    ToComboBox.ItemsSource = accounts;
                 //    ToComboBox.SelectedItem = accounts.FirstOrDefault(a => a.Id == operation.ToId);
                 //}               
-            }
+            // }
         }
 
         private async void OnTypeItemClick(object sender, ItemClickEventArgs e)
@@ -119,36 +113,36 @@ namespace Peppa.Dialogs
 
         private void OnCancelButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            _item.Action = ActionType.Cancel;
+            //_item.Action = ActionType.Cancel;
         }
         
         private void OnSaveButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            _item.Action = ActionType.Save;
-
-            if (Types.SelectedItem is OperationViewType selectedType)
-            {
-                if (selectedType == OperationViewType.Transfer)
-                {
-                    var from = FromComboBox.SelectedItem as AccountItemViewModel;
-                    var to = ToComboBox.SelectedItem as AccountItemViewModel;
-                    if (from != null && to != null)
-                    {
-                        _item.Type = OperationType.Transfer;
-                        _item.Transfer = new TransferOperationViewModel {FromId = from.Id, ToId = to.Id};
-                    }
-                }
-                else
-                {
-                    var account = AccountComboBox.SelectedItem as AccountItemViewModel;
-                    var category = CategoryComboBox.SelectedItem as CategoryItemViewModel;
-                    if (account != null && category != null)
-                    {
-                        _item.Type = OperationType.Budget;
-                        _item.Budget = new BudgetOperationViewModel {AccountId = account.Id, CategoryId = category.Id};
-                    }
-                }
-            }
+            // _item.Action = ActionType.Save;
+            //
+            // if (Types.SelectedItem is OperationViewType selectedType)
+            // {
+            //     if (selectedType == OperationViewType.Transfer)
+            //     {
+            //         var from = FromComboBox.SelectedItem as AccountItemViewModel;
+            //         var to = ToComboBox.SelectedItem as AccountItemViewModel;
+            //         if (from != null && to != null)
+            //         {
+            //             _item.Type = OperationType.Transfer;
+            //             _item.Transfer = new TransferOperationViewModel {FromId = from.Id, ToId = to.Id};
+            //         }
+            //     }
+            //     else
+            //     {
+            //         var account = AccountComboBox.SelectedItem as AccountItemViewModel;
+            //         var category = CategoryComboBox.SelectedItem as CategoryItemViewModel;
+            //         if (account != null && category != null)
+            //         {
+            //             _item.Type = OperationType.Budget;
+            //             _item.Budget = new BudgetOperationViewModel {AccountId = account.Id, CategoryId = category.Id};
+            //         }
+            //     }
+            // }
         }
         
         private static OperationViewType GetViewType(OperationType operationType, CategoryType categoryType)
@@ -161,10 +155,10 @@ namespace Peppa.Dialogs
 
         private void AmountTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (decimal.TryParse(AmountTextBox.Text, out var result))
-            {
-                _item.EntityAmount = result;
-            }
+            // if (decimal.TryParse(AmountTextBox.Text, out var result))
+            // {
+            //     _item.EntityAmount = result;
+            // }
         }
     }
 }

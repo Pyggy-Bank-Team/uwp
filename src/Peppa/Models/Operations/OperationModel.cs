@@ -22,7 +22,7 @@ namespace Peppa.Models.Operations
         private readonly IAccountService _accountService;
         private readonly ICategoryService _categoryService;
 
-        public OperationModel(Operation operation, IPiggyRepository repository, IOperationService service, IAccountService accountService, ICategoryService categoryService)
+        public OperationModel(Operation operation, IPiggyRepository repository, IOperationService service, IAccountService accountService, ICategoryService categoryService, bool isNew = false)
         {
             _operation = operation;
             _repository = repository;
@@ -43,9 +43,10 @@ namespace Peppa.Models.Operations
             ToAccountTitle = operation.ToTitle;
             Symbol = operation.Symbol;
             Id = operation.Id;
+            IsNew = isNew;
         }
 
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
         public OperationType Type { get; set; }
         public string Comment { get; set; }
         public DateTime OperationDate { get; set; }
@@ -61,6 +62,7 @@ namespace Peppa.Models.Operations
         public string Symbol { get; }
         public List<Account> Accounts { get; private set; }
         public List<Category> Categories { get; set; }
+        public bool IsNew { get; }
 
         public async Task Save(CancellationToken token)
         {
@@ -157,10 +159,11 @@ namespace Peppa.Models.Operations
                     {
                         Id = account.Id,
                         Title = account.Title,
-                        BalanceWithCurrency = $"{account.Balance} {CurrencyHelper.GetSymbol(account.Currency)}"
+                        BalanceWithCurrency = $"{account.Balance} {CurrencyHelper.GetSymbol(account.Currency)}",
+                        Currency = CurrencyHelper.GetSymbol(account.Currency)
                     });
             }
-            
+
             OnPropertyChanged(nameof(Accounts));
         }
 
@@ -170,9 +173,9 @@ namespace Peppa.Models.Operations
             if (response != null)
             {
                 foreach (var category in response)
-                    Categories.Add(new Category{Id = category.Id, Title = category.Title, HexColor = category.HexColor});
+                    Categories.Add(new Category {Id = category.Id, Title = category.Title, HexColor = category.HexColor});
             }
-            
+
             OnPropertyChanged(nameof(Categories));
         }
     }

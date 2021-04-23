@@ -37,13 +37,13 @@ namespace Peppa.ViewModels.Categories
         {
             switch (SelectedItem?.Action)
             {
-                case ActionType.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
+                case DialogResult.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
                     await _model.CreateCategory(SelectedItem.MakeCategoryEntity(), GetCancellationToken());
                     break;
-                case ActionType.Save when SelectedItem?.IsNew == false:
+                case DialogResult.Save when SelectedItem?.IsNew == false:
                     await _model.UpdateCategory(SelectedItem.MakeCategoryEntity(), GetCancellationToken());
                     break;
-                case ActionType.Delete:
+                case DialogResult.Delete:
                     await _model.DeleteCategory(SelectedItem.Id, GetCancellationToken());
                     break;
             }

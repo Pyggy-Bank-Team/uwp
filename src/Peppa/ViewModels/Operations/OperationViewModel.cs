@@ -7,12 +7,11 @@ namespace Peppa.ViewModels.Operations
 {
     public class OperationViewModel : BaseViewModel
     {
-        private readonly IOperationModel _model;
         private readonly ILocalizationService _localizationService;
 
         public OperationViewModel(IOperationModel model, ILocalizationService localizationService)
         {
-            _model = model;
+            Model = model;
             _localizationService = localizationService;
             ViewType = GetOperationViewType(model.CategoryType);
             TypeTitle = GetTypeTitle(model.CategoryType, localizationService);
@@ -24,6 +23,10 @@ namespace Peppa.ViewModels.Operations
             OperationDate = model.OperationDate.ToString("d MMMM yyyy");
             Comment = model.Comment;
             OperationTitle = GetTitle(model.CategoryType, model.AccountTitle, model.CategoryTitle, model.ToAccountTitle);
+            IsBudget = ViewType != OperationViewType.Transfer;
+            IsTransfer =  ViewType == OperationViewType.Transfer;
+            IsIncome = ViewType == OperationViewType.Income;
+            IsExpense = ViewType == OperationViewType.Expense;
         }
 
         private string GetTypeTitle(CategoryType categoryType, ILocalizationService service)
@@ -54,7 +57,7 @@ namespace Peppa.ViewModels.Operations
             }
         }
         
-        private static string GetAmountTitle(CategoryType categoryType, decimal amount, string symbol)
+        private static string GetAmountTitle(CategoryType categoryType, double amount, string symbol)
         {
             var stringBuilder = new StringBuilder();
 
@@ -81,24 +84,22 @@ namespace Peppa.ViewModels.Operations
                     return "null";
             }
         }
-        
-        public ActionType Action { get; set; }
+
+        public DialogResult Action { get; set; }
         public OperationViewType ViewType { get; }
         public string TypeTitle { get;  }
         public string CategoryHexColor { get; }
         public string CategoryTitle { get;  }
-        public bool IsBudget => ViewType != OperationViewType.Transfer;
-        public bool IsTransfer => ViewType == OperationViewType.Transfer;
-        public bool IsIncome => _model.CategoryType == CategoryType.Income;
-        public bool IsNotIncome => _model.CategoryType != CategoryType.Income;
+        public bool IsBudget { get; set; }
+        public bool IsTransfer { get; set; }
+        public bool IsIncome { get; set; }
+        public bool IsExpense { get; set; }
         public string AccountTitle { get; }
         public string ToTitle { get; }
         public string AmountTitle { get; }
         public string OperationDate { get; }
         public string Comment { get; set; }
         public IOperationModel Model { get; }
-        //If not equals a new operation
-        public bool CanDelete { get; set; }
-        public string OperationTitle { get; set; }
+        public string OperationTitle { get; }
     }
 }
