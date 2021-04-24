@@ -1,17 +1,20 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 
-namespace Peppa.Convertes
+namespace Peppa.Converters
 {
-    public class DecimalConverter : IValueConverter
+    public class ConvertDateTimeOffsetToDateTime : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
-            => value.ToString();
+        {
+            DateTimeOffset date = (DateTimeOffset)value;
+
+            return date.Date;
+        }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            decimal.TryParse((string)value, out decimal result);
-            return result;
+            return value;
         }
     }
 }

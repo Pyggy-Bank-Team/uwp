@@ -1,22 +1,21 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Media;
 using Peppa.Enums;
 
-namespace Peppa.Convertes
+namespace Peppa.Converters
 {
-    public class AccountTypeToFronIconValueConverter : IValueConverter
+    public class AccountTypeToFontValueConvertor : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             var type = Enum.Parse<AccountType>(value.ToString());
             switch (type)
             {
-                case AccountType.Card:
-                    return (char)System.Convert.ToInt32("E8C7", 16);
                 case AccountType.Cash:
-                    return (char)System.Convert.ToInt32("0024", 16);
+                    return new FontFamily("Segoe UI");
                 default:
-                    return string.Empty;
+                    return new FontFamily("Segoe MDL2 Assets");
             }
         }
 

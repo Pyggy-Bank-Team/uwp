@@ -16,17 +16,10 @@ namespace Peppa.ViewModels.Operations
             ViewType = GetOperationViewType(model.CategoryType);
             TypeTitle = GetTypeTitle(model.CategoryType, localizationService);
             CategoryHexColor = model.CategoryHexColor;
-            CategoryTitle = model.CategoryTitle;
-            AccountTitle = model.AccountTitle;
-            ToTitle = model.ToAccountTitle;
             AmountTitle = GetAmountTitle(model.CategoryType, model.Amount, model.Symbol);
             OperationDate = model.OperationDate.ToString("d MMMM yyyy");
             Comment = model.Comment;
             OperationTitle = GetTitle(model.CategoryType, model.AccountTitle, model.CategoryTitle, model.ToAccountTitle);
-            IsBudget = ViewType != OperationViewType.Transfer;
-            IsTransfer =  ViewType == OperationViewType.Transfer;
-            IsIncome = ViewType == OperationViewType.Income;
-            IsExpense = ViewType == OperationViewType.Expense;
         }
 
         private string GetTypeTitle(CategoryType categoryType, ILocalizationService service)
@@ -84,22 +77,14 @@ namespace Peppa.ViewModels.Operations
                     return "null";
             }
         }
-
-        public DialogResult Action { get; set; }
+        
         public OperationViewType ViewType { get; }
         public string TypeTitle { get;  }
         public string CategoryHexColor { get; }
-        public string CategoryTitle { get;  }
-        public bool IsBudget { get; set; }
-        public bool IsTransfer { get; set; }
-        public bool IsIncome { get; set; }
-        public bool IsExpense { get; set; }
-        public string AccountTitle { get; }
-        public string ToTitle { get; }
         public string AmountTitle { get; }
         public string OperationDate { get; }
-        public string Comment { get; set; }
-        public IOperationModel Model { get; }
+        public string Comment { get; }
         public string OperationTitle { get; }
+        public IOperationModel Model { get; }
     }
 }

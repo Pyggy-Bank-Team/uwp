@@ -138,12 +138,13 @@
     <Compile Include="Controls\MasterDetailView\MasterDetailState.cs" />
     <Compile Include="Controls\MasterDetailView\MasterDetailView.cs" />
     <Compile Include="Controls\PatternTextBox.cs" />
-    <Compile Include="Convertes\AccountTypeToFontValueConvertor.cs" />
-    <Compile Include="Convertes\AccountTypeToFronIconValueConverter.cs" />
-    <Compile Include="Convertes\ConvertDateTimeOffsetToDateTime.cs" />
-    <Compile Include="Convertes\DecimalConverter.cs" />
-    <Compile Include="Convertes\ValueToCollapsedConverter.cs" />
-    <Compile Include="Convertes\ValueToVisibilityConverter.cs" />
+    <Compile Include="Converters\AccountTypeToFontValueConvertor.cs" />
+    <Compile Include="Converters\AccountTypeToFronIconValueConverter.cs" />
+    <Compile Include="Converters\ConvertDateTimeOffsetToDateTime.cs" />
+    <Compile Include="Converters\DecimalConverter.cs" />
+    <Compile Include="Converters\ValueToCollapsedConverter.cs" />
+    <Compile Include="Converters\ValueToVisibilityConverter.cs" />
+    <Compile Include="Converters\ViewTypeToVisibilityConverter.cs" />
     <Compile Include="Dialogs\ColorPickerDialog.xaml.cs">
       <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
     </Compile>

@@ -5,7 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:Peppa.ViewModels.Operations"
+    xmlns:converters="using:Peppa.Converters"
     mc:Ignorable="d">
+    
+    <Page.Resources>
+        <converters:ViewTypeToVisibilityConverter x:Key="VisibilityConverter"/>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -86,14 +91,16 @@
                             </Grid.ColumnDefinitions>
 
                             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                <Ellipse Fill="{x:Bind CategoryHexColor}" Visibility="{x:Bind IsBudget}" Height="20" Width="20"/>
-                                <FontIcon Glyph="&#xE895;" Visibility="{x:Bind IsTransfer}"/>
+                                <Ellipse Fill="{x:Bind CategoryHexColor}" Visibility="{x:Bind ViewType, Converter={StaticResource VisibilityConverter}, ConverterParameter=Budget}"
+                                         Height="20" Width="20"/>
+                                <FontIcon Glyph="&#xE895;" Visibility="{x:Bind ViewType, Converter={StaticResource VisibilityConverter}, ConverterParameter=Transfer}"/>
                                 <TextBlock  Text="{x:Bind OperationTitle}" Margin="10 0 0 0"/>
                             </StackPanel>
 
-                            <TextBlock Grid.Column="1" Text="{x:Bind AmountTitle}" Visibility="{x:Bind IsIncome}" HorizontalAlignment="Left" VerticalAlignment="Center"
-                                       Foreground="#3f6d51"/>
-                            <TextBlock Grid.Column="1" Text="{x:Bind AmountTitle}" Visibility="{x:Bind IsExpense}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="{x:Bind AmountTitle}" Visibility="{x:Bind ViewType, Converter={StaticResource VisibilityConverter}, ConverterParameter=Refill}"
+                                       HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#3f6d51"/>
+                            <TextBlock Grid.Column="1" Text="{x:Bind AmountTitle}" Visibility="{x:Bind ViewType, Converter={StaticResource VisibilityConverter}, ConverterParameter=Expense}"
+                                       HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="2" Text="{x:Bind TypeTitle}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="3" Text="{x:Bind OperationDate}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="4" Text="{x:Bind Comment}" HorizontalAlignment="Left" VerticalAlignment="Center"/>

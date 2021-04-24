@@ -160,5 +160,7 @@ namespace Peppa.Dialogs
             //     _item.EntityAmount = result;
             // }
         }
+
+        public DialogResult Result => _viewModel.Result;
     }
 }

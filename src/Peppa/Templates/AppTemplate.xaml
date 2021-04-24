@@ -1,15 +1,15 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:converter="using:Peppa.Convertes"
-    xmlns:vm="using:Peppa.ViewModels.Operations">
+    xmlns:vm="using:Peppa.ViewModels.Operations"
+    xmlns:converters="using:Peppa.Converters">
 
 
     <DataTemplate x:Name="OperationTemplate">
         <Grid HorizontalAlignment="Stretch">
             <Grid.Resources>
-                <converter:ValueToVisibilityConverter x:Key="VisibilityConverter"/>
-                <converter:ValueToCollapsedConverter x:Key="CollapsedConverter"/>
+                <converters:ValueToVisibilityConverter x:Key="VisibilityConverter"/>
+                <converters:ValueToCollapsedConverter x:Key="CollapsedConverter"/>
             </Grid.Resources>
             
             <Grid.ColumnDefinitions>
@@ -81,8 +81,8 @@
     <DataTemplate x:Name="ListViewItemCategory">
         <Grid>
             <Grid.Resources>
-                <converter:ValueToVisibilityConverter x:Key="VisibilityConverter"/>
-                <converter:ValueToCollapsedConverter x:Key="CollapsedConverter"/>
+                <converters:ValueToVisibilityConverter x:Key="VisibilityConverter"/>
+                <converters:ValueToCollapsedConverter x:Key="CollapsedConverter"/>
             </Grid.Resources>
 
             <Grid Visibility="{Binding Path=IsArchived, Converter={StaticResource ResourceKey=CollapsedConverter}}">
@@ -148,10 +148,10 @@
 
         <Grid>
             <Grid.Resources>
-                <converter:AccountTypeToFronIconValueConverter x:Key="IconConverter"/>
-                <converter:AccountTypeToFontValueConvertor x:Key="FontConverter"/>
-                <converter:ValueToVisibilityConverter x:Key="VisibilityConverter"/>
-                <converter:ValueToCollapsedConverter x:Key="CollapsedConverter"/>
+                <converters:AccountTypeToFronIconValueConverter x:Key="IconConverter"/>
+                <converters:AccountTypeToFontValueConvertor x:Key="FontConverter"/>
+                <converters:ValueToVisibilityConverter x:Key="VisibilityConverter"/>
+                <converters:ValueToCollapsedConverter x:Key="CollapsedConverter"/>
             </Grid.Resources>
 
             <Grid Visibility="{Binding Path=IsArchived, Converter={StaticResource ResourceKey=CollapsedConverter}}">

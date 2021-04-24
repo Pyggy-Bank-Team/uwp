@@ -70,7 +70,7 @@ namespace Peppa.ViewModels.Operations
             };
             await editOperationDialog.ShowAsync();
 
-            switch (selectedOperation.Action)
+            switch (editOperationDialog.Result)
             {
                 case DialogResult.Save:
                     await _model.UpdateOperation(selectedOperation.Model, GetCancellationToken());
@@ -91,7 +91,7 @@ namespace Peppa.ViewModels.Operations
             };
             await editOperationDialog.ShowAsync();
 
-            if (newOperation.Action == DialogResult.Save)
+            if (editOperationDialog.Result == DialogResult.Save)
                 await _model.SaveOperation(newOperation.Model, GetCancellationToken());
         }
 
