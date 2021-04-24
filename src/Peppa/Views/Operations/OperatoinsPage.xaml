@@ -79,7 +79,7 @@
                       ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
                       IsItemClickEnabled="True" SelectionMode="Single" ItemClick="{x:Bind _operationsViewModel.OnOperationClick}">
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="vm:OperationViewModel">
+                    <DataTemplate x:DataType="vm:OperationListViewItemViewModel">
                         <Grid HorizontalAlignment="Stretch">
                             
                             <Grid.ColumnDefinitions>

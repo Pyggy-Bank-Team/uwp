@@ -5,11 +5,11 @@ using Peppa.Interface.Models;
 
 namespace Peppa.ViewModels.Operations
 {
-    public class OperationViewModel : BaseViewModel
+    public class OperationListViewItemViewModel : BaseViewModel
     {
         private readonly ILocalizationService _localizationService;
 
-        public OperationViewModel(IOperationModel model, ILocalizationService localizationService)
+        public OperationListViewItemViewModel(IOperationModel model, ILocalizationService localizationService)
         {
             Model = model;
             _localizationService = localizationService;

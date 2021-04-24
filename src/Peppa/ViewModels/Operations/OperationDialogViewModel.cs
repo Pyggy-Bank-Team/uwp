@@ -13,6 +13,10 @@ namespace Peppa.ViewModels.Operations
         private Account _selectedFromAccount;
         private Account _selectedToAccount;
         private Category _selectedCategory;
+        private bool _isExpense;
+        private bool _isIncome;
+        private bool _isTransfer;
+        private string _str;
 
         public OperationDialogViewModel(IOperationModel model, OperationViewType viewType)
         {
@@ -31,7 +35,10 @@ namespace Peppa.ViewModels.Operations
                     break;
             }
 
-            model.PropertyChanged +=OnModelPropertyChanged;
+            model.PropertyChanged += OnModelPropertyChanged;
+
+
+            Temp = new List<string>();
         }
 
         private void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -39,10 +46,41 @@ namespace Peppa.ViewModels.Operations
 
         public async void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            await Model.UpdateAccounts(Model.IsNew, GetCancellationToken());
+            var token = GetCancellationToken();
+            
+            await Model.UpdateAccounts(Model.IsNew, token);
+            await Model.UpdateCategories(token);
 
-            SelectedFromAccount = Accounts.First();
+            _selectedFromAccount = Accounts.Last();
             RaisePropertyChanged(nameof(SelectedFromAccount));
+
+
+            Temp = new List<string>
+            {
+                "Red",
+                "Green",
+                "Yellow"
+            };
+
+
+            RaisePropertyChanged(nameof(Temp));
+
+            _str = "Red";
+            RaisePropertyChanged(nameof(Selected));
+        }
+
+        public List<string> Temp { get; set; }
+
+        public string Selected
+        {
+            get => _str;
+            set
+            {
+                if (_str == value)
+                    return;
+                _str = value;
+                RaisePropertyChanged(nameof(Selected));
+            }
         }
         
         public List<Account> Accounts => Model.Accounts;
@@ -126,14 +164,52 @@ namespace Peppa.ViewModels.Operations
                 RaisePropertyChanged(nameof(OperationDate));
             }
         }
-        
-        public bool IsExpense { get; set; }
-        public bool IsIncome { get; set; }
-        public bool IsTransfer { get; set; }
+
+        public bool IsExpense
+        {
+            get => _isExpense;
+            set
+            {
+                if (_isExpense == value)
+                    return;
+                
+                _isExpense = value;
+                RaisePropertyChanged(nameof(IsExpense));
+                RaisePropertyChanged(nameof(IsBudget));
+            }
+        }
+
+        public bool IsIncome
+        {
+            get => _isIncome;
+            set
+            {
+                if (IsIncome == value)
+                    return;
+                
+                _isIncome = value;
+                RaisePropertyChanged(nameof(IsIncome));
+                RaisePropertyChanged(nameof(IsBudget));
+            }
+        }
+
+        public bool IsTransfer
+        {
+            get => _isTransfer;
+            set
+            {
+                if (_isTransfer == value)
+                    return;
+                
+                _isTransfer = value;
+                RaisePropertyChanged(nameof(IsTransfer));
+                RaisePropertyChanged(nameof(IsBudget));
+            }
+        }
 
         public bool IsBudget => IsExpense || IsIncome;
         
-        public IOperationModel Model { get; private set; }
-        public bool IsNew { get; private set; }
+        public IOperationModel Model { get; }
+        public bool IsNew { get; }
     }
 }

@@ -389,4 +389,10 @@
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="FromCombobox.Header" xml:space="preserve">
+    <value>Откуда</value>
+  </data>
+  <data name="ToCombobox.Header" xml:space="preserve">
+    <value>Куда</value>
+  </data>
 </root>

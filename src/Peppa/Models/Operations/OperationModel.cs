@@ -154,6 +154,7 @@ namespace Peppa.Models.Operations
             var response = await _accountService.GetAccounts(token);
             if (response != null)
             {
+                Accounts.Clear();
                 foreach (var account in response)
                     Accounts.Add(new Account
                     {
@@ -172,6 +173,7 @@ namespace Peppa.Models.Operations
             var response = await _categoryService.GetCategories(token);
             if (response != null)
             {
+                Categories.Clear();
                 foreach (var category in response)
                     Categories.Add(new Category {Id = category.Id, Title = category.Title, HexColor = category.HexColor});
             }

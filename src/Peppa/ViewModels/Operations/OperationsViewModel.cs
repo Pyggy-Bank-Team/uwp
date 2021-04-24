@@ -25,7 +25,7 @@ namespace Peppa.ViewModels.Operations
             _model = model;
             _toastService = toastService;
             _localizationService = localizationService;
-            Operations = new ObservableCollection<OperationViewModel>();
+            Operations = new ObservableCollection<OperationListViewItemViewModel>();
             IsProgressShow = false;
 
             _model.PropertyChanged += OnModelPropertyChanged;
@@ -48,7 +48,7 @@ namespace Peppa.ViewModels.Operations
             Operations.Clear();
 
             foreach (var operation in _model.Operations)
-                Operations.Add(new OperationViewModel(operation, _localizationService));
+                Operations.Add(new OperationListViewItemViewModel(operation, _localizationService));
 
 
             IsProgressShow = false;
@@ -60,7 +60,7 @@ namespace Peppa.ViewModels.Operations
 
         public async void OnOperationClick(object sender, ItemClickEventArgs e)
         {
-            if (!(e.ClickedItem is OperationViewModel selectedOperation))
+            if (!(e.ClickedItem is OperationListViewItemViewModel selectedOperation))
                 return;
 
             var editOperationDialog = new OperationDialog(new OperationDialogViewModel(selectedOperation.Model, selectedOperation.ViewType))
@@ -83,7 +83,7 @@ namespace Peppa.ViewModels.Operations
 
         public async void OnAddOperationClick(object sender, RoutedEventArgs e)
         {
-            var newOperation = new OperationViewModel(_model.CreateNewOperation(), _localizationService);
+            var newOperation = new OperationListViewItemViewModel(_model.CreateNewOperation(), _localizationService);
             var editOperationDialog = new OperationDialog(new OperationDialogViewModel(newOperation.Model, newOperation.ViewType))
             {
                 PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
@@ -123,7 +123,7 @@ namespace Peppa.ViewModels.Operations
             Operations.Clear();
 
             foreach (var operation in _model.Operations)
-                Operations.Add(new OperationViewModel(operation, _localizationService));
+                Operations.Add(new OperationListViewItemViewModel(operation, _localizationService));
 
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
@@ -159,7 +159,7 @@ namespace Peppa.ViewModels.Operations
             Operations.Clear();
 
             foreach (var operation in _model.Operations)
-                Operations.Add(new OperationViewModel(operation, _localizationService));
+                Operations.Add(new OperationListViewItemViewModel(operation, _localizationService));
 
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
@@ -172,7 +172,7 @@ namespace Peppa.ViewModels.Operations
             RaisePropertyChanged(e.PropertyName);
         }
 
-        public ObservableCollection<OperationViewModel> Operations { get; }
+        public ObservableCollection<OperationListViewItemViewModel> Operations { get; }
 
         public bool IsProgressShow { get; private set; }
         public bool CanPreviousButtonClick => _model.CurrentPageNumber != 1;

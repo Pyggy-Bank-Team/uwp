@@ -226,11 +226,8 @@
     <Compile Include="ViewModels\Categories\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryItemViewModel.cs" />
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
-    <Compile Include="ViewModels\Operations\BudgetOperationViewModel.cs" />
-    <Compile Include="ViewModels\Operations\ListItemViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationDialogViewModel.cs" />
-    <Compile Include="ViewModels\Operations\OperationViewModel.cs" />
-    <Compile Include="ViewModels\Operations\TransferOperationViewModel.cs" />
+    <Compile Include="ViewModels\Operations\OperationListViewItemViewModel.cs" />
     <Compile Include="ViewModels\Report\ChartByCategoriesViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
