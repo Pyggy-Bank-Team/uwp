@@ -64,6 +64,27 @@ namespace Peppa.Models.Operations
         public List<Category> Categories { get; set; }
         public bool IsNew { get; }
 
+        public async Task UpdateData(CancellationToken token)
+        {
+            switch (Type)
+            {
+                case OperationType.Budget:
+                {
+                    var response = await _service.GetBudgetOperation(Id, token);
+                    AccountId = response.AccountId;
+                    CategoryId = response.CategoryId;
+                    break;
+                }
+                case OperationType.Transfer:
+                {
+                    var response = await _service.GetTransferOperation(Id, token);
+                    AccountId = response.FromId;
+                    ToAccountId = response.ToId;
+                    break;
+                }
+            }
+        }
+
         public async Task Save(CancellationToken token)
         {
             switch (Type)

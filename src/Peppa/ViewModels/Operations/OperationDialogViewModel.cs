@@ -47,6 +47,7 @@ namespace Peppa.ViewModels.Operations
         {
             var token = GetCancellationToken();
 
+            await Model.UpdateData(token);
             await Model.UpdateAccounts(Model.IsNew, token);
             await Model.UpdateCategories(token);
 
@@ -56,10 +57,12 @@ namespace Peppa.ViewModels.Operations
             RaisePropertyChanged(nameof(Accounts));
             RaisePropertyChanged(nameof(Categories));
 
-            _selectedFromAccount = Accounts.Last();
-            _selectedCategory = Categories.First();
+            _selectedFromAccount = Accounts.FirstOrDefault(a => a.Id == Model.AccountId);
+            _selectedCategory = Categories.FirstOrDefault(c => c.Id == Model.CategoryId);
+            _selectedToAccount = Accounts.FirstOrDefault(a => a.Id == Model.ToAccountId);
             RaisePropertyChanged(nameof(SelectedFromAccount));
             RaisePropertyChanged(nameof(SelectedCategory));
+            RaisePropertyChanged(nameof(SelectedToAccount));
         }
 
         public List<Account> Accounts { get; private set; }

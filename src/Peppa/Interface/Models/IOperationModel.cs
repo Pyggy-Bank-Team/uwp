@@ -19,6 +19,9 @@ namespace Peppa.Interface.Models
         string CategoryTitle { get;  }
         string AccountTitle { get; }
         string ToAccountTitle { get; }
+        int AccountId { get; set; }
+        int CategoryId { get; set; }
+        int ToAccountId { get; set; }
         string Symbol { get; }
         bool IsNew { get; }
         List<Account> Accounts { get; }
@@ -28,5 +31,6 @@ namespace Peppa.Interface.Models
         Task Delete(CancellationToken token);
         Task UpdateAccounts(bool showArchivedAccounts, CancellationToken token);
         Task UpdateCategories(CancellationToken token);
+        Task UpdateData(CancellationToken token);
     }
 }
