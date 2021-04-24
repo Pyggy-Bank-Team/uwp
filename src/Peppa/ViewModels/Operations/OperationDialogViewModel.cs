@@ -1,15 +1,20 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Peppa.Dto;
 using Peppa.Enums;
+using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
+using Peppa.Interface.WindowsService;
 
 namespace Peppa.ViewModels.Operations
 {
     public class OperationDialogViewModel : BaseViewModel
     {
+        private readonly IToastService _toastService;
+        private readonly ILocalizationService _localizationService;
         private Account _selectedFromAccount;
         private Account _selectedToAccount;
         private Category _selectedCategory;
@@ -17,8 +22,10 @@ namespace Peppa.ViewModels.Operations
         private bool _isIncome;
         private bool _isTransfer;
 
-        public OperationDialogViewModel(IOperationModel model, OperationViewType viewType)
+        public OperationDialogViewModel(IOperationModel model, OperationViewType viewType, IToastService toastService, ILocalizationService localizationService)
         {
+            _toastService = toastService;
+            _localizationService = localizationService;
             Model = model;
             IsNew = model.IsNew;
             switch (viewType)
@@ -34,32 +41,35 @@ namespace Peppa.ViewModels.Operations
                     break;
             }
 
-            model.PropertyChanged += OnModelPropertyChanged;
-            
             Accounts = new List<Account>();
             Categories = new List<Category>();
         }
-
-        private void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
-            => RaisePropertyChanged(e.PropertyName);
 
         public async void OnLoaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var token = GetCancellationToken();
 
-            await Model.UpdateData(token);
-            await Model.UpdateAccounts(Model.IsNew, token);
-            await Model.UpdateCategories(token);
+            try
+            {
+                await Model.UpdateData(token);
+                await Model.UpdateAccounts(Model.IsNew, token);
+                await Model.UpdateCategories(token);
+            }
+            catch
+            {
+                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
+            }
 
             Accounts = Model.Accounts;
             Categories = Model.Categories;
-            
+
             RaisePropertyChanged(nameof(Accounts));
             RaisePropertyChanged(nameof(Categories));
 
             _selectedFromAccount = Accounts.FirstOrDefault(a => a.Id == Model.AccountId);
             _selectedCategory = Categories.FirstOrDefault(c => c.Id == Model.CategoryId);
             _selectedToAccount = Accounts.FirstOrDefault(a => a.Id == Model.ToAccountId);
+
             RaisePropertyChanged(nameof(SelectedFromAccount));
             RaisePropertyChanged(nameof(SelectedCategory));
             RaisePropertyChanged(nameof(SelectedToAccount));

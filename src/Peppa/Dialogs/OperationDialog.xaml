@@ -16,7 +16,7 @@
         <DataTemplate>
             <StackPanel Orientation="Horizontal">
                 <TextBlock x:Uid="OperationDialogTitle" />
-                <Button Margin="200 0 0 0" BorderThickness="0" Background="Transparent" Foreground="#ef5865" CornerRadius="2">
+                <Button Margin="200 0 0 0" BorderThickness="0" Background="Transparent" Foreground="#ef5865" CornerRadius="2" Click="OnDeleteButtonClick">
                     <SymbolIcon Symbol="Delete" />
                 </Button>
             </StackPanel>

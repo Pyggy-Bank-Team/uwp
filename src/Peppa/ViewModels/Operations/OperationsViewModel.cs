@@ -63,7 +63,7 @@ namespace Peppa.ViewModels.Operations
             if (!(e.ClickedItem is OperationListViewItemViewModel selectedOperation))
                 return;
 
-            var editOperationDialog = new OperationDialog(new OperationDialogViewModel(selectedOperation.Model, selectedOperation.ViewType))
+            var editOperationDialog = new OperationDialog(new OperationDialogViewModel(selectedOperation.Model, selectedOperation.ViewType, _toastService, _localizationService))
             {
                 PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
                 CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
@@ -84,7 +84,7 @@ namespace Peppa.ViewModels.Operations
         public async void OnAddOperationClick(object sender, RoutedEventArgs e)
         {
             var newOperation = new OperationListViewItemViewModel(_model.CreateNewOperation(), _localizationService);
-            var editOperationDialog = new OperationDialog(new OperationDialogViewModel(newOperation.Model, newOperation.ViewType))
+            var editOperationDialog = new OperationDialog(new OperationDialogViewModel(newOperation.Model, newOperation.ViewType, _toastService, _localizationService))
             {
                 PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
                 CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
