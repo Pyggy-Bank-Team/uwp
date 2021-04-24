@@ -344,4 +344,55 @@
   <data name="UsernameText.Header" xml:space="preserve">
     <value>Имя пользователя</value>
   </data>
+  <data name="AddOperationButton.Text" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="AmountHeader.Text" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="CommentHeader.Text" xml:space="preserve">
+    <value>Комментарий</value>
+  </data>
+  <data name="DateHeader.Text" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="TypeHeader.Text" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="Expense" xml:space="preserve">
+    <value>Расход</value>
+  </data>
+  <data name="Income" xml:space="preserve">
+    <value>Доход</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Перевод</value>
+  </data>
+  <data name="TitleHeader.Text" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+  <data name="OperationDialogTitle.Text" xml:space="preserve">
+    <value>Редактирование операции</value>
+  </data>
+  <data name="ExpenseRadioButton.Content" xml:space="preserve">
+    <value>Расход</value>
+  </data>
+  <data name="IncomeRadioButton.Content" xml:space="preserve">
+    <value>Доход</value>
+  </data>
+  <data name="TransferRadioButton.Content" xml:space="preserve">
+    <value>Перевод</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="FromCombobox.Header" xml:space="preserve">
+    <value>Откуда</value>
+  </data>
+  <data name="ToCombobox.Header" xml:space="preserve">
+    <value>Куда</value>
+  </data>
 </root>

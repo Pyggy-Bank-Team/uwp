@@ -22,13 +22,13 @@ namespace Peppa.Views.Accounts
 
         private void OnSaveClick(object sender, RoutedEventArgs e)
         {
-            _account.Action = ActionType.Save;
+            _account.Action = DialogResult.Save;
             GoBack();
         }
 
         private void OnCloseClick(object sender, RoutedEventArgs e)
         {
-            _account.Action = ActionType.Cancel;
+            _account.Action = DialogResult.Cancel;
             GoBack();
         }
 
@@ -46,7 +46,7 @@ namespace Peppa.Views.Accounts
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
         {
-            _account.Action = ActionType.Delete;
+            _account.Action = DialogResult.Delete;
             GoBack();
         }
     }

@@ -38,13 +38,13 @@ namespace Peppa.ViewModels.Accounts
         {
             switch (SelectedItem?.Action)
             {
-                case ActionType.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
+                case DialogResult.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
                     await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
                     break;
-                case ActionType.Save when SelectedItem?.IsNew == false:
+                case DialogResult.Save when SelectedItem?.IsNew == false:
                     await _model.UpdateAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
                     break;
-                case ActionType.Delete:
+                case DialogResult.Delete:
                     await _model.DeleteAccount(SelectedItem.Id, GetCancellationToken());
                     break;
             }

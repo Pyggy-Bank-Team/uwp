@@ -33,5 +33,11 @@ namespace Peppa.Services.PiggyService
 
         public Task<bool> UpdateTransferOperation(int id, UpdateTransferOperationRequest request, CancellationToken token)
              => Put($"operations/transfer/{id}", request, token);
+        
+        public Task<bool> DeleteTransferOperation(int id, CancellationToken token)
+            => Delete($"operations/transfer/{id}", token);
+        
+        public Task<bool> DeleteBudgetOperation(int id, CancellationToken token)
+            => Delete($"operations/budget/{id}", token);
     }
 }

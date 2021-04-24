@@ -58,7 +58,7 @@ namespace Peppa.ViewModels.Accounts
         
         public bool NeedUpdate { get; set; }
 
-        public ActionType Action { get; set; }
+        public DialogResult Action { get; set; }
 
         public string CurrentBalance => $"{Balance} {Currency}";
 

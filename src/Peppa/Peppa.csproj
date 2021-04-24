@@ -138,12 +138,13 @@
     <Compile Include="Controls\MasterDetailView\MasterDetailState.cs" />
     <Compile Include="Controls\MasterDetailView\MasterDetailView.cs" />
     <Compile Include="Controls\PatternTextBox.cs" />
-    <Compile Include="Convertes\AccountTypeToFontValueConvertor.cs" />
-    <Compile Include="Convertes\AccountTypeToFronIconValueConverter.cs" />
-    <Compile Include="Convertes\ConvertDateTimeOffsetToDateTime.cs" />
-    <Compile Include="Convertes\DecimalConverter.cs" />
-    <Compile Include="Convertes\ValueToCollapsedConverter.cs" />
-    <Compile Include="Convertes\ValueToVisibilityConverter.cs" />
+    <Compile Include="Converters\AccountTypeToFontValueConvertor.cs" />
+    <Compile Include="Converters\AccountTypeToFronIconValueConverter.cs" />
+    <Compile Include="Converters\ConvertDateTimeOffsetToDateTime.cs" />
+    <Compile Include="Converters\DecimalConverter.cs" />
+    <Compile Include="Converters\ValueToCollapsedConverter.cs" />
+    <Compile Include="Converters\ValueToVisibilityConverter.cs" />
+    <Compile Include="Converters\ViewTypeToVisibilityConverter.cs" />
     <Compile Include="Dialogs\ColorPickerDialog.xaml.cs">
       <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
     </Compile>
@@ -153,11 +154,12 @@
     <Compile Include="Dialogs\RegistrationDialog.xaml.cs">
       <DependentUpon>RegistrationDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dto\Account.cs" />
+    <Compile Include="Dto\Category.cs" />
     <Compile Include="Dto\ChartByCategories.cs" />
     <Compile Include="Dto\Currency.cs" />
-    <Compile Include="Dto\PageResult.cs" />
     <Compile Include="Enums\AccountType.cs" />
-    <Compile Include="Enums\ActionType.cs" />
+    <Compile Include="Enums\DialogResult.cs" />
     <Compile Include="Enums\CategoryType.cs" />
     <Compile Include="Enums\IdentityResultEnum.cs" />
     <Compile Include="Enums\OperationType.cs" />
@@ -166,6 +168,7 @@
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
     <Compile Include="Fabrics\CategoryFactory.cs" />
     <Compile Include="Fabrics\DonateFactory.cs" />
+    <Compile Include="Helpers\CurrencyHelper.cs" />
     <Compile Include="Interface\IAuthorization.cs" />
     <Compile Include="Interface\InternalServices\ILocalizationService.cs" />
     <Compile Include="Interface\InternalServices\ISettingsService.cs" />
@@ -173,6 +176,7 @@
     <Compile Include="Interface\Models\IAccountsModel.cs" />
     <Compile Include="Interface\Models\ICategoriesModel.cs" />
     <Compile Include="Interface\Models\ILoginModel.cs" />
+    <Compile Include="Interface\Models\IOperationModel.cs" />
     <Compile Include="Interface\Models\IOperationsModel.cs" />
     <Compile Include="Interface\Models\IReportModel.cs" />
     <Compile Include="Interface\Services\IAccountService.cs" />
@@ -181,6 +185,7 @@
     <Compile Include="Interface\Services\IReportService.cs" />
     <Compile Include="Interface\Services\IUserService.cs" />
     <Compile Include="Interface\ViewModels\ILoginViewModel.cs" />
+    <Compile Include="Interface\ViewModels\IOperationsViewModel.cs" />
     <Compile Include="Interface\WindowsService\IToastService.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Models\AccountsModel.cs" />
@@ -191,7 +196,8 @@
     <Compile Include="Interface\IBaseModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\OperationsModel.cs" />
+    <Compile Include="Models\Operations\OperationModel.cs" />
+    <Compile Include="Models\Operations\OperationsModel.cs" />
     <Compile Include="Models\RegitrationResult.cs" />
     <Compile Include="Contracts\Requests\CreateUserRequest.cs" />
     <Compile Include="Contracts\Responses\AccessTokenResponse.cs" />
@@ -220,11 +226,8 @@
     <Compile Include="ViewModels\Categories\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryItemViewModel.cs" />
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
-    <Compile Include="ViewModels\Operations\BudgetOperationViewModel.cs" />
-    <Compile Include="ViewModels\Operations\ListItemViewModel.cs" />
-    <Compile Include="ViewModels\Operations\OperationViewModel.cs" />
-    <Compile Include="ViewModels\Operations\TransferOperationViewModel.cs" />
-    <Compile Include="ViewModels\Pagination\PaginationItemViewModel.cs" />
+    <Compile Include="ViewModels\Operations\OperationDialogViewModel.cs" />
+    <Compile Include="ViewModels\Operations\OperationListViewItemViewModel.cs" />
     <Compile Include="ViewModels\Report\ChartByCategoriesViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
@@ -253,9 +256,6 @@
     </Compile>
     <Compile Include="Views\Operations\OperatoinsPage.xaml.cs">
       <DependentUpon>OperatoinsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Operations\EditOperationPage.xaml.cs">
-      <DependentUpon>EditOperationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Default\DefaultPage.xaml.cs">
       <DependentUpon>DefaultPage.xaml</DependentUpon>
@@ -403,10 +403,6 @@
     <Page Include="Views\Operations\OperatoinsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Operations\EditOperationPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Default\DefaultPage.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -143,11 +143,11 @@ namespace Peppa.Repositories
                 await Add(operation, token);
             else
             {
-                existOperation.CategoryId = operation.CategoryId == default ? existOperation.CategoryId : operation.CategoryId;
-                existOperation.AccountId = operation.AccountId == default ? existOperation.AccountId : operation.AccountId;
-                existOperation.ToId = operation.ToId == default ? existOperation.ToId : operation.ToId;
+                existOperation.CategoryId = operation.CategoryId ?? existOperation.CategoryId;
+                existOperation.AccountId = operation.AccountId ?? existOperation.AccountId;
+                existOperation.ToId = operation.ToId ?? existOperation.ToId;
                 existOperation.Amount = operation.Amount == default ? existOperation.Amount : operation.Amount;
-                existOperation.Comment = operation.Comment == default ? existOperation.Comment : operation.Comment;
+                existOperation.Comment = operation.Comment ?? existOperation.Comment;
                 existOperation.Type = operation.Type;
                 existOperation.CreatedOn = operation.CreatedOn;
 

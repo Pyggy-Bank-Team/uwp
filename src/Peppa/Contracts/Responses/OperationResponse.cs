@@ -10,7 +10,7 @@ namespace Peppa.Contracts.Responses
         public Account ToAccount { get; set; }
         public Category Category { get; set; }
         public int Id { get; set; }
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
         public OperationType Type { get; set; }
         public DateTime Date { get; set; }
         public string Comment { get; set; }

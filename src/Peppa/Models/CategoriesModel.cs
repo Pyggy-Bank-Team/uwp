@@ -21,7 +21,7 @@ namespace Peppa.Models
             //If user is logged in then sync accounts
             if (_service.IsAuthorized)
             {
-                var categories = await _service.GetCategories(token);
+                var categories = await _service.GetCategories(true, token);
                 if (categories != null)
                 {
                     foreach (var category in categories)

@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 
-namespace Peppa.Convertes
+namespace Peppa.Converters
 {
     public class DecimalConverter : IValueConverter
     {

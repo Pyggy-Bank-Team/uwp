@@ -36,7 +36,7 @@ namespace Peppa.Views.Categories
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
         {
-            _category.Action = ActionType.Delete;
+            _category.Action = DialogResult.Delete;
             GoBack();
         }
 
@@ -51,7 +51,7 @@ namespace Peppa.Views.Categories
                 return;
             }
 
-            _category.Action = ActionType.Save;
+            _category.Action = DialogResult.Save;
             GoBack();
         }
 
@@ -64,7 +64,7 @@ namespace Peppa.Views.Categories
 
         private void OnCloseClick(object sender, RoutedEventArgs e)
         {
-            _category.Action = ActionType.Cancel;
+            _category.Action = DialogResult.Cancel;
             GoBack();
         }
 

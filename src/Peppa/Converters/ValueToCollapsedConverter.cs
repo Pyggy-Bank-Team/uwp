@@ -3,22 +3,22 @@ using System.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace Peppa.Convertes
+namespace Peppa.Converters
 {
-    public class ValueToVisibilityConverter : IValueConverter
+    public class ValueToCollapsedConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if(value is bool)
+            if (value is bool)
             {
-                return (bool)value ? Visibility.Visible : Visibility.Collapsed;
+                return (bool)value ? Visibility.Collapsed : Visibility.Visible;
             }
-            else if(value is IEnumerable)
+            else if (value is IEnumerable)
             {
-                return (value as IEnumerable).GetEnumerator().MoveNext() ? Visibility.Visible : Visibility.Collapsed;
+                return (value as IEnumerable).GetEnumerator().MoveNext() ? Visibility.Collapsed : Visibility.Visible;
             }
 
-            return Visibility.Collapsed;
+            return Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

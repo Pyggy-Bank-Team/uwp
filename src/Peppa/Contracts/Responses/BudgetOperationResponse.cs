@@ -4,7 +4,7 @@ using System;
 
 namespace Peppa.Contracts.Responses
 {
-    public partial class BudgetOperationResponse
+    public class BudgetOperationResponse
     {
         [JsonProperty("comment")]
         public string Comment { get; set; }

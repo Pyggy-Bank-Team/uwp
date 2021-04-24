@@ -12,7 +12,7 @@ namespace Peppa.Context.Entities
 
         public string CategoryTitle { get; set; }
 
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
         public string AccountTitle { get; set; }
 

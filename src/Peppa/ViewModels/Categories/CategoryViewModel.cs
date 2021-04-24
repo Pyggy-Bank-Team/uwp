@@ -47,7 +47,7 @@ namespace Peppa.ViewModels.Categories
         
         public bool IsSynchronized { get; set; }
         
-        public ActionType Action { get; set; }
+        public DialogResult Action { get; set; }
         
         public bool IsNew { get; set; }
         
