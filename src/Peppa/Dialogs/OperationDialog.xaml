@@ -41,7 +41,7 @@
 
         <StackPanel Visibility="{x:Bind _viewModel.IsBudget, Mode=OneWay}">
             <!--Accounts-->
-            <ComboBox x:Uid="BalancesComboBox" ItemsSource="{x:Bind _viewModel.Accounts, Mode=OneWay}" SelectedItem="{x:Bind _viewModel.SelectedFromAccount, Mode=TwoWay}"
+            <ComboBox x:Uid="BalancesComboBox" ItemsSource="{x:Bind _viewModel.Accounts, Mode=OneWay}" SelectedItem="{x:Bind _viewModel.SelectedFromAccount, Mode=TwoWay}" 
                      HorizontalAlignment="Stretch" FontSize="18" Margin="0 20 0 0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="dto:Account">

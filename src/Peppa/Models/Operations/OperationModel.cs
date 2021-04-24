@@ -164,8 +164,6 @@ namespace Peppa.Models.Operations
                         Currency = CurrencyHelper.GetSymbol(account.Currency)
                     });
             }
-
-            OnPropertyChanged(nameof(Accounts));
         }
 
         public async Task UpdateCategories(CancellationToken token)
@@ -177,8 +175,6 @@ namespace Peppa.Models.Operations
                 foreach (var category in response)
                     Categories.Add(new Category {Id = category.Id, Title = category.Title, HexColor = category.HexColor});
             }
-
-            OnPropertyChanged(nameof(Categories));
         }
     }
 }
