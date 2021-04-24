@@ -19,7 +19,10 @@ namespace Peppa.Dialogs
             => _viewModel.Result = DialogResult.Cancel;
 
         private void OnDeleteButtonClick(object sender, RoutedEventArgs e)
-            => _viewModel.Result = DialogResult.Delete;
+        {
+            _viewModel.Result = DialogResult.Delete;
+            Hide();
+        }
 
         private void OnSaveButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
             => _viewModel.Result = DialogResult.Save;

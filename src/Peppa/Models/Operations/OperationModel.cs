@@ -66,6 +66,9 @@ namespace Peppa.Models.Operations
 
         public async Task UpdateData(CancellationToken token)
         {
+            if (IsNew)
+                return;
+
             switch (Type)
             {
                 case OperationType.Budget:
@@ -172,7 +175,7 @@ namespace Peppa.Models.Operations
 
         public async Task UpdateAccounts(bool showArchivedAccounts, CancellationToken token)
         {
-            var response = await _accountService.GetAccounts(token);
+            var response = await _accountService.GetAccounts(showArchivedAccounts, token);
             if (response != null)
             {
                 Accounts.Clear();
@@ -187,14 +190,14 @@ namespace Peppa.Models.Operations
             }
         }
 
-        public async Task UpdateCategories(CancellationToken token)
+        public async Task UpdateCategories(bool showArchivedCategories, CancellationToken token)
         {
-            var response = await _categoryService.GetCategories(token);
+            var response = await _categoryService.GetCategories(showArchivedCategories, token);
             if (response != null)
             {
                 Categories.Clear();
                 foreach (var category in response)
-                    Categories.Add(new Category {Id = category.Id, Title = category.Title, HexColor = category.HexColor});
+                    Categories.Add(new Category {Id = category.Id, Title = category.Title, HexColor = category.HexColor, Type =  category.Type});
             }
         }
     }

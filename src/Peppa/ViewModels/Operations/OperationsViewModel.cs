@@ -74,11 +74,14 @@ namespace Peppa.ViewModels.Operations
             {
                 case DialogResult.Save:
                     await _model.UpdateOperation(selectedOperation.Model, GetCancellationToken());
+                    await UpdateOperations();
                     break;
                 case DialogResult.Delete:
                     await _model.DeleteOperation(selectedOperation.Model, GetCancellationToken());
+                    await UpdateOperations();
                     break;
             }
+
         }
 
         public async void OnAddOperationClick(object sender, RoutedEventArgs e)
@@ -92,7 +95,10 @@ namespace Peppa.ViewModels.Operations
             await editOperationDialog.ShowAsync();
 
             if (editOperationDialog.Result == DialogResult.Save)
+            {
                 await _model.SaveOperation(newOperation.Model, GetCancellationToken());
+                await UpdateOperations();
+            }
         }
 
         public async void OnNextButtonClick(object sender, RoutedEventArgs e)
@@ -110,20 +116,8 @@ namespace Peppa.ViewModels.Operations
             }
 
             _model.CurrentPageNumber++;
-
-            try
-            {
-                await _model.UpdateOperations(GetCancellationToken());
-            }
-            catch
-            {
-                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
-            }
-
-            Operations.Clear();
-
-            foreach (var operation in _model.Operations)
-                Operations.Add(new OperationListViewItemViewModel(operation, _localizationService));
+            
+            await UpdateOperations();
 
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
@@ -146,20 +140,8 @@ namespace Peppa.ViewModels.Operations
             }
 
             _model.CurrentPageNumber--;
-
-            try
-            {
-                await _model.UpdateOperations(GetCancellationToken());
-            }
-            catch
-            {
-                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
-            }
-
-            Operations.Clear();
-
-            foreach (var operation in _model.Operations)
-                Operations.Add(new OperationListViewItemViewModel(operation, _localizationService));
+            
+            await UpdateOperations();
 
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
@@ -170,6 +152,23 @@ namespace Peppa.ViewModels.Operations
         private void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             RaisePropertyChanged(e.PropertyName);
+        }
+
+        private async Task UpdateOperations()
+        {
+            try
+            {
+                await _model.UpdateOperations(GetCancellationToken());
+            }
+            catch
+            {
+                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
+            }
+            
+            Operations.Clear();
+
+            foreach (var operation in _model.Operations)
+                Operations.Add(new OperationListViewItemViewModel(operation, _localizationService));
         }
 
         public ObservableCollection<OperationListViewItemViewModel> Operations { get; }

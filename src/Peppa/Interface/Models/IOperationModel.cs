@@ -16,7 +16,7 @@ namespace Peppa.Interface.Models
         DateTime OperationDate { get; set; }
         CategoryType CategoryType { get; }
         string CategoryHexColor { get; }
-        string CategoryTitle { get;  }
+        string CategoryTitle { get; }
         string AccountTitle { get; }
         string ToAccountTitle { get; }
         int AccountId { get; set; }
@@ -30,7 +30,7 @@ namespace Peppa.Interface.Models
         Task Update(CancellationToken token);
         Task Delete(CancellationToken token);
         Task UpdateAccounts(bool showArchivedAccounts, CancellationToken token);
-        Task UpdateCategories(CancellationToken token);
+        Task UpdateCategories(bool showArchivedCategories, CancellationToken token);
         Task UpdateData(CancellationToken token);
     }
 }

@@ -103,7 +103,7 @@
                                        HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="2" Text="{x:Bind TypeTitle}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="3" Text="{x:Bind OperationDate}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="4" Text="{x:Bind Comment}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Text="{x:Bind Comment}" HorizontalAlignment="Left" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
 
                         </Grid>
                     </DataTemplate>

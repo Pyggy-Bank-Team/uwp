@@ -7,13 +7,17 @@ namespace Peppa.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            DateTimeOffset date = (DateTimeOffset)value;
+            if (value is DateTime date)
+                return DateTimeOffset.Parse(date.ToString());
 
-            return date.Date;
+            return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
+            if (value is DateTimeOffset dateOffset)
+                return dateOffset.Date;
+
             return value;
         }
     }

@@ -111,7 +111,7 @@ namespace Peppa.Models
             //If user is logged in then sync accounts
             if (_service.IsAuthorized)
             {
-                var accounts = await _service.GetAccounts(token);
+                var accounts = await _service.GetAccounts(true, token);
                 if (accounts != null)
                 {
                     foreach (var account in accounts)
