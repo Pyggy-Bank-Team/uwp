@@ -387,4 +387,16 @@
   <data name="ToCombobox.Header" xml:space="preserve">
     <value>To</value>
   </data>
+  <data name="AddAccountButton.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="TotalBalanceRun.Text" xml:space="preserve">
+    <value>Total balance: </value>
+  </data>
+  <data name="ArchiveHeader.Text" xml:space="preserve">
+    <value>Archived</value>
+  </data>
+  <data name="BalanceHeader.Text" xml:space="preserve">
+    <value>Balance</value>
+  </data>
 </root>

@@ -395,4 +395,16 @@
   <data name="ToCombobox.Header" xml:space="preserve">
     <value>Куда</value>
   </data>
+  <data name="AddAccountButton.Text" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="TotalBalanceRun.Text" xml:space="preserve">
+    <value>Общий баланс: </value>
+  </data>
+  <data name="ArchiveHeader.Text" xml:space="preserve">
+    <value>В архиве</value>
+  </data>
+  <data name="BalanceHeader.Text" xml:space="preserve">
+    <value>Баланс</value>
+  </data>
 </root>

@@ -17,7 +17,7 @@ namespace Peppa.Views.Accounts
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            UpdateProgressRing.Visibility = Visibility.Visible;
+            
             _dataContext = (AccountsViewModel) App.ServiceProvider.GetService(typeof(AccountsViewModel));
             DataContext = _dataContext;
 
@@ -28,7 +28,6 @@ namespace Peppa.Views.Accounts
             await _dataContext.Initialization();
             _dataContext.SelectedItem = null;
 
-            UpdateProgressRing.Visibility = Visibility.Collapsed;
         }
 
         private void OnBalanceItemClick(object sender, ItemClickEventArgs e)

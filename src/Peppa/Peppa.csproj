@@ -222,7 +222,7 @@
     <Compile Include="Services\Windows\ToastService.cs" />
     <Compile Include="Utilities\DateUtility.cs" />
     <Compile Include="Utilities\DonateUtility.cs" />
-    <Compile Include="ViewModels\Accounts\AccountItemViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\AccountListViewItemViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountsViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

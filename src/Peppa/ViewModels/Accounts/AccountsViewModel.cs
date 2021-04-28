@@ -1,37 +1,32 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Peppa.Enums;
+using Peppa.Interface.InternalServices;
 using Peppa.ViewModels.Interface;
-using Peppa.Interface.Models;
 using Peppa.Interface.Models.Accounts;
+using Peppa.Interface.WindowsService;
 
 namespace Peppa.ViewModels.Accounts
 {
     public class AccountsViewModel : BaseViewModel, IInitialization
     {
         private readonly IAccountsModel _model;
+        private readonly IToastService _toastService;
+        private readonly ILocalizationService _localizationService;
 
-        public AccountsViewModel(IAccountsModel model)
+        public AccountsViewModel(IAccountsModel model, IToastService toastService, ILocalizationService localizationService)
         {
             _model = model;
+            _toastService = toastService;
+            _localizationService = localizationService;
             List = new ObservableCollection<AccountViewModel>();
         }
 
         public async Task Initialization()
         {
-            var accounts = await _model.GetAccounts(GetCancellationToken());
-            if (accounts != null)
-            {
-                List = new ObservableCollection<AccountViewModel>(accounts.Select(a => new AccountViewModel(a)).OrderBy(a => a.IsArchived));
-                RaisePropertiesChanged();
-            }
-        }
-
-        public void Finalization()
-        {
-            throw new NotImplementedException();
+            
         }
 
         //TODO Split on two separated methods
@@ -51,13 +46,12 @@ namespace Peppa.ViewModels.Accounts
             }
         }
 
-        public void RaiseBalance()
+        public void OnAddOperationClick(object sender, RoutedEventArgs e)
         {
-            RaisePropertyChanged(nameof(List));
-            RaisePropertyChanged(nameof(TotalBalance));
+            
         }
 
-        public string TotalBalance
+        public string TotalBalanceTitle
         {
             get
             {
@@ -74,5 +68,7 @@ namespace Peppa.ViewModels.Accounts
         public ObservableCollection<AccountViewModel> List { get; private set; }
 
         public AccountViewModel SelectedItem { get; set; }
+        
+        public bool IsProgressShow { get; set; }
     }
 }

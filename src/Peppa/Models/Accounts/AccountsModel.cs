@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Contracts.Requests.Accounts;
-using Peppa.Contracts.Responses;
 using Peppa.Enums;
 using Peppa.Helpers;
 using Peppa.Interface;
@@ -135,9 +134,6 @@ namespace Peppa.Models.Accounts
             return await _repository.GetAccounts(token);
         }
 
-        public void Dispose()
-            => _repository?.Dispose();
-
         #endregion
 
         public async Task<IAccountModel> CreateNewAccount(CancellationToken token)
@@ -146,7 +142,7 @@ namespace Peppa.Models.Accounts
             
             var entity = new Account
             {
-                Currency = CurrencyHelper.GetSymbol(user.CurrencyBase),
+                Currency = user.CurrencyBase,
                 Type = AccountType.Card
             };
             
@@ -213,9 +209,13 @@ namespace Peppa.Models.Accounts
 
             await account.Delete(token);
         }
+        
+        public void Dispose()
+            => _repository?.Dispose();
 
         public List<IAccountModel> Accounts { get; }
 
         public double TotalAmount { get; private set; }
+        
     }
 }
