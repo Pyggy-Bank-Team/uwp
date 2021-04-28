@@ -18,7 +18,7 @@ namespace Peppa.ViewModels.Accounts
         {
             IsNew = false;
             Title = model.Title;
-            Balance = model.Balance;
+            //Balance = model.Balance;
             Currency = model.Currency;
             IsArchived = model.IsArchived;
             IsDeleted = model.IsDeleted;
@@ -32,7 +32,7 @@ namespace Peppa.ViewModels.Accounts
             {
                 Id = Id,
                 Title = Title,
-                Balance = Balance,
+                //Balance = Balance,
                 Currency = Currency,
                 Type = Type,
                 IsArchived = IsArchived,

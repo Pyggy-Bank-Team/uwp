@@ -116,6 +116,9 @@
     <Compile Include="Context\Entities\User.cs" />
     <Compile Include="Context\PiggyContext.cs" />
     <Compile Include="Contracts\PageResult.cs" />
+    <Compile Include="Contracts\Requests\Accounts\BaseAccountRequest.cs" />
+    <Compile Include="Contracts\Requests\Accounts\CreateAccountRequest.cs" />
+    <Compile Include="Contracts\Requests\Accounts\UpdateAccountRequest.cs" />
     <Compile Include="Contracts\Requests\CreateBudgetOperationRequest.cs" />
     <Compile Include="Contracts\Requests\CreateTransferOperationRequest.cs" />
     <Compile Include="Contracts\Requests\GetChartByCategoriesRequest.cs" />

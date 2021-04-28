@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Peppa.Contracts.Requests.Accounts;
 using Peppa.Contracts.Responses;
 using Peppa.Enums;
 using Peppa.Helpers;
@@ -30,7 +31,7 @@ namespace Peppa.Models.Accounts
         {
             if (_service.IsAuthorized)
             {
-                var request = new AccountResponse
+                var request = new CreateAccountRequest
                 {
                     Balance = account.Balance,
                     Currency = account.Currency,
@@ -80,7 +81,7 @@ namespace Peppa.Models.Accounts
         {
             if (_service.IsAuthorized)
             {
-                var request = new AccountResponse
+                var request = new UpdateAccountRequest
                 {
                     Id = account.Id,
                     Balance = account.Balance,
@@ -115,7 +116,7 @@ namespace Peppa.Models.Accounts
                         {
                             Id = account.Id,
                             Balance = account.Balance,
-                            Currency = GetSymbol(account.Currency),
+                            Currency = CurrencyHelper.GetSymbol(account.Currency),
                             Title = account.Title,
                             Type = account.Type,
                             IsArchived = account.IsArchived,
@@ -137,34 +138,19 @@ namespace Peppa.Models.Accounts
         public void Dispose()
             => _repository?.Dispose();
 
-        private string GetSymbol(string currency)
-        {
-            if (string.IsNullOrWhiteSpace(currency))
-                return null;
-
-            try
-            {
-                return _availableCurrencies[currency];
-            }
-            catch
-            {
-                //TODO log
-            }
-
-            return null;
-        }
-
         #endregion
 
         public async Task<IAccountModel> CreateNewAccount(CancellationToken token)
         {
             var user = await _repository.GetUser(token);
+            
             var entity = new Account
             {
                 Currency = CurrencyHelper.GetSymbol(user.CurrencyBase),
                 Type = AccountType.Card
             };
-            return new AccountModel(entity);
+            
+            return new AccountModel(entity, _service);
         }
 
         public async Task UpdateAccounts(CancellationToken token)
@@ -199,7 +185,7 @@ namespace Peppa.Models.Accounts
             Accounts.Clear();
 
             foreach (var account in await _repository.GetAccounts(token))
-                Accounts.Add(new AccountModel(account));
+                Accounts.Add(new AccountModel(account, _service));
 
             TotalAmount = Accounts.Sum(a => a.Balance);
         }
