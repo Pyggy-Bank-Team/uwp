@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Peppa.Interface.Models
+namespace Peppa.Interface.Models.Operations
 {
     public interface IOperationsModel : IDisposable, INotifyPropertyChanged
     {

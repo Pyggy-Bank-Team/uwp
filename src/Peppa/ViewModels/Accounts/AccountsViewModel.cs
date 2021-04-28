@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Peppa.Enums;
 using Peppa.ViewModels.Interface;
 using Peppa.Interface.Models;
+using Peppa.Interface.Models.Accounts;
 
 namespace Peppa.ViewModels.Accounts
 {

@@ -8,6 +8,7 @@ using Peppa.Dialogs;
 using Peppa.Enums;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
+using Peppa.Interface.Models.Operations;
 using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
 using Peppa.ViewModels.Interface;

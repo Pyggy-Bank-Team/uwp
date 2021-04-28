@@ -12,7 +12,7 @@ namespace Peppa.Context.Entities
 
         public string Currency { get; set; }
 
-        public decimal Balance { get; set; }
+        public double Balance { get; set; }
 
         public bool IsArchived { get; set; }
 

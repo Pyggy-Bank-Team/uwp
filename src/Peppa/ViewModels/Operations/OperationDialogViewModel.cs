@@ -5,6 +5,7 @@ using Peppa.Dto;
 using Peppa.Enums;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
+using Peppa.Interface.Models.Operations;
 using Peppa.Interface.WindowsService;
 
 namespace Peppa.ViewModels.Operations
