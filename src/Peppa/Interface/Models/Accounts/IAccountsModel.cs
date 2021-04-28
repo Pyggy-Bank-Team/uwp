@@ -21,5 +21,6 @@ namespace Peppa.Interface.Models.Accounts
         Task DeleteAccount(IAccountModel account, CancellationToken token);
         List<IAccountModel> Accounts { get; }
         double TotalAmount { get; }
+        string CurrencyBase { get;}
     }
 }

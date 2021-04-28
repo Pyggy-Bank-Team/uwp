@@ -1,12 +1,13 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Peppa.Enums;
 using Peppa.Interface.InternalServices;
 using Peppa.ViewModels.Interface;
 using Peppa.Interface.Models.Accounts;
 using Peppa.Interface.WindowsService;
+using System;
 
 namespace Peppa.ViewModels.Accounts
 {
@@ -21,12 +22,35 @@ namespace Peppa.ViewModels.Accounts
             _model = model;
             _toastService = toastService;
             _localizationService = localizationService;
-            List = new ObservableCollection<AccountViewModel>();
+            List = new ObservableCollection<AccountListViewItemViewModel>();
         }
 
         public async Task Initialization()
         {
+            IsProgressShow = true;
+            RaisePropertyChanged(nameof(IsProgressShow));
+
+            try
+            {
+                await _model.UpdateAccounts(GetCancellationToken());
+            }
+            catch
+            {
+                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
+            }
             
+            List.Clear();
+
+            foreach (var account in _model.Accounts)
+                List.Add(new AccountListViewItemViewModel(account, _localizationService));
+
+            IsProgressShow = false;
+            
+            RaisePropertyChanged(nameof(List));
+            RaisePropertyChanged(nameof(IsProgressShow));
+
+            TotalBalanceTitle = $"{_model.TotalAmount} {_model.CurrencyBase}";
+            RaisePropertyChanged(nameof(TotalBalanceTitle));
         }
 
         //TODO Split on two separated methods
@@ -51,21 +75,14 @@ namespace Peppa.ViewModels.Accounts
             
         }
 
-        public string TotalBalanceTitle
+        public void OnAccountItemClick(object sender, ItemClickEventArgs e)
         {
-            get
-            {
-                if (List.Count > 0)
-                {
-                    var sum = List.Where(l => !l.IsArchived).Sum(l => l.Balance);
-                    return $"{sum} {List.FirstOrDefault()?.Currency}";
-                }
-
-                return string.Empty;
-            }
+            
         }
 
-        public ObservableCollection<AccountViewModel> List { get; private set; }
+        public string TotalBalanceTitle { get; set; }
+
+        public ObservableCollection<AccountListViewItemViewModel> List { get; private set; }
 
         public AccountViewModel SelectedItem { get; set; }
         

@@ -29,7 +29,7 @@
 
         <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" TextTrimming="CharacterEllipsis" Foreground="Gray">
             <Run x:Uid="TotalBalanceRun" />
-            <Run Text="{x:Bind _dataContext.TotalBalanceTitle}" />
+            <Run Text="{x:Bind _dataContext.TotalBalanceTitle, Mode=OneWay}" />
         </TextBlock>
 
         <ProgressRing Grid.Row="1" Grid.Column="1" IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -68,9 +68,9 @@
 
             </Grid>
 
-            <ListView Grid.Row="1" Margin="0 2 0 0" ItemsSource="{Binding Path=List}"
+            <ListView Grid.Row="1" Margin="0 2 0 0" ItemsSource="{x:Bind _dataContext.List}"
                       ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
-                      IsItemClickEnabled="True" SelectionMode="Single" ItemClick="OnBalanceItemClick">
+                      IsItemClickEnabled="True" SelectionMode="Single" ItemClick="{x:Bind _dataContext.OnAccountItemClick}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="vm:AccountListViewItemViewModel">
 

@@ -407,4 +407,13 @@
   <data name="BalanceHeader.Text" xml:space="preserve">
     <value>Баланс</value>
   </data>
+  <data name="Card" xml:space="preserve">
+    <value>Карта</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Наличные</value>
+  </data>
+  <data name="InArchive" xml:space="preserve">
+    <value>В архиве</value>
+  </data>
 </root>

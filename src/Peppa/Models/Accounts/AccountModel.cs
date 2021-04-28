@@ -15,6 +15,7 @@ namespace Peppa.Models.Accounts
         public AccountModel(Account model, IAccountService service)
         {
             _service = service;
+            Title = model.Title;
             Balance = model.Balance;
             Currency = model.Currency;
             Id = model.Id;

@@ -399,4 +399,13 @@
   <data name="BalanceHeader.Text" xml:space="preserve">
     <value>Balance</value>
   </data>
+  <data name="Card" xml:space="preserve">
+    <value>Card</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="InArchive" xml:space="preserve">
+    <value>In archive</value>
+  </data>
 </root>

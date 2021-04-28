@@ -137,12 +137,10 @@ namespace Peppa.Models.Accounts
         #endregion
 
         public async Task<IAccountModel> CreateNewAccount(CancellationToken token)
-        {
-            var user = await _repository.GetUser(token);
-            
+        {            
             var entity = new Account
             {
-                Currency = user.CurrencyBase,
+                Currency = CurrencyBase,
                 Type = AccountType.Card
             };
             
@@ -184,6 +182,9 @@ namespace Peppa.Models.Accounts
                 Accounts.Add(new AccountModel(account, _service));
 
             TotalAmount = Accounts.Sum(a => a.Balance);
+
+            var user = await _repository.GetUser(token);
+            CurrencyBase = user.CurrencyBase;
         }
 
         public async Task SaveAccount(IAccountModel newAccount, CancellationToken token)
@@ -217,5 +218,6 @@ namespace Peppa.Models.Accounts
 
         public double TotalAmount { get; private set; }
         
+        public string CurrencyBase { get; set; }
     }
 }
