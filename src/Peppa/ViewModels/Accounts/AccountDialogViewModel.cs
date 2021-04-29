@@ -5,16 +5,16 @@ using System.Globalization;
 
 namespace Peppa.ViewModels.Accounts
 {
-    public class AccountViewModel : BaseViewModel
+    public class AccountDialogViewModel : BaseViewModel
     {
-        public AccountViewModel()
+        public AccountDialogViewModel()
         {
             IsNew = true;
             var baseCurrency = SettingsWorker.Current.GetValue(Constants.BaseCurrency);
             Currency = baseCurrency == null ? RegionInfo.CurrentRegion.ISOCurrencySymbol : (string)baseCurrency;
         }
 
-        internal AccountViewModel(Account model)
+        internal AccountDialogViewModel(Account model)
         {
             IsNew = false;
             Title = model.Title;
@@ -63,5 +63,7 @@ namespace Peppa.ViewModels.Accounts
         public string CurrentBalance => $"{Balance} {Currency}";
 
         public int Id { get; }
+        
+        public DialogResult Result { get; set; }
     }
 }

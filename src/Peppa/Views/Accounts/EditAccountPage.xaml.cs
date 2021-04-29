@@ -8,14 +8,14 @@ namespace Peppa.Views.Accounts
 {
     public sealed partial class EditBalancePage : Page
     {
-        private AccountViewModel _account;
+        private AccountDialogViewModel _account;
 
         public EditBalancePage()
             => InitializeComponent();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _account = e.Parameter as AccountViewModel;
+            _account = e.Parameter as AccountDialogViewModel;
             Types.ItemsSource = new[] { AccountType.Card, AccountType.Cash };
             Currencies.ItemsSource = new[] { _account.Currency };
         }

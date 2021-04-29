@@ -56,18 +56,18 @@ namespace Peppa.ViewModels.Accounts
         //TODO Split on two separated methods
         internal async Task UpdateData()
         {
-            switch (SelectedItem?.Action)
-            {
-                case DialogResult.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
-                    await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
-                    break;
-                case DialogResult.Save when SelectedItem?.IsNew == false:
-                    await _model.UpdateAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
-                    break;
-                case DialogResult.Delete:
-                    await _model.DeleteAccount(SelectedItem.Id, GetCancellationToken());
-                    break;
-            }
+            // switch (SelectedItem?.Action)
+            // {
+            //     case DialogResult.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
+            //         await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
+            //         break;
+            //     case DialogResult.Save when SelectedItem?.IsNew == false:
+            //         await _model.UpdateAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
+            //         break;
+            //     case DialogResult.Delete:
+            //         await _model.DeleteAccount(SelectedItem.Id, GetCancellationToken());
+            //         break;
+            // }
         }
 
         public void OnAddOperationClick(object sender, RoutedEventArgs e)
@@ -83,8 +83,6 @@ namespace Peppa.ViewModels.Accounts
         public string TotalBalanceTitle { get; set; }
 
         public ObservableCollection<AccountListViewItemViewModel> List { get; private set; }
-
-        public AccountViewModel SelectedItem { get; set; }
         
         public bool IsProgressShow { get; set; }
     }

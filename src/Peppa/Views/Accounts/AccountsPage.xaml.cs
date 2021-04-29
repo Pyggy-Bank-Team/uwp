@@ -23,8 +23,7 @@ namespace Peppa.Views.Accounts
 
         private void OnAddedBalanceClick(object sender, RoutedEventArgs e)
         {
-            var newAccount = new AccountViewModel();
-            _dataContext.SelectedItem = newAccount;
+            var newAccount = new AccountDialogViewModel();
             Frame.Navigate(typeof(EditBalancePage), newAccount);
         }
     }

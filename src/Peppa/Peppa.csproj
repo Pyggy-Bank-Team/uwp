@@ -148,6 +148,9 @@
     <Compile Include="Converters\ValueToCollapsedConverter.cs" />
     <Compile Include="Converters\ValueToVisibilityConverter.cs" />
     <Compile Include="Converters\ViewTypeToVisibilityConverter.cs" />
+    <Compile Include="Dialogs\AccountDialog.xaml.cs">
+      <DependentUpon>AccountDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\ColorPickerDialog.xaml.cs">
       <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
     </Compile>
@@ -224,7 +227,7 @@
     <Compile Include="Utilities\DonateUtility.cs" />
     <Compile Include="ViewModels\Accounts\AccountListViewItemViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountsViewModel.cs" />
-    <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\AccountDialogViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryItemViewModel.cs" />
@@ -354,6 +357,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Controls\DiagramControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\AccountDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
