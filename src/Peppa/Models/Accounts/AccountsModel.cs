@@ -69,7 +69,7 @@ namespace Peppa.Models.Accounts
             foreach (var account in await _repository.GetAccounts(token))
                 Accounts.Add(new AccountModel(account, _service));
 
-            TotalAmount = Accounts.Sum(a => a.Balance);
+            TotalAmount = Accounts.Where(a => !a.IsArchived).Sum(a => a.Balance);
 
             var user = await _repository.GetUser(token);
             CurrencyBase = user.CurrencyBase;
