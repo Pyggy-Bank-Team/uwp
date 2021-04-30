@@ -12,7 +12,7 @@ namespace Peppa.Models.Accounts
     {
         private readonly IAccountService _service;
 
-        public AccountModel(Account model, IAccountService service)
+        public AccountModel(Account model, IAccountService service, bool isNew = false)
         {
             _service = service;
             Title = model.Title;
@@ -22,21 +22,17 @@ namespace Peppa.Models.Accounts
             Type = model.Type;
             IsArchived = model.IsArchived;
             IsSynchronized = model.IsSynchronized;
+            IsNew = isNew;
         }
 
         public long Id { get; }
-
         public string Title { get; set; }
-
         public string Currency { get; set; }
-
         public double Balance { get; set; }
-
         public AccountType Type { get; set; }
-
         public bool IsArchived { get; set; }
-
         public bool IsSynchronized { get; set; }
+        public bool IsNew { get; }
 
         public async Task Save(CancellationToken token)
         {

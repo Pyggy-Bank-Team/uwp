@@ -24,15 +24,15 @@ namespace Peppa.Models.Accounts
             Accounts = new List<IAccountModel>();
         }
 
-        public IAccountModel CreateNewAccount(CancellationToken token)
-        {            
+        public IAccountModel CreateNewAccount()
+        {
             var entity = new Account
             {
                 Currency = CurrencyBase,
                 Type = AccountType.Card
             };
-            
-            return new AccountModel(entity, _service);
+
+            return new AccountModel(entity, _service, isNew: true);
         }
 
         public async Task UpdateAccounts(CancellationToken token)
@@ -98,14 +98,14 @@ namespace Peppa.Models.Accounts
 
             await account.Delete(token);
         }
-        
+
         public void Dispose()
             => _repository?.Dispose();
 
         public List<IAccountModel> Accounts { get; }
 
         public double TotalAmount { get; private set; }
-        
+
         public string CurrencyBase { get; set; }
     }
 }

@@ -1,69 +1,99 @@
-﻿using Peppa.Enums;
-using Peppa.Context.Entities;
-using Peppa.Workers;
-using System.Globalization;
+﻿using System.Collections.Generic;
+using Peppa.Enums;
+using Peppa.Interface.Models.Accounts;
 
 namespace Peppa.ViewModels.Accounts
 {
     public class AccountDialogViewModel : BaseViewModel
     {
-        public AccountDialogViewModel()
+        private bool _isCard;
+        private bool _isCash;
+
+        public AccountDialogViewModel(IAccountModel model)
         {
-            IsNew = true;
-            var baseCurrency = SettingsWorker.Current.GetValue(Constants.BaseCurrency);
-            Currency = baseCurrency == null ? RegionInfo.CurrentRegion.ISOCurrencySymbol : (string)baseCurrency;
+            Model = model;
+            IsNew = Model.IsNew;
+            Currency = Model.Currency;
+            Currencies = new List<string> {Model.Currency};
         }
 
-        internal AccountDialogViewModel(Account model)
+        public string Title
         {
-            IsNew = false;
-            Title = model.Title;
-            //Balance = model.Balance;
-            Currency = model.Currency;
-            IsArchived = model.IsArchived;
-            IsDeleted = model.IsDeleted;
-            Type = model.Type;
-            Id = model.Id;
-            IsSynchronized = model.IsSynchronized;
-        }
-
-        public Account MakeAccountEntity()
-            => new Account
+            get => Model.Title;
+            set
             {
-                Id = Id,
-                Title = Title,
-                //Balance = Balance,
-                Currency = Currency,
-                Type = Type,
-                IsArchived = IsArchived,
-                IsDeleted = IsDeleted,
-                IsSynchronized = IsSynchronized
-            };
-        
-        public string Title { get; set; }
+                if (Model.Title == value)
+                    return;
 
-        public decimal Balance { get; set; }
+                Model.Title = value;
+                RaisePropertyChanged(nameof(Title));
+            }
+        }
+
+        public bool IsCard
+        {
+            get => _isCard;
+            set
+            {
+                if (_isCard == value)
+                    return;
+
+                _isCard = value;
+                Model.Type = AccountType.Card;
+                RaisePropertyChanged(nameof(IsCard));
+                RaisePropertyChanged(nameof(IsCash));
+            }
+        }
+
+        public bool IsCash
+        {
+            get => _isCash;
+            set
+            {
+                if (_isCash == value)
+                    return;
+
+                _isCash = value;
+                Model.Type = AccountType.Cash;
+                RaisePropertyChanged(nameof(IsCash));
+                RaisePropertyChanged(nameof(IsCard));
+            }
+        }
+
+        public double Balance
+        {
+            get => Model.Balance;
+            set
+            {
+                if (Model.Balance == value)
+                    return;
+
+                Model.Balance = value;
+                RaisePropertyChanged(nameof(Balance));
+            }
+        }
 
         public string Currency { get; set; }
 
-        public bool IsArchived { get; set; }
+        public List<string> Currencies { get; set; }
 
-        public bool IsDeleted { get; set; }
+        public bool IsArchived
+        {
+            get => Model.IsArchived;
+            set
+            {
+                if (Model.IsArchived == value)
+                    return;
 
-        public bool IsSynchronized { get; set; }
+                Model.IsArchived = value;
+                RaisePropertyChanged(nameof(IsArchived));
+            }
+        }
 
-        public AccountType Type { get; set; }
+        public bool IsNew { get; }
 
-        public bool IsNew { get; set; }
-        
-        public bool NeedUpdate { get; set; }
-
-        public DialogResult Action { get; set; }
-
-        public string CurrentBalance => $"{Balance} {Currency}";
-
-        public int Id { get; }
-        
         public DialogResult Result { get; set; }
+
+        public IAccountModel Model { get; }
     }
 }

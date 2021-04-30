@@ -8,7 +8,7 @@ namespace Peppa.Interface.Models.Accounts
 {
     public interface IAccountsModel : IDisposable
     {
-        IAccountModel CreateNewAccount(CancellationToken token);
+        IAccountModel CreateNewAccount();
         Task UpdateAccounts(CancellationToken token);
         Task SaveAccount(IAccountModel newAccount, CancellationToken token);
         Task UpdateAccount(IAccountModel account, CancellationToken token);

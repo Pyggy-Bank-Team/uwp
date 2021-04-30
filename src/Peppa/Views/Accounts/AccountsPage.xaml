@@ -18,7 +18,7 @@
             <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource AccentButtonStyle}" Click="{x:Bind _dataContext.OnAddOperationClick}">
+        <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource AccentButtonStyle}" Click="{x:Bind _dataContext.OnAddAccountClick}">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <FontIcon Glyph="&#xE710;" />

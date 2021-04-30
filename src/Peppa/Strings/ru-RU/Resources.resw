@@ -416,4 +416,19 @@
   <data name="InArchive" xml:space="preserve">
     <value>В архиве</value>
   </data>
+  <data name="CardRadioButton.Content" xml:space="preserve">
+    <value>Карта</value>
+  </data>
+  <data name="CashRadioButton.Content" xml:space="preserve">
+    <value>Наличные</value>
+  </data>
+  <data name="CurrenciesComboBox.Header" xml:space="preserve">
+    <value>Валюта</value>
+  </data>
+  <data name="ArchiveTextBlock.Header" xml:space="preserve">
+    <value>В архиве</value>
+  </data>
+  <data name="BalanceBox.Header" xml:space="preserve">
+    <value>Баланс</value>
+  </data>
 </root>

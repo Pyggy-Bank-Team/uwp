@@ -248,9 +248,6 @@
     <Compile Include="Views\Accounts\AccountsPage.xaml.cs">
       <DependentUpon>AccountsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Accounts\EditAccountPage.xaml.cs">
-      <DependentUpon>EditAccountPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Categories\CategoriesPage.xaml.cs">
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
     </Compile>
@@ -391,10 +388,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\Accounts\AccountsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Accounts\EditAccountPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

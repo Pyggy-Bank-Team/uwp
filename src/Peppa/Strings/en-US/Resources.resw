@@ -408,4 +408,19 @@
   <data name="InArchive" xml:space="preserve">
     <value>In archive</value>
   </data>
+  <data name="CardRadioButton.Content" xml:space="preserve">
+    <value>Card</value>
+  </data>
+  <data name="CashRadioButton.Content" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="CurrenciesComboBox.Header" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="ArchiveTextBlock.Header" xml:space="preserve">
+    <value>In archive</value>
+  </data>
+  <data name="BalanceBox.Header" xml:space="preserve">
+    <value>Balance</value>
+  </data>
 </root>

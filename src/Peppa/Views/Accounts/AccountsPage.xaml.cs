@@ -1,5 +1,4 @@
-﻿using Windows.UI.Xaml;
-using Windows.UI.Xaml.Navigation;
+﻿using Windows.UI.Xaml.Navigation;
 using Peppa.ViewModels.Accounts;
 
 namespace Peppa.Views.Accounts
@@ -19,12 +18,6 @@ namespace Peppa.Views.Accounts
             
             _dataContext = (AccountsViewModel) App.ServiceProvider.GetService(typeof(AccountsViewModel));
             await _dataContext.Initialization();
-        }
-
-        private void OnAddedBalanceClick(object sender, RoutedEventArgs e)
-        {
-            var newAccount = new AccountDialogViewModel();
-            Frame.Navigate(typeof(EditBalancePage), newAccount);
         }
     }
 }

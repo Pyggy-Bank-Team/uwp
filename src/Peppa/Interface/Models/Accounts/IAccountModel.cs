@@ -13,6 +13,7 @@ namespace Peppa.Interface.Models.Accounts
         AccountType Type { get; set; }
         bool IsArchived { get; set; }
         bool IsSynchronized { get; set; }
+        bool IsNew { get; }
         Task Save(CancellationToken token);
         Task Update(CancellationToken token);
         Task Delete(CancellationToken token);

@@ -1,13 +1,14 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Peppa.Dialogs;
 using Peppa.Enums;
 using Peppa.Interface.InternalServices;
 using Peppa.ViewModels.Interface;
 using Peppa.Interface.Models.Accounts;
 using Peppa.Interface.WindowsService;
-using System;
 
 namespace Peppa.ViewModels.Accounts
 {
@@ -38,14 +39,14 @@ namespace Peppa.ViewModels.Accounts
             {
                 _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
             }
-            
+
             List.Clear();
 
             foreach (var account in _model.Accounts)
                 List.Add(new AccountListViewItemViewModel(account, _localizationService));
 
             IsProgressShow = false;
-            
+
             RaisePropertyChanged(nameof(List));
             RaisePropertyChanged(nameof(IsProgressShow));
 
@@ -53,37 +54,71 @@ namespace Peppa.ViewModels.Accounts
             RaisePropertyChanged(nameof(TotalBalanceTitle));
         }
 
-        //TODO Split on two separated methods
-        internal async Task UpdateData()
+        public async void OnAddAccountClick(object sender, RoutedEventArgs e)
         {
-            // switch (SelectedItem?.Action)
-            // {
-            //     case DialogResult.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
-            //         await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
-            //         break;
-            //     case DialogResult.Save when SelectedItem?.IsNew == false:
-            //         await _model.UpdateAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
-            //         break;
-            //     case DialogResult.Delete:
-            //         await _model.DeleteAccount(SelectedItem.Id, GetCancellationToken());
-            //         break;
-            // }
+            var newAccount = new AccountDialogViewModel(_model.CreateNewAccount());
+            var editOperationDialog = new AccountDialog(newAccount)
+            {
+                PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
+                CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
+            };
+            
+            await editOperationDialog.ShowAsync();
+
+            if (editOperationDialog.Result == DialogResult.Save)
+            {
+                await _model.SaveAccount(newAccount.Model, GetCancellationToken());
+                await UpdateAccounts();
+            }
         }
 
-        public void OnAddOperationClick(object sender, RoutedEventArgs e)
+        public async void OnAccountItemClick(object sender, ItemClickEventArgs e)
         {
-            
-        }
+            if (!(e.ClickedItem is AccountListViewItemViewModel selectedAccount))
+                return;
 
-        public void OnAccountItemClick(object sender, ItemClickEventArgs e)
-        {
+            var editOperationDialog = new AccountDialog(new AccountDialogViewModel(selectedAccount.Model))
+            {
+                PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
+                CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
+            };
             
+            await editOperationDialog.ShowAsync();
+
+            switch (editOperationDialog.Result)
+            {
+                case DialogResult.Save:
+                    await _model.UpdateAccount(selectedAccount.Model, GetCancellationToken());
+                    await UpdateAccounts();
+                    break;
+                case DialogResult.Delete:
+                    await _model.DeleteAccount(selectedAccount.Model, GetCancellationToken());
+                    await UpdateAccounts();
+                    break;
+            }
+        }
+        
+        private async Task UpdateAccounts()
+        {
+            try
+            {
+                await _model.UpdateAccounts(GetCancellationToken());
+            }
+            catch
+            {
+                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
+            }
+            
+            List.Clear();
+
+            foreach (var account in _model.Accounts)
+                List.Add(new AccountListViewItemViewModel(account, _localizationService));
         }
 
         public string TotalBalanceTitle { get; set; }
 
         public ObservableCollection<AccountListViewItemViewModel> List { get; private set; }
-        
+
         public bool IsProgressShow { get; set; }
     }
 }
