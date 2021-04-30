@@ -417,7 +417,7 @@
   <data name="CurrenciesComboBox.Header" xml:space="preserve">
     <value>Currency</value>
   </data>
-  <data name="ArchiveTextBlock.Header" xml:space="preserve">
+  <data name="ArchiveTextBlock.Text" xml:space="preserve">
     <value>In archive</value>
   </data>
   <data name="BalanceBox.Header" xml:space="preserve">

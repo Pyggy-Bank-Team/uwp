@@ -14,7 +14,7 @@ namespace Peppa.ViewModels.Accounts
             Model = model;
             Title = Model.Title;
             TypeTitle = GetTypeTitle(model.Type, localizationService);
-            BalanceWithCurrencySymbol = $"{Model.Balance} {Model.Currency}";
+            BalanceWithCurrencySymbol = $"{Model.Balance.ToString("N2")} {Model.Currency}";
             ArchiveTitle = Model.IsArchived ? _localizationService.GetTranslateByKey(Localization.InArchive) : "";
         }
 

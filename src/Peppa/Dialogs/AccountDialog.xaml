@@ -7,7 +7,6 @@
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Width="200"
-    Title="TITLE"
     PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
     PrimaryButtonClick="OnSaveButtonClick"
     SecondaryButtonClick="OnCancelButtonClick">
@@ -25,23 +24,23 @@
 
     <StackPanel Orientation="Vertical">
         <!--Name-->
-        <TextBox x:Uid="TitleTextBox" Text="{x:Bind _viewModel.Title, Mode=TwoWay}" FontSize="18" MaxHeight="200" Margin="15"/>
+        <TextBox x:Uid="TitleTextBox" Text="{x:Bind _viewModel.Title, Mode=TwoWay}" Width="360" TextWrapping="Wrap" FontSize="18"/>
         
         <!--Types-->
         <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-            <RadioButton x:Uid="CardRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsCard, Mode=TwoWay}" IsEnabled="{x:Bind _viewModel.IsNew}" />
-            <RadioButton x:Uid="CashRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsCash, Mode=TwoWay}" IsEnabled="{x:Bind _viewModel.IsNew}" />
+            <RadioButton x:Uid="CardRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsCard, Mode=TwoWay}"/>
+            <RadioButton x:Uid="CashRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsCash, Mode=TwoWay}"/>
         </StackPanel>
         
         <ComboBox x:Uid="CurrenciesComboBox" ItemsSource="{x:Bind _viewModel.Currencies}"  SelectedItem="{x:Bind _viewModel.Currency}" FontSize="18"
-                  Margin="0 20 0 0" IsEnabled="False" />
+                  Margin="0 20 0 0" IsEnabled="False" HorizontalAlignment="Stretch"/>
 
         <winui:NumberBox x:Uid="BalanceBox" Header="Currency balance" Value="{x:Bind _viewModel.Balance, Mode=TwoWay}" ValidationMode="InvalidInputOverwritten" FontSize="18"
-                         Margin="0 20 0 0"/>
+                         Margin="0 20 0 0" Width="360"/>
 
         <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
             <TextBlock x:Uid="ArchiveTextBlock" FontSize="18" />
-            <ToggleSwitch OnContent="" OffContent="" FontSize="18" IsOn="{x:Bind _viewModel.IsArchived, Mode=TwoWay}" HorizontalAlignment="Right" Width="60"/>
+            <ToggleSwitch OnContent="" OffContent="" FontSize="18" IsOn="{x:Bind _viewModel.IsArchived, Mode=TwoWay}" Margin="240 0 0 0" Width="45"/>
         </StackPanel>
 
     </StackPanel>

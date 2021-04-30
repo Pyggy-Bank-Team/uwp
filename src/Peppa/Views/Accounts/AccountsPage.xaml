@@ -82,7 +82,7 @@
                                 <ColumnDefinition Width="0.20*" />
                             </Grid.ColumnDefinitions>
                             
-                            <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind Title}"/>
+                            <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis"/>
                             <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind BalanceWithCurrencySymbol}"/>
                             <TextBlock Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind TypeTitle}"/>
                             <TextBlock Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind ArchiveTitle}"/>

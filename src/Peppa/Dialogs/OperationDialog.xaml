@@ -33,7 +33,7 @@
     <StackPanel Orientation="Vertical">
 
         <!-- Amount -->
-        <winui:NumberBox FontSize="18" Value="{x:Bind _viewModel.Amount, Mode=TwoWay}" ValidationMode="InvalidInputOverwritten" />
+        <winui:NumberBox FontSize="18" Value="{x:Bind _viewModel.Amount, Mode=TwoWay}" ValidationMode="InvalidInputOverwritten" Width="360"/>
 
         <!--Types-->
         <StackPanel Orientation="Horizontal" Margin="0 20 0 0">

@@ -31,27 +31,10 @@ namespace Peppa.ViewModels.Accounts
             IsProgressShow = true;
             RaisePropertyChanged(nameof(IsProgressShow));
 
-            try
-            {
-                await _model.UpdateAccounts(GetCancellationToken());
-            }
-            catch
-            {
-                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
-            }
-
-            List.Clear();
-
-            foreach (var account in _model.Accounts)
-                List.Add(new AccountListViewItemViewModel(account, _localizationService));
+            await UpdateAccounts();
 
             IsProgressShow = false;
-
-            RaisePropertyChanged(nameof(List));
             RaisePropertyChanged(nameof(IsProgressShow));
-
-            TotalBalanceTitle = $"{_model.TotalAmount} {_model.CurrencyBase}";
-            RaisePropertyChanged(nameof(TotalBalanceTitle));
         }
 
         public async void OnAddAccountClick(object sender, RoutedEventArgs e)
@@ -62,7 +45,7 @@ namespace Peppa.ViewModels.Accounts
                 PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
                 CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
             };
-            
+
             await editOperationDialog.ShowAsync();
 
             if (editOperationDialog.Result == DialogResult.Save)
@@ -82,7 +65,7 @@ namespace Peppa.ViewModels.Accounts
                 PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
                 CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
             };
-            
+
             await editOperationDialog.ShowAsync();
 
             switch (editOperationDialog.Result)
@@ -97,7 +80,7 @@ namespace Peppa.ViewModels.Accounts
                     break;
             }
         }
-        
+
         private async Task UpdateAccounts()
         {
             try
@@ -108,11 +91,14 @@ namespace Peppa.ViewModels.Accounts
             {
                 _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
             }
-            
+
             List.Clear();
 
             foreach (var account in _model.Accounts)
                 List.Add(new AccountListViewItemViewModel(account, _localizationService));
+
+            TotalBalanceTitle = $"{_model.TotalAmount} {_model.CurrencyBase}";
+            RaisePropertyChanged(nameof(TotalBalanceTitle));
         }
 
         public string TotalBalanceTitle { get; set; }

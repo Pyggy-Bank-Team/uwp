@@ -425,7 +425,7 @@
   <data name="CurrenciesComboBox.Header" xml:space="preserve">
     <value>Валюта</value>
   </data>
-  <data name="ArchiveTextBlock.Header" xml:space="preserve">
+  <data name="ArchiveTextBlock.Text" xml:space="preserve">
     <value>В архиве</value>
   </data>
   <data name="BalanceBox.Header" xml:space="preserve">

@@ -15,6 +15,15 @@ namespace Peppa.ViewModels.Accounts
             IsNew = Model.IsNew;
             Currency = Model.Currency;
             Currencies = new List<string> {Model.Currency};
+            switch (Model.Type)
+            {
+                case AccountType.Cash:
+                    _isCash = true;
+                    break;
+                case AccountType.Card:
+                    _isCard = true;
+                    break;
+            }
         }
 
         public string Title
