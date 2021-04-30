@@ -1,4 +1,5 @@
 ﻿using Windows.UI.Xaml.Controls;
+using Peppa.Enums;
 using Peppa.ViewModels.Accounts;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -22,5 +23,7 @@ namespace Peppa.Dialogs
         private void OnCancelButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
         }
+
+        public DialogResult Result => _viewModel.Result;
     }
 }
