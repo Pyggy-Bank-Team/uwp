@@ -1,15 +1,13 @@
-﻿using Peppa.Enums;
+using Peppa.Enums;
 
-namespace Peppa.Contracts.Responses
+namespace Peppa.Contracts.Requests.Accounts
 {
-    public class AccountResponse
+    public abstract class BaseAccountRequest
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public AccountType Type { get; set; }
         public string Currency { get; set; }
         public double Balance { get; set; }
-        public bool IsDeleted { get; set; }
         public bool IsArchived { get; set; }
     }
 }

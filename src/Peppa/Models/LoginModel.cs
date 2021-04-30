@@ -7,6 +7,7 @@ using Peppa.Context.Entities;
 using Peppa.Contracts.Requests;
 using Peppa.Dto;
 using Peppa.Enums;
+using Peppa.Helpers;
 using Peppa.Interface;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
@@ -141,7 +142,7 @@ namespace Peppa.Models
                 var user = new User
                 {
                     Email = response.Email,
-                    CurrencyBase = response.CurrencyBase,
+                    CurrencyBase = CurrencyHelper.GetSymbol(response.CurrencyBase),
                     UserName = response.UserName
                 };
 

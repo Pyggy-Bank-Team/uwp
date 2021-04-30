@@ -31,6 +31,9 @@ namespace Peppa
         public const string Transfer = "Transfer";
         public const string Save = "Save";
         public const string Cancel = "Cancel";
+        public const string Cash = "Cash";
+        public const string Card = "Card";
+        public const string InArchive = "InArchive";
 
         public static string GetTranslateByKey(string key)
         {

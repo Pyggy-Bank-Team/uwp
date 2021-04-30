@@ -8,6 +8,7 @@ using Peppa.Enums;
 using Peppa.Helpers;
 using Peppa.Interface;
 using Peppa.Interface.Models;
+using Peppa.Interface.Models.Operations;
 using Peppa.Interface.Services;
 using Account = Peppa.Dto.Account;
 using Category = Peppa.Dto.Category;

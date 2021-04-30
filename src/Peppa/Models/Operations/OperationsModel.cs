@@ -7,6 +7,7 @@ using Peppa.Enums;
 using Peppa.Helpers;
 using Peppa.Interface;
 using Peppa.Interface.Models;
+using Peppa.Interface.Models.Operations;
 using Peppa.Interface.Services;
 
 namespace Peppa.Models.Operations

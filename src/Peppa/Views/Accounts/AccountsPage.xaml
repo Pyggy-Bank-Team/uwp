@@ -4,40 +4,94 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Peppa.ViewModels.Accounts"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.2*" />
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="10 0">
+        <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource AccentButtonStyle}" Click="{x:Bind _dataContext.OnAddAccountClick}">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Glyph="&#xE710;" />
+                    <TextBlock x:Uid="AddAccountButton" Margin="10, 0" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18" TextTrimming="CharacterEllipsis" Foreground="Gray">
+            <Run x:Uid="TotalBalanceRun" />
+            <Run Text="{x:Bind _dataContext.TotalBalanceTitle, Mode=OneWay}" />
+        </TextBlock>
+
+        <ProgressRing Grid.Row="1" Grid.Column="1" IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center"
+                      Visibility="{x:Bind _dataContext.IsProgressShow, Mode=OneWay}" />
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Headers -->
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*"/>
-                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.30*" />
+                    <ColumnDefinition Width="0.25*" />
+                    <ColumnDefinition Width="0.25*" />
+                    <ColumnDefinition Width="0.20*" />
                 </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" x:Uid="TotalBalanceNameTextBlock" FontFamily="18" TextTrimming="CharacterEllipsis"
-                       VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Gray"/>
 
-                <TextBlock x:Name="TotalBalanceTextBlock" Grid.Column="1" Text="{Binding Path=TotalBalance}" Foreground="Gray"
-                       FontFamily="18" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Visible"/>
+                <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="0,0,0,1">
+                    <TextBlock x:Uid="TitleHeader" HorizontalAlignment="Left" Foreground="Gray" FontSize="18" />
+                </Border>
+
+                <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="0,0,0,1">
+                    <TextBlock x:Uid="BalanceHeader" HorizontalAlignment="Left" Foreground="Gray" FontSize="18" />
+                </Border>
+
+                <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="0,0,0,1">
+                    <TextBlock x:Uid="TypeHeader" HorizontalAlignment="Left" Foreground="Gray" FontSize="18" />
+                </Border>
+
+                <Border Grid.Column="3" BorderBrush="Gray" BorderThickness="0,0,0,1">
+                    <TextBlock x:Uid="ArchiveHeader" HorizontalAlignment="Left" Foreground="Gray" FontSize="18" />
+                </Border>
+
             </Grid>
 
-            <ProgressBar x:Name="UpdateProgressRing" IsIndeterminate="True" Height="18" Visibility="Collapsed"/>
+            <ListView Grid.Row="1" Margin="0 10 0 0" ItemsSource="{x:Bind _dataContext.List}"
+                      ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
+                      IsItemClickEnabled="True" SelectionMode="Single" ItemClick="{x:Bind _dataContext.OnAccountItemClick}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:AccountListViewItemViewModel">
 
-            <Border Margin="0 15 0 0" HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Gray"/>
-        </StackPanel>
-
-        <ListView x:Name="BalanceListView" Grid.Row="1" Margin="0 2 0 0" ItemsSource="{Binding Path=List}"
-                  ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
-                  ItemTemplate="{StaticResource ResourceKey=ListViewItemBalance}"
-                  IsItemClickEnabled="True" SelectionMode="Single" ItemClick="OnBalanceItemClick"/>
-
-        <CommandBar Grid.Row="2">
-            <AppBarButton x:Uid="AddBalanceAppBarButton" Icon="Add" Click="OnAddedBalanceClick"/>
-        </CommandBar>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.30*" />
+                                <ColumnDefinition Width="0.25*" />
+                                <ColumnDefinition Width="0.25*" />
+                                <ColumnDefinition Width="0.20*" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind BalanceWithCurrencySymbol}"/>
+                            <TextBlock Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind TypeTitle}"/>
+                            <TextBlock Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind ArchiveTitle}"/>
+                            
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </Grid>
     </Grid>
 </Page>

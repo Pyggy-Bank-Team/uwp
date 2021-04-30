@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Peppa.Dto;
 using Peppa.Enums;
 
-namespace Peppa.Interface.Models
+namespace Peppa.Interface.Models.Operations
 {
     public interface IOperationModel : INotifyPropertyChanged
     {

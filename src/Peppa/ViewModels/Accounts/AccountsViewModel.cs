@@ -1,77 +1,110 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Peppa.Dialogs;
 using Peppa.Enums;
+using Peppa.Interface.InternalServices;
 using Peppa.ViewModels.Interface;
-using Peppa.Interface.Models;
+using Peppa.Interface.Models.Accounts;
+using Peppa.Interface.WindowsService;
 
 namespace Peppa.ViewModels.Accounts
 {
     public class AccountsViewModel : BaseViewModel, IInitialization
     {
         private readonly IAccountsModel _model;
+        private readonly IToastService _toastService;
+        private readonly ILocalizationService _localizationService;
 
-        public AccountsViewModel(IAccountsModel model)
+        public AccountsViewModel(IAccountsModel model, IToastService toastService, ILocalizationService localizationService)
         {
             _model = model;
-            List = new ObservableCollection<AccountViewModel>();
+            _toastService = toastService;
+            _localizationService = localizationService;
+            List = new ObservableCollection<AccountListViewItemViewModel>();
         }
 
         public async Task Initialization()
         {
-            var accounts = await _model.GetAccounts(GetCancellationToken());
-            if (accounts != null)
+            IsProgressShow = true;
+            RaisePropertyChanged(nameof(IsProgressShow));
+
+            await UpdateAccounts();
+
+            IsProgressShow = false;
+            RaisePropertyChanged(nameof(IsProgressShow));
+        }
+
+        public async void OnAddAccountClick(object sender, RoutedEventArgs e)
+        {
+            var newAccount = new AccountDialogViewModel(_model.CreateNewAccount());
+            var editOperationDialog = new AccountDialog(newAccount)
             {
-                List = new ObservableCollection<AccountViewModel>(accounts.Select(a => new AccountViewModel(a)).OrderBy(a => a.IsArchived));
-                RaisePropertiesChanged();
+                PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
+                CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
+            };
+
+            await editOperationDialog.ShowAsync();
+
+            if (editOperationDialog.Result == DialogResult.Save)
+            {
+                await _model.SaveAccount(newAccount.Model, GetCancellationToken());
+                await UpdateAccounts();
             }
         }
 
-        public void Finalization()
+        public async void OnAccountItemClick(object sender, ItemClickEventArgs e)
         {
-            throw new NotImplementedException();
-        }
+            if (!(e.ClickedItem is AccountListViewItemViewModel selectedAccount))
+                return;
 
-        //TODO Split on two separated methods
-        internal async Task UpdateData()
-        {
-            switch (SelectedItem?.Action)
+            var editOperationDialog = new AccountDialog(new AccountDialogViewModel(selectedAccount.Model))
             {
-                case DialogResult.Save when SelectedItem?.IsNew == true || SelectedItem?.IsSynchronized == false:
-                    await _model.CreatedAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
-                    break;
-                case DialogResult.Save when SelectedItem?.IsNew == false:
-                    await _model.UpdateAccount(SelectedItem.MakeAccountEntity(), GetCancellationToken());
+                PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
+                CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
+            };
+
+            await editOperationDialog.ShowAsync();
+
+            switch (editOperationDialog.Result)
+            {
+                case DialogResult.Save:
+                    await _model.UpdateAccount(selectedAccount.Model, GetCancellationToken());
+                    await UpdateAccounts();
                     break;
                 case DialogResult.Delete:
-                    await _model.DeleteAccount(SelectedItem.Id, GetCancellationToken());
+                    await _model.DeleteAccount(selectedAccount.Model, GetCancellationToken());
+                    await UpdateAccounts();
                     break;
             }
         }
 
-        public void RaiseBalance()
+        private async Task UpdateAccounts()
         {
-            RaisePropertyChanged(nameof(List));
-            RaisePropertyChanged(nameof(TotalBalance));
-        }
-
-        public string TotalBalance
-        {
-            get
+            try
             {
-                if (List.Count > 0)
-                {
-                    var sum = List.Where(l => !l.IsArchived).Sum(l => l.Balance);
-                    return $"{sum} {List.FirstOrDefault()?.Currency}";
-                }
-
-                return string.Empty;
+                await _model.UpdateAccounts(GetCancellationToken());
             }
+            catch
+            {
+                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
+            }
+
+            List.Clear();
+
+            foreach (var account in _model.Accounts)
+                List.Add(new AccountListViewItemViewModel(account, _localizationService));
+
+            TotalBalanceTitle = $"{_model.TotalAmount} {_model.CurrencyBase}";
+            RaisePropertyChanged(nameof(TotalBalanceTitle));
         }
 
-        public ObservableCollection<AccountViewModel> List { get; private set; }
+        public string TotalBalanceTitle { get; set; }
 
-        public AccountViewModel SelectedItem { get; set; }
+        public ObservableCollection<AccountListViewItemViewModel> List { get; private set; }
+
+        public bool IsProgressShow { get; set; }
     }
 }

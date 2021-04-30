@@ -157,14 +157,10 @@ namespace Peppa.Repositories
         }
 
         public Task<User> GetUser(CancellationToken token)
-        {
-            throw new System.NotImplementedException();
-        }
+            => _context.Users.FirstAsync(token);
 
         public Task CreateUser(User newUser, CancellationToken token)
-        {
-            throw new System.NotImplementedException();
-        }
+            => _context.Users.AddAsync(newUser, token);
 
         public Task<Operation> GetOperation(int id, CancellationToken token)
             => _context.Operations.FirstOrDefaultAsync(o => o.Id == id, token);       
