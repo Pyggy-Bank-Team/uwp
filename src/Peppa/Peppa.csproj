@@ -175,8 +175,6 @@
     <Compile Include="Enums\OperationViewType.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
-    <Compile Include="Fabrics\CategoryFactory.cs" />
-    <Compile Include="Fabrics\DonateFactory.cs" />
     <Compile Include="Helpers\CurrencyHelper.cs" />
     <Compile Include="Interface\IAuthorization.cs" />
     <Compile Include="Interface\InternalServices\ILocalizationService.cs" />
@@ -234,7 +232,7 @@
     <Compile Include="ViewModels\Accounts\AccountDialogViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoriesViewModel.cs" />
-    <Compile Include="ViewModels\Categories\CategoryItemViewModel.cs" />
+    <Compile Include="ViewModels\Categories\CategoryListViewItemViewModel.cs" />
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationDialogViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationListViewItemViewModel.cs" />

@@ -16,20 +16,20 @@ namespace Peppa.Views.Categories
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-            UpdateProgressRing.Visibility = Visibility.Visible;
-
-            _dataContext = (CategoriesViewModel)App.ServiceProvider.GetService(typeof(CategoriesViewModel));
-            DataContext = _dataContext;
-
-            var selectedItem = _dataContext.SelectedItem;
-            if (selectedItem != null)
-                await _dataContext.UpdateData();
-
-            await _dataContext.Initialization();
-            _dataContext.SelectedItem = null;
-
-            UpdateProgressRing.Visibility = Visibility.Collapsed;
+            // base.OnNavigatedTo(e);
+            // UpdateProgressRing.Visibility = Visibility.Visible;
+            //
+            // _dataContext = (CategoriesViewModel)App.ServiceProvider.GetService(typeof(CategoriesViewModel));
+            // DataContext = _dataContext;
+            //
+            // var selectedItem = _dataContext.SelectedItem;
+            // if (selectedItem != null)
+            //     await _dataContext.UpdateData();
+            //
+            // await _dataContext.Initialization();
+            // _dataContext.SelectedItem = null;
+            //
+            // UpdateProgressRing.Visibility = Visibility.Collapsed;
         }
 
         private void OnAddedCategoryClick(object sender, RoutedEventArgs e)

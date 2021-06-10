@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Peppa.Enums;
 
 namespace Peppa.Interface.Models.Categories
 {
@@ -8,5 +9,9 @@ namespace Peppa.Interface.Models.Categories
         Task Save(CancellationToken token);
         Task Update(CancellationToken token);
         Task Delete(CancellationToken token);
+        string HexColor { get; set; }
+        string Title { get; set; }
+        CategoryType Type { get; set; }
+        bool IsArchived { get; set; }
     }
 }

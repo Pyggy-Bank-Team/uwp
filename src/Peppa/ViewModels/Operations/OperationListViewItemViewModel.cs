@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using Peppa.Enums;
 using Peppa.Interface.InternalServices;
-using Peppa.Interface.Models;
 using Peppa.Interface.Models.Operations;
 
 namespace Peppa.ViewModels.Operations
