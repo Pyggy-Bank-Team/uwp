@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Peppa.Enums;
 using Peppa.Interface.Models;
+using Peppa.Interface.Models.Categories;
 using Peppa.ViewModels.Interface;
 
 namespace Peppa.ViewModels.Categories

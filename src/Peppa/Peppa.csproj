@@ -181,7 +181,8 @@
     <Compile Include="Interface\IPiggyRepository.cs" />
     <Compile Include="Interface\Models\Accounts\IAccountModel.cs" />
     <Compile Include="Interface\Models\Accounts\IAccountsModel.cs" />
-    <Compile Include="Interface\Models\ICategoriesModel.cs" />
+    <Compile Include="Interface\Models\Categories\ICategoriesModel.cs" />
+    <Compile Include="Interface\Models\Categories\ICategoryModel.cs" />
     <Compile Include="Interface\Models\ILoginModel.cs" />
     <Compile Include="Interface\Models\IReportModel.cs" />
     <Compile Include="Interface\Models\Operations\IOperationModel.cs" />
@@ -198,9 +199,9 @@
     <Compile Include="Models\Accounts\AccountModel.cs" />
     <Compile Include="Models\Accounts\AccountsModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\CategoriesModel.cs" />
     <Compile Include="Interface\IBaseModel.cs" />
-    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\Categories\CategoriesModel.cs" />
+    <Compile Include="Models\Categories\CategoryModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Operations\OperationModel.cs" />
     <Compile Include="Models\Operations\OperationsModel.cs" />

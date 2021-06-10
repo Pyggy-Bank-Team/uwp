@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Peppa.Models;
+using Peppa.Models.Categories;
 using Peppa.Utilities;
 
 namespace Peppa.Fabrics
