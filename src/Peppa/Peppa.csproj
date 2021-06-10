@@ -119,6 +119,9 @@
     <Compile Include="Contracts\Requests\Accounts\BaseAccountRequest.cs" />
     <Compile Include="Contracts\Requests\Accounts\CreateAccountRequest.cs" />
     <Compile Include="Contracts\Requests\Accounts\UpdateAccountRequest.cs" />
+    <Compile Include="Contracts\Requests\Categories\BaseCategoryRequest.cs" />
+    <Compile Include="Contracts\Requests\Categories\CreateCategoryRequest.cs" />
+    <Compile Include="Contracts\Requests\Categories\UpdateCategoryRequest.cs" />
     <Compile Include="Contracts\Requests\CreateBudgetOperationRequest.cs" />
     <Compile Include="Contracts\Requests\CreateTransferOperationRequest.cs" />
     <Compile Include="Contracts\Requests\GetChartByCategoriesRequest.cs" />
