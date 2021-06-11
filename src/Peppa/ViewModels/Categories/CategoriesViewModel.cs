@@ -1,14 +1,16 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Peppa.Enums;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models.Categories;
+using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
 using Peppa.ViewModels.Interface;
 
 namespace Peppa.ViewModels.Categories
 {
-    public class CategoriesViewModel : BaseViewModel, IInitialization
+    public class CategoriesViewModel : BaseViewModel, IInitialization, ICategoriesViewModel
     {
         private readonly ICategoriesModel _model;
         private readonly IToastService _toastService;
@@ -21,7 +23,7 @@ namespace Peppa.ViewModels.Categories
             _localizationService = localizationService;
             List = new ObservableCollection<CategoryListViewItemViewModel>();
         }
-        
+
         public async Task Initialization()
         {
             IsProgressShow = true;
@@ -31,6 +33,16 @@ namespace Peppa.ViewModels.Categories
 
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
+        }
+
+        public void OnAddCategoryClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void OnCategoryItemClick(object sender, ItemClickEventArgs e)
+        {
+            
         }
 
         private async Task UpdateCategories()
@@ -51,9 +63,7 @@ namespace Peppa.ViewModels.Categories
         }
 
         public ObservableCollection<CategoryListViewItemViewModel> List { get; }
-        
-        public CategoryViewModel SelectedItem { get; set; }
-        
+
         public bool IsProgressShow { get; set; }
     }
 }

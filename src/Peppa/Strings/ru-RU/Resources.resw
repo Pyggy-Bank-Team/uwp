@@ -398,6 +398,9 @@
   <data name="AddAccountButton.Text" xml:space="preserve">
     <value>Добавить</value>
   </data>
+   <data name="AddCategoryButton.Text" xml:space="preserve">
+     <value>Добавить</value>
+   </data>
   <data name="TotalBalanceRun.Text" xml:space="preserve">
     <value>Общий баланс: </value>
   </data>

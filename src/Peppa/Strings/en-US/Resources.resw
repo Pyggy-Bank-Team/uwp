@@ -390,6 +390,9 @@
   <data name="AddAccountButton.Text" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="AddCategoryButton.Text" xml:space="preserve">
+     <value>Add</value>
+  </data>
   <data name="TotalBalanceRun.Text" xml:space="preserve">
     <value>Total balance: </value>
   </data>

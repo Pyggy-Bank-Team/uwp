@@ -4,24 +4,56 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:Peppa.ViewModels.Categories"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.2*" />
+        </Grid.ColumnDefinitions>
 
-        <ProgressBar x:Name="UpdateProgressRing" Grid.Row="0" IsIndeterminate="True" Height="18" Visibility="Collapsed"/>
+        <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource AccentButtonStyle}" Click="{x:Bind _dataContext.OnAddCategoryClick}">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Glyph="&#xE710;" />
+                    <TextBlock x:Uid="AddCategoryButton" Margin="10, 0" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
 
-        <ListView x:Name="CategoriesListView" Grid.Row="1" ItemsSource="{Binding Path=List}"
+        <ProgressRing Grid.Row="1" Grid.Column="1" IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center"
+                      Visibility="{x:Bind _dataContext.IsProgressShow, Mode=OneWay}" />
+
+        <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{x:Bind _dataContext.List}"
                   ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
-                  ItemTemplate="{StaticResource ResourceKey=ListViewItemCategory}"
-                  IsItemClickEnabled="True" SelectionMode="Single" ItemClick="OnCategoryItemClick"/>
-
-        <CommandBar Grid.Row="2">
-            <AppBarButton x:Uid="AddCategoryAppBarButton" Icon="Add" Click="OnAddedCategoryClick"/>
-        </CommandBar>
+                  IsItemClickEnabled="True" SelectionMode="Single" ItemClick="{x:Bind _dataContext.OnCategoryItemClick}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="vm:CategoryListViewItemViewModel">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.30*" />
+                            <ColumnDefinition Width="0.25*" />
+                            <ColumnDefinition Width="0.25*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <Ellipse Fill="{x:Bind Path=HexColor, Mode=OneWay}" Height="24" Width="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis" Margin="10 0 0 0"/>
+                        </StackPanel>
+                            
+                       
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind TypeTitle}"/>
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind ArchiveTitle}"/>
+                            
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
