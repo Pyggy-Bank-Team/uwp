@@ -14,16 +14,16 @@
 
         <StackPanel Grid.Row="0" Orientation="Vertical">
             <!--Title-->
-            <TextBox x:Uid="TitleTextBox" Text="{x:Bind _category.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            <TextBox x:Uid="TitleTextBox" Text="{x:Bind _categoryDialog.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      FontSize="18" Margin="15" SizeChanged="OnTitleSizeChanged"/>
             
             <!--Description-->
-            <ComboBox x:Name="Types" Header="Type" SelectedItem="{x:Bind _category.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" MaxHeight="200" Margin="15"
+            <ComboBox x:Name="Types" Header="Type" SelectedItem="{x:Bind _categoryDialog.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="18" MaxHeight="200" Margin="15"
                           Width="{Binding ElementName=TitleTextBox, Path=ActualWidth}"/>
 
             <Grid>
                 <TextBlock Text="Archived category" Margin="15" FontSize="18"/>
-                <ToggleSwitch OnContent="" OffContent="" FontSize="18" IsOn="{x:Bind _category.IsArchived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Width="60"/>
+                <ToggleSwitch OnContent="" OffContent="" FontSize="18" IsOn="{x:Bind _categoryDialog.IsArchived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" Width="60"/>
             </Grid>
 
             <Border x:Name="SelectedColor" Margin="15" HorizontalAlignment="Left"  BorderThickness="5"/>

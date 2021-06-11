@@ -16,7 +16,7 @@ namespace Peppa.Views.Categories
 
     public sealed partial class EditCategoryPage : Page
     {
-        private CategoryViewModel _category;
+        private CategoryDialogViewModel _categoryDialog;
 
         public EditCategoryPage()
         {
@@ -25,10 +25,10 @@ namespace Peppa.Views.Categories
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _category = e.Parameter as CategoryViewModel;
+            _categoryDialog = e.Parameter as CategoryDialogViewModel;
             Types.ItemsSource = new[] { CategoryType.Income, CategoryType.Expense };
 
-            if (!_category.IsNew)
+            if (!_categoryDialog.IsNew)
             {
                 UpdateColor();
             }
@@ -36,7 +36,7 @@ namespace Peppa.Views.Categories
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
         {
-            _category.Action = DialogResult.Delete;
+            _categoryDialog.Result = DialogResult.Delete;
             GoBack();
         }
 
@@ -51,20 +51,20 @@ namespace Peppa.Views.Categories
                 return;
             }
 
-            _category.Action = DialogResult.Save;
+            _categoryDialog.Result = DialogResult.Save;
             GoBack();
         }
 
         private void OnColorSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItemBrush = (e.AddedItems[0] as Ellipse).Fill as SolidColorBrush;
-            _category.HexColor = selectedItemBrush.Color.ToHexColor();
+            _categoryDialog.Color = selectedItemBrush.Color.ToHexColor();
             UpdateColor();
         }
 
         private void OnCloseClick(object sender, RoutedEventArgs e)
         {
-            _category.Action = DialogResult.Cancel;
+            _categoryDialog.Result = DialogResult.Cancel;
             GoBack();
         }
 
@@ -84,7 +84,7 @@ namespace Peppa.Views.Categories
             var colorPicker = new ColorPickerDialog();
             await colorPicker.ShowAsync();
 
-            _category.HexColor = colorPicker.SelectedColor;
+            _categoryDialog.Color = colorPicker.SelectedColor;
             UpdateColor();
         }
 
@@ -100,13 +100,13 @@ namespace Peppa.Views.Categories
 
             foreach (Ellipse item in ColorsGridView.Items)
             {
-                if (item.Tag.ToString().ToUpper() == _category.HexColor.ToUpper())
-                    SelectedColor.BorderBrush = new SolidColorBrush(_category.HexColor.ToColor());
+                if (item.Tag.ToString().ToUpper() == _categoryDialog.Color.ToUpper())
+                    SelectedColor.BorderBrush = new SolidColorBrush(_categoryDialog.Color.ToColor());
             }
 
             if (SelectedColor.BorderBrush == null)
             {
-                SelectedColor.BorderBrush = new SolidColorBrush(_category.HexColor.ToColor());
+                SelectedColor.BorderBrush = new SolidColorBrush(_categoryDialog.Color.ToColor());
             }
         }
     }
