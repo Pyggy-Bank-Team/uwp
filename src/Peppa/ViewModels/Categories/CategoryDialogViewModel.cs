@@ -95,6 +95,6 @@ namespace Peppa.ViewModels.Categories
             }
         }
 
-        private ICategoryModel Model { get; }
+        public ICategoryModel Model { get; }
     }
 }

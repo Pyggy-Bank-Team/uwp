@@ -1,7 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Peppa.Dialogs;
+using Peppa.Enums;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models.Categories;
 using Peppa.Interface.ViewModels;
@@ -35,14 +38,48 @@ namespace Peppa.ViewModels.Categories
             RaisePropertyChanged(nameof(IsProgressShow));
         }
 
-        public void OnAddCategoryClick(object sender, RoutedEventArgs e)
+        public async void OnAddCategoryClick(object sender, RoutedEventArgs e)
         {
-            
+            var newCategory = new CategoryDialogViewModel(_model.CreateNewCategory());
+            var categoryDialog = new CategoryDialog(newCategory)
+            {
+                PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
+                CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
+            };
+
+            await categoryDialog.ShowAsync();
+
+            if (categoryDialog.Result == DialogResult.Save)
+            {
+                await _model.SaveCategory(newCategory.Model, GetCancellationToken());
+                await UpdateCategories();
+            }
         }
 
-        public void OnCategoryItemClick(object sender, ItemClickEventArgs e)
+        public async void OnCategoryItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            if (!(e.ClickedItem is CategoryListViewItemViewModel selectedCategory))
+                return;
+
+            var editOperationDialog = new CategoryDialog(new CategoryDialogViewModel(selectedCategory.Model))
+            {
+                PrimaryButtonText = _localizationService.GetTranslateByKey(Localization.Save),
+                CloseButtonText = _localizationService.GetTranslateByKey(Localization.Cancel)
+            };
+
+            await editOperationDialog.ShowAsync();
+
+            switch (editOperationDialog.Result)
+            {
+                case DialogResult.Save:
+                    await _model.UpdateCategory(selectedCategory.Model, GetCancellationToken());
+                    await UpdateCategories();
+                    break;
+                case DialogResult.Delete:
+                    await _model.DeleteCategory(selectedCategory.Model, GetCancellationToken());
+                    await UpdateCategories();
+                    break;
+            }
         }
 
         private async Task UpdateCategories()

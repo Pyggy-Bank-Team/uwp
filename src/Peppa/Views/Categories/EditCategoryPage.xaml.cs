@@ -7,7 +7,6 @@ using System;
 using Peppa.Dialogs;
 using Peppa.Enums;
 using Peppa.Extensions;
-using Peppa.Services;
 using Peppa.Services.Windows;
 using Peppa.ViewModels.Categories;
 

@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Peppa.Enums;
+using Peppa.ViewModels.Categories;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,8 +21,11 @@ namespace Peppa.Dialogs
 {
     public sealed partial class CategoryDialog : ContentDialog
     {
-        public CategoryDialog()
+        private readonly CategoryDialogViewModel _viewModel;
+
+        public CategoryDialog(CategoryDialogViewModel viewModel)
         {
+            _viewModel = viewModel;
             InitializeComponent();
         }
 
@@ -31,5 +36,7 @@ namespace Peppa.Dialogs
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
         }
+
+        public DialogResult Result => _viewModel.Result;
     }
 }
