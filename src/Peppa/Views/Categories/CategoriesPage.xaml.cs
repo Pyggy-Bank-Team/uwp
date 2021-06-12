@@ -1,48 +1,24 @@
-﻿using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Peppa.ViewModels.Categories;
+using Microsoft.Extensions.DependencyInjection;
+using Peppa.Interface.ViewModels;
 
 namespace Peppa.Views.Categories
 {
     public sealed partial class CategoriesPage : Page
     {
-        private CategoriesViewModel _dataContext;
+        private ICategoriesViewModel _dataContext;
 
         public CategoriesPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            UpdateProgressRing.Visibility = Visibility.Visible;
-
-            _dataContext = (CategoriesViewModel)App.ServiceProvider.GetService(typeof(CategoriesViewModel));
-            DataContext = _dataContext;
-
-            var selectedItem = _dataContext.SelectedItem;
-            if (selectedItem != null)
-                await _dataContext.UpdateData();
-
+            _dataContext = App.ServiceProvider.GetService<ICategoriesViewModel>();
             await _dataContext.Initialization();
-            _dataContext.SelectedItem = null;
-
-            UpdateProgressRing.Visibility = Visibility.Collapsed;
-        }
-
-        private void OnAddedCategoryClick(object sender, RoutedEventArgs e)
-        {
-            var newCategory = new CategoryViewModel();
-            _dataContext.SelectedItem = newCategory;
-            Frame.Navigate(typeof(EditCategoryPage), newCategory);
-        }
-
-        private void OnCategoryItemClick(object sender, ItemClickEventArgs e)
-        {
-            _dataContext.SelectedItem = e.ClickedItem as CategoryViewModel;
-            Frame.Navigate(typeof(EditCategoryPage), e.ClickedItem);
         }
     }
 }

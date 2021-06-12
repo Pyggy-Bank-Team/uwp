@@ -8,10 +8,12 @@ using Peppa.Models;
 using Peppa.Interface;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models.Accounts;
+using Peppa.Interface.Models.Categories;
 using Peppa.Interface.Models.Operations;
 using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
 using Peppa.Models.Accounts;
+using Peppa.Models.Categories;
 using Peppa.Models.Operations;
 using Peppa.Repositories;
 using Peppa.Services.Internal;
@@ -47,7 +49,7 @@ namespace Peppa.Extensions
             //ViewModels
             services.AddScoped<ILoginViewModel, LoginViewModel>();
             services.AddScoped<IOperationsViewModel, OperationsViewModel>();
-            services.AddSingleton<CategoriesViewModel>();
+            services.AddScoped<ICategoriesViewModel, CategoriesViewModel>();
             services.AddSingleton<AccountsViewModel>();
             services.AddSingleton<UserViewModel>();
             services.AddSingleton<ReportViewModel>();

@@ -172,7 +172,7 @@
   <data name="ChangeBalanceTextBox.Header" xml:space="preserve">
     <value>Изменить баланс</value>
   </data>
-  <data name="ColorTextBlock.Text" xml:space="preserve">
+  <data name="ColorTitle.Text" xml:space="preserve">
     <value>Цвет</value>
   </data>
   <data name="CommentTextBox.Header" xml:space="preserve">
@@ -374,6 +374,9 @@
   <data name="OperationDialogTitle.Text" xml:space="preserve">
     <value>Редактирование операции</value>
   </data>
+    <data name="CategoryDialogTitle.Text" xml:space="preserve">
+      <value>Редактирование категории</value>
+    </data>
   <data name="ExpenseRadioButton.Content" xml:space="preserve">
     <value>Расход</value>
   </data>
@@ -398,6 +401,9 @@
   <data name="AddAccountButton.Text" xml:space="preserve">
     <value>Добавить</value>
   </data>
+   <data name="AddCategoryButton.Text" xml:space="preserve">
+     <value>Добавить</value>
+   </data>
   <data name="TotalBalanceRun.Text" xml:space="preserve">
     <value>Общий баланс: </value>
   </data>

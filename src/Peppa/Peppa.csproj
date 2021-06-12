@@ -119,6 +119,9 @@
     <Compile Include="Contracts\Requests\Accounts\BaseAccountRequest.cs" />
     <Compile Include="Contracts\Requests\Accounts\CreateAccountRequest.cs" />
     <Compile Include="Contracts\Requests\Accounts\UpdateAccountRequest.cs" />
+    <Compile Include="Contracts\Requests\Categories\BaseCategoryRequest.cs" />
+    <Compile Include="Contracts\Requests\Categories\CreateCategoryRequest.cs" />
+    <Compile Include="Contracts\Requests\Categories\UpdateCategoryRequest.cs" />
     <Compile Include="Contracts\Requests\CreateBudgetOperationRequest.cs" />
     <Compile Include="Contracts\Requests\CreateTransferOperationRequest.cs" />
     <Compile Include="Contracts\Requests\GetChartByCategoriesRequest.cs" />
@@ -151,6 +154,9 @@
     <Compile Include="Dialogs\AccountDialog.xaml.cs">
       <DependentUpon>AccountDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\CategoryDialog.xaml.cs">
+      <DependentUpon>CategoryDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\ColorPickerDialog.xaml.cs">
       <DependentUpon>ColorPickerDialog.xaml</DependentUpon>
     </Compile>
@@ -172,8 +178,6 @@
     <Compile Include="Enums\OperationViewType.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
-    <Compile Include="Fabrics\CategoryFactory.cs" />
-    <Compile Include="Fabrics\DonateFactory.cs" />
     <Compile Include="Helpers\CurrencyHelper.cs" />
     <Compile Include="Interface\IAuthorization.cs" />
     <Compile Include="Interface\InternalServices\ILocalizationService.cs" />
@@ -181,7 +185,8 @@
     <Compile Include="Interface\IPiggyRepository.cs" />
     <Compile Include="Interface\Models\Accounts\IAccountModel.cs" />
     <Compile Include="Interface\Models\Accounts\IAccountsModel.cs" />
-    <Compile Include="Interface\Models\ICategoriesModel.cs" />
+    <Compile Include="Interface\Models\Categories\ICategoriesModel.cs" />
+    <Compile Include="Interface\Models\Categories\ICategoryModel.cs" />
     <Compile Include="Interface\Models\ILoginModel.cs" />
     <Compile Include="Interface\Models\IReportModel.cs" />
     <Compile Include="Interface\Models\Operations\IOperationModel.cs" />
@@ -191,6 +196,7 @@
     <Compile Include="Interface\Services\IOperationService.cs" />
     <Compile Include="Interface\Services\IReportService.cs" />
     <Compile Include="Interface\Services\IUserService.cs" />
+    <Compile Include="Interface\ViewModels\ICategoriesViewModel.cs" />
     <Compile Include="Interface\ViewModels\ILoginViewModel.cs" />
     <Compile Include="Interface\ViewModels\IOperationsViewModel.cs" />
     <Compile Include="Interface\WindowsService\IToastService.cs" />
@@ -198,9 +204,9 @@
     <Compile Include="Models\Accounts\AccountModel.cs" />
     <Compile Include="Models\Accounts\AccountsModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\CategoriesModel.cs" />
     <Compile Include="Interface\IBaseModel.cs" />
-    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\Categories\CategoriesModel.cs" />
+    <Compile Include="Models\Categories\CategoryModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Operations\OperationModel.cs" />
     <Compile Include="Models\Operations\OperationsModel.cs" />
@@ -230,7 +236,7 @@
     <Compile Include="ViewModels\Accounts\AccountDialogViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoriesViewModel.cs" />
-    <Compile Include="ViewModels\Categories\CategoryItemViewModel.cs" />
+    <Compile Include="ViewModels\Categories\CategoryListViewItemViewModel.cs" />
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationDialogViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationListViewItemViewModel.cs" />
@@ -244,15 +250,12 @@
     <Compile Include="ViewModels\Interface\IInitialization.cs" />
     <Compile Include="ViewModels\Interface\IToastViewModel.cs" />
     <Compile Include="ViewModels\Interface\IUpdateable.cs" />
-    <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Categories\CategoryDialogViewModel.cs" />
     <Compile Include="Views\Accounts\AccountsPage.xaml.cs">
       <DependentUpon>AccountsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Categories\CategoriesPage.xaml.cs">
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Categories\EditCategoryPage.xaml.cs">
-      <DependentUpon>EditCategoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -361,6 +364,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\CategoryDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\ColorPickerDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -392,10 +399,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Categories\CategoriesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Categories\EditCategoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
