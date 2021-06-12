@@ -35,7 +35,7 @@
             <ToggleSwitch OnContent="" OffContent="" FontSize="18" IsOn="{x:Bind _viewModel.IsArchived, Mode=TwoWay}" Margin="240 0 0 0" Width="45"/>
         </StackPanel>
 
-        <GridView SelectionMode="Single" Margin="0 20 0 0" MaxWidth="360" ItemsSource="{x:Bind _viewModel.Colors}" SelectedItem="{x:Bind _viewModel.Color}">
+        <GridView SelectionMode="Single" Margin="0 20 0 0" MaxWidth="360" ItemsSource="{x:Bind _viewModel.Colors}" SelectedItem="{x:Bind _viewModel.Color, Mode=TwoWay}">
             <GridView.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock x:Uid="ColorTitle" FontSize="18"/>
@@ -43,7 +43,7 @@
             </GridView.HeaderTemplate>
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="SolidColorBrush">
-                    <Ellipse Height="24" Width="24" />
+                    <Ellipse Height="24" Width="24" Fill="{x:Bind}"/>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

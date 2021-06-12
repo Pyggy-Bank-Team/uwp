@@ -12,7 +12,7 @@ namespace Peppa.Extensions
 
         public static string ToHexColor(this SolidColorBrush color)
             //TODO Remove alpha from color
-            => color.ToString().Replace("#FF", "#");
+            => color.Color.ToString().Replace("#FF", "#");
 
         public static Color ToColor(this string hexString)
         {
