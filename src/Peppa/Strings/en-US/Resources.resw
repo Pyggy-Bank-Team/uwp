@@ -171,7 +171,7 @@
   <data name="ChangeBalanceTextBox.Header" xml:space="preserve">
     <value>Changed balance</value>
   </data>
-  <data name="ColorTextBlock.Text" xml:space="preserve">
+  <data name="ColorTitle.Text" xml:space="preserve">
     <value>Color</value>
   </data>
   <data name="CommentTextBox.Header" xml:space="preserve">
@@ -365,6 +365,9 @@
   </data>
   <data name="OperationDialogTitle.Text" xml:space="preserve">
     <value>Edit operation</value>
+  </data>
+  <data name="CategoryDialogTitle.Text" xml:space="preserve">
+    <value>Edit category</value>
   </data>
   <data name="ExpenseRadioButton.Content" xml:space="preserve">
     <value>Expense</value>

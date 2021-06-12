@@ -24,7 +24,7 @@ namespace Peppa.Models.Categories
         
         public async Task Save(CancellationToken token)
         {
-            if (_service.IsAuthorized)
+            if (!_service.IsAuthorized)
                 return;
 
             var request = new CreateCategoryRequest
@@ -40,7 +40,7 @@ namespace Peppa.Models.Categories
 
         public async Task Update(CancellationToken token)
         {
-            if (_service.IsAuthorized)
+            if (!_service.IsAuthorized)
                 return;
 
             var request = new UpdateCategoryRequest
@@ -57,7 +57,7 @@ namespace Peppa.Models.Categories
 
         public async Task Delete(CancellationToken token)
         {
-            if (_service.IsAuthorized)
+            if (!_service.IsAuthorized)
                 return;
 
             await _service.DeleteCategory(Id, token);

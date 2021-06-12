@@ -24,7 +24,7 @@
 
     <StackPanel Orientation="Vertical">
         <!--Name-->
-        <TextBox x:Uid="TitleTextBox" Text="{x:Bind _viewModel.Title, Mode=TwoWay}" Width="360" TextWrapping="Wrap" FontSize="18"/>
+        <TextBox x:Uid="TitleTextBox" Text="{x:Bind _viewModel.Title, Mode=TwoWay}" Width="360" MaxHeight="100" TextWrapping="Wrap" FontSize="18"/>
         
         <!--Types-->
         <StackPanel Orientation="Horizontal" Margin="0 20 0 0">

@@ -1,21 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using Peppa.Enums;
 using Peppa.ViewModels.Categories;
-
-// The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Peppa.Dialogs
 {
@@ -29,14 +15,19 @@ namespace Peppa.Dialogs
             InitializeComponent();
         }
 
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-        }
+        private void OnSaveButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+            => _viewModel.Result = DialogResult.Save;
 
-        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private void OnCancelButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+            => _viewModel.Result = DialogResult.Cancel;
+        
+        private void OnDeleteButtonClick(object sender, RoutedEventArgs e)
         {
+            _viewModel.Result = DialogResult.Delete;
+            Hide();
         }
 
         public DialogResult Result => _viewModel.Result;
     }
 }
+

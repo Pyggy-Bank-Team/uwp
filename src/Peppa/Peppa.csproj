@@ -257,9 +257,6 @@
     <Compile Include="Views\Categories\CategoriesPage.xaml.cs">
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Categories\EditCategoryPage.xaml.cs">
-      <DependentUpon>EditCategoryPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -402,10 +399,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Categories\CategoriesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Categories\EditCategoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
