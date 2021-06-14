@@ -3,14 +3,14 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Peppa.Utilities;
-using Peppa.ViewModels.Report;
+using Peppa.ViewModels.Reports;
 using Telerik.UI.Xaml.Controls.Chart;
 
 namespace Peppa.Views.Diagram
 {
     public sealed partial class DiagramPage : Page
     {
-        private ReportViewModel _report;
+        private ReportsViewModel _reports;
 
         public DiagramPage()
         {
@@ -19,16 +19,16 @@ namespace Peppa.Views.Diagram
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            _report = (ReportViewModel) App.ServiceProvider.GetService(typeof(ReportViewModel));
+            _reports = (ReportsViewModel) App.ServiceProvider.GetService(typeof(ReportsViewModel));
 
-            await  _report.Initialization();
-            UpdateChartByCategories(Diagram, LabelsListView, _report.ExpenseChart.Data);
-            UpdateChartByCategories(Income, IncomeLabels, _report.IncomeChart.Data);
+            await  _reports.Initialization();
+            UpdateChartByCategories(Diagram, LabelsListView, _reports.ExpenseChart.Data);
+            UpdateChartByCategories(Income, IncomeLabels, _reports.IncomeChart.Data);
         }
 
         private void UpdateChartByCategories(RadPieChart chart, ListView labels, List<DataDiagramViewModel> data)
         {
-            chart.Series[0].ItemsSource = _report.ExpenseChart.Data;
+            chart.Series[0].ItemsSource = _reports.ExpenseChart.Data;
 
             ChartPalette palette = new ChartPalette { Name = "CustomsDark" };
 
@@ -43,9 +43,9 @@ namespace Peppa.Views.Diagram
 
         private async void ApplyFilter(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            await _report.ApplyFilter(StartDatePicker.Date.Value.UtcDateTime, EndDatePicker.Date.Value.UtcDateTime);
-            UpdateChartByCategories(Diagram, LabelsListView, _report.ExpenseChart.Data);
-            UpdateChartByCategories(Income, IncomeLabels, _report.IncomeChart.Data);
+            await _reports.ApplyFilter(StartDatePicker.Date.Value.UtcDateTime, EndDatePicker.Date.Value.UtcDateTime);
+            UpdateChartByCategories(Diagram, LabelsListView, _reports.ExpenseChart.Data);
+            UpdateChartByCategories(Income, IncomeLabels, _reports.IncomeChart.Data);
         }
     }
 }

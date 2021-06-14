@@ -1,10 +1,10 @@
 ﻿namespace Peppa.Dto
 {
-    public class ChartByCategories
+    public class ItemReport
     {
         public int CategoryId { get; set; }
         public string CategoryTitle { get; set; }
         public string CategoryHexColor { get; set; }
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
     }
 }

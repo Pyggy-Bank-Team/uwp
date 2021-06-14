@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Peppa.ViewModels.Interface
+namespace Peppa.Interface.ViewModels
 {
     public interface IInitialization
     {

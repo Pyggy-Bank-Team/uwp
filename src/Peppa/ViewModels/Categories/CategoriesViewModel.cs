@@ -9,7 +9,6 @@ using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models.Categories;
 using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
-using Peppa.ViewModels.Interface;
 
 namespace Peppa.ViewModels.Categories
 {

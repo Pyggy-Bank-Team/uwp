@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Windows.Services.Store;
 using System;
+using Peppa.Interface.ViewModels;
 using Peppa.Utilities;
-using Peppa.ViewModels.Interface;
 
 namespace Peppa.ViewModels.Donate
 {

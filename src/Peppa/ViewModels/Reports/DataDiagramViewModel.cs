@@ -1,4 +1,4 @@
-﻿namespace Peppa.ViewModels.Report
+﻿namespace Peppa.ViewModels.Reports
 {
     public class DataDiagramViewModel
     {

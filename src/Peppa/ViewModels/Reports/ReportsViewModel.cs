@@ -3,15 +3,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Peppa.Enums;
 using Peppa.Interface.Models;
-using Peppa.ViewModels.Interface;
+using Peppa.Interface.ViewModels;
 
-namespace Peppa.ViewModels.Report
+namespace Peppa.ViewModels.Reports
 {
-    public class ReportViewModel : BaseViewModel, IInitialization
+    public class ReportsViewModel : BaseViewModel, IInitialization
     {
-        private readonly IReportModel _model;
+        private readonly IReportsModel _model;
 
-        public ReportViewModel(IReportModel model)
+        public ReportsViewModel(IReportsModel model)
         {
             _model = model;
             ExpenseChart = new ChartByCategoriesViewModel("Expense");

@@ -3,14 +3,14 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Peppa.Utilities;
-using Peppa.ViewModels.Report;
+using Peppa.ViewModels.Reports;
 
 
 namespace Peppa.Controls
 {
     public sealed partial class DiagramControl : UserControl
     {
-        private ReportViewModel _report;
+        private ReportsViewModel _reports;
 
         public DiagramControl()
         {
@@ -19,7 +19,7 @@ namespace Peppa.Controls
 
         private void OnDataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
-            _report = args.NewValue as ReportViewModel;
+            _reports = args.NewValue as ReportsViewModel;
 
             // Diagram.Series[0].ItemsSource = _report.Datas;
             //
