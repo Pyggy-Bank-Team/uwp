@@ -18,6 +18,8 @@ namespace Peppa.Models.Reports
         public ReportsModel(IReportService service)
         {
             _service = service;
+            From = DateTime.UtcNow.AddDays(-7);
+            To = DateTime.UtcNow;
         }
 
         public async Task<ReportResult> UpdateReports(CancellationToken token)

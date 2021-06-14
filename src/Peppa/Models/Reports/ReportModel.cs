@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Peppa.Dto;
+using Peppa.Interface.Models.Reports;
 
 namespace Peppa.Models.Reports
 {
-    public class ReportModel
+    public class ReportModel : IReportModel
     {
         public ReportModel(IEnumerable<ItemReport> report)
         {
@@ -12,7 +13,7 @@ namespace Peppa.Models.Reports
             TotalAmount = List.Sum(i => i.Amount);
         }
         
-        public double TotalAmount { get; set; }
-        public List<ItemReport> List { get; set; }
+        public double TotalAmount { get; }
+        public List<ItemReport> List { get; }
     }
 }

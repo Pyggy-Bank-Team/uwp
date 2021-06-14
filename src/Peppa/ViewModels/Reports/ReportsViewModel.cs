@@ -2,78 +2,70 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Peppa.Enums;
+using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
 using Peppa.Interface.ViewModels;
+using Peppa.Interface.WindowsService;
 
 namespace Peppa.ViewModels.Reports
 {
     public class ReportsViewModel : BaseViewModel, IInitialization
     {
         private readonly IReportsModel _model;
+        private readonly IToastService _toastService;
+        private readonly ILocalizationService _localizationService;
 
-        public ReportsViewModel(IReportsModel model)
+        public ReportsViewModel(IReportsModel model, IToastService toastService, ILocalizationService localizationService)
         {
             _model = model;
-            ExpenseChart = new ChartByCategoriesViewModel("Expense");
-            IncomeChart = new ChartByCategoriesViewModel("Income");
+            _toastService = toastService;
+            _localizationService = localizationService;
         }
 
         public async Task Initialization()
         {
-            var items = await _model.GetChartByCategories(CategoryType.Expense, DateTime.Now.AddYears(-1), DateTime.Now, GetCancellationToken());
-            if (items != null)
+            try
             {
-                ExpenseChart.Data = items.Select(d => new DataDiagramViewModel
-                {
-                    Value = d.Amount,
-                    Color = d.CategoryHexColor,
-                    Title = d.CategoryTitle
-                }).ToList();
+                await _model.UpdateReports(GetCancellationToken());
             }
-            
-            items = await _model.GetChartByCategories(CategoryType.Income, DateTime.Now.AddYears(-1), DateTime.Now, GetCancellationToken());
-            if (items != null)
+            catch
             {
-                IncomeChart.Data = items.Select(d => new DataDiagramViewModel
-                {
-                    Value = d.Amount,
-                    Color = d.CategoryHexColor,
-                    Title = d.CategoryTitle
-                }).ToList();
-            }
-        }
-
-        public void Finalization()
-        {
-
-        }
-
-        public async Task ApplyFilter(DateTime startDate, DateTime endDate)
-        {
-            var items = await _model.GetChartByCategories(CategoryType.Expense, startDate, endDate, GetCancellationToken());
-            if (items != null)
-            {
-                ExpenseChart.Data = items.Select(d => new DataDiagramViewModel
-                {
-                    Value = d.Amount,
-                    Color = d.CategoryHexColor,
-                    Title = d.CategoryTitle
-                }).ToList();
+                _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
             }
 
-            items = await _model.GetChartByCategories(CategoryType.Income, startDate, endDate, GetCancellationToken());
-            if (items != null)
-            {
-                IncomeChart.Data = items.Select(d => new DataDiagramViewModel
-                {
-                    Value = d.Amount,
-                    Color = d.CategoryHexColor,
-                    Title = d.CategoryTitle
-                }).ToList();
-            }
+            ExpenseReport = new ReportViewModel(_model.ExpenseReport, _localizationService.GetTranslateByKey(Localization.Expense));
+            IncomeReport = new ReportViewModel(_model.IncomeReport, _localizationService.GetTranslateByKey(Localization.Income));
         }
         
-        public ChartByCategoriesViewModel ExpenseChart { get; }
-        public ChartByCategoriesViewModel IncomeChart { get; }
+        
+        
+        public ReportViewModel ExpenseReport { get; private set; }
+        public ReportViewModel IncomeReport { get; private set; }
+
+        public DateTime From
+        {
+            get => _model.From;
+            set
+            {
+                if (_model.From == value)
+                    return;
+
+                _model.From = value;
+                RaisePropertyChanged(nameof(From));
+            }
+        }
+
+        public DateTime To
+        {
+            get => _model.To;
+            set
+            {
+                if (_model.To == value)
+                    return;
+
+                _model.To = value;
+                RaisePropertyChanged(nameof(To));
+            }
+        }
     }
 }

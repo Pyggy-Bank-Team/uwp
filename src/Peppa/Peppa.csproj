@@ -189,9 +189,10 @@
     <Compile Include="Interface\Models\Categories\ICategoriesModel.cs" />
     <Compile Include="Interface\Models\Categories\ICategoryModel.cs" />
     <Compile Include="Interface\Models\ILoginModel.cs" />
-    <Compile Include="Interface\Models\IReportsModel.cs" />
     <Compile Include="Interface\Models\Operations\IOperationModel.cs" />
     <Compile Include="Interface\Models\Operations\IOperationsModel.cs" />
+    <Compile Include="Interface\Models\Reports\IReportModel.cs" />
+    <Compile Include="Interface\Models\Reports\IReportsModel.cs" />
     <Compile Include="Interface\Services\IAccountService.cs" />
     <Compile Include="Interface\Services\ICategoryService.cs" />
     <Compile Include="Interface\Services\IOperationService.cs" />
@@ -244,6 +245,7 @@
     <Compile Include="ViewModels\Operations\OperationDialogViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationListViewItemViewModel.cs" />
     <Compile Include="ViewModels\Reports\ChartByCategoriesViewModel.cs" />
+    <Compile Include="ViewModels\Reports\ReportViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Reports\DataDiagramViewModel.cs" />
