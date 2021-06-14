@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Peppa.Enums;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
 using Peppa.Interface.ViewModels;
@@ -9,7 +7,7 @@ using Peppa.Interface.WindowsService;
 
 namespace Peppa.ViewModels.Reports
 {
-    public class ReportsViewModel : BaseViewModel, IInitialization
+    public class ReportsViewModel : BaseViewModel, IInitialization, IReportsViewModel
     {
         private readonly IReportsModel _model;
         private readonly IToastService _toastService;
@@ -36,9 +34,9 @@ namespace Peppa.ViewModels.Reports
             ExpenseReport = new ReportViewModel(_model.ExpenseReport, _localizationService.GetTranslateByKey(Localization.Expense));
             IncomeReport = new ReportViewModel(_model.IncomeReport, _localizationService.GetTranslateByKey(Localization.Income));
         }
-        
-        
-        
+
+
+
         public ReportViewModel ExpenseReport { get; private set; }
         public ReportViewModel IncomeReport { get; private set; }
 
@@ -67,5 +65,7 @@ namespace Peppa.ViewModels.Reports
                 RaisePropertyChanged(nameof(To));
             }
         }
+
+        public bool IsProgressShow { get; set; }
     }
 }
