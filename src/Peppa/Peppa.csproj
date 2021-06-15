@@ -245,10 +245,11 @@
     <Compile Include="ViewModels\Operations\OperationDialogViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationListViewItemViewModel.cs" />
     <Compile Include="ViewModels\Reports\ChartByCategoriesViewModel.cs" />
+    <Compile Include="Interface\ViewModels\IReportsViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
-    <Compile Include="ViewModels\Reports\DataDiagramViewModel.cs" />
+    <Compile Include="ViewModels\Reports\TelerikItemReportViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportsViewModel.cs" />
     <Compile Include="ViewModels\Donate\DonateItemViewModel.cs" />
     <Compile Include="ViewModels\Donate\DonateViewModel.cs" />
@@ -282,6 +283,9 @@
     <Compile Include="Utilities\FileUtility.cs" />
     <Compile Include="Utilities\SettingsUtility.cs" />
     <Compile Include="Utilities\SystemUtility.cs" />
+    <Compile Include="Views\Reports\ReportView.xaml.cs">
+      <DependentUpon>ReportView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingsPage\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -428,6 +432,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Reports\ReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SettingsPage\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -480,9 +488,7 @@
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Reports\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

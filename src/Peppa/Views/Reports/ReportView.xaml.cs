@@ -1,6 +1,7 @@
 ﻿using Peppa.ViewModels.Reports;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Peppa.Views.Reports
 {
@@ -12,10 +13,11 @@ namespace Peppa.Views.Reports
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
+            _viewModel = App.ServiceProvider.GetService<IReportsViewModel>();
+            await _viewModel.Initialization();
         }
     }
 }

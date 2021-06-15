@@ -53,7 +53,7 @@ namespace Peppa.Extensions
             services.AddScoped<ICategoriesViewModel, CategoriesViewModel>();
             services.AddSingleton<AccountsViewModel>();
             services.AddSingleton<UserViewModel>();
-            services.AddSingleton<ReportsViewModel>();
+            services.AddScoped<IReportsViewModel, ReportsViewModel>();
             services.AddHttpClient();
         }
     }

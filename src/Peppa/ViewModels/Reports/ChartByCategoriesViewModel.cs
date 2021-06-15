@@ -7,10 +7,10 @@ namespace Peppa.ViewModels.Reports
         public ChartByCategoriesViewModel(string title)
         {
             Title = title;
-            Data = new List<DataDiagramViewModel>();
+            Data = new List<TelerikItemReportViewModel>();
         }
         
         public string  Title { get; set; }
-        public List<DataDiagramViewModel> Data { get; set; }
+        public List<TelerikItemReportViewModel> Data { get; set; }
     }
 }

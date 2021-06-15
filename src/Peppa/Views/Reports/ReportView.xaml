@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:telerik="using:Telerik.UI.Xaml.Controls.Chart"
+    xmlns:dto="using:Peppa.Dto"
+    xmlns:vm="using:Peppa.ViewModels.Reports"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -23,7 +25,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <CalendarDatePicker Date="{x:Bind _viewModel.From, Mode=TwoWay}"/>
-            <TextBlock Text="—" Margin="10 0 10 0"/>
+            <TextBlock Text="—" Margin="10 25 10 0"/>
             <CalendarDatePicker Date="{x:Bind _viewModel.To, Mode=TwoWay}"/>
         </StackPanel>
 
@@ -37,30 +39,38 @@
             </Grid.ColumnDefinitions>
 
             <!--Expense report-->
-            <StackPanel Orientation="Vertical">
-                <telerik:RadPieChart x:Name="Diagram"  Height="500" Width="500">
-                    <telerik:PieSeries ShowLabels="True" RadiusFactor="0.5">
-                        <telerik:PieSeries.ValueBinding>
+            <StackPanel Grid.Column="0" Orientation="Vertical">
+                <telerik:RadPieChart Palette="{x:Bind _viewModel.ExpenseReport.Palette}" Height="500" Width="500">
+                    <telerik:DoughnutSeries ItemsSource="{x:Bind _viewModel.ExpenseReport.List}" RadiusFactor="0.5">
+                        <telerik:DoughnutSeries.ValueBinding>
                             <telerik:PropertyNameDataPointBinding PropertyName="Value"/>
-                        </telerik:PieSeries.ValueBinding>
-                        <telerik:PieSeries.LabelDefinitions>
+                        </telerik:DoughnutSeries.ValueBinding>
+                        <telerik:DoughnutSeries.LabelDefinitions>
                             <telerik:ChartSeriesLabelDefinition Margin="-15"/>
-                        </telerik:PieSeries.LabelDefinitions>
-                    </telerik:PieSeries>
+                        </telerik:DoughnutSeries.LabelDefinitions>
+                    </telerik:DoughnutSeries>
                 </telerik:RadPieChart>
 
-                <ListView x:Name="LabelsListView" Grid.Row="1" SelectionMode="None" IsItemClickEnabled="False">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <ItemsWrapGrid  Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
+
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock x:Uid="TotalTextBlock"/>
+                    <TextBlock HorizontalAlignment="Right">
+                        <Run Text="-"/>
+                        <Run Text="{x:Bind _viewModel.ExpenseReport.TotalAmount}"/>
+                    </TextBlock>
+                </StackPanel>
+
+                <ListView HorizontalAlignment="Center" SelectionMode="None" IsItemClickEnabled="False" ItemsSource="{x:Bind _viewModel.ExpenseReport.List}">
                     <ListView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="vm:TelerikItemReportViewModel">
                             <StackPanel Orientation="Horizontal">
-                                <Rectangle Height="15" Width="15" Fill="{Binding Path=Color}"/>
-                                <TextBlock Text="{Binding Path=Title}" Margin="5 0 0 0" Width="100" MaxHeight="40" TextTrimming="CharacterEllipsis"
+                                <Ellipse Height="24" Width="24" Fill="{x:Bind Color}"/>
+                                <TextBlock Text="{x:Bind Title}" Margin="5 0 0 0" Width="100" MaxHeight="40" TextTrimming="CharacterEllipsis"
                                    TextWrapping="Wrap"/>
+                                <TextBlock HorizontalAlignment="Right">
+                                    <Run Text="-"/>
+                                    <Run Text="{x:Bind Value}"/>
+                                </TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -69,7 +79,7 @@
 
             <!--Income report-->
             <StackPanel Orientation="Vertical">
-                
+
             </StackPanel>
 
         </Grid>

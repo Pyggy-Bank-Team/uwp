@@ -374,9 +374,9 @@
   <data name="OperationDialogTitle.Text" xml:space="preserve">
     <value>Редактирование операции</value>
   </data>
-    <data name="CategoryDialogTitle.Text" xml:space="preserve">
-      <value>Редактирование категории</value>
-    </data>
+  <data name="CategoryDialogTitle.Text" xml:space="preserve">
+    <value>Редактирование категории</value>
+  </data>
   <data name="ExpenseRadioButton.Content" xml:space="preserve">
     <value>Расход</value>
   </data>
@@ -401,9 +401,9 @@
   <data name="AddAccountButton.Text" xml:space="preserve">
     <value>Добавить</value>
   </data>
-   <data name="AddCategoryButton.Text" xml:space="preserve">
-     <value>Добавить</value>
-   </data>
+  <data name="AddCategoryButton.Text" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
   <data name="TotalBalanceRun.Text" xml:space="preserve">
     <value>Общий баланс: </value>
   </data>
@@ -436,5 +436,8 @@
   </data>
   <data name="BalanceBox.Header" xml:space="preserve">
     <value>Баланс</value>
+  </data>
+  <data name="TotalTextBlock.Text" xml:space="preserve">
+    <value>Общие</value>
   </data>
 </root>

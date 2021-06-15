@@ -1,8 +1,8 @@
 ﻿namespace Peppa.ViewModels.Reports
 {
-    public class DataDiagramViewModel
+    public class TelerikItemReportViewModel
     {
-        public decimal Value { get; set; }
+        public double Value { get; set; }
 
         public string Color { get; set; }
 

@@ -22,6 +22,9 @@ namespace Peppa.ViewModels.Reports
 
         public async Task Initialization()
         {
+            IsProgressShow = true;
+            RaisePropertyChanged(nameof(IsProgressShow));
+
             try
             {
                 await _model.UpdateReports(GetCancellationToken());
@@ -33,6 +36,12 @@ namespace Peppa.ViewModels.Reports
 
             ExpenseReport = new ReportViewModel(_model.ExpenseReport, _localizationService.GetTranslateByKey(Localization.Expense));
             IncomeReport = new ReportViewModel(_model.IncomeReport, _localizationService.GetTranslateByKey(Localization.Income));
+
+            RaisePropertyChanged(nameof(ExpenseReport));
+            RaisePropertyChanged(nameof(IncomeReport));
+
+            IsProgressShow = false;
+            RaisePropertyChanged(nameof(IsProgressShow));
         }
 
 
@@ -40,28 +49,28 @@ namespace Peppa.ViewModels.Reports
         public ReportViewModel ExpenseReport { get; private set; }
         public ReportViewModel IncomeReport { get; private set; }
 
-        public DateTime From
+        public DateTimeOffset? From
         {
             get => _model.From;
             set
             {
-                if (_model.From == value)
+                if (!value.HasValue || _model.From == value)
                     return;
 
-                _model.From = value;
+                _model.From = value.Value.UtcDateTime;
                 RaisePropertyChanged(nameof(From));
             }
         }
 
-        public DateTime To
+        public DateTimeOffset? To
         {
             get => _model.To;
             set
             {
-                if (_model.To == value)
+                if (!value.HasValue || _model.To == value)
                     return;
 
-                _model.To = value;
+                _model.To = value.Value.UtcDateTime;
                 RaisePropertyChanged(nameof(To));
             }
         }

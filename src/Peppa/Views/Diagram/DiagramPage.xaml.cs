@@ -22,13 +22,13 @@ namespace Peppa.Views.Diagram
             _reports = (ReportsViewModel) App.ServiceProvider.GetService(typeof(ReportsViewModel));
 
             await  _reports.Initialization();
-            UpdateChartByCategories(Diagram, LabelsListView, _reports.ExpenseChart.Data);
-            UpdateChartByCategories(Income, IncomeLabels, _reports.IncomeChart.Data);
+            //UpdateChartByCategories(Diagram, LabelsListView, _reports.ExpenseChart.Data);
+            //UpdateChartByCategories(Income, IncomeLabels, _reports.IncomeChart.Data);
         }
 
-        private void UpdateChartByCategories(RadPieChart chart, ListView labels, List<DataDiagramViewModel> data)
+        private void UpdateChartByCategories(RadPieChart chart, ListView labels, List<TelerikItemReportViewModel> data)
         {
-            chart.Series[0].ItemsSource = _reports.ExpenseChart.Data;
+            //chart.Series[0].ItemsSource = _reports.ExpenseChart.Data;
 
             ChartPalette palette = new ChartPalette { Name = "CustomsDark" };
 
@@ -43,9 +43,9 @@ namespace Peppa.Views.Diagram
 
         private async void ApplyFilter(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            await _reports.ApplyFilter(StartDatePicker.Date.Value.UtcDateTime, EndDatePicker.Date.Value.UtcDateTime);
-            UpdateChartByCategories(Diagram, LabelsListView, _reports.ExpenseChart.Data);
-            UpdateChartByCategories(Income, IncomeLabels, _reports.IncomeChart.Data);
+            //await _reports.ApplyFilter(StartDatePicker.Date.Value.UtcDateTime, EndDatePicker.Date.Value.UtcDateTime);
+            //UpdateChartByCategories(Diagram, LabelsListView, _reports.ExpenseChart.Data);
+            //UpdateChartByCategories(Income, IncomeLabels, _reports.IncomeChart.Data);
         }
     }
 }

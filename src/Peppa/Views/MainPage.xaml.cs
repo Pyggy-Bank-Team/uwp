@@ -8,6 +8,7 @@ using Peppa.Views.Users;
 using Peppa.Views.Categories;
 using Peppa.Views.Diagram;
 using Peppa.Views.Operations;
+using Peppa.Views.Reports;
 
 namespace Peppa.Views
 {
@@ -57,7 +58,7 @@ namespace Peppa.Views
                     ContentFrame.Navigate(typeof(CategoriesPage));
                     break;
                 case Constants.diagrams:
-                    ContentFrame.Navigate(typeof(DiagramPage));
+                    ContentFrame.Navigate(typeof(ReportView));
                     break;
                 case Constants.synchronization:
                     ContentFrame.Navigate(typeof(SyncPage));

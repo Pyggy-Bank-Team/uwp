@@ -1,14 +1,16 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace Peppa.ViewModels.Reports
 {
-    public interface IReportsViewModel
+    public interface IReportsViewModel : INotifyPropertyChanged
     {
         ReportViewModel ExpenseReport { get; }
-        DateTime From { get; set; }
+        DateTimeOffset? From { get; set; }
         ReportViewModel IncomeReport { get; }
-        DateTime To { get; set; }
+        DateTimeOffset? To { get; set; }
+        bool IsProgressShow { get; set; }
 
         Task Initialization();
     }
