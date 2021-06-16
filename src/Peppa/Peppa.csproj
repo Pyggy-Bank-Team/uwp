@@ -244,7 +244,6 @@
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationDialogViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationListViewItemViewModel.cs" />
-    <Compile Include="ViewModels\Reports\ChartByCategoriesViewModel.cs" />
     <Compile Include="Interface\ViewModels\IReportsViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
@@ -268,9 +267,6 @@
     </Compile>
     <Compile Include="Views\Default\DefaultPage.xaml.cs">
       <DependentUpon>DefaultPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Diagram\DiagramPage.xaml.cs">
-      <DependentUpon>DiagramPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Donate\DonatePage.xaml.cs">
       <DependentUpon>DonatePage.xaml</DependentUpon>
@@ -417,10 +413,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Default\DefaultPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Diagram\DiagramPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

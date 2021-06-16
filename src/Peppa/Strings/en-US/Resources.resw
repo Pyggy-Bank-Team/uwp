@@ -438,4 +438,7 @@
   <data name="IncomeTitle.Text" xml:space="preserve">
     <value>Incomes</value>
   </data>
+  <data name="ReportHeader.Content" xml:space="preserve">
+    <value>Reports</value>
+  </data>
 </root>

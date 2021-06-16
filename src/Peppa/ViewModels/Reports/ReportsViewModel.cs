@@ -59,6 +59,7 @@ namespace Peppa.ViewModels.Reports
 
                 _model.From = value.Value.UtcDateTime;
                 RaisePropertyChanged(nameof(From));
+                Initialization();
             }
         }
 
@@ -72,6 +73,7 @@ namespace Peppa.ViewModels.Reports
 
                 _model.To = value.Value.UtcDateTime;
                 RaisePropertyChanged(nameof(To));
+                Initialization();
             }
         }
 

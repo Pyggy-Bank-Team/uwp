@@ -6,7 +6,6 @@ using Windows.UI.Xaml.Navigation;
 using Peppa.Views.Accounts;
 using Peppa.Views.Users;
 using Peppa.Views.Categories;
-using Peppa.Views.Diagram;
 using Peppa.Views.Operations;
 using Peppa.Views.Reports;
 

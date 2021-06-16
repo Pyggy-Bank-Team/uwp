@@ -18,7 +18,7 @@ namespace Peppa.Models.Reports
         public ReportsModel(IReportService service)
         {
             _service = service;
-            From = DateTime.UtcNow.AddMonths(-12);
+            From = DateTime.UtcNow.AddDays(-7);
             To = DateTime.UtcNow;
         }
 

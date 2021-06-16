@@ -446,4 +446,7 @@
   <data name="IncomeTitle.Text" xml:space="preserve">
     <value>Доходы</value>
   </data>
+  <data name="ReportHeader.Content" xml:space="preserve">
+    <value>Отчёты</value>
+  </data>
 </root>
