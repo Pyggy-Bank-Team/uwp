@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Peppa.Helpers;
 using Peppa.Interface.Models.Reports;
 using Peppa.Utilities;
 using Telerik.UI.Xaml.Controls.Chart;
@@ -19,17 +20,20 @@ namespace Peppa.ViewModels.Reports
             {
                 Color = item.CategoryHexColor,
                 Title = item.CategoryTitle,
-                Value = item.Amount
+                Value = item.Amount,
+                Currency = CurrencyHelper.GetSymbol(item.Currency)
             }).ToList();
 
             Palette = new ChartPalette { Name = "CustomsDark" };
+
+            TotalAmountTitle = $"{_model.TotalAmount} {List.FirstOrDefault()?.Currency}";
 
             foreach (var color in _model.List)
                 Palette.FillEntries.Brushes.Add(new SolidColorBrush(ColorUtility.GetColorFromHexString(color.CategoryHexColor)));
         }
 
         public string Title { get; }
-        public double TotalAmount => _model.TotalAmount;
+        public string TotalAmountTitle { get;  }
         public List<TelerikItemReportViewModel> List { get; }
         public ChartPalette Palette { get;  }
     }

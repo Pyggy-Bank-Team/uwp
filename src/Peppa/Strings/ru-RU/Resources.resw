@@ -440,4 +440,10 @@
   <data name="TotalTextBlock.Text" xml:space="preserve">
     <value>Общие</value>
   </data>
+  <data name="ExpenseTitle.Text" xml:space="preserve">
+    <value>Расходы</value>
+  </data>
+  <data name="IncomeTitle.Text" xml:space="preserve">
+    <value>Доходы</value>
+  </data>
 </root>
