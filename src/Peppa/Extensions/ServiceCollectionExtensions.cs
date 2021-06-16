@@ -15,13 +15,14 @@ using Peppa.Interface.WindowsService;
 using Peppa.Models.Accounts;
 using Peppa.Models.Categories;
 using Peppa.Models.Operations;
+using Peppa.Models.Reports;
 using Peppa.Repositories;
 using Peppa.Services.Internal;
 using Peppa.Services.Windows;
 using Peppa.ViewModels.Categories;
 using Peppa.ViewModels.Login;
 using Peppa.ViewModels.Operations;
-using Peppa.ViewModels.Report;
+using Peppa.ViewModels.Reports;
 
 namespace Peppa.Extensions
 {
@@ -33,7 +34,7 @@ namespace Peppa.Extensions
             services.AddScoped<IAccountsModel, AccountsModel>();
             services.AddScoped<ICategoriesModel, CategoriesModel>();
             services.AddScoped<IOperationsModel, OperationsModel>();
-            services.AddScoped<IReportModel, ReportModel>();
+            services.AddScoped<IReportsModel, ReportsModel>();
             services.AddScoped<ILoginModel, LoginModel>();
             //Services
             services.AddScoped<IAccountService, AccountService>();
@@ -52,7 +53,7 @@ namespace Peppa.Extensions
             services.AddScoped<ICategoriesViewModel, CategoriesViewModel>();
             services.AddSingleton<AccountsViewModel>();
             services.AddSingleton<UserViewModel>();
-            services.AddSingleton<ReportViewModel>();
+            services.AddScoped<IReportsViewModel, ReportsViewModel>();
             services.AddHttpClient();
         }
     }

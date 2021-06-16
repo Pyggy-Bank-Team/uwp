@@ -44,7 +44,7 @@
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
 
-            <NavigationViewItem x:Uid="DiagramHeader" Tag="diagrams">
+            <NavigationViewItem x:Uid="ReportHeader" Tag="diagrams">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xEB05;"/>
                 </NavigationViewItem.Icon>

@@ -394,7 +394,7 @@
     <value>Add</value>
   </data>
   <data name="AddCategoryButton.Text" xml:space="preserve">
-     <value>Add</value>
+    <value>Add</value>
   </data>
   <data name="TotalBalanceRun.Text" xml:space="preserve">
     <value>Total balance: </value>
@@ -428,5 +428,17 @@
   </data>
   <data name="BalanceBox.Header" xml:space="preserve">
     <value>Balance</value>
+  </data>
+  <data name="TotalTextBlock.Text" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="ExpenseTitle.Text" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="IncomeTitle.Text" xml:space="preserve">
+    <value>Incomes</value>
+  </data>
+  <data name="ReportHeader.Content" xml:space="preserve">
+    <value>Reports</value>
   </data>
 </root>

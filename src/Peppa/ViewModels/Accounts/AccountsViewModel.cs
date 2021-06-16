@@ -6,8 +6,8 @@ using Windows.UI.Xaml.Controls;
 using Peppa.Dialogs;
 using Peppa.Enums;
 using Peppa.Interface.InternalServices;
-using Peppa.ViewModels.Interface;
 using Peppa.Interface.Models.Accounts;
+using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
 
 namespace Peppa.ViewModels.Accounts

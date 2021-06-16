@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Toolkit.Uwp.Notifications;
-using Peppa.ViewModels.Report;
+using Peppa.ViewModels.Reports;
 
 namespace Peppa.Services.Windows
 {
     public static class TileService
     {
-        public static TileContent GenerateTileContent(List<DataDiagramViewModel> datas)
+        public static TileContent GenerateTileContent(List<TelerikItemReportViewModel> datas)
         {
             return new TileContent()
             {
@@ -21,7 +21,7 @@ namespace Peppa.Services.Windows
             };
         }
 
-        private static TileBinding GenerateTileBinding(List<DataDiagramViewModel> datas)
+        private static TileBinding GenerateTileBinding(List<TelerikItemReportViewModel> datas)
         {
             TileBinding binding = new TileBinding { DisplayName = "PiggyBank" };
             TileBindingContentAdaptive content = new TileBindingContentAdaptive();

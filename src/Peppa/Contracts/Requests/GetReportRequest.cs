@@ -3,7 +3,7 @@ using Peppa.Enums;
 
 namespace Peppa.Contracts.Requests
 {
-    public class GetChartByCategoriesRequest
+    public class GetReportRequest
     {
         public CategoryType Type { get; set; }
         public DateTime From { get; set; }
