@@ -129,6 +129,7 @@
     <Compile Include="Contracts\Requests\GetTokenRequest.cs" />
     <Compile Include="Contracts\Requests\UpdateBudgetOperationRequest.cs" />
     <Compile Include="Contracts\Requests\UpdateTransferOperationRequest.cs" />
+    <Compile Include="Contracts\Requests\UpdateUserInfoRequest.cs" />
     <Compile Include="Contracts\Responses\AccountResponse.cs" />
     <Compile Include="Contracts\Responses\BudgetOperationResponse.cs" />
     <Compile Include="Contracts\Responses\CategoryResponse.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Contracts\Responses\IdentityErrorResponse.cs" />
     <Compile Include="Models\Reports\ReportModel.cs" />
     <Compile Include="Models\Reports\ReportsModel.cs" />
+    <Compile Include="Models\SettingModel.cs" />
     <Compile Include="Repositories\PiggyRepository.cs" />
     <Compile Include="Services\Internal\LocalizationService.cs" />
     <Compile Include="Services\Internal\SettingsService.cs" />

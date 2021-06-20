@@ -24,5 +24,6 @@ namespace Peppa.Interface
         Task AddOrUpdateOperation(Operation operation, CancellationToken token);
         Task<User> GetUser(CancellationToken token);
         Task CreateUser(User newUser, CancellationToken token);
+        Task UpdateUser(User updatedUser, CancellationToken token);
     }
 }

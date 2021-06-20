@@ -14,6 +14,7 @@
         public const string RefreshToken = "RefreshToken";
         public const string UserName = "UserName";
         public const string BaseCurrency = "BaseCurrency";
+        public const string RequestedTheme = "RequestedTheme";
 
         public static readonly string[] Locales = { "en", "ru" };
         public const string defaultLocale = "en";
