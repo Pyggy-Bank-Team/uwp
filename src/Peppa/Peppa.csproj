@@ -194,6 +194,7 @@
     <Compile Include="Interface\Models\Operations\IOperationsModel.cs" />
     <Compile Include="Interface\Models\Reports\IReportModel.cs" />
     <Compile Include="Interface\Models\Reports\IReportsModel.cs" />
+    <Compile Include="Interface\Models\Settings\ISettingsModel.cs" />
     <Compile Include="Interface\Services\IAccountService.cs" />
     <Compile Include="Interface\Services\ICategoryService.cs" />
     <Compile Include="Interface\Services\IOperationService.cs" />
@@ -221,7 +222,7 @@
     <Compile Include="Contracts\Responses\IdentityErrorResponse.cs" />
     <Compile Include="Models\Reports\ReportModel.cs" />
     <Compile Include="Models\Reports\ReportsModel.cs" />
-    <Compile Include="Models\SettingModel.cs" />
+    <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="Repositories\PiggyRepository.cs" />
     <Compile Include="Services\Internal\LocalizationService.cs" />
     <Compile Include="Services\Internal\SettingsService.cs" />
@@ -248,6 +249,7 @@
     <Compile Include="ViewModels\Operations\OperationListViewItemViewModel.cs" />
     <Compile Include="Interface\ViewModels\IReportsViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportViewModel.cs" />
+    <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Reports\TelerikItemReportViewModel.cs" />
@@ -482,7 +484,6 @@
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

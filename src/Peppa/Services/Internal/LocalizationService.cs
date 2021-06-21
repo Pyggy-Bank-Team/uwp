@@ -1,10 +1,18 @@
-﻿using Windows.ApplicationModel.Resources;
+﻿using System.Collections.Generic;
+using Windows.ApplicationModel.Resources;
 using Peppa.Interface.InternalServices;
 
 namespace Peppa.Services.Internal
 {
     public class LocalizationService : ILocalizationService
     {
+        public LocalizationService()
+            => Languages = new Dictionary<string, string>
+            {
+                {"en-US", "English"},
+                {"ru-RU", "Русский"}
+            };
+        
         public string GetTranslateByKey(string key)
         {
             try
@@ -21,5 +29,7 @@ namespace Peppa.Services.Internal
                 return key;
             }
         }
+        
+        public Dictionary<string, string> Languages { get; private set; }
     }
 }

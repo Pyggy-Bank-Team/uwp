@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Globalization;
 using Windows.UI.Xaml;
@@ -6,19 +7,21 @@ using Peppa.Context.Entities;
 using Peppa.Contracts.Requests;
 using Peppa.Interface;
 using Peppa.Interface.InternalServices;
+using Peppa.Interface.Models.Settings;
 using Peppa.Interface.Services;
 
 namespace Peppa.Models
 {
-    public class SettingModel
+    public class SettingsModel : ISettingsModel
     {
         private readonly IPiggyRepository _repository;
         private readonly IUserService _service;
         private readonly ISettingsService _settingsService;
 
         private bool _isDarkMode;
+        private string _language;
 
-        public SettingModel(IPiggyRepository repository, IUserService service, ISettingsService settingsService)
+        public SettingsModel(IPiggyRepository repository, IUserService service, ISettingsService settingsService)
         {
             _repository = repository;
             _service = service;
@@ -28,7 +31,7 @@ namespace Peppa.Models
             if (_settingsService.TryGetValue(Constants.RequestedTheme, out var theme))
                 _isDarkMode = theme != ApplicationTheme.Light.ToString();
 
-            Language = ApplicationLanguages.PrimaryLanguageOverride;
+            _language = ApplicationLanguages.PrimaryLanguageOverride;
         }
 
         public async Task UpdateUser(CancellationToken token)
@@ -103,10 +106,21 @@ namespace Peppa.Models
                     : ApplicationTheme.Light.ToString());
             }
         }
-        
-        public string Language { get; set; }
+
+        public string Language
+        {
+            get => _language;
+            set
+            {
+                var languages = new[] {"en-US", "ru-RU"};
+                if (!languages.Contains(value) || _language == value)
+                    return;
+
+                _language = value;
+            }
+        }
         public string Email { get; set; }
         public string Currency { get; set; }
-        public string Login { get; set; }
+        public string Login { get; private set; }
     }
 }

@@ -10,6 +10,7 @@ using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models.Accounts;
 using Peppa.Interface.Models.Categories;
 using Peppa.Interface.Models.Operations;
+using Peppa.Interface.Models.Settings;
 using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
 using Peppa.Models.Accounts;
@@ -36,6 +37,7 @@ namespace Peppa.Extensions
             services.AddScoped<IOperationsModel, OperationsModel>();
             services.AddScoped<IReportsModel, ReportsModel>();
             services.AddScoped<ILoginModel, LoginModel>();
+            services.AddScoped<ISettingsModel, SettingsModel>();
             //Services
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IUserService, PiggyService>();
