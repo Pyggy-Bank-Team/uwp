@@ -50,7 +50,6 @@ namespace Peppa.ViewModels.Settings
             Email = _model.Email;
             Currency = _model.Currency;
             UserName = _model.Login;
-            IsDarkModeEnabled = _model.DarkModeIsEnabled;
             
             RaisePropertyChanged(nameof(Email));
             RaisePropertyChanged(nameof(Currency));
@@ -90,7 +89,20 @@ namespace Peppa.ViewModels.Settings
         
         public bool IsProgressShow { get; set; }
 
-        public bool IsDarkModeEnabled { get; set; }
+        public bool IsDarkModeEnabled
+        {
+            get => _model.DarkModeIsEnabled;
+            set
+            {
+                if (_model.DarkModeIsEnabled == value)
+                    return;
+
+                _model.DarkModeIsEnabled = value;
+
+                IsChangedSettings = true;
+                RaisePropertyChanged(nameof(IsChangedSettings));
+            }
+        }
 
         public string Version { get; set; }
 
