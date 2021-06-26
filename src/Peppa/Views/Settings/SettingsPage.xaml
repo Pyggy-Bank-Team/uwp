@@ -27,14 +27,14 @@
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.2*"/>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="0.1*"/>
-                <RowDefinition Height="0.1*"/>
-                <RowDefinition Height="0.1*"/>
-                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.2*"/>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition/>
