@@ -15,5 +15,7 @@ namespace Peppa.Interface.Services
         Task<CurrencyResponse[]> GetAvailableCurrencies(CancellationToken token);
 
         Task<UserInfoResponse> GetUserInfo(CancellationToken token);
+
+        Task<bool> UpdateUserInfo(UpdateUserInfoRequest request, CancellationToken token);
     }
 }

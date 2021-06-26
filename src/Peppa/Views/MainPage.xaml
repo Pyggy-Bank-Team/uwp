@@ -26,7 +26,7 @@
 
         <NavigationView.MenuItems>
 
-            <NavigationViewItem Content="Operations" Tag="operations">
+            <NavigationViewItem x:Uid="OperationHeader" Tag="operations">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xEADF;"/>
                 </NavigationViewItem.Icon>
@@ -49,27 +49,7 @@
                     <FontIcon Glyph="&#xEB05;"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-
-            <!--<NavigationViewItem x:Uid="SynchronizationHeader" Tag="synchronization">
-                <NavigationViewItem.Icon>
-                    <FontIcon Glyph="&#xE13D;"/>
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-
-            <NavigationViewItem Content="Donate" Tag="donate">
-                <NavigationViewItem.Icon>
-                    <FontIcon Glyph="&#xE170;"/>
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>-->
         </NavigationView.MenuItems>
-
-        <NavigationView.PaneFooter>
-            <NavigationViewItem Content="Feedback" Tapped="OnFeedbackTapped">
-                <NavigationViewItem.Icon>
-                    <FontIcon Glyph="&#xE939;"/>
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-        </NavigationView.PaneFooter>
 
         <Frame x:Name="ContentFrame">
             <Frame.ContentTransitions>

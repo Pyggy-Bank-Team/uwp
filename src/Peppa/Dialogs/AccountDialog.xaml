@@ -6,7 +6,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Width="200"
     PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
     PrimaryButtonClick="OnSaveButtonClick"
     SecondaryButtonClick="OnCancelButtonClick">
@@ -14,7 +13,7 @@
     <ContentDialog.TitleTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal">
-                <TextBlock x:Uid="OperationDialogTitle" />
+                <TextBlock x:Uid="AccountDialogTitle" />
                 <Button Margin="200 0 0 0" BorderThickness="0" Background="Transparent" Foreground="#ef5865" CornerRadius="2" Click="OnDeleteButtonClick">
                     <SymbolIcon Symbol="Delete" />
                 </Button>
@@ -24,21 +23,21 @@
 
     <StackPanel Orientation="Vertical">
         <!--Name-->
-        <TextBox x:Uid="TitleTextBox" Text="{x:Bind _viewModel.Title, Mode=TwoWay}" Width="360" MaxHeight="100" TextWrapping="Wrap" FontSize="18"/>
+        <TextBox x:Uid="TitleTextBox" Text="{x:Bind _viewModel.Title, Mode=TwoWay}" MaxWidth="360" MaxHeight="100" TextWrapping="Wrap" FontSize="18"/>
         
         <!--Types-->
-        <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+        <StackPanel Orientation="Horizontal" Margin="0 20 0 0" MaxWidth="360">
             <RadioButton x:Uid="CardRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsCard, Mode=TwoWay}"/>
             <RadioButton x:Uid="CashRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsCash, Mode=TwoWay}"/>
         </StackPanel>
         
         <ComboBox x:Uid="CurrenciesComboBox" ItemsSource="{x:Bind _viewModel.Currencies}"  SelectedItem="{x:Bind _viewModel.Currency}" FontSize="18"
-                  Margin="0 20 0 0" IsEnabled="False" HorizontalAlignment="Stretch"/>
+                  Margin="0 20 0 0" IsEnabled="False" HorizontalAlignment="Stretch" MaxWidth="360"/>
 
         <winui:NumberBox x:Uid="BalanceBox" Header="Currency balance" Value="{x:Bind _viewModel.Balance, Mode=TwoWay}" ValidationMode="InvalidInputOverwritten" FontSize="18"
-                         Margin="0 20 0 0" Width="360"/>
+                         Margin="0 20 0 0" MaxWidth="360"/>
 
-        <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+        <StackPanel Orientation="Horizontal" Margin="0 20 0 0" MaxWidth="360">
             <TextBlock x:Uid="ArchiveTextBlock" FontSize="18" />
             <ToggleSwitch OnContent="" OffContent="" FontSize="18" IsOn="{x:Bind _viewModel.IsArchived, Mode=TwoWay}" Margin="240 0 0 0" Width="45"/>
         </StackPanel>

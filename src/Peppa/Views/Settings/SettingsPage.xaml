@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="Peppa.Views.Settings.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.3*" />
+        </Grid.ColumnDefinitions>
+        
+        <ProgressRing Grid.Row="1" Grid.Column="1" IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center"
+                      Visibility="{x:Bind _viewModel.IsProgressShow, Mode=OneWay}" />
+        
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <!-- Profile -->
+            <TextBlock Grid.Column="0" Grid.Row="0" x:Uid="ProfileTitle" FontSize="25"/>
+            <HyperlinkButton Grid.Column="1" Grid.Row="0" x:Uid="logoutButton" Click="{x:Bind _viewModel.OnLogoutClick}"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" x:Uid="LoginTextBlock"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind _viewModel.UserName, Mode=OneWay}"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" x:Uid="EmailTextBlock"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{x:Bind _viewModel.Email, Mode=OneWay}"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" x:Uid="CurrencyTextBlock"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{x:Bind _viewModel.Currency, Mode=OneWay}"/>
+
+            <!--Settings-->
+            <TextBlock Grid.Column="0" Grid.Row="4" x:Uid="SettingsTitle" FontSize="25"/>
+            <TextBlock Grid.Column="1" Grid.Row="4" x:Uid="ThemeChangedTextBlock" Visibility="{x:Bind _viewModel.IsChangedSettings, Mode=OneWay}" TextWrapping="Wrap" FontSize="10"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" x:Uid="DarkModeTitle"/>
+            <ToggleSwitch Grid.Column="1" Grid.Row="5" OnContent="" OffContent="" IsOn="{x:Bind _viewModel.IsDarkModeEnabled, Mode=TwoWay}"/>
+            <TextBlock Grid.Column="0" Grid.Row="6" x:Uid="LanguageTitle"/>
+            <ComboBox Grid.Column="1" Grid.Row="6" ItemsSource="{x:Bind _viewModel.Languages, Mode=OneWay}" SelectedItem="{x:Bind _viewModel.Language, Mode=TwoWay}"/>
+
+            <!-- About -->
+            <TextBlock Grid.Column="0" Grid.Row="7" x:Uid="AboutTextBlock" FontSize="25"/>
+            <TextBlock Grid.Column="0" Grid.Row="8" x:Uid="VersionTitle"/>
+            <TextBlock Grid.Column="1" Grid.Row="8" Text="{x:Bind _viewModel.Version, Mode=OneWay}"/>
+            <TextBlock Grid.Column="0" Grid.Row="9" x:Uid="RepositoryTitle"/>
+            <HyperlinkButton Grid.Column="1" Grid.Row="9" x:Uid="GitHubTitle" NavigateUri="https://github.com/Pyggy-Bank-Team"/>
+
+        </Grid>
+        
+    </Grid>
+</Page>

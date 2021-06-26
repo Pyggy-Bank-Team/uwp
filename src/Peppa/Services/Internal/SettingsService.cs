@@ -37,7 +37,7 @@ namespace Peppa.Services.Internal
                     value = (string)_settings.Values[key];
             }
 
-            return value == null;
+            return value != null;
         }
 
         public void RemoveValue(string key)

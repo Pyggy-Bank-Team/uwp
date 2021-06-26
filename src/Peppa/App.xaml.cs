@@ -16,6 +16,7 @@ using Peppa.Workers;
 using Peppa.Extensions;
 using UnhandledExceptionEventArgs = Windows.UI.Xaml.UnhandledExceptionEventArgs;
 using Peppa.Views.Login;
+using Peppa.Helpers;
 
 namespace Peppa
 {
@@ -34,7 +35,7 @@ namespace Peppa
             Suspending += OnSuspending;
             UnhandledException += OnUnhandledException;
 
-            Current.RequestedTheme = SettingsWorker.Current.GetRequestedTheme();
+            Current.RequestedTheme = ThemeHelper.GetRequestedTheme();
             var serviceCollection = new ServiceCollection();
             serviceCollection.DependencyInjectionSetup();
 

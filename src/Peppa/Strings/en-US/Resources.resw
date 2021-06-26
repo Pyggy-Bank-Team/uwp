@@ -441,4 +441,40 @@
   <data name="ReportHeader.Content" xml:space="preserve">
     <value>Reports</value>
   </data>
+  <data name="CurrencyTextBlock.Text" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="EmailTextBlock.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="LoginTextBlock.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="ProfileTitle.Text" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="DarkModeTitle.Text" xml:space="preserve">
+    <value>Dark mode</value>
+  </data>
+  <data name="GitHubTitle.Content" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="LanguageTitle.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="RepositoryTitle.Text" xml:space="preserve">
+    <value>Repository</value>
+  </data>
+  <data name="SettingsTitle.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="VersionTitle.Text" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="OperationHeader.Content" xml:space="preserve">
+    <value>Operations</value>
+  </data>
+  <data name="AccountDialogTitle.Text" xml:space="preserve">
+    <value>Edit account</value>
+  </data>
 </root>

@@ -78,5 +78,20 @@ namespace Peppa.Services.PiggyService
                     : null;
             }
         }
+
+        public async Task<bool> UpdateUserInfo(UpdateUserInfoRequest request, CancellationToken token)
+        {
+            var client = _httpClientFactory.CreateClient("Update user info");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string) SettingsWorker.Current.GetValue(Constants.AccessToken));
+            var patch = new HttpMethod("PATCH");
+            var httpRequest = new HttpRequestMessage(patch, $"{BaseUrl}/users")
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json")
+            };
+            using (var response = await client.SendAsync(httpRequest, token))
+            {
+                return response.IsSuccessStatusCode;
+            }
+        }
     }
 }

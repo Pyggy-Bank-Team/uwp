@@ -162,6 +162,18 @@ namespace Peppa.Repositories
         public Task CreateUser(User newUser, CancellationToken token)
             => _context.Users.AddAsync(newUser, token);
 
+        public async Task UpdateUser(User updatedUser, CancellationToken token)
+        {
+            var existedUser = await _context.Users.FirstAsync(token);
+
+            existedUser.Email = updatedUser.Email;
+            existedUser.CurrencyBase = updatedUser.CurrencyBase;
+            existedUser.UserName = updatedUser.UserName;
+
+            _context.Users.Update(existedUser);
+            await _context.SaveChangesAsync(token);
+        }
+
         public Task<Operation> GetOperation(int id, CancellationToken token)
             => _context.Operations.FirstOrDefaultAsync(o => o.Id == id, token);       
 
