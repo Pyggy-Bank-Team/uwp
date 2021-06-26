@@ -22,15 +22,15 @@
     
     <StackPanel Orientation="Vertical">
         <!--Name-->
-        <TextBox x:Uid="TitleTextBox" Text="{x:Bind _viewModel.Title, Mode=TwoWay}" Width="360" MaxHeight="100" TextWrapping="Wrap" FontSize="18"/>
+        <TextBox x:Uid="TitleTextBox" Text="{x:Bind _viewModel.Title, Mode=TwoWay}" MaxWidth="360" MaxHeight="100" TextWrapping="Wrap" FontSize="18"/>
 
         <!--Types-->
-        <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+        <StackPanel Orientation="Horizontal" Margin="0 20 0 0" MaxWidth="360">
             <RadioButton x:Uid="ExpenseRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsExpense, Mode=TwoWay}"/>
             <RadioButton x:Uid="IncomeRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsIncome, Mode=TwoWay}"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+        <StackPanel Orientation="Horizontal" Margin="0 20 0 0" MaxWidth="360">
             <TextBlock x:Uid="ArchiveTextBlock" FontSize="18" />
             <ToggleSwitch OnContent="" OffContent="" FontSize="18" IsOn="{x:Bind _viewModel.IsArchived, Mode=TwoWay}" Margin="240 0 0 0" Width="45"/>
         </StackPanel>

@@ -8,7 +8,6 @@
     xmlns:converters="using:Peppa.Converters"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Width="200"
     PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
     PrimaryButtonClick="OnSaveButtonClick"
     CloseButtonClick="OnCancelButtonClick"
@@ -36,7 +35,7 @@
         <winui:NumberBox FontSize="18" Value="{x:Bind _viewModel.Amount, Mode=TwoWay}" ValidationMode="InvalidInputOverwritten" Width="360"/>
 
         <!--Types-->
-        <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+        <StackPanel Orientation="Horizontal" Margin="0 20 0 0" MaxWidth="360">
             <RadioButton x:Uid="ExpenseRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsExpense, Mode=TwoWay}" IsEnabled="{x:Bind _viewModel.IsNew}" />
             <RadioButton x:Uid="IncomeRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsIncome, Mode=TwoWay}" IsEnabled="{x:Bind _viewModel.IsNew}" />
             <RadioButton x:Uid="TransferRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsTransfer, Mode=TwoWay}" IsEnabled="{x:Bind _viewModel.IsNew}" />
@@ -44,12 +43,12 @@
 
         <!--Date-->
         <CalendarDatePicker x:Uid="DatePicker" HorizontalAlignment="Stretch" Date="{x:Bind _viewModel.OperationDate, Mode=TwoWay, Converter={StaticResource DateConverter}}"
-                            FontSize="18" Margin="0 20 0 0" />
+                            FontSize="18" Margin="0 20 0 0" MaxWidth="360"/>
 
         <StackPanel Visibility="{x:Bind _viewModel.IsBudget, Mode=OneWay}">
             <!--Accounts-->
             <ComboBox x:Uid="BalancesComboBox" ItemsSource="{x:Bind _viewModel.Accounts, Mode=OneWay}" SelectedItem="{x:Bind _viewModel.SelectedFromAccount, Mode=TwoWay}" 
-                     HorizontalAlignment="Stretch" FontSize="18" Margin="0 20 0 0">
+                     HorizontalAlignment="Stretch" FontSize="18" Margin="0 20 0 0" MaxWidth="360">
                 <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="dto:Account">
                         <Grid>
@@ -67,7 +66,7 @@
 
             <!--Categories-->
             <ComboBox x:Uid="CategoriesComboBox" ItemsSource="{x:Bind _viewModel.Categories, Mode=OneWay}" SelectedItem="{x:Bind _viewModel.SelectedCategory, Mode=TwoWay}"
-                      HorizontalAlignment="Stretch" FontSize="18" Margin="0 20 0 0">
+                      HorizontalAlignment="Stretch" FontSize="18" Margin="0 20 0 0" MaxWidth="360">
                 <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="dto:Category">
                         <StackPanel Orientation="Horizontal">
@@ -83,7 +82,7 @@
         <StackPanel Visibility="{x:Bind _viewModel.IsTransfer, Mode=OneWay}">
             <!--Accounts from-->
             <ComboBox x:Uid="FromCombobox" ItemsSource="{x:Bind _viewModel.Accounts, Mode=OneWay}" SelectedItem="{x:Bind _viewModel.SelectedFromAccount, Mode=TwoWay}"
-                      HorizontalAlignment="Stretch" FontSize="18" Margin="0 20 0 0">
+                      HorizontalAlignment="Stretch" FontSize="18" Margin="0 20 0 0" MaxWidth="360">
                 <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="dto:Account">
                         <Grid>
@@ -101,7 +100,7 @@
 
             <!--Accounts to-->
             <ComboBox x:Uid="ToCombobox" ItemsSource="{x:Bind _viewModel.Accounts, Mode = OneWay}" SelectedItem="{x:Bind _viewModel.SelectedToAccount, Mode = TwoWay}"
-                      HorizontalAlignment="Stretch" FontSize="18" Margin="0 20 0 0">
+                      HorizontalAlignment="Stretch" FontSize="18" Margin="0 20 0 0" MaxWidth="360">
                <ComboBox.ItemTemplate>
                     <DataTemplate x:DataType="dto:Account">
                         <Grid>
@@ -120,7 +119,7 @@
         </StackPanel>
 
         <!--Comment-->
-        <TextBox x:Uid="CommentTextBox" Text="{x:Bind _viewModel.Comment, Mode=TwoWay}" FontSize="18" Margin="0 20 0 0" Height="100" TextWrapping="Wrap" />
+        <TextBox x:Uid="CommentTextBox" Text="{x:Bind _viewModel.Comment, Mode=TwoWay}" FontSize="18" Margin="0 20 0 0" Height="100" TextWrapping="Wrap" MaxWidth="360"/>
 
     </StackPanel>
 </ContentDialog>

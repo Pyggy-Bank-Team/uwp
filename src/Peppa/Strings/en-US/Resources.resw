@@ -474,4 +474,7 @@
   <data name="OperationHeader.Content" xml:space="preserve">
     <value>Operations</value>
   </data>
+  <data name="AccountDialogTitle.Text" xml:space="preserve">
+    <value>Edit account</value>
+  </data>
 </root>
