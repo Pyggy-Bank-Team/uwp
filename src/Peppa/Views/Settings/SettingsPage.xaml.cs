@@ -19,5 +19,10 @@ namespace Peppa.Views.Settings
             _viewModel = App.ServiceProvider.GetService<ISettingsViewModel>();
             await _viewModel.Initialization();
         }
+
+        private void HyperlinkButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
     }
 }

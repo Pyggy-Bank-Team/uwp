@@ -42,7 +42,7 @@
             
             <!-- Profile -->
             <TextBlock Grid.Column="0" Grid.Row="0" x:Uid="ProfileTitle" FontSize="25"/>
-            <HyperlinkButton Grid.Column="1" Grid.Row="0" x:Uid="logoutButton"/>
+            <HyperlinkButton Grid.Column="1" Grid.Row="0" x:Uid="logoutButton" Click="{x:Bind _viewModel.OnLogoutClick}"/>
             <TextBlock Grid.Column="0" Grid.Row="1" x:Uid="LoginTextBlock"/>
             <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind _viewModel.UserName, Mode=OneWay}"/>
             <TextBlock Grid.Column="0" Grid.Row="2" x:Uid="EmailTextBlock"/>

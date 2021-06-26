@@ -5,8 +5,7 @@ using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models.Settings;
 using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
-using Peppa.Views;
-using Peppa.Views.Settings;
+using Peppa.Views.Login;
 using Windows.ApplicationModel;
 
 namespace Peppa.ViewModels.Settings
@@ -58,6 +57,13 @@ namespace Peppa.ViewModels.Settings
 
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
+        }
+
+        public void OnLogoutClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            _model.LogOut();
+            Frame.CacheSize = 0;
+            Frame.Navigate(typeof(LoginPage));
         }
 
         public string UserName { get; set; }
