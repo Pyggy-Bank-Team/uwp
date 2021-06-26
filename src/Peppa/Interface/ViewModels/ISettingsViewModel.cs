@@ -13,5 +13,6 @@ namespace Peppa.Interface.ViewModels
         string Version { get; set; }
         bool IsProgressShow { get; set; }
         bool IsDarkModeEnabled { get; set; }
+        bool IsChangedSettings { get; set; }
     }
 }

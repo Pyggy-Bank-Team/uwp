@@ -31,7 +31,7 @@ namespace Peppa.Models
             if (_settingsService.TryGetValue(Constants.RequestedTheme, out var theme))
                 _isDarkMode = theme != ApplicationTheme.Light.ToString();
 
-            _language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0].Contains("ru") ? "ru-RU" : "en-US";
+            _language = GetCurrentLanguage();
         }
 
         public async Task UpdateUser(CancellationToken token)
@@ -90,6 +90,16 @@ namespace Peppa.Models
         {
             if (_settingsService.HaveValue(Constants.AccessToken))
                 _settingsService.RemoveValue(Constants.AccessToken);
+        }
+
+        private string GetCurrentLanguage()
+        {
+            //If we ovverided the language then we return this value
+            var ovveridedLanguage = ApplicationLanguages.PrimaryLanguageOverride;
+            if (!string.IsNullOrEmpty(ovveridedLanguage))
+                return ovveridedLanguage.Contains("ru") ? "ru-RU" : ovveridedLanguage;
+
+            return Windows.System.UserProfile.GlobalizationPreferences.Languages[0].Contains("ru") ? "ru-RU" : "en-US";
         }
 
         public bool DarkModeIsEnabled

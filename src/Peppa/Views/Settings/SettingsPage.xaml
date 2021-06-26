@@ -42,24 +42,26 @@
             
             <!-- Profile -->
             <TextBlock Grid.Column="0" Grid.Row="0" x:Uid="ProfileTitle" FontSize="25"/>
+            <HyperlinkButton Grid.Column="1" Grid.Row="0" x:Uid="logoutButton"/>
             <TextBlock Grid.Column="0" Grid.Row="1" x:Uid="LoginTextBlock"/>
-            <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind _viewModel.UserName}"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind _viewModel.UserName, Mode=OneWay}"/>
             <TextBlock Grid.Column="0" Grid.Row="2" x:Uid="EmailTextBlock"/>
-            <TextBlock Grid.Column="1" Grid.Row="2" Text="{x:Bind _viewModel.Email}"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{x:Bind _viewModel.Email, Mode=OneWay}"/>
             <TextBlock Grid.Column="0" Grid.Row="3" x:Uid="CurrencyTextBlock"/>
-            <TextBlock Grid.Column="1" Grid.Row="3" Text="{x:Bind _viewModel.Currency}"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{x:Bind _viewModel.Currency, Mode=OneWay}"/>
 
             <!--Settings-->
             <TextBlock Grid.Column="0" Grid.Row="4" x:Uid="SettingsTitle" FontSize="25"/>
+            <TextBlock Grid.Column="1" Grid.Row="4" x:Uid="ThemeChangedTextBlock" Visibility="{x:Bind _viewModel.IsChangedSettings, Mode=OneWay}" TextWrapping="Wrap" FontSize="10"/>
             <TextBlock Grid.Column="0" Grid.Row="5" x:Uid="DarkModeTitle"/>
-            <ToggleSwitch Grid.Column="1" Grid.Row="5" OnContent="" OffContent="" IsOn="{x:Bind _viewModel.IsDarkModeEnabled}"/>
+            <ToggleSwitch Grid.Column="1" Grid.Row="5" OnContent="" OffContent="" IsOn="{x:Bind _viewModel.IsDarkModeEnabled, Mode=TwoWay}"/>
             <TextBlock Grid.Column="0" Grid.Row="6" x:Uid="LanguageTitle"/>
-            <ComboBox Grid.Column="1" Grid.Row="6" ItemsSource="{x:Bind _viewModel.Languages}" SelectedItem="{x:Bind _viewModel.Language, Mode=TwoWay}"/>
+            <ComboBox Grid.Column="1" Grid.Row="6" ItemsSource="{x:Bind _viewModel.Languages, Mode=OneWay}" SelectedItem="{x:Bind _viewModel.Language, Mode=TwoWay}"/>
 
             <!-- About -->
             <TextBlock Grid.Column="0" Grid.Row="7" x:Uid="AboutTextBlock" FontSize="25"/>
             <TextBlock Grid.Column="0" Grid.Row="8" x:Uid="VersionTitle"/>
-            <TextBlock Grid.Column="1" Grid.Row="8" Text="{x:Bind _viewModel.Version}"/>
+            <TextBlock Grid.Column="1" Grid.Row="8" Text="{x:Bind _viewModel.Version, Mode=OneWay}"/>
             <TextBlock Grid.Column="0" Grid.Row="9" x:Uid="RepositoryTitle"/>
             <HyperlinkButton Grid.Column="1" Grid.Row="9" x:Uid="GitHubTitle" NavigateUri="https://github.com/Pyggy-Bank-Team"/>
 

@@ -5,6 +5,8 @@ using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models.Settings;
 using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
+using Peppa.Views;
+using Peppa.Views.Settings;
 using Windows.ApplicationModel;
 
 namespace Peppa.ViewModels.Settings
@@ -25,11 +27,10 @@ namespace Peppa.ViewModels.Settings
 
             Languages = _localizationService.Languages.Select(p => p.Value).ToList();
             _language = _localizationService.Languages[_model.Language];
-            Version = string.Format("{0}.{1}.{2}.{3}",
+            Version = string.Format("{0}.{1}.{2}",
                     Package.Current.Id.Version.Major,
                     Package.Current.Id.Version.Minor,
-                    Package.Current.Id.Version.Build,
-                    Package.Current.Id.Version.Revision);
+                    Package.Current.Id.Version.Build);
         }
 
         public async Task Initialization()
@@ -77,8 +78,13 @@ namespace Peppa.ViewModels.Settings
                     return;
 
                 _language = value;
-                _model.Language = _localizationService.Languages.FirstOrDefault(l => l.Value == value).Key;
+                _model.Language = _localizationService.Languages.FirstOrDefault(l => l.Value == value).Key;               
                 RaisePropertyChanged(nameof(Language));
+
+                _model.ChangeLanguage();
+
+                IsChangedSettings = true;
+                RaisePropertyChanged(nameof(IsChangedSettings));
             }
         }
         
@@ -87,5 +93,7 @@ namespace Peppa.ViewModels.Settings
         public bool IsDarkModeEnabled { get; set; }
 
         public string Version { get; set; }
+
+        public bool IsChangedSettings { get; set; }
     }
 }

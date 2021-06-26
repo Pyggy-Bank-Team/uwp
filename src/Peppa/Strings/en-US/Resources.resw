@@ -471,4 +471,7 @@
   <data name="VersionTitle.Text" xml:space="preserve">
     <value>Version</value>
   </data>
+  <data name="OperationHeader.Content" xml:space="preserve">
+    <value>Operations</value>
+  </data>
 </root>

@@ -26,7 +26,7 @@
 
         <NavigationView.MenuItems>
 
-            <NavigationViewItem Content="Operations" Tag="operations">
+            <NavigationViewItem x:Uid="OperationHeader" Tag="operations">
                 <NavigationViewItem.Icon>
                     <FontIcon Glyph="&#xEADF;"/>
                 </NavigationViewItem.Icon>
