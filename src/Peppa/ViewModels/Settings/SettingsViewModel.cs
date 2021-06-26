@@ -5,10 +5,11 @@ using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models.Settings;
 using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
+using Windows.ApplicationModel;
 
 namespace Peppa.ViewModels.Settings
 {
-    public class SettingsViewModel : BaseViewModel, IInitialization
+    public class SettingsViewModel : BaseViewModel, ISettingsViewModel
     {
         private readonly ISettingsModel _model;
         private readonly ILocalizationService _localizationService;
@@ -24,10 +25,12 @@ namespace Peppa.ViewModels.Settings
 
             Languages = _localizationService.Languages.Select(p => p.Value).ToList();
             _language = _localizationService.Languages[_model.Language];
-
-            Currencies = new List<string> {_model.Currency};
+            Version = string.Format("{0}.{1}.{2}.{3}",
+                    Package.Current.Id.Version.Major,
+                    Package.Current.Id.Version.Minor,
+                    Package.Current.Id.Version.Build,
+                    Package.Current.Id.Version.Revision);
         }
-
 
         public async Task Initialization()
         {
@@ -43,24 +46,25 @@ namespace Peppa.ViewModels.Settings
                 _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
             }
 
+            Email = _model.Email;
+            Currency = _model.Currency;
+            UserName = _model.Login;
+            IsDarkModeEnabled = _model.DarkModeIsEnabled;
+            
+            RaisePropertyChanged(nameof(Email));
+            RaisePropertyChanged(nameof(Currency));
+            RaisePropertyChanged(nameof(UserName));
+            RaisePropertyChanged(nameof(IsDarkModeEnabled));
+
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
         }
 
-        public string Email
-        {
-            get => _model.Email;
-            set
-            {
-                if (_model.Email == value)
-                    return;
+        public string UserName { get; set; }
 
-                _model.Email = value;
-                RaisePropertyChanged(nameof(Email));
-            }
-        }
-
-        public List<string> Currencies { get; private set; }
+        public string Email { get; set; }
+        
+        public string Currency { get; set; }
 
         public List<string> Languages { get; }
 
@@ -79,5 +83,9 @@ namespace Peppa.ViewModels.Settings
         }
         
         public bool IsProgressShow { get; set; }
+
+        public bool IsDarkModeEnabled { get; set; }
+
+        public string Version { get; set; }
     }
 }

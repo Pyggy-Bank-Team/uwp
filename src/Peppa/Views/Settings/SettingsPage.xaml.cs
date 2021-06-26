@@ -1,14 +1,14 @@
-﻿using Peppa.ViewModels.Reports;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Peppa.Interface.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Peppa.Views.Reports
+namespace Peppa.Views.Settings
 {
-    public sealed partial class ReportView : Page
+    public sealed partial class SettingsPage : Page
     {
-        private IReportsViewModel _viewModel;
-        public ReportView()
+        private ISettingsViewModel _viewModel;
+        public SettingsPage()
         {
             this.InitializeComponent();
         }
@@ -16,7 +16,7 @@ namespace Peppa.Views.Reports
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            _viewModel = App.ServiceProvider.GetService<IReportsViewModel>();
+            _viewModel = App.ServiceProvider.GetService<ISettingsViewModel>();
             await _viewModel.Initialization();
         }
     }

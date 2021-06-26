@@ -204,6 +204,7 @@
     <Compile Include="Interface\ViewModels\IInitialization.cs" />
     <Compile Include="Interface\ViewModels\ILoginViewModel.cs" />
     <Compile Include="Interface\ViewModels\IOperationsViewModel.cs" />
+    <Compile Include="Interface\ViewModels\ISettingsViewModel.cs" />
     <Compile Include="Interface\WindowsService\IToastService.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Models\Accounts\AccountModel.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Interface\ViewModels\IReportsViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportViewModel.cs" />
     <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\Settings\UserViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Reports\TelerikItemReportViewModel.cs" />
@@ -286,7 +288,7 @@
     <Compile Include="Views\Reports\ReportView.xaml.cs">
       <DependentUpon>ReportView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingsPage\SettingsPage.xaml.cs">
+    <Compile Include="Views\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Users\SyncPage.xaml.cs">
@@ -432,7 +434,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingsPage\SettingsPage.xaml">
+    <Page Include="Views\Settings\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

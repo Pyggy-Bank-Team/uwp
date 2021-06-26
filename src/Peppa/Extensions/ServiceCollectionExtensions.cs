@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Peppa.Services.PiggyService;
 using Peppa.ViewModels.Accounts;
-using Peppa.ViewModels.Users;
 using Peppa.Interface.Services;
 using Peppa.Interface.Models;
 using Peppa.Models;
@@ -24,6 +23,8 @@ using Peppa.ViewModels.Categories;
 using Peppa.ViewModels.Login;
 using Peppa.ViewModels.Operations;
 using Peppa.ViewModels.Reports;
+using Peppa.ViewModels.Settings;
+using UserViewModel = Peppa.ViewModels.Users.UserViewModel;
 
 namespace Peppa.Extensions
 {
@@ -56,6 +57,7 @@ namespace Peppa.Extensions
             services.AddSingleton<AccountsViewModel>();
             services.AddSingleton<UserViewModel>();
             services.AddScoped<IReportsViewModel, ReportsViewModel>();
+            services.AddScoped<ISettingsViewModel, SettingsViewModel>();
             services.AddHttpClient();
         }
     }

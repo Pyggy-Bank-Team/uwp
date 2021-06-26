@@ -31,7 +31,7 @@ namespace Peppa.Models
             if (_settingsService.TryGetValue(Constants.RequestedTheme, out var theme))
                 _isDarkMode = theme != ApplicationTheme.Light.ToString();
 
-            _language = ApplicationLanguages.PrimaryLanguageOverride;
+            _language = Windows.System.UserProfile.GlobalizationPreferences.Languages[0].Contains("ru") ? "ru-RU" : "en-US";
         }
 
         public async Task UpdateUser(CancellationToken token)

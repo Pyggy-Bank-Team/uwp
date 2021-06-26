@@ -34,7 +34,7 @@ namespace Peppa.Views
         {
             if (args.IsSettingsInvoked)
             {
-                ContentFrame.Navigate(typeof(SettingsPage.SettingsPage));
+                ContentFrame.Navigate(typeof(Settings.SettingsPage));
             }
             else
             {
