@@ -171,15 +171,15 @@ namespace Peppa.ViewModels.Operations
             }
         }
 
-        public DateTime OperationDate
+        public DateTimeOffset? OperationDate
         {
             get => Model.OperationDate;
             set
             {
-                if (Model.OperationDate == value || value == null)
+                if (!value.HasValue || Model.OperationDate == value)
                     return;
 
-                Model.OperationDate = value;
+                Model.OperationDate = value.Value.UtcDateTime;
                 RaisePropertyChanged(nameof(OperationDate));
             }
         }

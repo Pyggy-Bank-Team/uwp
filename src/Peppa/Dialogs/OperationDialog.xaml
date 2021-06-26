@@ -42,7 +42,7 @@
         </StackPanel>
 
         <!--Date-->
-        <CalendarDatePicker x:Uid="DatePicker" HorizontalAlignment="Stretch" Date="{x:Bind _viewModel.OperationDate, Mode=TwoWay, Converter={StaticResource DateConverter}}"
+        <CalendarDatePicker x:Uid="DatePicker" HorizontalAlignment="Stretch" Date="{x:Bind _viewModel.OperationDate, Mode=TwoWay}"
                             FontSize="18" Margin="0 20 0 0" MaxWidth="360"/>
 
         <StackPanel Visibility="{x:Bind _viewModel.IsBudget, Mode=OneWay}">
