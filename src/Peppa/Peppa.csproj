@@ -231,7 +231,6 @@
     <Compile Include="Services\PiggyService\AccountService.cs" />
     <Compile Include="Services\PiggyService\CategoryService.cs" />
     <Compile Include="Services\PiggyService\OperationService.cs" />
-    <Compile Include="Services\PiggyService\PiggyService.cs" />
     <Compile Include="Services\PiggyService\PiggyServiceBase.cs" />
     <Compile Include="Services\PiggyService\ReportService.cs" />
     <Compile Include="Services\PiggyService\UserService.cs" />
