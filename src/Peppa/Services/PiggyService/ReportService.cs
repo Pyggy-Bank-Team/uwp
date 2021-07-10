@@ -16,10 +16,16 @@ namespace Peppa.Services.PiggyService
         {
         }
 
-        public Task<ItemReport[]> GetChartByCategories(GetReportRequest request, CancellationToken token)
-            => Post<ItemReport[], GetReportRequest>("reports/chart/byCategories", request, token);
+        public async Task<ItemReport[]> GetChartByCategories(GetReportRequest request, CancellationToken token)
+        {
+            var result = await Post<ItemReport[], GetReportRequest>("reports/chart/byCategories", request, token);
+            return result.IsSuccess ? result.Ok : null;
+        }
 
-        public Task<ChartByExpenseDaysResponse[]> GetChartByExpenseDays(GetChartByExpensePerDaysRequest request, CancellationToken token)
-            => Post<ChartByExpenseDaysResponse[], GetChartByExpensePerDaysRequest>("reports/chart/byExpensePerDays", request, token);
+        public async Task<ChartByExpenseDaysResponse[]> GetChartByExpenseDays(GetChartByExpensePerDaysRequest request, CancellationToken token)
+        {
+            var result = await  Post<ChartByExpenseDaysResponse[], GetChartByExpensePerDaysRequest>("reports/chart/byExpensePerDays", request, token);
+            return result.IsSuccess ? result.Ok : null;
+        }
     }
 }

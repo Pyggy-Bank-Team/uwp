@@ -4,6 +4,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Peppa.Contracts.Responses;
+using Peppa.Contracts.Results;
 using Peppa.Interface.InternalServices;
 
 namespace Peppa.Services.PiggyService
@@ -30,16 +32,14 @@ namespace Peppa.Services.PiggyService
             }
         }
         
-        protected async Task<TResponse> Post<TResponse, TRequest>(string requestUrl, TRequest request, CancellationToken token) where TResponse : class 
+        protected async Task<ServiceResult<TResponse>> Post<TResponse, TRequest>(string requestUrl, TRequest request, CancellationToken token) where TResponse : class 
             where TRequest : class
         {
             var client = HttpClientFactory.CreateClient("Post");
             AddBearerToken(client);
-            using (var response = await client.PostAsync($"{BaseUrl}/{requestUrl}", ToStringContent(request), token))
+            using (var httpResponse = await client.PostAsync($"{BaseUrl}/{requestUrl}", ToStringContent(request), token))
             {
-                return response.IsSuccessStatusCode
-                    ? JsonConvert.DeserializeObject<TResponse>(await response.Content.ReadAsStringAsync())
-                    : null;
+                return await ReturnServiceResultAsync<TResponse>(httpResponse);
             }
         }
         
@@ -95,6 +95,18 @@ namespace Peppa.Services.PiggyService
         private void AddBearerToken(HttpClient client)
             => client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _settingsService.GetValue(Constants.AccessToken));
 
+        private async Task<ServiceResult<TResponse>> ReturnServiceResultAsync<TResponse>(HttpResponseMessage httpResponse) where TResponse : class
+        {
+            var result = new ServiceResult<TResponse>();
+            var content = await httpResponse.Content.ReadAsStringAsync();
+            if (httpResponse.IsSuccessStatusCode)
+                result.Ok = JsonConvert.DeserializeObject<TResponse>(content);
+            else
+                result.Error = JsonConvert.DeserializeObject<ErrorResponse>(content);
+
+            return result;
+        }
+        
         protected IHttpClientFactory HttpClientFactory { get; }
         protected string BaseUrl { get; } = @"https://dev.piggybank.pro/api";
         public bool IsAuthorized => _settingsService.HaveValue(Constants.AccessToken);

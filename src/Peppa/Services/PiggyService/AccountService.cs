@@ -18,8 +18,11 @@ namespace Peppa.Services.PiggyService
         public Task<AccountResponse[]> GetAccounts(bool showArchivedAccounts, CancellationToken token)
             => Get<AccountResponse[]>($"accounts?all={showArchivedAccounts}", token);
 
-        public Task<AccountResponse> CreateAccount(CreateAccountRequest response, CancellationToken token)
-            => Post<AccountResponse, CreateAccountRequest>("accounts", response, token);
+        public async Task<AccountResponse> CreateAccount(CreateAccountRequest response, CancellationToken token)
+        {
+            var result = await Post<AccountResponse, CreateAccountRequest>("accounts", response, token);
+            return result.IsSuccess ? result.Ok : null;
+        }
 
         public Task<bool> UpdateAccount(UpdateAccountRequest response, CancellationToken token)
             => Put($"accounts/{response.Id}",response, token);

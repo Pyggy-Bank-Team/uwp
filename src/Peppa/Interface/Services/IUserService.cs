@@ -10,7 +10,7 @@ namespace Peppa.Interface.Services
     {
         Task<ServiceResult<AccessTokenResponse>> RegistrationUser(CreateUserRequest request, CancellationToken token);
 
-        Task<AccessTokenResponse> GetAccessToken(GetTokenRequest request, CancellationToken token);
+        Task<ServiceResult<AccessTokenResponse>> GetAccessToken(GetTokenRequest request, CancellationToken token);
 
         Task<CurrencyResponse[]> GetAvailableCurrencies(CancellationToken token);
 

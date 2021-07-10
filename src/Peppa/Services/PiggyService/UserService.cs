@@ -18,31 +18,10 @@ namespace Peppa.Services.PiggyService
         {
         }
 
-        public async Task<ServiceResult<AccessTokenResponse>> RegistrationUser(CreateUserRequest request, CancellationToken token)
-        {
-            var client = HttpClientFactory.CreateClient("Create user");
-            using (var response = await client.PostAsync($"{BaseUrl}/users", ToStringContent(request), token))
-            {
-                var result = new ServiceResult<AccessTokenResponse>();
-                var content = await response.Content.ReadAsStringAsync();
-                switch (response.StatusCode)
-                {
-                    case HttpStatusCode.OK:
-                        result.Ok = JsonConvert.DeserializeObject<AccessTokenResponse>(content);
-                        break;
-                    default:
-                        var error = JsonConvert.DeserializeObject<ErrorResponse>(content);
+        public Task<ServiceResult<AccessTokenResponse>> RegistrationUser(CreateUserRequest request, CancellationToken token)
+            => Post<AccessTokenResponse, CreateUserRequest>("users", request, token);
 
-                        //TODO Add all errors in the log
-                        result.Error = error;
-                        break;
-                }
-
-                return result;
-            }
-        }
-
-        public Task<AccessTokenResponse> GetAccessToken(GetTokenRequest request, CancellationToken token)
+        public Task<ServiceResult<AccessTokenResponse>> GetAccessToken(GetTokenRequest request, CancellationToken token)
             => Post<AccessTokenResponse, GetTokenRequest>("tokens/connect", request, token);
 
         public Task<CurrencyResponse[]> GetAvailableCurrencies(CancellationToken token)
