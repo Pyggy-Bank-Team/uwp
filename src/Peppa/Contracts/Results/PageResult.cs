@@ -1,4 +1,4 @@
-﻿namespace Peppa.Contracts
+﻿namespace Peppa.Contracts.Results
 {
     public class PageResult<T>
     {

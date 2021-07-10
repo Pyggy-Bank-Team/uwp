@@ -24,7 +24,6 @@ namespace Peppa.ViewModels.Login
             _model = model;
             _toastService = toastService;
             _localizationService = localizationService;
-            _model.PropertyChanged += OnModelPropertyChanged;
         }
 
         public string UserName
@@ -79,19 +78,19 @@ namespace Peppa.ViewModels.Login
             }
         }
 
-        public string Error => _model.Error;
+        public string Error { get; private set; }
 
         public List<Currency> Currencies => _model.Currencies;
 
         public Currency SelectedCurrency
         {
-            get => _model.SelectedCurrency;
+            get => _model.Currency;
             set
             {
-                if (_model.SelectedCurrency == value)
+                if (_model.Currency == value)
                     return;
 
-                _model.SelectedCurrency = value;
+                _model.Currency = value;
                 RaisePropertyChanged(nameof(SelectedCurrency));
             }
         }

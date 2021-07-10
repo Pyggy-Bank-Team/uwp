@@ -1,7 +1,7 @@
 ﻿using Peppa.Contracts.Responses;
 using Peppa.Enums;
 
-namespace Peppa.Models
+namespace Peppa.Contracts.Results
 {
     public class CreateUserResult
     {

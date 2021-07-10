@@ -1,15 +1,13 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
-using Peppa.Enums;
+using Peppa.Contracts.Results;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Services;
-using Peppa.Models;
 
 namespace Peppa.Services.PiggyService
 {
@@ -20,30 +18,27 @@ namespace Peppa.Services.PiggyService
         {
         }
 
-        public async Task<CreateUserResult> RegistrationUser(CreateUserRequest request, CancellationToken token)
+        public async Task<ServiceResult<AccessTokenResponse>> RegistrationUser(CreateUserRequest request, CancellationToken token)
         {
             var client = HttpClientFactory.CreateClient("Create user");
             using (var response = await client.PostAsync($"{BaseUrl}/users", ToStringContent(request), token))
             {
-                var result = new CreateUserResult();
+                var result = new ServiceResult<AccessTokenResponse>();
                 var content = await response.Content.ReadAsStringAsync();
                 switch (response.StatusCode)
                 {
-                    case HttpStatusCode.BadRequest:
+                    case HttpStatusCode.OK:
+                        result.Ok = JsonConvert.DeserializeObject<AccessTokenResponse>(content);
+                        break;
+                    default:
                         var error = JsonConvert.DeserializeObject<ErrorResponse>(content);
 
                         //TODO Add all errors in the log
                         result.Error = error;
-                        result.Result = Enum.Parse<CreateUserResultEnum>(error.Type);
-                        return result;
-                    case HttpStatusCode.OK:
-                        result.Token = JsonConvert.DeserializeObject<AccessTokenResponse>(content);
-                        result.Result = CreateUserResultEnum.Successful;
-                        return result;
-                    default:
-                        result.Result = CreateUserResultEnum.InternalServerError;
-                        return result;
+                        break;
                 }
+
+                return result;
             }
         }
 

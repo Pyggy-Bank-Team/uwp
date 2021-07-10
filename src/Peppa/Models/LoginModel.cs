@@ -15,21 +15,17 @@ using Peppa.Interface.Services;
 
 namespace Peppa.Models
 {
-    public class LoginModel : BaseModel, ILoginModel
+    public class LoginModel : ILoginModel
     {
         private readonly IPiggyRepository _repository;
         private readonly IUserService _service;
         private readonly ISettingsService _settingsService;
-        private readonly ILocalizationService _localizationService;
 
-        private string _error;
-
-        public LoginModel(IPiggyRepository repository, IUserService service, ISettingsService settingsService, ILocalizationService localizationService)
+        public LoginModel(IPiggyRepository repository, IUserService service, ISettingsService settingsService)
         {
             _repository = repository;
             _service = service;
             _settingsService = settingsService;
-            _localizationService = localizationService;
             Currencies = new List<Currency>();
         }
 
@@ -37,25 +33,10 @@ namespace Peppa.Models
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         public string Email { get; set; }
-
-        public string Error
-        {
-            get => _error;
-            set
-            {
-                if (_error != value)
-                {
-                    _error = value;
-                    OnPropertyChanged(nameof(Error));
-                }
-            }
-        }
-
         public List<Currency> Currencies { get; set; }
+        public Currency Currency { get; set; }
 
-        public Currency SelectedCurrency { get; set; }
-
-        public async Task Signin(CancellationToken token)
+        public async Task<SigninResultEnum> Signin(CancellationToken token)
         {
             var request = new GetTokenRequest
             {
@@ -82,7 +63,7 @@ namespace Peppa.Models
                 return;
             }
 
-            if (SelectedCurrency?.Code == null)
+            if (Currency?.Code == null)
             {
                 Error = _localizationService.GetTranslateByKey(Localization.CurrencyNotSelected);
                 return;
@@ -92,7 +73,7 @@ namespace Peppa.Models
             {
                 Email = Email,
                 Password = Password,
-                CurrencyBase = SelectedCurrency.Code,
+                CurrencyBase = Currency.Code,
                 UserName = UserName
             };
 
@@ -128,10 +109,7 @@ namespace Peppa.Models
             else
                 Currencies.Add(new Currency {Symbol = NumberFormatInfo.CurrentInfo.CurrencySymbol, Code = RegionInfo.CurrentRegion.ISOCurrencySymbol});
 
-            SelectedCurrency = Currencies.First();
-
-            OnPropertyChanged(nameof(Currencies));
-            OnPropertyChanged(nameof(SelectedCurrency));
+            Currency = Currencies.First();
         }
 
         private async Task UpdateUserInfo(CancellationToken token)

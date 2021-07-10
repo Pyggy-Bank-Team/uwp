@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Peppa.Contracts;
 using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
+using Peppa.Contracts.Results;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Services;
 

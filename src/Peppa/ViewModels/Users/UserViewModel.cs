@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
+using Peppa.Contracts.Results;
 using Peppa.Workers;
 using Peppa.Interface.Services;
 using Peppa.Models;

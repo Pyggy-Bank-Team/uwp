@@ -41,7 +41,7 @@ namespace Peppa.Extensions
             services.AddScoped<ISettingsModel, SettingsModel>();
             //Services
             services.AddScoped<IAccountService, AccountService>();
-            services.AddScoped<IUserService, PiggyService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IReportService, ReportService>();
             services.AddScoped<ISettingsService, SettingsService>();

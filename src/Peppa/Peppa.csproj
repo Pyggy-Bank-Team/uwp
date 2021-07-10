@@ -115,7 +115,6 @@
     <Compile Include="Context\Entities\Operation.cs" />
     <Compile Include="Context\Entities\User.cs" />
     <Compile Include="Context\PiggyContext.cs" />
-    <Compile Include="Contracts\PageResult.cs" />
     <Compile Include="Contracts\Requests\Accounts\BaseAccountRequest.cs" />
     <Compile Include="Contracts\Requests\Accounts\CreateAccountRequest.cs" />
     <Compile Include="Contracts\Requests\Accounts\UpdateAccountRequest.cs" />
@@ -139,6 +138,9 @@
     <Compile Include="Contracts\Responses\OperationResponse.cs" />
     <Compile Include="Contracts\Responses\TransferOperationResponse.cs" />
     <Compile Include="Contracts\Responses\UserInfoResponse.cs" />
+    <Compile Include="Contracts\Results\CreateUserResult.cs" />
+    <Compile Include="Contracts\Results\PageResult.cs" />
+    <Compile Include="Contracts\Results\ServiceResult.cs" />
     <Compile Include="Controls\DiagramControl.xaml.cs">
       <DependentUpon>DiagramControl.xaml</DependentUpon>
     </Compile>
@@ -178,6 +180,7 @@
     <Compile Include="Enums\OperationType.cs" />
     <Compile Include="Enums\OperationViewType.cs" />
     <Compile Include="Enums\ReportResult.cs" />
+    <Compile Include="Enums\SigninResultEnum.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
     <Compile Include="Helpers\CurrencyHelper.cs" />
@@ -217,7 +220,6 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Operations\OperationModel.cs" />
     <Compile Include="Models\Operations\OperationsModel.cs" />
-    <Compile Include="Models\CreateUserResult.cs" />
     <Compile Include="Contracts\Requests\CreateUserRequest.cs" />
     <Compile Include="Contracts\Responses\AccessTokenResponse.cs" />
     <Compile Include="Contracts\Responses\CurrencyResponse.cs" />
@@ -251,7 +253,6 @@
     <Compile Include="Interface\ViewModels\IReportsViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportViewModel.cs" />
     <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\Settings\UserViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Reports\TelerikItemReportViewModel.cs" />
