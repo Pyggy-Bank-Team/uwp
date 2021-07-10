@@ -175,7 +175,15 @@ namespace Peppa.Repositories
         }
 
         public Task<Operation> GetOperation(int id, CancellationToken token)
-            => _context.Operations.FirstOrDefaultAsync(o => o.Id == id, token);       
+            => _context.Operations.FirstOrDefaultAsync(o => o.Id == id, token);
+
+        public void CleanDataBase()
+        {
+            _context.Accounts.RemoveRange(_context.Accounts);
+            _context.Categories.RemoveRange(_context.Categories);
+            _context.Operations.RemoveRange(_context.Operations);
+            _context.Users.RemoveRange(_context.Users);
+        }
 
         public void Dispose()
             => _context?.Dispose();

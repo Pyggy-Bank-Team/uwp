@@ -83,21 +83,22 @@ namespace Peppa.Models
         public void ChangeLanguage()
         {
             ApplicationLanguages.PrimaryLanguageOverride = Language;
-
         }
 
         public void LogOut()
         {
             if (_settingsService.HaveValue(Constants.AccessToken))
                 _settingsService.RemoveValue(Constants.AccessToken);
+            
+            _repository.CleanDataBase();
         }
 
         private string GetCurrentLanguage()
         {
-            //If we ovverided the language then we return this value
-            var ovveridedLanguage = ApplicationLanguages.PrimaryLanguageOverride;
-            if (!string.IsNullOrEmpty(ovveridedLanguage))
-                return ovveridedLanguage.Contains("ru") ? "ru-RU" : ovveridedLanguage;
+            //If we override the language then we return this value
+            var overrideLanguage = ApplicationLanguages.PrimaryLanguageOverride;
+            if (!string.IsNullOrEmpty(overrideLanguage))
+                return overrideLanguage.Contains("ru") ? "ru-RU" : overrideLanguage;
 
             return Windows.System.UserProfile.GlobalizationPreferences.Languages[0].Contains("ru") ? "ru-RU" : "en-US";
         }
