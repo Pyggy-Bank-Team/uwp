@@ -27,6 +27,8 @@ namespace Peppa
         public const string UserNotFound = "UserNotFound";
         public const string PasswordInvalid = "PasswordInvalid";
         public const string PasswordDoesntFit = "PasswordDoesntFit";
+        public const string UserAlreadyExists = "UserAlreadyExists";
+        public const string InvalidUserName = "InvalidUserName";
         public const string OopsError = "OopsError";
         public const string Income = "Income";
         public const string Expense = "Expense";

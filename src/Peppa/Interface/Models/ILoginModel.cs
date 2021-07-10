@@ -15,7 +15,7 @@ namespace Peppa.Interface.Models
         List<Currency> Currencies { get; set; }
         Currency Currency { get; set; }
         Task<SigninResultEnum> Signin(CancellationToken token);
-        Task Signup(CancellationToken token);
+        Task<SignupResultEnum> Signup(CancellationToken token);
         Task UpdateCurrencies(CancellationToken token);
     }
 }

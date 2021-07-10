@@ -483,4 +483,10 @@
   <data name="UserNotFound" xml:space="preserve">
     <value>User not found. Try another login</value>
   </data>
+  <data name="UserAlreadyExists" xml:space="preserve">
+    <value>User already exists. Please, chose another name</value>
+  </data>
+  <data name="InvalidUserName" xml:space="preserve">
+    <value>Can't create a user with this name. Please, chose another name</value>
+  </data>
 </root>

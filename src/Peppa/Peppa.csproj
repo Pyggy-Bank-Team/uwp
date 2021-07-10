@@ -178,6 +178,7 @@
     <Compile Include="Enums\OperationViewType.cs" />
     <Compile Include="Enums\ReportResult.cs" />
     <Compile Include="Enums\SigninResultEnum.cs" />
+    <Compile Include="Enums\SignupResultEnum.cs" />
     <Compile Include="Extensions\ServiceCollectionExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtension.cs" />
     <Compile Include="Helpers\CurrencyHelper.cs" />
@@ -250,7 +251,6 @@
     <Compile Include="Interface\ViewModels\IReportsViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportViewModel.cs" />
     <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\Users\UserViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Reports\TelerikItemReportViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportsViewModel.cs" />

@@ -130,7 +130,7 @@ namespace Peppa.ViewModels.Login
                     Error = _localizationService.GetTranslateByKey(Localization.PasswordDoesntFit);
                     RaisePropertyChanged(nameof(Error));
                     break;
-                case SigninResultEnum.UnknownError:
+                default:
                     Error = _localizationService.GetTranslateByKey(Localization.OopsError);
                     RaisePropertyChanged(nameof(Error));
                     break;
@@ -142,14 +142,56 @@ namespace Peppa.ViewModels.Login
         
         public async void OnRegistrationButtonClick(object sender, RoutedEventArgs e)
         {
+            IsLoginProgressShow = true;
+            RaisePropertyChanged(nameof(IsLoginProgressShow));
+
+            var result = SignupResultEnum.UnknownError;
             try
             {
-                await _model.Signup(GetCancellationToken());
+                result = await _model.Signup(GetCancellationToken());
             }
             catch
             {
                 _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
             }
+            
+            IsLoginProgressShow = false;
+            RaisePropertyChanged(nameof(IsLoginProgressShow));
+
+            switch (result)
+            {
+                case SignupResultEnum.PasswordAndConfirmPasswordNotEquals:
+                    Error = _localizationService.GetTranslateByKey(Localization.PasswordAndConfirmPasswordNotEquals);
+                    RaisePropertyChanged(nameof(Error));
+                    break;
+                case SignupResultEnum.CurrencyNotSelected:
+                    Error =_localizationService.GetTranslateByKey(Localization.CurrencyNotSelected);
+                    RaisePropertyChanged(nameof(Error));
+                    break;
+                case SignupResultEnum.UserNotCreated:
+                    Error = _localizationService.GetTranslateByKey(Localization.UserNotCreated);
+                    RaisePropertyChanged(nameof(Error));
+                    break;
+                case SignupResultEnum.PasswordInvalid:
+                    Error = _localizationService.GetTranslateByKey(Localization.PasswordInvalid);
+                    RaisePropertyChanged(nameof(Error));
+                    break;
+                case SignupResultEnum.DuplicateUserName:
+                    Error = _localizationService.GetTranslateByKey(Localization.UserAlreadyExists);
+                    RaisePropertyChanged(nameof(Error));
+                    break;
+                case SignupResultEnum.InvalidUserName:
+                    Error = _localizationService.GetTranslateByKey(Localization.InvalidUserName);
+                    RaisePropertyChanged(nameof(Error));
+                    break;
+                default:
+                    Error = _localizationService.GetTranslateByKey(Localization.OopsError);
+                    RaisePropertyChanged(nameof(Error));
+                    break;
+            }
+
+            if (result == SignupResultEnum.Ok)
+                Frame.Navigate(typeof(MainPage));
         }
 
         public async void OnRegistrationLinkButtonClick(object sender, RoutedEventArgs e)

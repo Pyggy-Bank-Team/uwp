@@ -66,19 +66,13 @@ namespace Peppa.Models
             return SigninResultEnum.Ok;
         }
 
-        public async Task Signup(CancellationToken token)
+        public async Task<SignupResultEnum> Signup(CancellationToken token)
         {
             if (Password != ConfirmPassword)
-            {
-                Error = _localizationService.GetTranslateByKey(Localization.PasswordAndConfirmPasswordNotEquals);
-                return;
-            }
+                return SignupResultEnum.PasswordAndConfirmPasswordNotEquals;
 
             if (Currency?.Code == null)
-            {
-                Error = _localizationService.GetTranslateByKey(Localization.CurrencyNotSelected);
-                return;
-            }
+                return SignupResultEnum.CurrencyNotSelected;
 
             var request = new CreateUserRequest
             {
@@ -88,24 +82,31 @@ namespace Peppa.Models
                 UserName = UserName
             };
 
-            var response = await _service.RegistrationUser(request, token);
+            var result = await _service.RegistrationUser(request, token);
 
-            switch (response.Result)
+            if (!result.IsSuccess)
             {
-                case CreateUserResultEnum.Successful:
-                    _settingsService.AddOrUpdateValue(Constants.AccessToken, response.Token.AccessToken);
-                    await UpdateUserInfo(token);
-                    break;
-                case CreateUserResultEnum.UserNotCreated:
-                    Error = _localizationService.GetTranslateByKey(Localization.UserNotCreated);
-                    break;
-                case CreateUserResultEnum.PasswordInvalid:
-                    Error = _localizationService.GetTranslateByKey(Localization.PasswordInvalid);
-                    break;
-                default:
-                    Error = _localizationService.GetTranslateByKey(Localization.OopsError);
-                    break;
+                var error = result.Error;
+                switch (error.Type)
+                {
+                    case "PasswordInvalid":
+                        return SignupResultEnum.PasswordInvalid;
+                    case "DuplicateUserName":
+                        return SignupResultEnum.DuplicateUserName;
+                    case "InvalidUserName":
+                        return SignupResultEnum.InvalidUserName;
+                    case "UserNotCreated":
+                        return SignupResultEnum.UserNotCreated;
+                    default:
+                        return SignupResultEnum.UnknownError;
+                }
             }
+
+            var response = result.Ok;
+            _settingsService.AddOrUpdateValue(Constants.AccessToken, response.AccessToken);
+            await UpdateUserInfo(token);
+
+            return SignupResultEnum.Ok;
         }
 
         public async Task UpdateCurrencies(CancellationToken token)

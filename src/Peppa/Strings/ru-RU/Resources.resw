@@ -491,4 +491,10 @@
   <data name="UserNotFound" xml:space="preserve">
     <value>Пользователь не найден. Попробуйте другое имя.</value>
   </data>
+  <data name="UserAlreadyExists" xml:space="preserve">
+    <value>Пользователь с таким именем уже существует. Пожалуйста, поменяйте имя и попробуйте заново.</value>
+  </data>
+  <data name="InvalidUserName" xml:space="preserve">
+    <value>Нельзя создать пользователя с таким именем. Пожалуйста, используйте другое имя</value>
+  </data>
 </root>

@@ -24,7 +24,6 @@ using Peppa.ViewModels.Login;
 using Peppa.ViewModels.Operations;
 using Peppa.ViewModels.Reports;
 using Peppa.ViewModels.Settings;
-using UserViewModel = Peppa.ViewModels.Users.UserViewModel;
 
 namespace Peppa.Extensions
 {
@@ -55,7 +54,6 @@ namespace Peppa.Extensions
             services.AddScoped<IOperationsViewModel, OperationsViewModel>();
             services.AddScoped<ICategoriesViewModel, CategoriesViewModel>();
             services.AddSingleton<AccountsViewModel>();
-            services.AddSingleton<UserViewModel>();
             services.AddScoped<IReportsViewModel, ReportsViewModel>();
             services.AddScoped<ISettingsViewModel, SettingsViewModel>();
             services.AddHttpClient();
