@@ -13,7 +13,8 @@
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{x:Bind _loginViewModel.IsLoginPanelShow, Mode=OneWay}">
 
             <Image Source="ms-appx:///Assets/Logo.png" Height="105" Width="105" Margin="0 0 0 50"/>
-            
+
+            <TextBlock Text="{x:Bind _loginViewModel.Error, Mode=OneWay}" Visibility="Visible" Width="250" TextWrapping="WrapWholeWords" FontSize="10" Foreground="Red" />
             <TextBox x:Uid="UsernameText" Text="{x:Bind _loginViewModel.UserName, Mode=TwoWay}" Margin="0 10 0 0" Width="250" />
             <PasswordBox x:Uid="PasswordText" Password="{x:Bind _loginViewModel.Password, Mode=TwoWay}" Margin="0 10 0 0" Width="250" />
             <ProgressBar IsIndeterminate="True" Visibility="{x:Bind _loginViewModel.IsLoginProgressShow, Mode=OneWay}" Margin="0 5 0 0" />

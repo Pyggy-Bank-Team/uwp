@@ -4,7 +4,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Peppa.Views.Accounts;
-using Peppa.Views.Users;
 using Peppa.Views.Categories;
 using Peppa.Views.Operations;
 using Peppa.Views.Reports;
@@ -58,11 +57,6 @@ namespace Peppa.Views
                     break;
                 case Constants.diagrams:
                     ContentFrame.Navigate(typeof(ReportView));
-                    break;
-                case Constants.synchronization:
-                    ContentFrame.Navigate(typeof(SyncPage));
-                    break;
-                case Constants.donate:
                     break;
             }
         }

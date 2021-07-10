@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Peppa.Dto;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace Peppa.Interface.ViewModels
 {
@@ -12,7 +12,7 @@ namespace Peppa.Interface.ViewModels
         string ConfirmPassword { get; set; }
         string Email { get; set; }
         string Error { get; }
-        List<Currency> Currencies { get; }
+        ObservableCollection<Currency> Currencies { get; }
         Currency SelectedCurrency { get; set; }
         bool IsLoginProgressShow { get; set; }
         bool IsLoginPanelShow { get; set; }

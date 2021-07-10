@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Windows.UI.Xaml;
 using Peppa.Dto;
 using Peppa.Enums;
@@ -8,6 +7,8 @@ using Peppa.Interface.Models;
 using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
 using Peppa.Views;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Peppa.ViewModels.Login
 {
@@ -17,6 +18,8 @@ namespace Peppa.ViewModels.Login
         private readonly IToastService _toastService;
         private readonly ILocalizationService _localizationService;
 
+        private Currency _selectedCurrency;
+
         public LoginViewModel(ILoginModel model, IToastService toastService, ILocalizationService localizationService)
         {
             IsLoginPanelShow = true;
@@ -25,6 +28,7 @@ namespace Peppa.ViewModels.Login
             _model = model;
             _toastService = toastService;
             _localizationService = localizationService;
+            Currencies = new ObservableCollection<Currency>();
         }
 
         public string UserName
@@ -81,16 +85,17 @@ namespace Peppa.ViewModels.Login
 
         public string Error { get; private set; }
 
-        public List<Currency> Currencies => _model.Currencies;
+        public ObservableCollection<Currency> Currencies { get; }
 
         public Currency SelectedCurrency
         {
-            get => _model.Currency;
+            get => _selectedCurrency;
             set
             {
-                if (_model.Currency == value)
+                if (_selectedCurrency == value)
                     return;
 
+                _selectedCurrency = value;
                 _model.Currency = value;
                 RaisePropertyChanged(nameof(SelectedCurrency));
             }
@@ -198,8 +203,10 @@ namespace Peppa.ViewModels.Login
         {
             IsLoginPanelShow = false;
             IsRegistrationPanelShow = true;
+            Error = null;
             RaisePropertyChanged(nameof(IsLoginPanelShow));
             RaisePropertyChanged(nameof(IsRegistrationPanelShow));
+            RaisePropertyChanged(nameof(Error));
 
             if (Currencies.Count > 0)
                 return;
@@ -212,14 +219,24 @@ namespace Peppa.ViewModels.Login
             {
                 _toastService.ShowNotification("SoS", _localizationService.GetTranslateByKey(Localization.OopsError));
             }
+
+            Currencies.Clear();
+
+            foreach (var item in _model.Currencies)
+                Currencies.Add(item);
+
+            _selectedCurrency = Currencies.First();
+            RaisePropertyChanged(nameof(SelectedCurrency));
         }
 
         public void OnLoginLinkClick(object sender, RoutedEventArgs e)
         {
             IsLoginPanelShow = true;
             IsRegistrationPanelShow = false;
+            Error = null;
             RaisePropertyChanged(nameof(IsLoginPanelShow));
             RaisePropertyChanged(nameof(IsRegistrationPanelShow));
+            RaisePropertyChanged(nameof(Error));
         }
 
         private void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
