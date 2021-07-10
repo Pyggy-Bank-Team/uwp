@@ -4,14 +4,18 @@ using System.Threading.Tasks;
 using Peppa.Contracts;
 using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
+using Peppa.Interface.InternalServices;
 using Peppa.Interface.Services;
 
 namespace Peppa.Services.PiggyService
 {
     public class OperationService : PiggyServiceBase, IOperationService
     {
-        public OperationService(IHttpClientFactory httpClientFactory)
-            : base(httpClientFactory) { }
+        public OperationService(IHttpClientFactory httpClientFactory, ISettingsService settingsService)
+            : base(httpClientFactory, settingsService)
+        {
+            
+        }
 
         public Task<PageResult<OperationResponse>> GetOperations(int page, CancellationToken token)
             => Get<PageResult<OperationResponse>>($"operations?page={page}", token);

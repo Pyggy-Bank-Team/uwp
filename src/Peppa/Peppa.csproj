@@ -174,7 +174,7 @@
     <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Enums\DialogResult.cs" />
     <Compile Include="Enums\CategoryType.cs" />
-    <Compile Include="Enums\IdentityResultEnum.cs" />
+    <Compile Include="Enums\CreateUserResultEnum.cs" />
     <Compile Include="Enums\OperationType.cs" />
     <Compile Include="Enums\OperationViewType.cs" />
     <Compile Include="Enums\ReportResult.cs" />
@@ -217,7 +217,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Operations\OperationModel.cs" />
     <Compile Include="Models\Operations\OperationsModel.cs" />
-    <Compile Include="Models\RegitrationResult.cs" />
+    <Compile Include="Models\CreateUserResult.cs" />
     <Compile Include="Contracts\Requests\CreateUserRequest.cs" />
     <Compile Include="Contracts\Responses\AccessTokenResponse.cs" />
     <Compile Include="Contracts\Responses\CurrencyResponse.cs" />
@@ -232,9 +232,9 @@
     <Compile Include="Services\PiggyService\CategoryService.cs" />
     <Compile Include="Services\PiggyService\OperationService.cs" />
     <Compile Include="Services\PiggyService\PiggyService.cs" />
-    <Compile Include="Services\PiggyService\PiggyService.Users.cs" />
     <Compile Include="Services\PiggyService\PiggyServiceBase.cs" />
     <Compile Include="Services\PiggyService\ReportService.cs" />
+    <Compile Include="Services\PiggyService\UserService.cs" />
     <Compile Include="Services\Windows\DialogService.cs" />
     <Compile Include="Services\Windows\TileService.cs" />
     <Compile Include="Services\Windows\ToastService.cs" />

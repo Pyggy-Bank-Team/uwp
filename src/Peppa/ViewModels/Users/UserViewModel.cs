@@ -30,7 +30,7 @@ namespace Peppa.ViewModels.Users
             }
         }
 
-        public Task<RegitrationResult> OnRegistration(string userName, string password, string currency)
+        public Task<CreateUserResult> OnRegistration(string userName, string password, string currency)
         {
             //TODO: Add main currency
             var request = new CreateUserRequest

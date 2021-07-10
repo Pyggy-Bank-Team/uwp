@@ -3,13 +3,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Contracts.Requests.Categories;
 using Peppa.Contracts.Responses;
+using Peppa.Interface.InternalServices;
 using Peppa.Interface.Services;
 
 namespace Peppa.Services.PiggyService
 {
     public class CategoryService : PiggyServiceBase, ICategoryService
     {
-        public CategoryService(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
+        public CategoryService(IHttpClientFactory httpClientFactory,ISettingsService settingsService) 
+            : base(httpClientFactory, settingsService)
         {
         }
 

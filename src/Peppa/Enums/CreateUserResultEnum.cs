@@ -1,10 +1,12 @@
 ﻿namespace Peppa.Enums
 {
-    public enum IdentityResultEnum
+    public enum CreateUserResultEnum
     {
         Successful,
         UserNotCreated,
         InternalServerError,
-        PasswordInvalid
+        PasswordInvalid,
+        DuplicateUserName,
+        InvalidUserName
     }
 }

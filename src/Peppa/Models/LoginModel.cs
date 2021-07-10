@@ -98,16 +98,16 @@ namespace Peppa.Models
 
             var response = await _service.RegistrationUser(request, token);
 
-            switch (response.IdentityResult)
+            switch (response.Result)
             {
-                case IdentityResultEnum.Successful:
+                case CreateUserResultEnum.Successful:
                     _settingsService.AddOrUpdateValue(Constants.AccessToken, response.Token.AccessToken);
                     await UpdateUserInfo(token);
                     break;
-                case IdentityResultEnum.UserNotCreated:
+                case CreateUserResultEnum.UserNotCreated:
                     Error = _localizationService.GetTranslateByKey(Localization.UserNotCreated);
                     break;
-                case IdentityResultEnum.PasswordInvalid:
+                case CreateUserResultEnum.PasswordInvalid:
                     Error = _localizationService.GetTranslateByKey(Localization.PasswordInvalid);
                     break;
                 default:

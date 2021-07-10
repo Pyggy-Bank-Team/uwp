@@ -4,13 +4,15 @@ using System.Threading.Tasks;
 using Peppa.Contracts.Requests;
 using Peppa.Contracts.Responses;
 using Peppa.Dto;
+using Peppa.Interface.InternalServices;
 using Peppa.Interface.Services;
 
 namespace Peppa.Services.PiggyService
 {
     public class ReportService : PiggyServiceBase, IReportService
     {
-        public ReportService(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
+        public ReportService(IHttpClientFactory httpClientFactory,ISettingsService settingsService) 
+            : base(httpClientFactory, settingsService)
         {
         }
 

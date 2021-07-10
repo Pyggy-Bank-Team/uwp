@@ -68,9 +68,9 @@ namespace Peppa.Dialogs
             var result = await _userService.RegistrationUser(request, CancellationToken.None);
             
             //TODO Handler all cases
-            switch (result.IdentityResult)
+            switch (result.Result)
             {
-                case Enums.IdentityResultEnum.Successful:
+                case Enums.CreateUserResultEnum.Successful:
                     Token = result.Token;
                     InputedUserName = UserName.Text;
                     Hide();

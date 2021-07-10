@@ -3,9 +3,9 @@ using Peppa.Enums;
 
 namespace Peppa.Models
 {
-    public class RegitrationResult
+    public class CreateUserResult
     {
-        public IdentityResultEnum IdentityResult { get; set; }
+        public CreateUserResultEnum Result { get; set; }
         public ErrorResponse Error { get; set; }
         public AccessTokenResponse Token { get; set; }
     }

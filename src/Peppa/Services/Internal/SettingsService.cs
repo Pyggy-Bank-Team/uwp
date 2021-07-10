@@ -39,6 +39,14 @@ namespace Peppa.Services.Internal
 
             return value != null;
         }
+        
+        public string GetValue(string key)
+        {
+            lock (Lock)
+            {
+                return (string)_settings.Values[key];
+            }
+        }
 
         public void RemoveValue(string key)
         {
