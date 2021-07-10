@@ -485,4 +485,10 @@
   <data name="AccountDialogTitle.Text" xml:space="preserve">
     <value>Редактирование</value>
   </data>
+  <data name="PasswordDoesntFit" xml:space="preserve">
+    <value>Пароль не подходит</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>Пользователь не найден. Попробуйте другое имя.</value>
+  </data>
 </root>

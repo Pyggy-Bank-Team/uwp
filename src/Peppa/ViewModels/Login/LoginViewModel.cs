@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Windows.UI.Xaml;
 using Peppa.Dto;
+using Peppa.Enums;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models;
 using Peppa.Interface.ViewModels;
@@ -106,9 +107,10 @@ namespace Peppa.ViewModels.Login
             IsLoginProgressShow = true;
             RaisePropertyChanged(nameof(IsLoginProgressShow));
 
+            var result = SigninResultEnum.UnknownError;
             try
             {
-                await _model.Signin(GetCancellationToken());
+               result = await _model.Signin(GetCancellationToken());
             }
             catch
             {
@@ -118,7 +120,24 @@ namespace Peppa.ViewModels.Login
             IsLoginProgressShow = false;
             RaisePropertyChanged(nameof(IsLoginProgressShow));
 
-            Frame.Navigate(typeof(MainPage));
+            switch (result)
+            {
+                case SigninResultEnum.UserNotFound:
+                    Error = _localizationService.GetTranslateByKey(Localization.UserNotFound);
+                    RaisePropertyChanged(nameof(Error));
+                    break;
+                case SigninResultEnum.InvalidPassword:
+                    Error = _localizationService.GetTranslateByKey(Localization.PasswordDoesntFit);
+                    RaisePropertyChanged(nameof(Error));
+                    break;
+                case SigninResultEnum.UnknownError:
+                    Error = _localizationService.GetTranslateByKey(Localization.OopsError);
+                    RaisePropertyChanged(nameof(Error));
+                    break;
+            }
+
+            if (result == SigninResultEnum.Ok)
+                Frame.Navigate(typeof(MainPage));
         }
         
         public async void OnRegistrationButtonClick(object sender, RoutedEventArgs e)

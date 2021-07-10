@@ -4,6 +4,7 @@
     {
         Ok,
         UserNotFound,
-        InvalidPassword
+        InvalidPassword,
+        UnknownError
     }
 }

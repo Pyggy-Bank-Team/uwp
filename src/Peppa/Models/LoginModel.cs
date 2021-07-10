@@ -44,15 +44,26 @@ namespace Peppa.Models
                 Password = Password
             };
 
-            var response = await _service.GetAccessToken(request, token);
-            if (response == null)
+            var result = await _service.GetAccessToken(request, token);
+            if (!result.IsSuccess)
             {
-                Error = _localizationService.GetTranslateByKey(Localization.NotValidUserNameOrPassword);
-                return;
+                var error = result.Error;
+                switch (error.Type)
+                {
+                    case "InvalidPassword":
+                        return SigninResultEnum.InvalidPassword;
+                    case "UserNotFound":
+                        return SigninResultEnum.UserNotFound;
+                    default:
+                        return SigninResultEnum.UnknownError;
+                }
             }
 
+            var response = result.Ok;
             _settingsService.AddOrUpdateValue(Constants.AccessToken, response.AccessToken);
             await UpdateUserInfo(token);
+
+            return SigninResultEnum.Ok;
         }
 
         public async Task Signup(CancellationToken token)

@@ -24,7 +24,9 @@ namespace Peppa
         public const string PasswordAndConfirmPasswordNotEquals = "PasswordAndConfirmPasswordNotEquals";
         public const string CurrencyNotSelected = "CurrencyNotSelected";
         public const string UserNotCreated = "UserNotCreated";
+        public const string UserNotFound = "UserNotFound";
         public const string PasswordInvalid = "PasswordInvalid";
+        public const string PasswordDoesntFit = "PasswordDoesntFit";
         public const string OopsError = "OopsError";
         public const string Income = "Income";
         public const string Expense = "Expense";
