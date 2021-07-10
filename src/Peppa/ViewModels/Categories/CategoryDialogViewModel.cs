@@ -1,5 +1,4 @@
-﻿using Windows.UI;
-using Peppa.Enums;
+﻿using Peppa.Enums;
 using Peppa.Extensions;
 using Peppa.Interface.Models.Categories;
 using System.Collections.Generic;
@@ -25,6 +24,8 @@ namespace Peppa.ViewModels.Categories
                     _isExpense = true;
                     break;
             }
+
+            IsNew = Model.IsNew;
 
             #region Init colors
 
@@ -116,6 +117,8 @@ namespace Peppa.ViewModels.Categories
                 RaisePropertyChanged(nameof(IsArchived));
             }
         }
+        
+        public bool IsNew { get; }
 
         public ICategoryModel Model { get; }
     }

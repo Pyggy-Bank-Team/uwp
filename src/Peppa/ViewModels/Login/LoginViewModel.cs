@@ -135,7 +135,7 @@ namespace Peppa.ViewModels.Login
                     Error = _localizationService.GetTranslateByKey(Localization.PasswordDoesntFit);
                     RaisePropertyChanged(nameof(Error));
                     break;
-                default:
+                case SigninResultEnum.UnknownError:
                     Error = _localizationService.GetTranslateByKey(Localization.OopsError);
                     RaisePropertyChanged(nameof(Error));
                     break;
@@ -189,7 +189,7 @@ namespace Peppa.ViewModels.Login
                     Error = _localizationService.GetTranslateByKey(Localization.InvalidUserName);
                     RaisePropertyChanged(nameof(Error));
                     break;
-                default:
+                case SignupResultEnum.UnknownError:
                     Error = _localizationService.GetTranslateByKey(Localization.OopsError);
                     RaisePropertyChanged(nameof(Error));
                     break;

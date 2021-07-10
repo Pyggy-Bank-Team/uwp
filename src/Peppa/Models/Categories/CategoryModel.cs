@@ -12,7 +12,7 @@ namespace Peppa.Models.Categories
     {
         private readonly ICategoryService _service;
 
-        public CategoryModel(Category entity, ICategoryService service)
+        public CategoryModel(Category entity, ICategoryService service, bool isNew = false)
         {
             _service = service;
             Id = entity.Id;
@@ -20,6 +20,7 @@ namespace Peppa.Models.Categories
             HexColor = entity.HexColor;
             Type = entity.Type;
             IsArchived = entity.IsArchived;
+            IsNew = isNew;
         }
         
         public async Task Save(CancellationToken token)
@@ -67,6 +68,7 @@ namespace Peppa.Models.Categories
         public string Title { get; set; }
         public CategoryType Type { get; set; }
         public bool IsArchived { get; set; }
+        public bool IsNew { get; }
         public int Id { get ; }
     }
 }

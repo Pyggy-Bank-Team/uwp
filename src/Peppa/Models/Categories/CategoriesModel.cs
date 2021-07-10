@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Peppa.Enums;
 using Peppa.Interface;
 using Peppa.Interface.Models.Categories;
 using Peppa.Interface.Services;
@@ -24,10 +25,11 @@ namespace Peppa.Models.Categories
         {
             var entity = new Category
             {
-                HexColor = "#ffb900"
+                HexColor = "#ffb900",
+                Type = CategoryType.Expense
             };
             
-            return new CategoryModel(entity, _service);
+            return new CategoryModel(entity, _service, isNew: true);
         }
 
         public async Task UpdateCategories(CancellationToken token)

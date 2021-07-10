@@ -26,8 +26,8 @@
 
         <!--Types-->
         <StackPanel Orientation="Horizontal" Margin="0 20 0 0" MaxWidth="360">
-            <RadioButton x:Uid="ExpenseRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsExpense, Mode=TwoWay}"/>
-            <RadioButton x:Uid="IncomeRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsIncome, Mode=TwoWay}"/>
+            <RadioButton x:Uid="ExpenseRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsExpense, Mode=TwoWay}" IsEnabled="{x:Bind _viewModel.IsNew}"/>
+            <RadioButton x:Uid="IncomeRadioButton" FontSize="18" IsChecked="{x:Bind _viewModel.IsIncome, Mode=TwoWay}" IsEnabled="{x:Bind _viewModel.IsNew}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Margin="0 20 0 0" MaxWidth="360">

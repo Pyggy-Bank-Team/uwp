@@ -13,5 +13,6 @@ namespace Peppa.Interface.Models.Categories
         string Title { get; set; }
         CategoryType Type { get; set; }
         bool IsArchived { get; set; }
+        bool IsNew { get; }
     }
 }
