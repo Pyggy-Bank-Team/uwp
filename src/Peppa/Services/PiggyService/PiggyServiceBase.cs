@@ -4,19 +4,24 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Peppa.Workers;
+using Peppa.Interface.InternalServices;
 
 namespace Peppa.Services.PiggyService
 {
     public abstract class PiggyServiceBase
     {
-        protected PiggyServiceBase(IHttpClientFactory httpClientFactory)
-            => HttpClientFactory = httpClientFactory;
+        private readonly ISettingsService _settingsService;
+
+        protected PiggyServiceBase(IHttpClientFactory httpClientFactory, ISettingsService settingsService)
+        {
+            _settingsService = settingsService;
+            HttpClientFactory = httpClientFactory;
+        }
 
         protected async Task<TResponse> Get<TResponse>(string requestUrl, CancellationToken token) where TResponse : class
         {
             var client = HttpClientFactory.CreateClient("Get");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string) SettingsWorker.Current.GetValue(Constants.AccessToken));
+            AddBearerToken(client);
             using (var response = await client.GetAsync($"{BaseUrl}/{requestUrl}", token))
             {
                 return response.IsSuccessStatusCode
@@ -29,7 +34,7 @@ namespace Peppa.Services.PiggyService
             where TRequest : class
         {
             var client = HttpClientFactory.CreateClient("Post");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string) SettingsWorker.Current.GetValue(Constants.AccessToken));
+            AddBearerToken(client);
             using (var response = await client.PostAsync($"{BaseUrl}/{requestUrl}", ToStringContent(request), token))
             {
                 return response.IsSuccessStatusCode
@@ -41,7 +46,7 @@ namespace Peppa.Services.PiggyService
         protected async Task<bool> Post<TRequest>(string requestUrl, TRequest request, CancellationToken token) where TRequest : class
         {
             var client = HttpClientFactory.CreateClient("Post");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string) SettingsWorker.Current.GetValue(Constants.AccessToken));
+            AddBearerToken(client);
             using (var response = await client.PostAsync($"{BaseUrl}/{requestUrl}", ToStringContent(request), token))
             {
                 return response.IsSuccessStatusCode;
@@ -51,8 +56,24 @@ namespace Peppa.Services.PiggyService
         protected async Task<bool> Put<TRequest>(string requestUrl, TRequest request, CancellationToken token) where TRequest : class
         {
             var client = HttpClientFactory.CreateClient("Put");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string) SettingsWorker.Current.GetValue(Constants.AccessToken));
+            AddBearerToken(client);
             using (var response = await client.PutAsync($"{BaseUrl}/{requestUrl}", ToStringContent(request), token))
+            {
+                return response.IsSuccessStatusCode;
+            }
+        }
+        
+        protected async Task<bool> Patch<TRequest>(string requestUrl, TRequest request, CancellationToken token) where TRequest : class
+        {
+            var client = HttpClientFactory.CreateClient("Patch");
+            AddBearerToken(client);
+            
+            var httpRequest = new HttpRequestMessage(new HttpMethod("PATCH"), $"{BaseUrl}/{requestUrl}")
+            {
+                Content = ToStringContent(request)
+            };
+            
+            using (var response = await client.SendAsync(httpRequest, token))
             {
                 return response.IsSuccessStatusCode;
             }
@@ -61,18 +82,21 @@ namespace Peppa.Services.PiggyService
         protected async Task<bool> Delete(string requestUrl, CancellationToken token)
         {
             var client = HttpClientFactory.CreateClient("Delete");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", (string) SettingsWorker.Current.GetValue(Constants.AccessToken));
+            AddBearerToken(client);
             using (var response = await client.DeleteAsync($"{BaseUrl}/{requestUrl}", token))
             {
                 return response.IsSuccessStatusCode;
             }
         }
 
-        private static StringContent ToStringContent<T>(T content) where T : class
+        protected static StringContent ToStringContent<T>(T content) where T : class
             => new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json");
 
-        public IHttpClientFactory HttpClientFactory { get; }
-        public string BaseUrl { get; } = @"https://dev.piggybank.pro/api";
-        public bool IsAuthorized => SettingsWorker.Current.HaveValue(Constants.AccessToken);
+        private void AddBearerToken(HttpClient client)
+            => client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _settingsService.GetValue(Constants.AccessToken));
+
+        protected IHttpClientFactory HttpClientFactory { get; }
+        protected string BaseUrl { get; } = @"https://dev.piggybank.pro/api";
+        public bool IsAuthorized => _settingsService.HaveValue(Constants.AccessToken);
     }
 }
