@@ -166,9 +166,6 @@
     <Compile Include="Dialogs\OperationDialog.xaml.cs">
       <DependentUpon>OperationDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\RegistrationDialog.xaml.cs">
-      <DependentUpon>RegistrationDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Dto\Account.cs" />
     <Compile Include="Dto\Category.cs" />
     <Compile Include="Dto\ItemReport.cs" />
@@ -292,9 +289,6 @@
     <Compile Include="Views\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Users\SyncPage.xaml.cs">
-      <DependentUpon>SyncPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Workers\SettingsWorker.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -385,10 +379,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\RegistrationDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Styles\AppStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -436,10 +426,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Settings\SettingsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Users\SyncPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
