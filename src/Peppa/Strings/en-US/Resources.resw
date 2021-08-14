@@ -117,59 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddCostAppBarButton.Label" xml:space="preserve">
-    <value>Add cost</value>
-  </data>
   <data name="Categories" xml:space="preserve">
     <value>Categories</value>
   </data>
   <data name="CategoriesHeader.Content" xml:space="preserve">
     <value>Categories</value>
   </data>
-  <data name="ChangeBalanceAppBarButton.Label" xml:space="preserve">
-    <value>Changed current balance</value>
-  </data>
-  <data name="Costs" xml:space="preserve">
-    <value>Costs</value>
-  </data>
-  <data name="CostsHeader.Content" xml:space="preserve">
-    <value>Costs</value>
-  </data>
-  <data name="Diagrama" xml:space="preserve">
-    <value>Diagrama</value>
-  </data>
-  <data name="DiagramHeader.Content" xml:space="preserve">
-    <value>Diagrama</value>
-  </data>
-  <data name="RefreshCostsAppBarButton.Label" xml:space="preserve">
-    <value>Update</value>
-  </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
-  </data>
-  <data name="StubCostsTextBlock.Text" xml:space="preserve">
-    <value>To start use an app, change a balance and create costs</value>
-  </data>
-  <data name="Synchronization" xml:space="preserve">
-    <value>Synchronization</value>
-  </data>
-  <data name="SynchronizationHeader.Content" xml:space="preserve">
-    <value>Synchronization</value>
   </data>
   <data name="AboutTextBlock.Text" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="AddCategoryAppBarButton.Label" xml:space="preserve">
-    <value>Add category</value>
-  </data>
-  <data name="CancelAppBarButton.Label" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
   <data name="CategoriesComboBox.Header" xml:space="preserve">
     <value>Category</value>
-  </data>
-  <data name="ChangeBalanceTextBox.Header" xml:space="preserve">
-    <value>Changed balance</value>
   </data>
   <data name="ColorTitle.Text" xml:space="preserve">
     <value>Color</value>
@@ -177,44 +138,8 @@
   <data name="CommentTextBox.Header" xml:space="preserve">
     <value>Comment</value>
   </data>
-  <data name="CostTextBox.Header" xml:space="preserve">
-    <value>Value</value>
-  </data>
-  <data name="CurrentBalanceTextBlock.Text" xml:space="preserve">
-    <value>Current balance</value>
-  </data>
-  <data name="DarkRadioButton.Content" xml:space="preserve">
-    <value>Dark</value>
-  </data>
   <data name="DatePicker.Header" xml:space="preserve">
     <value>Date</value>
-  </data>
-  <data name="DeleteAppBarButton.Label" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="DescriptionDonateTextBlock.Text" xml:space="preserve">
-    <value>Thanks so much for willing to donate us! You are a great man!</value>
-  </data>
-  <data name="DescriptionSpecailThanks.Text" xml:space="preserve">
-    <value>We want to especially thank these people for their help and knowledge while building PiggyBank</value>
-  </data>
-  <data name="DescriptionTextBox.Header" xml:space="preserve">
-    <value>Description</value>
-  </data>
-  <data name="DesctiptionNotifiTextBlock.Text" xml:space="preserve">
-    <value>The reminder comes in the form of notifications. It is recommended to synchronize data at least every 5 days to avoid data loss</value>
-  </data>
-  <data name="DownloadAppBarButton.Label" xml:space="preserve">
-    <value>Download</value>
-  </data>
-  <data name="EndDatePicker.Header" xml:space="preserve">
-    <value>End</value>
-  </data>
-  <data name="FilterAppBarButton.Label" xml:space="preserve">
-    <value>Filter</value>
-  </data>
-  <data name="LightRadioButton.Content" xml:space="preserve">
-    <value>Ligth</value>
   </data>
   <data name="LoginButton.Content" xml:space="preserve">
     <value>Login</value>
@@ -222,62 +147,11 @@
   <data name="logoutButton.Content" xml:space="preserve">
     <value>Logout</value>
   </data>
-  <data name="SaveAppBarButton.Label" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="SpecialThanksTextBlock.Text" xml:space="preserve">
-    <value>Special thank</value>
-  </data>
-  <data name="StartDatePicker.Header" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="SupportTextBlock.Text" xml:space="preserve">
-    <value>Support</value>
-  </data>
-  <data name="SyncTitleTextBlock.Text" xml:space="preserve">
-    <value>Sync your cost history so you don't lose data after changing your Windows 10-based device or reinstalling the app.</value>
-  </data>
-  <data name="SyncToggleSwitch.Header" xml:space="preserve">
-    <value>Sync reminder</value>
-  </data>
-  <data name="ThanksTextBlock.Text" xml:space="preserve">
-    <value>Thank you for using PiggyBank!</value>
-  </data>
   <data name="ThemeChangedTextBlock.Text" xml:space="preserve">
     <value>You'll see your change the next time you start app</value>
   </data>
-  <data name="ThemeTextBlock.Text" xml:space="preserve">
-    <value>Theme mode</value>
-  </data>
   <data name="TitleTextBox.Header" xml:space="preserve">
     <value>Title</value>
-  </data>
-  <data name="UpdateAppBarButton.Label" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="DescriptionRemiderNotifi" xml:space="preserve">
-    <value>Please sync your account</value>
-  </data>
-  <data name="HeaderReminderNotifi" xml:space="preserve">
-    <value>Reminder</value>
-  </data>
-  <data name="Ok" xml:space="preserve">
-    <value>Ok</value>
-  </data>
-  <data name="WarringCategoriesContent" xml:space="preserve">
-    <value>First create a category</value>
-  </data>
-  <data name="WarringCategoryContent" xml:space="preserve">
-    <value>First select a color</value>
-  </data>
-  <data name="WarringCostContent" xml:space="preserve">
-    <value>First select a category</value>
-  </data>
-  <data name="PurchaseStatusBad" xml:space="preserve">
-    <value>Oops! Something went wrong!</value>
-  </data>
-  <data name="PurchaseStatusOk" xml:space="preserve">
-    <value>Thank you!</value>
   </data>
   <data name="AccountsHeader.Content" xml:space="preserve">
     <value>Accounts</value>
@@ -287,18 +161,6 @@
   </data>
   <data name="BalancesComboBox.Header" xml:space="preserve">
     <value>Account</value>
-  </data>
-  <data name="TotalBalanceNameTextBlock.Text" xml:space="preserve">
-    <value>Total balance</value>
-  </data>
-  <data name="WarringBalanceCostContent" xml:space="preserve">
-    <value>First select a account</value>
-  </data>
-  <data name="AddBalanceAppBarButton.Label" xml:space="preserve">
-    <value>Add account</value>
-  </data>
-  <data name="NotValidUserNameOrPassword" xml:space="preserve">
-    <value>Invalid username or password</value>
   </data>
   <data name="PasswordAndConfirmPasswordNotEquals" xml:space="preserve">
     <value>The passwords are not identical</value>
