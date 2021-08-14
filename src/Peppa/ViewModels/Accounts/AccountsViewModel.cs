@@ -33,8 +33,14 @@ namespace Peppa.ViewModels.Accounts
 
             await UpdateAccounts();
 
+            DummyText = null;
+
+            if (List.Count == 0)
+                DummyText = _localizationService.GetTranslateByKey(Localization.NoAccounts);
+
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
+            RaisePropertyChanged(nameof(DummyText));
         }
 
         public async void OnAddAccountClick(object sender, RoutedEventArgs e)
@@ -52,6 +58,13 @@ namespace Peppa.ViewModels.Accounts
             {
                 await _model.SaveAccount(newAccount.Model, GetCancellationToken());
                 await UpdateAccounts();
+
+                DummyText = null;
+
+                if (List.Count == 0)
+                    DummyText = _localizationService.GetTranslateByKey(Localization.NoAccounts);
+
+                RaisePropertyChanged(nameof(DummyText));
             }
         }
 
@@ -79,6 +92,13 @@ namespace Peppa.ViewModels.Accounts
                     await UpdateAccounts();
                     break;
             }
+
+            DummyText = null;
+
+            if (List.Count == 0)
+                DummyText = _localizationService.GetTranslateByKey(Localization.NoAccounts);
+
+            RaisePropertyChanged(nameof(DummyText));
         }
 
         private async Task UpdateAccounts()
@@ -106,5 +126,7 @@ namespace Peppa.ViewModels.Accounts
         public ObservableCollection<AccountListViewItemViewModel> List { get; private set; }
 
         public bool IsProgressShow { get; set; }
+
+        public string DummyText { get; private set; }
     }
 }

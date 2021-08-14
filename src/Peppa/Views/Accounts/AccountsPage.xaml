@@ -35,6 +35,10 @@
         <ProgressRing Grid.Row="1" Grid.Column="1" IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center"
                       Visibility="{x:Bind _dataContext.IsProgressShow, Mode=OneWay}" />
 
+
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind _dataContext.DummyText, Mode=OneWay}" HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" />
+
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

@@ -500,4 +500,7 @@
   <data name="NoOperations" xml:space="preserve">
     <value>Нет операций</value>
   </data>
+  <data name="NoAccounts" xml:space="preserve">
+    <value>Нет счетов</value>
+  </data>
 </root>
