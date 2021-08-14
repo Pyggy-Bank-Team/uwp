@@ -43,7 +43,7 @@
 
                 <TextBlock x:Uid="ExpenseTitle" HorizontalAlignment="Center" FontWeight="Bold"/>
 
-                <telerik:RadPieChart Palette="{x:Bind _viewModel.ExpenseReport.Palette, Mode=OneWay}" Height="300" Width="300" Margin="0 10 0 0">
+                <telerik:RadPieChart x:Uid="ExpenseReport" Palette="{x:Bind _viewModel.ExpenseReport.Palette, Mode=OneWay}" Height="300" Width="300" Margin="0 10 0 0">
                     <telerik:DoughnutSeries ItemsSource="{x:Bind _viewModel.ExpenseReport.List, Mode=OneWay}" RadiusFactor="0.75">
                         <telerik:DoughnutSeries.ValueBinding>
                             <telerik:PropertyNameDataPointBinding PropertyName="Value"/>
@@ -99,7 +99,7 @@
                 
                 <TextBlock x:Uid="IncomeTitle" HorizontalAlignment="Center" FontWeight="Bold"/>
 
-                <telerik:RadPieChart Palette="{x:Bind _viewModel.IncomeReport.Palette, Mode=OneWay}" Height="300" Width="300" Margin="0 10 0 0">
+                <telerik:RadPieChart x:Uid="IncomeReport" Palette="{x:Bind _viewModel.IncomeReport.Palette, Mode=OneWay}" Height="300" Width="300" Margin="0 10 0 0">
                     <telerik:DoughnutSeries ItemsSource="{x:Bind _viewModel.IncomeReport.List, Mode=OneWay}" RadiusFactor="0.75">
                         <telerik:DoughnutSeries.ValueBinding>
                             <telerik:PropertyNameDataPointBinding PropertyName="Value"/>

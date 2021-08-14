@@ -506,4 +506,10 @@
   <data name="NoCategories" xml:space="preserve">
     <value>Нет категорий</value>
   </data>
+  <data name="ExpenseReport.EmptyContent" xml:space="preserve">
+    <value>Нет данных</value>
+  </data>
+  <data name="IncomeReport.EmptyContent" xml:space="preserve">
+    <value>Нет данных</value>
+  </data>
 </root>

@@ -498,4 +498,10 @@
   <data name="NoCategories" xml:space="preserve">
     <value>No categories</value>
   </data>
+  <data name="ExpenseReport.EmptyContent" xml:space="preserve">
+    <value>No data found</value>
+  </data>
+  <data name="IncomeReport.EmptyContent" xml:space="preserve">
+    <value>No data found</value>
+  </data>
 </root>
