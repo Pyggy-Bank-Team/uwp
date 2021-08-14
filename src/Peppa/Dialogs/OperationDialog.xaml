@@ -5,17 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:dto="using:Peppa.Dto"
-    xmlns:converters="using:Peppa.Converters"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
     PrimaryButtonClick="OnSaveButtonClick"
     CloseButtonClick="OnCancelButtonClick"
     Loaded="{x:Bind _viewModel.OnLoaded}">
-
-    <ContentDialog.Resources>
-        <converters:ConvertDateTimeOffsetToDateTime x:Key="DateConverter"/>
-    </ContentDialog.Resources>
 
     <ContentDialog.TitleTemplate>
         <DataTemplate>

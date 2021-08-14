@@ -6,21 +6,11 @@
         public const string operations = "operations";
         public const string categories = "categories";
         public const string diagrams = "diagrams";
-        public const string synchronization = "synchronization";
-        public const string donate = "donate";
-        public const string appName = "PiggyBank";
 
         public const string AccessToken = "AccessToken";
-        public const string RefreshToken = "RefreshToken";
-        public const string UserName = "UserName";
-        public const string BaseCurrency = "BaseCurrency";
         public const string RequestedTheme = "RequestedTheme";
 
-        public static readonly string[] Locales = { "en", "ru" };
-        public const string defaultLocale = "en";
-
-        public static string[] Colors = new[]
-        {
+        public static string[] Colors = {
             "#ffb900",
             "#ff8c00",
             "#f7630c",

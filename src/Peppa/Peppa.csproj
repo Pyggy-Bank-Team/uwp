@@ -138,21 +138,8 @@
     <Compile Include="Contracts\Responses\OperationResponse.cs" />
     <Compile Include="Contracts\Responses\TransferOperationResponse.cs" />
     <Compile Include="Contracts\Responses\UserInfoResponse.cs" />
-    <Compile Include="Contracts\Results\CreateUserResult.cs" />
     <Compile Include="Contracts\Results\PageResult.cs" />
     <Compile Include="Contracts\Results\ServiceResult.cs" />
-    <Compile Include="Controls\DiagramControl.xaml.cs">
-      <DependentUpon>DiagramControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\MasterDetailView\MasterDetailState.cs" />
-    <Compile Include="Controls\MasterDetailView\MasterDetailView.cs" />
-    <Compile Include="Controls\PatternTextBox.cs" />
-    <Compile Include="Converters\AccountTypeToFontValueConvertor.cs" />
-    <Compile Include="Converters\AccountTypeToFronIconValueConverter.cs" />
-    <Compile Include="Converters\ConvertDateTimeOffsetToDateTime.cs" />
-    <Compile Include="Converters\DecimalConverter.cs" />
-    <Compile Include="Converters\ValueToCollapsedConverter.cs" />
-    <Compile Include="Converters\ValueToVisibilityConverter.cs" />
     <Compile Include="Converters\ViewTypeToVisibilityConverter.cs" />
     <Compile Include="Dialogs\AccountDialog.xaml.cs">
       <DependentUpon>AccountDialog.xaml</DependentUpon>
@@ -173,7 +160,6 @@
     <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Enums\DialogResult.cs" />
     <Compile Include="Enums\CategoryType.cs" />
-    <Compile Include="Enums\CreateUserResultEnum.cs" />
     <Compile Include="Enums\OperationType.cs" />
     <Compile Include="Enums\OperationViewType.cs" />
     <Compile Include="Enums\ReportResult.cs" />
@@ -212,7 +198,6 @@
     <Compile Include="Models\Accounts\AccountModel.cs" />
     <Compile Include="Models\Accounts\AccountsModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Interface\IBaseModel.cs" />
     <Compile Include="Models\Categories\CategoriesModel.cs" />
     <Compile Include="Models\Categories\CategoryModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -234,11 +219,7 @@
     <Compile Include="Services\PiggyService\PiggyServiceBase.cs" />
     <Compile Include="Services\PiggyService\ReportService.cs" />
     <Compile Include="Services\PiggyService\UserService.cs" />
-    <Compile Include="Services\Windows\DialogService.cs" />
-    <Compile Include="Services\Windows\TileService.cs" />
     <Compile Include="Services\Windows\ToastService.cs" />
-    <Compile Include="Utilities\DateUtility.cs" />
-    <Compile Include="Utilities\DonateUtility.cs" />
     <Compile Include="ViewModels\Accounts\AccountListViewItemViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountsViewModel.cs" />
     <Compile Include="ViewModels\Accounts\AccountDialogViewModel.cs" />
@@ -254,8 +235,6 @@
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Reports\TelerikItemReportViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportsViewModel.cs" />
-    <Compile Include="ViewModels\Donate\DonateItemViewModel.cs" />
-    <Compile Include="ViewModels\Donate\DonateViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryDialogViewModel.cs" />
     <Compile Include="Views\Accounts\AccountsPage.xaml.cs">
       <DependentUpon>AccountsPage.xaml</DependentUpon>
@@ -272,17 +251,11 @@
     <Compile Include="Views\Default\DefaultPage.xaml.cs">
       <DependentUpon>DefaultPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Donate\DonatePage.xaml.cs">
-      <DependentUpon>DonatePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ColorUtility.cs" />
-    <Compile Include="Utilities\FileUtility.cs" />
-    <Compile Include="Utilities\SettingsUtility.cs" />
-    <Compile Include="Utilities\SystemUtility.cs" />
     <Compile Include="Views\Reports\ReportView.xaml.cs">
       <DependentUpon>ReportView.xaml</DependentUpon>
     </Compile>
@@ -359,10 +332,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\DiagramControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Dialogs\AccountDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -384,15 +353,6 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="Styles\Colors.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Templates\AppTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Page>
     <Page Include="Views\Accounts\AccountsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -410,10 +370,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Default\DefaultPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Donate\DonatePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
