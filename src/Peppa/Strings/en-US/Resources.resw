@@ -489,4 +489,7 @@
   <data name="InvalidUserName" xml:space="preserve">
     <value>Can't create a user with this name. Please, chose another name</value>
   </data>
+  <data name="NoOperations" xml:space="preserve">
+    <value>No operations</value>
+  </data>
 </root>

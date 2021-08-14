@@ -18,5 +18,6 @@ namespace Peppa.Interface.ViewModels
         bool IsProgressShow { get; }
         bool CanPreviousButtonClick { get; }
         bool CanNextButtonClick { get; }
+        string DummyText { get; }
     }
 }

@@ -497,4 +497,7 @@
   <data name="InvalidUserName" xml:space="preserve">
     <value>Нельзя создать пользователя с таким именем. Пожалуйста, используйте другое имя</value>
   </data>
+  <data name="NoOperations" xml:space="preserve">
+    <value>Нет операций</value>
+  </data>
 </root>

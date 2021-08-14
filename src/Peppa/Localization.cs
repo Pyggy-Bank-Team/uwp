@@ -38,6 +38,7 @@ namespace Peppa
         public const string Cash = "Cash";
         public const string Card = "Card";
         public const string InArchive = "InArchive";
+        public const string NoOperations = "NoOperations";
 
         public static string GetTranslateByKey(string key)
         {

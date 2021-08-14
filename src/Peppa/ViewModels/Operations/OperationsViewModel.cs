@@ -7,7 +7,6 @@ using Windows.UI.Xaml.Controls;
 using Peppa.Dialogs;
 using Peppa.Enums;
 using Peppa.Interface.InternalServices;
-using Peppa.Interface.Models;
 using Peppa.Interface.Models.Operations;
 using Peppa.Interface.ViewModels;
 using Peppa.Interface.WindowsService;
@@ -50,12 +49,17 @@ namespace Peppa.ViewModels.Operations
             foreach (var operation in _model.Operations)
                 Operations.Add(new OperationListViewItemViewModel(operation, _localizationService));
 
+            DummyText = null;
+
+            if (Operations.Count == 0)
+                DummyText = _localizationService.GetTranslateByKey(Localization.NoOperations);
 
             IsProgressShow = false;
 
             RaisePropertyChanged(nameof(IsProgressShow));
             RaisePropertyChanged(nameof(CanNextButtonClick));
             RaisePropertyChanged(nameof(CanPreviousButtonClick));
+            RaisePropertyChanged(nameof(DummyText));
         }
 
         public async void OnOperationClick(object sender, ItemClickEventArgs e)
@@ -82,6 +86,13 @@ namespace Peppa.ViewModels.Operations
                     break;
             }
 
+
+            DummyText = null;
+
+            if (Operations.Count == 0)
+                DummyText = _localizationService.GetTranslateByKey(Localization.NoOperations);
+
+            RaisePropertyChanged(nameof(DummyText));
         }
 
         public async void OnAddOperationClick(object sender, RoutedEventArgs e)
@@ -98,6 +109,13 @@ namespace Peppa.ViewModels.Operations
             {
                 await _model.SaveOperation(newOperation.Model, GetCancellationToken());
                 await UpdateOperations();
+
+                DummyText = null;
+
+                if (Operations.Count == 0)
+                    DummyText = _localizationService.GetTranslateByKey(Localization.NoOperations);
+
+                RaisePropertyChanged(nameof(DummyText));
             }
         }
 
@@ -170,6 +188,8 @@ namespace Peppa.ViewModels.Operations
             foreach (var operation in _model.Operations)
                 Operations.Add(new OperationListViewItemViewModel(operation, _localizationService));
         }
+
+        public string DummyText { get;  private set; }
 
         public ObservableCollection<OperationListViewItemViewModel> Operations { get; }
 
