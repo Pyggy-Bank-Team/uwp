@@ -50,8 +50,8 @@ namespace Peppa.ViewModels.Operations
             try
             {
                 await Model.UpdateData(token);
-                await Model.UpdateAccounts(!Model.IsNew, token);
-                await Model.UpdateCategories(!Model.IsNew, token);
+                await Model.UpdateAccounts(Model.IsNew, token);
+                await Model.UpdateCategories(Model.IsNew, token);
             }
             catch
             {
@@ -82,7 +82,7 @@ namespace Peppa.ViewModels.Operations
         {
             try
             {
-                await Model.UpdateCategories(!Model.IsNew, GetCancellationToken());
+                await Model.UpdateCategories(Model.IsNew, GetCancellationToken());
             }
             catch
             {

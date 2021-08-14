@@ -29,8 +29,8 @@ namespace Peppa.Interface.Models.Operations
         Task Save(CancellationToken token);
         Task Update(CancellationToken token);
         Task Delete(CancellationToken token);
-        Task UpdateAccounts(bool showArchivedAccounts, CancellationToken token);
-        Task UpdateCategories(bool showArchivedCategories, CancellationToken token);
+        Task UpdateAccounts(bool isNew, CancellationToken token);
+        Task UpdateCategories(bool isNew, CancellationToken token);
         Task UpdateData(CancellationToken token);
     }
 }

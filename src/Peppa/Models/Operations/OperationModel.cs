@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Peppa.Context.Entities;
@@ -174,13 +175,15 @@ namespace Peppa.Models.Operations
             }
         }
 
-        public async Task UpdateAccounts(bool showArchivedAccounts, CancellationToken token)
+        public async Task UpdateAccounts(bool isNew, CancellationToken token)
         {
-            var response = await _accountService.GetAccounts(showArchivedAccounts, token);
+            var response = await _accountService.GetAccounts(!isNew, token);
             if (response != null)
             {
+                var accounts = isNew ? response.Where(a => !a.IsArchived) : response;
+
                 Accounts.Clear();
-                foreach (var account in response)
+                foreach (var account in accounts)
                     Accounts.Add(new Account
                     {
                         Id = account.Id,
@@ -191,13 +194,15 @@ namespace Peppa.Models.Operations
             }
         }
 
-        public async Task UpdateCategories(bool showArchivedCategories, CancellationToken token)
+        public async Task UpdateCategories(bool isNew, CancellationToken token)
         {
-            var response = await _categoryService.GetCategories(showArchivedCategories, token);
+            var response = await _categoryService.GetCategories(!isNew, token);
             if (response != null)
             {
+                var categories = isNew ? response.Where(c => !c.IsArchived) : response;
+                
                 Categories.Clear();
-                foreach (var category in response)
+                foreach (var category in categories)
                     Categories.Add(new Category {Id = category.Id, Title = category.Title, HexColor = category.HexColor, Type =  category.Type});
             }
         }
