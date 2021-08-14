@@ -503,4 +503,7 @@
   <data name="NoAccounts" xml:space="preserve">
     <value>Нет счетов</value>
   </data>
+  <data name="NoCategories" xml:space="preserve">
+    <value>Нет категорий</value>
+  </data>
 </root>

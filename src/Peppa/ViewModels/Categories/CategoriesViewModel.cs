@@ -33,8 +33,14 @@ namespace Peppa.ViewModels.Categories
 
             await UpdateCategories();
 
+            DummyText = null;
+
+            if (List.Count == 0)
+                DummyText = _localizationService.GetTranslateByKey(Localization.NoCategories);
+
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
+            RaisePropertyChanged(nameof(DummyText));
         }
 
         public async void OnAddCategoryClick(object sender, RoutedEventArgs e)
@@ -52,6 +58,13 @@ namespace Peppa.ViewModels.Categories
             {
                 await _model.SaveCategory(newCategory.Model, GetCancellationToken());
                 await UpdateCategories();
+
+                DummyText = null;
+
+                if (List.Count == 0)
+                    DummyText = _localizationService.GetTranslateByKey(Localization.NoCategories);
+
+                RaisePropertyChanged(nameof(DummyText));
             }
         }
 
@@ -79,6 +92,13 @@ namespace Peppa.ViewModels.Categories
                     await UpdateCategories();
                     break;
             }
+
+            DummyText = null;
+
+            if (List.Count == 0)
+                DummyText = _localizationService.GetTranslateByKey(Localization.NoCategories);
+
+            RaisePropertyChanged(nameof(DummyText));
         }
 
         private async Task UpdateCategories()
@@ -101,5 +121,7 @@ namespace Peppa.ViewModels.Categories
         public ObservableCollection<CategoryListViewItemViewModel> List { get; }
 
         public bool IsProgressShow { get; set; }
+
+        public string DummyText { get; private set; }
     }
 }

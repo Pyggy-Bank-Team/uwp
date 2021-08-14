@@ -15,5 +15,6 @@ namespace Peppa.Interface.ViewModels
         bool IsProgressShow { get; set; }
         void OnAddCategoryClick(object sender, RoutedEventArgs e);
         void OnCategoryItemClick(object sender, ItemClickEventArgs e);
+        string DummyText { get; }
     }
 }

@@ -495,4 +495,7 @@
   <data name="NoAccounts" xml:space="preserve">
     <value>No accounts</value>
   </data>
+  <data name="NoCategories" xml:space="preserve">
+    <value>No categories</value>
+  </data>
 </root>

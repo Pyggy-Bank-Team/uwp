@@ -30,6 +30,9 @@
         <ProgressRing Grid.Row="1" Grid.Column="1" IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center"
                       Visibility="{x:Bind _dataContext.IsProgressShow, Mode=OneWay}" />
 
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind _dataContext.DummyText, Mode=OneWay}" HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" />
+
         <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{x:Bind _dataContext.List}"
                   ItemContainerStyle="{StaticResource ResourceKey=ListViewStretch}"
                   IsItemClickEnabled="True" SelectionMode="Single" ItemClick="{x:Bind _dataContext.OnCategoryItemClick}">
