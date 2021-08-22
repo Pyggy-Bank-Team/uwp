@@ -6,16 +6,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <ResourceDictionary>
-
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ms-appx:///Styles/Colors.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            
-        </ResourceDictionary>
-    </Page.Resources>
-
     <NavigationView x:Name="NavView"
                     ItemInvoked="OnItemInvoked"
                     IsBackButtonVisible="Collapsed"
