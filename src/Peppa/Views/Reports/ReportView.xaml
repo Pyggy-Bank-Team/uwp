@@ -25,7 +25,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
             <CalendarDatePicker Date="{x:Bind _viewModel.From, Mode=TwoWay}"/>
-            <TextBlock Text="—" Margin="10 25 10 0"/>
+            <TextBlock Text="—" Margin="10 0 10 0"  VerticalAlignment="Center"/>
             <CalendarDatePicker Date="{x:Bind _viewModel.To, Mode=TwoWay}"/>
         </StackPanel>
 
