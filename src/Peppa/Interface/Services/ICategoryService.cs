@@ -7,7 +7,7 @@ namespace Peppa.Interface.Services
 {
     public interface ICategoryService : IAuthorization
     {
-        Task<CategoryResponse[]> GetCategories(bool showArchivedCategories, CancellationToken token);
+        Task<CategoryResponse[]> GetCategories(bool showDeletedCategories, CancellationToken token);
 
         Task<CategoryResponse> CreateCategory(CreateCategoryRequest request, CancellationToken token);
 

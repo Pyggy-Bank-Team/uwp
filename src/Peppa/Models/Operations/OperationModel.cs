@@ -8,7 +8,6 @@ using Peppa.Contracts.Requests;
 using Peppa.Enums;
 using Peppa.Helpers;
 using Peppa.Interface;
-using Peppa.Interface.Models;
 using Peppa.Interface.Models.Operations;
 using Peppa.Interface.Services;
 using Account = Peppa.Dto.Account;
@@ -177,7 +176,7 @@ namespace Peppa.Models.Operations
 
         public async Task UpdateAccounts(bool isNew, CancellationToken token)
         {
-            var response = await _accountService.GetAccounts(!isNew, token);
+            var response = await _accountService.GetAccounts(showDeletedAccounts:!isNew, token);
             if (response != null)
             {
                 var accounts = isNew ? response.Where(a => !a.IsArchived) : response;
@@ -196,7 +195,7 @@ namespace Peppa.Models.Operations
 
         public async Task UpdateCategories(bool isNew, CancellationToken token)
         {
-            var response = await _categoryService.GetCategories(!isNew, token);
+            var response = await _categoryService.GetCategories(showDeletedCategories:!isNew, token);
             if (response != null)
             {
                 var categories = isNew ? response.Where(c => !c.IsArchived) : response;

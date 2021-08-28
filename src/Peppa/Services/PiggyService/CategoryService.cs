@@ -15,8 +15,8 @@ namespace Peppa.Services.PiggyService
         {
         }
 
-        public Task<CategoryResponse[]> GetCategories(bool showArchivedCategories, CancellationToken token)
-            => Get<CategoryResponse[]>($"categories?all={showArchivedCategories}", token);
+        public Task<CategoryResponse[]> GetCategories(bool showDeletedCategories, CancellationToken token)
+            => Get<CategoryResponse[]>($"categories?all={showDeletedCategories}", token);
 
         public async Task<CategoryResponse> CreateCategory(CreateCategoryRequest request, CancellationToken token)
         {

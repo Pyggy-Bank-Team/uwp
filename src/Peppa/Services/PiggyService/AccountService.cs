@@ -15,8 +15,8 @@ namespace Peppa.Services.PiggyService
         {
         }
 
-        public Task<AccountResponse[]> GetAccounts(bool showArchivedAccounts, CancellationToken token)
-            => Get<AccountResponse[]>($"accounts?all={showArchivedAccounts}", token);
+        public Task<AccountResponse[]> GetAccounts(bool showDeletedAccounts, CancellationToken token)
+            => Get<AccountResponse[]>($"accounts?all={showDeletedAccounts}", token);
 
         public async Task<AccountResponse> CreateAccount(CreateAccountRequest response, CancellationToken token)
         {

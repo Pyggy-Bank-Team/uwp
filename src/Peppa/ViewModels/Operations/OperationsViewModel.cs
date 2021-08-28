@@ -136,6 +136,13 @@ namespace Peppa.ViewModels.Operations
             _model.CurrentPageNumber++;
             
             await UpdateOperations();
+            
+            DummyText = null;
+
+            if (Operations.Count == 0)
+                DummyText = _localizationService.GetTranslateByKey(Localization.NoOperations);
+
+            RaisePropertyChanged(nameof(DummyText));
 
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));
@@ -160,6 +167,13 @@ namespace Peppa.ViewModels.Operations
             _model.CurrentPageNumber--;
             
             await UpdateOperations();
+            
+            DummyText = null;
+
+            if (Operations.Count == 0)
+                DummyText = _localizationService.GetTranslateByKey(Localization.NoOperations);
+
+            RaisePropertyChanged(nameof(DummyText));
 
             IsProgressShow = false;
             RaisePropertyChanged(nameof(IsProgressShow));

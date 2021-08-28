@@ -7,7 +7,7 @@ namespace Peppa.Interface.Services
 {
     public interface IAccountService : IAuthorization
     {
-        Task<AccountResponse[]> GetAccounts(bool showArchivedAccounts, CancellationToken token);
+        Task<AccountResponse[]> GetAccounts(bool showDeletedAccounts, CancellationToken token);
 
         Task<AccountResponse> CreateAccount(CreateAccountRequest response, CancellationToken token);
 
