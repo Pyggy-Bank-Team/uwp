@@ -22,7 +22,5 @@
         public const string NoOperations = "NoOperations";
         public const string NoAccounts = "NoAccounts";
         public const string NoCategories = "NoCategories";
-        public const string NoCategories1 = "NoCategories";
-        
     }
 }
