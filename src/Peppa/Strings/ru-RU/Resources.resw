@@ -367,4 +367,7 @@
   <data name="IncomeReport.EmptyContent" xml:space="preserve">
     <value>Нет данных</value>
   </data>
+  <data name="SupportText.Text" xml:space="preserve">
+    <value>Поддержка</value>
+  </data>
 </root>

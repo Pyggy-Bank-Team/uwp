@@ -366,4 +366,7 @@
   <data name="IncomeReport.EmptyContent" xml:space="preserve">
     <value>No data found</value>
   </data>
+  <data name="SupportText.Text" xml:space="preserve">
+    <value>Support</value>
+  </data>
 </root>
