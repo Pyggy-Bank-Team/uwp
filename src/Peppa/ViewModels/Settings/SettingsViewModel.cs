@@ -59,9 +59,9 @@ namespace Peppa.ViewModels.Settings
             RaisePropertyChanged(nameof(IsProgressShow));
         }
 
-        public void OnLogoutClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        public async void OnLogoutClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            _model.LogOut();
+            await _model.LogOut();
             Frame.CacheSize = 0;
             Frame.Navigate(typeof(LoginPage));
         }

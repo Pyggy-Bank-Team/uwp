@@ -159,8 +159,11 @@ namespace Peppa.Repositories
         public Task<User> GetUser(CancellationToken token)
             => _context.Users.FirstAsync(token);
 
-        public Task CreateUser(User newUser, CancellationToken token)
-            => _context.Users.AddAsync(newUser, token);
+        public async Task CreateUser(User newUser, CancellationToken token)
+        {
+            await _context.Users.AddAsync(newUser, token);
+            await _context.SaveChangesAsync(token);
+        }
 
         public async Task UpdateUser(User updatedUser, CancellationToken token)
         {
@@ -177,12 +180,13 @@ namespace Peppa.Repositories
         public Task<Operation> GetOperation(int id, CancellationToken token)
             => _context.Operations.FirstOrDefaultAsync(o => o.Id == id, token);
 
-        public void CleanDataBase()
+        public async Task CleanDataBase()
         {
             _context.Accounts.RemoveRange(_context.Accounts);
             _context.Categories.RemoveRange(_context.Categories);
             _context.Operations.RemoveRange(_context.Operations);
             _context.Users.RemoveRange(_context.Users);
+            await _context.SaveChangesAsync();
         }
 
         public void Dispose()

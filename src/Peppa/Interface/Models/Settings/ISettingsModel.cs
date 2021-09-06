@@ -9,7 +9,7 @@ namespace Peppa.Interface.Models.Settings
         Task ChangeEmail(CancellationToken token);
         Task ChangeCurrency(CancellationToken token);
         void ChangeLanguage();
-        void LogOut();
+        Task LogOut();
         bool DarkModeIsEnabled { get; set; }
         string Language { get; set; }
         string Email { get; set; }

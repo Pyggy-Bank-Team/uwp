@@ -25,6 +25,6 @@ namespace Peppa.Interface
         Task<User> GetUser(CancellationToken token);
         Task CreateUser(User newUser, CancellationToken token);
         Task UpdateUser(User updatedUser, CancellationToken token);
-        void CleanDataBase();
+        Task CleanDataBase();
     }
 }

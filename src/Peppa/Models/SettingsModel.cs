@@ -85,12 +85,12 @@ namespace Peppa.Models
             ApplicationLanguages.PrimaryLanguageOverride = Language;
         }
 
-        public void LogOut()
+        public async Task LogOut()
         {
             if (_settingsService.HaveValue(Constants.AccessToken))
                 _settingsService.RemoveValue(Constants.AccessToken);
             
-            _repository.CleanDataBase();
+            await _repository.CleanDataBase();
         }
 
         private string GetCurrentLanguage()
