@@ -193,6 +193,10 @@ namespace Peppa.ViewModels.Login
                     Error = _localizationService.GetTranslateByKey(Localization.OopsError);
                     RaisePropertyChanged(nameof(Error));
                     break;
+                case SignupResultEnum.EmailEmptyOrNull:
+                    Error = _localizationService.GetTranslateByKey(Localization.EmailEmptyOrNull);
+                    RaisePropertyChanged(nameof(Error));
+                    break;
             }
 
             if (result == SignupResultEnum.Ok)

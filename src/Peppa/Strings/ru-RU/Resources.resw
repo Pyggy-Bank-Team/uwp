@@ -370,4 +370,7 @@
   <data name="SupportText.Text" xml:space="preserve">
     <value>Поддержка</value>
   </data>
+  <data name="EmailEmptyOrNull" xml:space="preserve">
+    <value>Email обязательное поле. Пожалуйста введите email.</value>
+  </data>
 </root>

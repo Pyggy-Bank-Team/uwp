@@ -74,6 +74,9 @@ namespace Peppa.Models
             if (Currency?.Code == null)
                 return SignupResultEnum.CurrencyNotSelected;
 
+            if (string.IsNullOrWhiteSpace(Email))
+                return SignupResultEnum.EmailEmptyOrNull;
+
             var request = new CreateUserRequest
             {
                 Email = Email,

@@ -9,6 +9,7 @@
         PasswordInvalid,
         DuplicateUserName,
         InvalidUserName,
-        UnknownError
+        UnknownError,
+        EmailEmptyOrNull
     }
 }

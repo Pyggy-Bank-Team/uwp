@@ -11,6 +11,7 @@
         public const string UserAlreadyExists = "UserAlreadyExists";
         public const string InvalidUserName = "InvalidUserName";
         public const string OopsError = "OopsError";
+        public const string EmailEmptyOrNull = "EmailEmptyOrNull";
         public const string Income = "Income";
         public const string Expense = "Expense";
         public const string Transfer = "Transfer";
