@@ -47,7 +47,7 @@ namespace Peppa.Models
                 CurrencyBase = userInfoResponse.CurrencyBase,
                 UserName = userInfoResponse.UserName
             }, token);
-            
+
             var user = await _repository.GetUser(token);
             Login = user.UserName;
             Email = user.Email;
@@ -89,7 +89,7 @@ namespace Peppa.Models
         {
             if (_settingsService.HaveValue(Constants.AccessToken))
                 _settingsService.RemoveValue(Constants.AccessToken);
-            
+
             await _repository.CleanDataBase();
         }
 
@@ -112,8 +112,8 @@ namespace Peppa.Models
                     return;
 
                 _isDarkMode = value;
-                _settingsService.AddOrUpdateValue(Constants.RequestedTheme, _isDarkMode 
-                    ? ApplicationTheme.Dark.ToString() 
+                _settingsService.AddOrUpdateValue(Constants.RequestedTheme, _isDarkMode
+                    ? ApplicationTheme.Dark.ToString()
                     : ApplicationTheme.Light.ToString());
             }
         }
@@ -123,7 +123,7 @@ namespace Peppa.Models
             get => _language;
             set
             {
-                var languages = new[] {"en-US", "ru-RU"};
+                var languages = new[] { "en-US", "ru-RU" };
                 if (!languages.Contains(value) || _language == value)
                     return;
 
