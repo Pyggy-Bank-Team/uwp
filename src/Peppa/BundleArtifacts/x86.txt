@@ -1,2 +1,2 @@
-MainPackage=D:\Repos\uwp\src\Peppa\bin\x86\Debug\Peppa_1.0.1.0_x86_Debug.appx
-SymbolPackage=D:\Repos\uwp\src\Peppa\obj\x86\Debug\Symbols\Peppa_1.0.1.0_x86_Debug.appxsym
+MainPackage=D:\Repos\uwp\src\Peppa\bin\x86\Release\Peppa_2.0.0.0_x86.msix
+SymbolPackage=D:\Repos\uwp\src\Peppa\obj\x86\Release\Symbols\Peppa_2.0.0.0_x86.appxsym

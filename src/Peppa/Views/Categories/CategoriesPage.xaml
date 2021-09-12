@@ -46,7 +46,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <StackPanel Grid.Column="0" Orientation="Horizontal">
-                            <Ellipse Fill="{x:Bind Path=HexColor, Mode=OneWay}" Height="24" Width="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Ellipse Fill="{x:Bind Path=HexColor}" Height="24" Width="24" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Bind Title}" TextTrimming="CharacterEllipsis" Margin="10 0 0 0"/>
                         </StackPanel>
                             
