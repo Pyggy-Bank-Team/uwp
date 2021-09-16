@@ -1,4 +1,6 @@
-﻿namespace Peppa.Contracts.Requests
+﻿using System;
+
+namespace Peppa.Contracts.Requests
 {
     public class UpdateTransferOperationRequest
     {
@@ -6,5 +8,6 @@
         public int To { get; set; }
         public double Amount { get; set; }
         public string Comment { get; set; }
+        public DateTime OperationDate { get; set; }
     }
 }

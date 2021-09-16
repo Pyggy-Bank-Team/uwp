@@ -135,7 +135,8 @@ namespace Peppa.Models.Operations
                         Amount = Amount,
                         Comment = Comment,
                         CategoryId = CategoryId,
-                        AccountId = AccountId
+                        AccountId = AccountId,
+                        OperationDate = OperationDate
                     };
 
                     await _service.UpdateBudgetOperation(Id, request, token);
@@ -148,7 +149,8 @@ namespace Peppa.Models.Operations
                         Amount = Amount,
                         Comment = Comment,
                         From = AccountId,
-                        To = ToAccountId
+                        To = ToAccountId,
+                        OperationDate = OperationDate
                     };
 
                     await _service.UpdateTransferOperation(Id, request, token);
