@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="30247DenisMakarenko.PiggyBank" Publisher="CN=4C8C5086-7764-4A35-BA02-922EBEDC19B5" Version="2.0.0.0" />
+  <Identity Name="30247DenisMakarenko.PiggyBank" Publisher="CN=4C8C5086-7764-4A35-BA02-922EBEDC19B5" Version="2.0.1.0" />
   <mp:PhoneIdentity PhoneProductId="652ff090-6a42-42b9-9842-fb4222ce1cb3" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Piggy Bank</DisplayName>
