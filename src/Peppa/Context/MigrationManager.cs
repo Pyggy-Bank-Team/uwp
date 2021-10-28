@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Peppa.Context.Entities;
 using Peppa.Interface;
@@ -7,6 +8,7 @@ namespace Peppa.Context
 {
     public class MigrationManager : IMigrationManager
     {
+        private const int LastVersion = 203;
         private readonly PiggyContext _context;
 
         public MigrationManager(PiggyContext context)
@@ -17,12 +19,18 @@ namespace Peppa.Context
             MigrationHistory lastMigration;
             try
             {
-                lastMigration = _context.MigrationHistories.OrderByDescending(h => h.AppVersion).First();
+                lastMigration = _context.MigrationHistories.OrderByDescending(h => h.AppVersion).FirstOrDefault();
+                if (lastMigration == null)
+                {
+                    _context.MigrationHistories.Add(new MigrationHistory { AppVersion = LastVersion });
+                    _context.SaveChanges();
+                    return;
+                }
             }
             catch
             {
-                _context.Database.ExecuteSqlCommand("create table MigrationHistory {Id INTEGER PRIMARY KEY, AppVersion INTEGER NOT NULL};");
-                _context.Database.ExecuteSqlCommand("insert into table MigrationHistory (AppVersion) values (202)");
+                _context.Database.ExecuteSqlCommand(@"CREATE TABLE ""MigrationHistory"" {Id INTEGER PRIMARY KEY, AppVersion INTEGER NOT NULL};");
+                _context.Database.ExecuteSqlCommand("insert into table MigrationHistory (AppVersion) values (202);");
                 lastMigration = _context.MigrationHistories.OrderByDescending(h => h.AppVersion).First();
             }
 
@@ -31,10 +39,9 @@ namespace Peppa.Context
                 case 202:
                     AddedExternalIdentificationToUser();
                     lastMigration.AppVersion = 203;
+                    _context.SaveChanges();
                     break;
             }
-
-            _context.SaveChanges();
         }
 
         private void AddedExternalIdentificationToUser()

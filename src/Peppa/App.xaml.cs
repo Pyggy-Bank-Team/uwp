@@ -17,6 +17,7 @@ using Peppa.Extensions;
 using UnhandledExceptionEventArgs = Windows.UI.Xaml.UnhandledExceptionEventArgs;
 using Peppa.Views.Login;
 using Peppa.Helpers;
+using Peppa.Interface;
 
 namespace Peppa
 {
@@ -179,7 +180,10 @@ namespace Peppa
 
         private void DoMigrations()
         {
-            
+            using (var manager = ServiceProvider.GetService<IMigrationManager>())
+            {
+                manager.Migrate();
+            }
         }
 
         public static ServiceProvider ServiceProvider { get; private set; }
