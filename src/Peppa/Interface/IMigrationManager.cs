@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Peppa.Interface
+﻿namespace Peppa.Interface
 {
-    public interface IMigrationManager : IDisposable
+    public interface IMigrationManager
     {
         void Migrate();
     }

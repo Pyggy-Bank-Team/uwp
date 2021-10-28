@@ -42,7 +42,7 @@ namespace Peppa
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 
-            DoMigrations();
+            UpdateDatabase();
         }
 
         public static Task RunUIAsync(Action agileCallback)
@@ -178,12 +178,10 @@ namespace Peppa
         {
         }
 
-        private void DoMigrations()
+        private void UpdateDatabase()
         {
-            using (var manager = ServiceProvider.GetService<IMigrationManager>())
-            {
-                manager.Migrate();
-            }
+            var manager = ServiceProvider.GetService<IMigrationManager>();
+            manager.Migrate();
         }
 
         public static ServiceProvider ServiceProvider { get; private set; }

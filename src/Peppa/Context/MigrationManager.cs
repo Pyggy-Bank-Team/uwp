@@ -10,15 +10,16 @@ namespace Peppa.Context
     public class MigrationManager : IMigrationManager
     {
         private const int LastVersion = 203;
+
         private readonly PiggyContext _context;
-        private readonly Dictionary<int, Action> _migrations;
+        private readonly Dictionary<int, Action<MigrationHistory>> _migrations;//Use the dictionary for consistently update the database
 
         public MigrationManager(PiggyContext context)
         {
             _context = context;
             _migrations = new Dictionary<int, Action<MigrationHistory>>
             {
-                {202, (migration) => {_context.Database.ExecuteSqlCommand("alter table User add ExternalId text null;"); migration.AppVersion = 203; } } //Added ExternalId to user
+                {202, (migration) => {_context.Database.ExecuteSqlCommand("ALTER TABLE Users ADD ExternalId TEXT NULL;"); migration.AppVersion = 203;} } //Added ExternalId to user
             };
         }
 
@@ -27,7 +28,8 @@ namespace Peppa.Context
             MigrationHistory lastMigration;
             try
             {
-                lastMigration = _context.MigrationHistories.OrderByDescending(h => h.AppVersion).FirstOrDefault();
+                //If app was installed on a new PC then don't need to create `MigrationHistories`
+                lastMigration = _context.MigrationHistories.FirstOrDefault();
                 if (lastMigration == null)
                 {
                     _context.MigrationHistories.Add(new MigrationHistory { AppVersion = LastVersion });
@@ -37,9 +39,9 @@ namespace Peppa.Context
             }
             catch
             {
-                _context.Database.ExecuteSqlCommand(@"CREATE TABLE ""MigrationHistory"" {Id INTEGER PRIMARY KEY, AppVersion INTEGER NOT NULL};");
-                _context.Database.ExecuteSqlCommand("insert into table MigrationHistory (AppVersion) values (202);");
-                lastMigration = _context.MigrationHistories.OrderByDescending(h => h.AppVersion).First();
+                _context.Database.ExecuteSqlCommand("CREATE TABLE MigrationHistories (Id INTEGER NOT NULL CONSTRAINT PK_MigrationHistories PRIMARY KEY AUTOINCREMENT, AppVersion INTEGER NOT NULL);");
+                _context.Database.ExecuteSqlCommand("INSERT INTO MigrationHistories(AppVersion) VALUES(202);");
+                lastMigration = _context.MigrationHistories.First();
             }
 
 
@@ -47,26 +49,10 @@ namespace Peppa.Context
             {
                 if (lastMigration.AppVersion == key)
                 {
-                    migration();
-
+                    migration(lastMigration);
+                    _context.SaveChanges();
                 }
             }
-
-
-            switch (lastMigration.AppVersion)
-            {
-                case 202:
-                    AddedExternalIdentificationToUser();
-                    lastMigration.AppVersion = 203;
-                    _context.SaveChanges();
-                    break;
-            }
         }
-
-        private void AddedExternalIdentificationToUser()
-            => _context.Database.ExecuteSqlCommand("alter table User add ExternalId text null;");
-
-        public void Dispose()
-            => _context?.Dispose();
     }
 }
