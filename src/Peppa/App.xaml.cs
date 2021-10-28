@@ -40,6 +40,8 @@ namespace Peppa
             serviceCollection.DependencyInjectionSetup();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
+
+            DoMigrations();
         }
 
         public static Task RunUIAsync(Action agileCallback)
@@ -173,6 +175,11 @@ namespace Peppa
 
         private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
+        }
+
+        private void DoMigrations()
+        {
+            
         }
 
         public static ServiceProvider ServiceProvider { get; private set; }

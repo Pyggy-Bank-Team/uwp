@@ -112,8 +112,10 @@
     <Compile Include="Context\Entities\Category.cs" />
     <Compile Include="Context\Entities\EntityBase.cs" />
     <Compile Include="Context\Entities\EntityModifiedBase.cs" />
+    <Compile Include="Context\Entities\MigrationHistory.cs" />
     <Compile Include="Context\Entities\Operation.cs" />
     <Compile Include="Context\Entities\User.cs" />
+    <Compile Include="Context\MigrationManager.cs" />
     <Compile Include="Context\PiggyContext.cs" />
     <Compile Include="Contracts\Requests\Accounts\BaseAccountRequest.cs" />
     <Compile Include="Contracts\Requests\Accounts\CreateAccountRequest.cs" />
@@ -170,6 +172,7 @@
     <Compile Include="Helpers\CurrencyHelper.cs" />
     <Compile Include="Helpers\ThemeHelper.cs" />
     <Compile Include="Interface\IAuthorization.cs" />
+    <Compile Include="Interface\IMigrationManager.cs" />
     <Compile Include="Interface\InternalServices\ILocalizationService.cs" />
     <Compile Include="Interface\InternalServices\ISettingsService.cs" />
     <Compile Include="Interface\IPiggyRepository.cs" />

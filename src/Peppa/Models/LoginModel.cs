@@ -134,7 +134,7 @@ namespace Peppa.Models
             {
                 var user = new User
                 {
-                    Identification = response.Id,
+                    ExternalId = response.Id,
                     Email = response.Email,
                     CurrencyBase = CurrencyHelper.GetSymbol(response.CurrencyBase),
                     UserName = response.UserName
