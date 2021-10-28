@@ -11,16 +11,12 @@ namespace Peppa.Context
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite("Filename=piggy.db");
-        }
+            => optionsBuilder.UseSqlite("Filename=piggy.db");
 
-        public DbSet<Account> Accounts { get; set; }     
-
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<Category> Categories { get; set; }
-
         public DbSet<Operation> Operations { get; set; }
-        
         public DbSet<User> Users { get; set; }
+        public DbSet<MigrationHistory> MigrationHistories { get; set; }
     }
 }

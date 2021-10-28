@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Peppa.Dialogs;
 using Peppa.Interface.InternalServices;
 using Peppa.Interface.Models.Settings;
 using Peppa.Interface.ViewModels;
@@ -64,6 +66,15 @@ namespace Peppa.ViewModels.Settings
             await _model.LogOut();
             Frame.CacheSize = 0;
             Frame.Navigate(typeof(LoginPage));
+        }
+
+
+        public async void OnConnectToBotClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var botDialogViewModel = new BotDialogViewModel(_model.ExternalId);
+            var dialog = new BotConnectDialog(botDialogViewModel);
+
+            await dialog.ShowAsync();
         }
 
         public string UserName { get; set; }

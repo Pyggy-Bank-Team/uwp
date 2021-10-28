@@ -15,5 +15,6 @@ namespace Peppa.Interface.Models.Settings
         string Email { get; set; }
         string Currency { get; set; }
         string Login { get; }
+        string ExternalId { get; }
     }
 }

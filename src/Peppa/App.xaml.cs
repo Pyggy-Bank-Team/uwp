@@ -17,6 +17,7 @@ using Peppa.Extensions;
 using UnhandledExceptionEventArgs = Windows.UI.Xaml.UnhandledExceptionEventArgs;
 using Peppa.Views.Login;
 using Peppa.Helpers;
+using Peppa.Interface;
 
 namespace Peppa
 {
@@ -40,6 +41,8 @@ namespace Peppa
             serviceCollection.DependencyInjectionSetup();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
+
+            UpdateDatabase();
         }
 
         public static Task RunUIAsync(Action agileCallback)
@@ -173,6 +176,12 @@ namespace Peppa
 
         private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
+        }
+
+        private void UpdateDatabase()
+        {
+            var manager = ServiceProvider.GetService<IMigrationManager>();
+            manager.Migrate();
         }
 
         public static ServiceProvider ServiceProvider { get; private set; }

@@ -12,8 +12,8 @@ namespace Peppa.Repositories
     {
         private readonly PiggyContext _context;
 
-        public PiggyRepository()
-            => _context = new PiggyContext();
+        public PiggyRepository(PiggyContext context)
+            => _context = context;
 
         public Task CreateAccount(Account newAccount, CancellationToken token)
             => Add(newAccount, token);
@@ -57,14 +57,14 @@ namespace Peppa.Repositories
 
         public Task<Account[]> GetAccounts(CancellationToken token, bool all = true)
             => all
-            ? _context.Accounts.Where(a => !a.IsDeleted).ToArrayAsync(token)
-            : _context.Accounts.Where(a => !a.IsDeleted && !a.IsArchived).ToArrayAsync(token);
+                ? _context.Accounts.Where(a => !a.IsDeleted).ToArrayAsync(token)
+                : _context.Accounts.Where(a => !a.IsDeleted && !a.IsArchived).ToArrayAsync(token);
 
 
         public Task<Category[]> GetCategories(CancellationToken token, bool all = true)
             => all
-            ? _context.Categories.Where(c => !c.IsDeleted).ToArrayAsync(token)
-            : _context.Categories.Where(c => !c.IsDeleted && !c.IsArchived).ToArrayAsync(token);
+                ? _context.Categories.Where(c => !c.IsDeleted).ToArrayAsync(token)
+                : _context.Categories.Where(c => !c.IsDeleted && !c.IsArchived).ToArrayAsync(token);
 
         public async Task<bool> HaveCategories(int id, CancellationToken token)
         {
@@ -169,6 +169,7 @@ namespace Peppa.Repositories
         {
             var existedUser = await _context.Users.FirstAsync(token);
 
+            existedUser.ExternalId = updatedUser.ExternalId;
             existedUser.Email = updatedUser.Email;
             existedUser.CurrencyBase = updatedUser.CurrencyBase;
             existedUser.UserName = updatedUser.UserName;

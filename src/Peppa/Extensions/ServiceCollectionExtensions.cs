@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Peppa.Context;
 using Peppa.Services.PiggyService;
 using Peppa.ViewModels.Accounts;
 using Peppa.Interface.Services;
@@ -47,8 +48,10 @@ namespace Peppa.Extensions
             services.AddScoped<IOperationService, OperationService>();
             services.AddScoped<ILocalizationService, LocalizationService>();
             services.AddScoped<IToastService, ToastService>();
-            //Repositories
+            //Data access
+            services.AddScoped(typeof(PiggyContext));
             services.AddScoped<IPiggyRepository, PiggyRepository>();
+            services.AddScoped<IMigrationManager, MigrationManager>();
             //ViewModels
             services.AddScoped<ILoginViewModel, LoginViewModel>();
             services.AddScoped<IOperationsViewModel, OperationsViewModel>();

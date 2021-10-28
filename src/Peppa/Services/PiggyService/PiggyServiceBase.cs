@@ -108,7 +108,11 @@ namespace Peppa.Services.PiggyService
         }
         
         protected IHttpClientFactory HttpClientFactory { get; }
+#if DEBUG
         protected string BaseUrl { get; } = @"https://dev.piggybank.pro/api";
+#else
+        protected string BaseUrl { get; } = @"https://back.piggybank.pro/api";
+#endif
         public bool IsAuthorized => _settingsService.HaveValue(Constants.AccessToken);
     }
 }

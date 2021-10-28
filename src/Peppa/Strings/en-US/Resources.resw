@@ -372,4 +372,13 @@
   <data name="EmailEmptyOrNull" xml:space="preserve">
     <value>Email is a required filed. Please, input an email.</value>
   </data>
+  <data name="BotConnect.Content" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="TelegramBotTextBlock.Text" xml:space="preserve">
+    <value>Telegram bot</value>
+  </data>
+  <data name="BotDialogTitle.Text" xml:space="preserve">
+    <value>Scan QR code</value>
+  </data>
 </root>

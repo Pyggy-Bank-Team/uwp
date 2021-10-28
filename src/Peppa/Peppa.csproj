@@ -112,8 +112,10 @@
     <Compile Include="Context\Entities\Category.cs" />
     <Compile Include="Context\Entities\EntityBase.cs" />
     <Compile Include="Context\Entities\EntityModifiedBase.cs" />
+    <Compile Include="Context\Entities\MigrationHistory.cs" />
     <Compile Include="Context\Entities\Operation.cs" />
     <Compile Include="Context\Entities\User.cs" />
+    <Compile Include="Context\MigrationManager.cs" />
     <Compile Include="Context\PiggyContext.cs" />
     <Compile Include="Contracts\Requests\Accounts\BaseAccountRequest.cs" />
     <Compile Include="Contracts\Requests\Accounts\CreateAccountRequest.cs" />
@@ -144,6 +146,9 @@
     <Compile Include="Dialogs\AccountDialog.xaml.cs">
       <DependentUpon>AccountDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\BotConnectDialog.xaml.cs">
+      <DependentUpon>BotConnectDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\CategoryDialog.xaml.cs">
       <DependentUpon>CategoryDialog.xaml</DependentUpon>
     </Compile>
@@ -170,6 +175,7 @@
     <Compile Include="Helpers\CurrencyHelper.cs" />
     <Compile Include="Helpers\ThemeHelper.cs" />
     <Compile Include="Interface\IAuthorization.cs" />
+    <Compile Include="Interface\IMigrationManager.cs" />
     <Compile Include="Interface\InternalServices\ILocalizationService.cs" />
     <Compile Include="Interface\InternalServices\ISettingsService.cs" />
     <Compile Include="Interface\IPiggyRepository.cs" />
@@ -231,6 +237,7 @@
     <Compile Include="ViewModels\Operations\OperationListViewItemViewModel.cs" />
     <Compile Include="Interface\ViewModels\IReportsViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportViewModel.cs" />
+    <Compile Include="ViewModels\Settings\BotDialogViewModel.cs" />
     <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Reports\TelerikItemReportViewModel.cs" />
@@ -336,6 +343,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\BotConnectDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\CategoryDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -413,6 +424,9 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="QRCoder">
+      <Version>1.4.1</Version>
     </PackageReference>
     <PackageReference Include="Telerik.UI.for.UniversalWindowsPlatform">
       <Version>1.0.0.9</Version>
