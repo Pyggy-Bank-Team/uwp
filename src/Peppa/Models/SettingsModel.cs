@@ -53,6 +53,7 @@ namespace Peppa.Models
             Login = user.UserName;
             Email = user.Email;
             Currency = user.CurrencyBase;
+            ExternalId = user.ExternalId;
         }
 
         public async Task ChangeEmail(CancellationToken token)
@@ -134,5 +135,7 @@ namespace Peppa.Models
         public string Email { get; set; }
         public string Currency { get; set; }
         public string Login { get; private set; }
+
+        public string ExternalId { get; private set; }
     }
 }

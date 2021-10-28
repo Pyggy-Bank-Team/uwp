@@ -146,6 +146,9 @@
     <Compile Include="Dialogs\AccountDialog.xaml.cs">
       <DependentUpon>AccountDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\BotConnectDialog.xaml.cs">
+      <DependentUpon>BotConnectDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\CategoryDialog.xaml.cs">
       <DependentUpon>CategoryDialog.xaml</DependentUpon>
     </Compile>
@@ -234,6 +237,7 @@
     <Compile Include="ViewModels\Operations\OperationListViewItemViewModel.cs" />
     <Compile Include="Interface\ViewModels\IReportsViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportViewModel.cs" />
+    <Compile Include="ViewModels\Settings\BotDialogViewModel.cs" />
     <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
     <Compile Include="ViewModels\Operations\OperationsViewModel.cs" />
     <Compile Include="ViewModels\Reports\TelerikItemReportViewModel.cs" />
@@ -339,6 +343,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\BotConnectDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\CategoryDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -416,6 +424,9 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="QRCoder">
+      <Version>1.4.1</Version>
     </PackageReference>
     <PackageReference Include="Telerik.UI.for.UniversalWindowsPlatform">
       <Version>1.0.0.9</Version>

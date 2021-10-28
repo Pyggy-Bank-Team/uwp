@@ -378,4 +378,7 @@
   <data name="TelegramBotTextBlock.Text" xml:space="preserve">
     <value>Telegram bot</value>
   </data>
+  <data name="BotDialogTitle.Text" xml:space="preserve">
+    <value>Scan QR code</value>
+  </data>
 </root>

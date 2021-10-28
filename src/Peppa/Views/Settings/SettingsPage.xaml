@@ -52,7 +52,7 @@
             <TextBlock Grid.Column="0" Grid.Row="3" x:Uid="CurrencyTextBlock"/>
             <TextBlock Grid.Column="1" Grid.Row="3" Text="{x:Bind _viewModel.Currency, Mode=OneWay}"/>
             <TextBlock Grid.Column="0" Grid.Row="4" x:Uid="TelegramBotTextBlock"/>
-            <HyperlinkButton Grid.Column="1" Grid.Row="4" x:Uid="BotConnect"/>
+            <HyperlinkButton Grid.Column="1" Grid.Row="4" x:Uid="BotConnect" Click="{x:Bind _viewModel.OnConnectToBotClick}"/>
 
             <!--Settings-->
             <TextBlock Grid.Column="0" Grid.Row="5" x:Uid="SettingsTitle" FontSize="25"/>
