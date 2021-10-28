@@ -1,0 +1,10 @@
+MainPackage=D:\Repos\uwp\src\Peppa\bin\x64\Release\Upload\Peppa_2.0.0.0_x64.msix
+SymbolPackage=D:\Repos\uwp\src\Peppa\bin\x64\Release\Upload\Peppa_2.0.0.0\Peppa_2.0.0.0_x64.appxsym
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Release\Upload\Peppa_2.0.0.0_language-ru.msix
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Release\Upload\Peppa_2.0.0.0_scale-100.msix
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Release\Upload\Peppa_2.0.0.0_scale-125.msix
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Release\Upload\Peppa_2.0.0.0_scale-140.msix
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Release\Upload\Peppa_2.0.0.0_scale-150.msix
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Release\Upload\Peppa_2.0.0.0_scale-180.msix
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Release\Upload\Peppa_2.0.0.0_scale-240.msix
+ResourcePack=D:\Repos\uwp\src\Peppa\bin\x64\Release\Upload\Peppa_2.0.0.0_scale-400.msix

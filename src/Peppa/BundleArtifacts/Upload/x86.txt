@@ -1,0 +1,2 @@
+MainPackage=D:\Repos\uwp\src\Peppa\bin\x86\Release\Upload\Peppa_2.0.0.0_x86.msix
+SymbolPackage=D:\Repos\uwp\src\Peppa\bin\x86\Release\Upload\Peppa_2.0.0.0\Peppa_2.0.0.0_x86.appxsym
