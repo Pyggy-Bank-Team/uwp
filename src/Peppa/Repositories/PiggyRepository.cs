@@ -13,7 +13,10 @@ namespace Peppa.Repositories
         private readonly PiggyContext _context;
 
         public PiggyRepository()
-            => _context = new PiggyContext();
+        {
+            _context = new PiggyContext();
+            _context.Database.Migrate();
+        }
 
         public Task CreateAccount(Account newAccount, CancellationToken token)
             => Add(newAccount, token);

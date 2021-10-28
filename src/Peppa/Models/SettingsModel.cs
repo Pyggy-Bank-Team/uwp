@@ -43,6 +43,7 @@ namespace Peppa.Models
 
             await _repository.UpdateUser(new User
             {
+                Identification = userInfoResponse.Id,
                 Email = userInfoResponse.Email,
                 CurrencyBase = userInfoResponse.CurrencyBase,
                 UserName = userInfoResponse.UserName
