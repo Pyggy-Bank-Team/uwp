@@ -31,6 +31,7 @@
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="0.2*"/>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="0.1*"/>
@@ -50,23 +51,25 @@
             <TextBlock Grid.Column="1" Grid.Row="2" Text="{x:Bind _viewModel.Email, Mode=OneWay}"/>
             <TextBlock Grid.Column="0" Grid.Row="3" x:Uid="CurrencyTextBlock"/>
             <TextBlock Grid.Column="1" Grid.Row="3" Text="{x:Bind _viewModel.Currency, Mode=OneWay}"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" x:Uid="TelegramBotTextBlock"/>
+            <HyperlinkButton Grid.Column="1" Grid.Row="4" x:Uid="BotConnect"/>
 
             <!--Settings-->
-            <TextBlock Grid.Column="0" Grid.Row="4" x:Uid="SettingsTitle" FontSize="25"/>
-            <TextBlock Grid.Column="1" Grid.Row="4" x:Uid="ThemeChangedTextBlock" Visibility="{x:Bind _viewModel.IsChangedSettings, Mode=OneWay}" TextWrapping="Wrap" FontSize="10"/>
-            <TextBlock Grid.Column="0" Grid.Row="5" x:Uid="DarkModeTitle"/>
-            <ToggleSwitch Grid.Column="1" Grid.Row="5" OnContent="" OffContent="" IsOn="{x:Bind _viewModel.IsDarkModeEnabled, Mode=TwoWay}"/>
-            <TextBlock Grid.Column="0" Grid.Row="6" x:Uid="LanguageTitle"/>
-            <ComboBox Grid.Column="1" Grid.Row="6" ItemsSource="{x:Bind _viewModel.Languages, Mode=OneWay}" SelectedItem="{x:Bind _viewModel.Language, Mode=TwoWay}"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" x:Uid="SettingsTitle" FontSize="25"/>
+            <TextBlock Grid.Column="1" Grid.Row="5" x:Uid="ThemeChangedTextBlock" Visibility="{x:Bind _viewModel.IsChangedSettings, Mode=OneWay}" TextWrapping="Wrap" FontSize="10"/>
+            <TextBlock Grid.Column="0" Grid.Row="6" x:Uid="DarkModeTitle"/>
+            <ToggleSwitch Grid.Column="1" Grid.Row="6" OnContent="" OffContent="" IsOn="{x:Bind _viewModel.IsDarkModeEnabled, Mode=TwoWay}"/>
+            <TextBlock Grid.Column="0" Grid.Row="7" x:Uid="LanguageTitle"/>
+            <ComboBox Grid.Column="1" Grid.Row="7" ItemsSource="{x:Bind _viewModel.Languages, Mode=OneWay}" SelectedItem="{x:Bind _viewModel.Language, Mode=TwoWay}"/>
 
             <!-- About -->
-            <TextBlock Grid.Column="0" Grid.Row="7" x:Uid="AboutTextBlock" FontSize="25"/>
-            <TextBlock Grid.Column="0" Grid.Row="8" x:Uid="VersionTitle"/>
-            <TextBlock Grid.Column="1" Grid.Row="8" Text="{x:Bind _viewModel.Version, Mode=OneWay}"/>
-            <TextBlock Grid.Column="0" Grid.Row="9" x:Uid="RepositoryTitle"/>
-            <HyperlinkButton Grid.Column="1" Grid.Row="9" x:Uid="GitHubTitle" NavigateUri="https://github.com/Pyggy-Bank-Team"/>
-            <TextBlock x:Uid="SupportText" Grid.Column="0" Grid.Row="10"/>
-            <HyperlinkButton x:Uid="SupportEmailText" Grid.Column="1" Grid.Row="10" NavigateUri="mailto:support@piggybank.pro" Content="support@piggybank.pro"/>
+            <TextBlock Grid.Column="0" Grid.Row="8" x:Uid="AboutTextBlock" FontSize="25"/>
+            <TextBlock Grid.Column="0" Grid.Row="9" x:Uid="VersionTitle"/>
+            <TextBlock Grid.Column="1" Grid.Row="9" Text="{x:Bind _viewModel.Version, Mode=OneWay}"/>
+            <TextBlock Grid.Column="0" Grid.Row="10" x:Uid="RepositoryTitle"/>
+            <HyperlinkButton Grid.Column="1" Grid.Row="10" x:Uid="GitHubTitle" NavigateUri="https://github.com/Pyggy-Bank-Team"/>
+            <TextBlock x:Uid="SupportText" Grid.Column="0" Grid.Row="11"/>
+            <HyperlinkButton x:Uid="SupportEmailText" Grid.Column="1" Grid.Row="11" NavigateUri="mailto:support@piggybank.pro" Content="support@piggybank.pro"/>
 
         </Grid>
         

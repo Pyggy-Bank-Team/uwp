@@ -373,4 +373,10 @@
   <data name="EmailEmptyOrNull" xml:space="preserve">
     <value>Email обязательное поле. Пожалуйста введите email.</value>
   </data>
+  <data name="BotConnect.Content" xml:space="preserve">
+    <value>Подключить</value>
+  </data>
+  <data name="TelegramBotTextBlock.Text" xml:space="preserve">
+    <value>Telegram бот</value>
+  </data>
 </root>
