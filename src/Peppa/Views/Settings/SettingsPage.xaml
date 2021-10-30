@@ -52,7 +52,7 @@
             <TextBlock Grid.Column="0" Grid.Row="3" x:Uid="CurrencyTextBlock"/>
             <TextBlock Grid.Column="1" Grid.Row="3" Text="{x:Bind _viewModel.Currency, Mode=OneWay}"/>
             <TextBlock Grid.Column="0" Grid.Row="4" x:Uid="TelegramBotTextBlock"/>
-            <HyperlinkButton Grid.Column="1" Grid.Row="4" x:Uid="BotConnect" Click="{x:Bind _viewModel.OnConnectToBotClick}"/>
+            <HyperlinkButton Grid.Column="1" Grid.Row="4" x:Uid="BotConnect" Click="{x:Bind _viewModel.OnConnectToBotClick}" Padding="0"/>
 
             <!--Settings-->
             <TextBlock Grid.Column="0" Grid.Row="5" x:Uid="SettingsTitle" FontSize="25"/>
@@ -60,16 +60,16 @@
             <TextBlock Grid.Column="0" Grid.Row="6" x:Uid="DarkModeTitle"/>
             <ToggleSwitch Grid.Column="1" Grid.Row="6" OnContent="" OffContent="" IsOn="{x:Bind _viewModel.IsDarkModeEnabled, Mode=TwoWay}"/>
             <TextBlock Grid.Column="0" Grid.Row="7" x:Uid="LanguageTitle"/>
-            <ComboBox Grid.Column="1" Grid.Row="7" ItemsSource="{x:Bind _viewModel.Languages, Mode=OneWay}" SelectedItem="{x:Bind _viewModel.Language, Mode=TwoWay}"/>
+            <ComboBox Grid.Column="1" Grid.Row="7" ItemsSource="{x:Bind _viewModel.Languages, Mode=OneWay}" SelectedItem="{x:Bind _viewModel.Language, Mode=TwoWay}" Padding="5 0 0 0"/>
 
             <!-- About -->
             <TextBlock Grid.Column="0" Grid.Row="8" x:Uid="AboutTextBlock" FontSize="25"/>
             <TextBlock Grid.Column="0" Grid.Row="9" x:Uid="VersionTitle"/>
             <TextBlock Grid.Column="1" Grid.Row="9" Text="{x:Bind _viewModel.Version, Mode=OneWay}"/>
             <TextBlock Grid.Column="0" Grid.Row="10" x:Uid="RepositoryTitle"/>
-            <HyperlinkButton Grid.Column="1" Grid.Row="10" x:Uid="GitHubTitle" NavigateUri="https://github.com/Pyggy-Bank-Team"/>
+            <HyperlinkButton Grid.Column="1" Grid.Row="10" x:Uid="GitHubTitle" NavigateUri="https://github.com/Pyggy-Bank-Team" Padding="0"/>
             <TextBlock x:Uid="SupportText" Grid.Column="0" Grid.Row="11"/>
-            <HyperlinkButton x:Uid="SupportEmailText" Grid.Column="1" Grid.Row="11" NavigateUri="mailto:support@piggybank.pro" Content="support@piggybank.pro"/>
+            <HyperlinkButton x:Uid="SupportEmailText" Grid.Column="1" Grid.Row="11" NavigateUri="mailto:support@piggybank.pro" Content="support@piggybank.pro" Padding="0"/>
 
         </Grid>
         
